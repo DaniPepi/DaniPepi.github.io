@@ -4,6 +4,12 @@ Sito statico responsive, modificabile in Visual Studio Code, senza dipendenze di
 
 ## Sito pubblicato e gestione dei link
 
+## Sfondo video
+
+La homepage riproduce un video aereo delle onde al 55% della velocità normale, in loop, senza audio e con playsinline. Pausa/ripresa, riduzione del movimento e fallback fotografico sono supportati. Il video non viene memorizzato dal service worker: offline viene mostrata la fotografia.
+
+Fonte: https://mixkit.co/free-stock-video/aerial-view-of-waves-and-surfers-1070/ . Licenza Mixkit Stock Video Free: https://mixkit.co/license/ . Il file è servito dal sito, senza incorporamenti o richieste a Mixkit durante la visita.
+
 ## Schede viaggio condivisibili
 
 Ogni tessera apre una pagina dedicata: viaggio-portogallo.html, viaggio-islanda.html, viaggio-marocco.html. Il pulsante Condividi usa il menu nativo del dispositivo o copia il link. Le schede non contengono prezzi o campi tariffari, neppure nei metadati. I percorsi restano illustrativi fino alla conferma dei dati reali.
