@@ -1,6 +1,6 @@
 'use strict';
-const CACHE = 'click-viaggia-v7';
-const ASSETS = ['./i-miei-viaggi.html', './map.js', './map-auth.js', './map.css', './data/map.json', './assets/flags.png', './', './index.html', './style.css', './style.css?v=6', './app.js?v=6', './legal.html', './chi-siamo.html', './team.js', './data/team.json', './data/contact.json', './trip.js', './viaggio-portogallo.html', './viaggio-islanda.html', './viaggio-marocco.html', './assets/portogallo.jpg', './assets/islanda.jpg', './assets/marocco.jpg', './data/travel-links.json', './icon.svg', './manifest.webmanifest', './assets/ocean.jpg', './assets/icon-192.png', './assets/icon-512.png'];
+const CACHE = 'click-viaggia-v8';
+const ASSETS = ['./i-miei-viaggi.html', './map.js?v=8', './map-auth.js', './map.css?v=8', './data/map.json', './assets/flags.svg', './', './index.html', './style.css', './style.css?v=6', './app.js?v=6', './legal.html', './chi-siamo.html', './team.js', './data/team.json', './data/contact.json', './trip.js', './viaggio-portogallo.html', './viaggio-islanda.html', './viaggio-marocco.html', './assets/portogallo.jpg', './assets/islanda.jpg', './assets/marocco.jpg', './data/travel-links.json', './icon.svg', './manifest.webmanifest', './assets/ocean.jpg', './assets/icon-192.png', './assets/icon-512.png'];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(ASSETS)).then(() => self.skipWaiting()));
 });

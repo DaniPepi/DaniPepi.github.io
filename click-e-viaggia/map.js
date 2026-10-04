@@ -3,6 +3,46 @@ const $ = id => document.getElementById(id);
 const key = 'click-viaggia-visited-v1';
 let countries = [], visited = new Set(), guest = [], selected, account, user = null, busy = false;
 const nodes = new Map();
+const map = $('world-map');
+let view = {x:0,y:0,w:1200,h:620};
+function updateView() {
+  view.x=Math.max(0,Math.min(1200-view.w,view.x)); view.y=Math.max(0,Math.min(620-view.h,view.y));
+  map.setAttribute('viewBox',`${view.x} ${view.y} ${view.w} ${view.h}`); $('zoom-level').textContent = `${Math.round(1200 / view.w * 100)}%`;
+}
+function zoom(factor) {
+  const width = Math.max(150,Math.min(1200,view.w * factor)), height = width * 620 / 1200;
+  view.x += (view.w-width)/2; view.y += (view.h-height)/2; view.w=width;view.h=height; updateView();
+}
+$('zoom-in').onclick = () => zoom(.7);
+$('zoom-out').onclick = () => zoom(1/.7);
+$('zoom-reset').onclick = () => {view={x:0,y:0,w:1200,h:620}; updateView();};
+let drag = null, moved = false;
+map.addEventListener('pointerdown',event => {
+  if (event.button !== 0) return;
+  const matrix=map.getScreenCTM();
+  drag={x:event.clientX,y:event.clientY,startX:view.x,startY:view.y,id:event.pointerId,scaleX:matrix.a,scaleY:matrix.d}; moved=false;
+  map.setPointerCapture(event.pointerId);
+});
+map.addEventListener('pointermove',event => {
+  if (!drag || event.pointerId !== drag.id) return;
+  if (Math.hypot(event.clientX-drag.x,event.clientY-drag.y)>6) moved=true;
+  if (!moved) return;
+  view.x=drag.startX-(event.clientX-drag.x)/drag.scaleX;
+  view.y=drag.startY-(event.clientY-drag.y)/drag.scaleY; updateView();
+});
+map.addEventListener('pointerup',event => {
+  if (!drag || event.pointerId !== drag.id) return;
+  map.releasePointerCapture(event.pointerId); drag=null;
+  if (!moved) { const target=document.elementFromPoint(event.clientX,event.clientY)?.closest('[data-code]'); if(target) openCountry(target.dataset.code); }
+});
+map.addEventListener('pointercancel',()=>{drag=null;});
+map.addEventListener('keydown',event=>{
+  if (event.target !== map) return;
+  const offsets={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]};
+  if(offsets[event.key]) {event.preventDefault();view.x+=offsets[event.key][0]*view.w*.1;view.y+=offsets[event.key][1]*view.h*.1;updateView();}
+  if(event.key==='+'||event.key==='=') zoom(.7);
+  if(event.key==='-') zoom(1/.7);
+});
 function readGuest() { try { const data = JSON.parse(localStorage.getItem(key) || '[]'); return Array.isArray(data) ? data.filter(x => typeof x === 'string') : []; } catch { return []; } }
 guest = readGuest(); visited = new Set(guest);
 function refresh() {
@@ -17,7 +57,14 @@ function openCountry(code) {
   $('country-region').textContent = selected.subregion || selected.region;
   $('country-description').textContent = selected.description;
   $('country-capital').textContent = selected.capital ? `Capitale: ${selected.capital}` : '';
-  $('country-flag').style.backgroundPosition = `${-(selected.flagIndex % 16) * 128}px ${-Math.floor(selected.flagIndex / 16) * 96}px`;
+  $('country-flag-use').setAttribute('href',`assets/flags.svg#flag-${selected.code}`);
+  $('preview-flag-use').setAttribute('href',`assets/flags.svg#flag-${selected.code}`);
+  $('preview-name').textContent=selected.name;
+  $('preview-description').textContent=selected.description;
+  $('preview-region').textContent=selected.region;
+  $('preview-flag').removeAttribute('hidden'); $('preview-open').hidden=false;
+  $('country-select').value=selected.code;
+  nodes.forEach((node,code)=>node.classList.toggle('selected',code===selected.code));
   refresh(); if (!$('country-dialog').open) $('country-dialog').showModal();
 }
 async function save(next) {
@@ -34,6 +81,7 @@ async function save(next) {
 document.querySelectorAll('dialog .close').forEach(button => button.addEventListener('click', () => button.closest('dialog').close()));
 $('account-open').onclick = () => $('account-dialog').showModal();
 $('country-select').onchange = event => openCountry(event.target.value);
+$('preview-open').onclick=()=>{if(selected) openCountry(selected.code);};
 $('toggle-visited').onclick = () => { const next = new Set(visited); next.has(selected.code) ? next.delete(selected.code) : next.add(selected.code); save(next); };
 $('show-visited').onclick = () => { const button = $('show-visited'); button.setAttribute('aria-pressed', String(button.getAttribute('aria-pressed') !== 'true')); refresh(); };
 $('clear-local').onclick = () => $('reset-dialog').showModal();
@@ -50,10 +98,10 @@ try {
   countries.filter(c => c.path).forEach(c => {
     const [[x,y],[right,bottom]] = c.bounds, width = Math.max(1,right-x), height = Math.max(1,bottom-y);
     const pattern = svg('pattern', {id: `flag-${c.code}`, patternUnits: 'userSpaceOnUse', x, y, width, height});
-    const crop = svg('svg', {x:0,y:0,width,height,viewBox:`${c.flagIndex % 16 * 64} ${Math.floor(c.flagIndex / 16) * 48} 64 48`,preserveAspectRatio:'none'});
-    crop.append(svg('image', {href:'assets/flags.png',width:1024,height:768})); pattern.append(crop); $('map-defs').append(pattern);
-    const path = svg('path', {d:c.path,fill:`url(#flag-${c.code})`,class:'map-country',tabindex:0,role:'button','data-code':c.code});
-    path.onclick = () => openCountry(c.code);
+    pattern.append(svg('use', {href:`assets/flags.svg#flag-${c.code}`,width,height})); $('map-defs').append(pattern);
+    const path = svg('path', {d:c.path,fill:`url(#flag-${c.code})`,class:'map-country',tabindex:0,role:'button','data-code':c.code,'vector-effect':'non-scaling-stroke'});
+    const title=svg('title',{});title.textContent=c.name;path.append(title);
+    path.onclick = event => { if(event.detail===0) openCountry(c.code); };
     path.onkeydown = event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openCountry(c.code); } };
     path.onpointerenter = () => { $('map-tooltip').textContent = c.name; $('map-tooltip').hidden = false; };
     path.onpointerleave = () => { $('map-tooltip').hidden = true; };
