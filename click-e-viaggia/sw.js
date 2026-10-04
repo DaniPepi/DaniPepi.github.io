@@ -1,6 +1,6 @@
 'use strict';
-const CACHE = 'click-viaggia-v2';
-const ASSETS = ['./', './index.html', './style.css', './app.js', './legal.html', './data/travel-links.json', './icon.svg', './manifest.webmanifest', './assets/ocean.jpg', './assets/icon-192.png', './assets/icon-512.png'];
+const CACHE = 'click-viaggia-v3';
+const ASSETS = ['./', './index.html', './style.css', './style.css?v=2', './app.js?v=2', './legal.html', './data/travel-links.json', './icon.svg', './manifest.webmanifest', './assets/ocean.jpg', './assets/icon-192.png', './assets/icon-512.png'];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(ASSETS)).then(() => self.skipWaiting()));
 });
