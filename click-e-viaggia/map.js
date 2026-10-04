@@ -1,53 +1,16 @@
+import {enableMapNavigation} from './map-navigation.js?v=9';
 import {connectAccount} from './map-auth.js';
 const $ = id => document.getElementById(id);
 const key = 'click-viaggia-visited-v1';
 let countries = [], visited = new Set(), guest = [], selected, account, user = null, busy = false;
 const nodes = new Map();
 const map = $('world-map');
-let view = {x:0,y:0,w:1200,h:620};
-function updateView() {
-  view.x=Math.max(0,Math.min(1200-view.w,view.x)); view.y=Math.max(0,Math.min(620-view.h,view.y));
-  map.setAttribute('viewBox',`${view.x} ${view.y} ${view.w} ${view.h}`); $('zoom-level').textContent = `${Math.round(1200 / view.w * 100)}%`;
-}
-function zoom(factor) {
-  const width = Math.max(150,Math.min(1200,view.w * factor)), height = width * 620 / 1200;
-  view.x += (view.w-width)/2; view.y += (view.h-height)/2; view.w=width;view.h=height; updateView();
-}
-$('zoom-in').onclick = () => zoom(.7);
-$('zoom-out').onclick = () => zoom(1/.7);
-$('zoom-reset').onclick = () => {view={x:0,y:0,w:1200,h:620}; updateView();};
-let drag = null, moved = false;
-map.addEventListener('pointerdown',event => {
-  if (event.button !== 0) return;
-  const matrix=map.getScreenCTM();
-  drag={x:event.clientX,y:event.clientY,startX:view.x,startY:view.y,id:event.pointerId,scaleX:matrix.a,scaleY:matrix.d}; moved=false;
-  map.setPointerCapture(event.pointerId);
-});
-map.addEventListener('pointermove',event => {
-  if (!drag || event.pointerId !== drag.id) return;
-  if (Math.hypot(event.clientX-drag.x,event.clientY-drag.y)>6) moved=true;
-  if (!moved) return;
-  view.x=drag.startX-(event.clientX-drag.x)/drag.scaleX;
-  view.y=drag.startY-(event.clientY-drag.y)/drag.scaleY; updateView();
-});
-map.addEventListener('pointerup',event => {
-  if (!drag || event.pointerId !== drag.id) return;
-  map.releasePointerCapture(event.pointerId); drag=null;
-  if (!moved) { const target=document.elementFromPoint(event.clientX,event.clientY)?.closest('[data-code]'); if(target) openCountry(target.dataset.code); }
-});
-map.addEventListener('pointercancel',()=>{drag=null;});
-map.addEventListener('keydown',event=>{
-  if (event.target !== map) return;
-  const offsets={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]};
-  if(offsets[event.key]) {event.preventDefault();view.x+=offsets[event.key][0]*view.w*.1;view.y+=offsets[event.key][1]*view.h*.1;updateView();}
-  if(event.key==='+'||event.key==='=') zoom(.7);
-  if(event.key==='-') zoom(1/.7);
-});
+enableMapNavigation(map, $('map-camera'), openCountry);
 function readGuest() { try { const data = JSON.parse(localStorage.getItem(key) || '[]'); return Array.isArray(data) ? data.filter(x => typeof x === 'string') : []; } catch { return []; } }
 guest = readGuest(); visited = new Set(guest);
 function refresh() {
   const only = $('show-visited').getAttribute('aria-pressed') === 'true';
-  nodes.forEach((node, code) => { node.classList.toggle('visited', visited.has(code)); node.classList.toggle('dimmed', only && !visited.has(code)); node.setAttribute('aria-label', `${countries.find(c => c.code === code).name}, ${visited.has(code) ? 'visitato' : 'da scoprire'}`); });
+  nodes.forEach((node, code) => { node.classList.toggle('visited', visited.has(code)); const layer=visited.has(code)?$('visited-layer'):$('map-layer'); if(node.parentNode!==layer) layer.append(node); node.classList.toggle('dimmed', only && !visited.has(code)); node.setAttribute('aria-label', `${countries.find(c => c.code === code).name}, ${visited.has(code) ? 'visitato' : 'da scoprire'}`); });
   $('visited-count').textContent = visited.size;
   if (selected) { $('toggle-visited').textContent = visited.has(selected.code) ? 'Rimuovi dai visitati' : 'Segna come visitato'; $('country-state').textContent = visited.has(selected.code) ? 'Questo paese è nel tuo diario.' : 'Un nuovo ricordo da aggiungere.'; }
 }
