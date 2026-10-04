@@ -3,6 +3,7 @@ import {connectAccount} from './map-auth.js';
 const $ = id => document.getElementById(id);
 const key = 'click-viaggia-visited-v1';
 let countries = [], visited = new Set(), guest = [], selected, account, user = null, busy = false;
+let stories = {}, photos = {}, imageRequest = 0;
 const nodes = new Map();
 const map = $('world-map');
 enableMapNavigation(map, $('map-camera'), openCountry);
@@ -16,19 +17,47 @@ function refresh() {
 }
 function openCountry(code) {
   selected = countries.find(c => c.code === code); if (!selected) return;
+  const story = stories[code];
   $('country-name').textContent = selected.name;
-  $('country-region').textContent = selected.subregion || selected.region;
-  $('country-description').textContent = selected.description;
+  $('country-region').textContent = selected.region;
+  $('country-headline').textContent = story?.headline || selected.name;
+  $('country-description').textContent = story?.description || selected.description;
   $('country-capital').textContent = selected.capital ? `Capitale: ${selected.capital}` : '';
   $('country-flag-use').setAttribute('href',`assets/flags.svg#flag-${selected.code}`);
   $('preview-flag-use').setAttribute('href',`assets/flags.svg#flag-${selected.code}`);
   $('preview-name').textContent=selected.name;
-  $('preview-description').textContent=selected.description;
+  $('preview-description').textContent=story?.description || selected.description;
   $('preview-region').textContent=selected.region;
   $('preview-flag').removeAttribute('hidden'); $('preview-open').hidden=false;
   $('country-select').value=selected.code;
   nodes.forEach((node,code)=>node.classList.toggle('selected',code===selected.code));
-  refresh(); if (!$('country-dialog').open) $('country-dialog').showModal();
+  loadCountryPhoto(code);
+  refresh();
+  const show=()=>{if (!$('country-dialog').open) $('country-dialog').showModal();};
+  if(document.fullscreenElement) document.exitFullscreen().then(show).catch(show); else show();
+}
+function safePhotoUrl(value, source = false) {
+  try { const url = new URL(value); return url.protocol === 'https:' && (source ? ['commons.wikimedia.org','creativecommons.org','en.wikivoyage.org'].includes(url.hostname) : url.hostname === 'upload.wikimedia.org') ? url.href : ''; } catch { return ''; }
+}
+function loadCountryPhoto(code) {
+  const photo=photos[code], request=++imageRequest, image=document.createElement('img');
+  image.id='country-photo';image.decoding='async';image.referrerPolicy='no-referrer';image.hidden=true;
+  $('country-photo').replaceWith(image);
+  $('photo-loading').hidden=false; $('photo-loading').textContent='Un primo sguardo alla destinazione…';
+  $('photo-credit').hidden=true; $('country-photo-caption').textContent='';
+  if (!photo || !safePhotoUrl(photo.url)) { $('photo-loading').textContent='Fotografia non disponibile al momento.'; return; }
+  image.onload=async()=>{
+    try { await image.decode(); } catch { if(request===imageRequest) $('photo-loading').textContent='La foto non è disponibile. Puoi aprire la fonte fotografica qui sotto.'; return; }
+    if(request!==imageRequest)return;image.hidden=false;$('photo-loading').hidden=true;
+  };
+  image.onerror=()=>{if(request!==imageRequest)return;image.hidden=true;$('photo-loading').textContent='La foto non è disponibile. Puoi aprire la fonte fotografica qui sotto.';};
+  image.alt=photo.caption || `Paesaggio rappresentativo di ${selected.name}`;
+  $('country-photo-caption').textContent=photo.caption || '';
+  $('photo-author').textContent=photo.author;
+  const sourceUrl=safePhotoUrl(photo.sourceUrl,true), licenseUrl=safePhotoUrl(photo.licenseUrl,true);
+  $('photo-source').href=sourceUrl || '#'; $('photo-license').textContent=photo.license;
+  $('photo-license').href=licenseUrl || sourceUrl || '#'; $('photo-credit').hidden=false;
+  image.src=safePhotoUrl(photo.url);
 }
 async function save(next) {
   if (busy) return; busy = true; $('toggle-visited').disabled = true;
@@ -45,6 +74,7 @@ document.querySelectorAll('dialog .close').forEach(button => button.addEventList
 $('account-open').onclick = () => $('account-dialog').showModal();
 $('country-select').onchange = event => openCountry(event.target.value);
 $('preview-open').onclick=()=>{if(selected) openCountry(selected.code);};
+$('flag-mode').onclick=()=>{const button=$('flag-mode'); const active=button.getAttribute('aria-pressed')!=='true';button.setAttribute('aria-pressed',String(active));map.classList.toggle('show-flags',active);};
 $('toggle-visited').onclick = () => { const next = new Set(visited); next.has(selected.code) ? next.delete(selected.code) : next.add(selected.code); save(next); };
 $('show-visited').onclick = () => { const button = $('show-visited'); button.setAttribute('aria-pressed', String(button.getAttribute('aria-pressed') !== 'true')); refresh(); };
 $('clear-local').onclick = () => $('reset-dialog').showModal();
@@ -54,8 +84,12 @@ window.addEventListener('storage', event => { if (event.key === key && !user) { 
 const ns = 'http://www.w3.org/2000/svg';
 function svg(tag, attrs) { const element = document.createElementNS(ns, tag); Object.entries(attrs).forEach(([k,v]) => element.setAttribute(k, String(v))); return element; }
 try {
-  const response = await fetch('data/map.json'); if (!response.ok) throw Error();
-  countries = (await response.json()).countries;
+  const [response, editorial, photography] = await Promise.all([fetch('data/map.json'), fetch('data/country-editorial.json'), fetch('data/country-photos.json')]);
+  if (!response.ok) throw Error();
+  const data=await response.json();countries=data.countries;
+  if(editorial.ok) stories=await editorial.json();
+  if(photography.ok) photos=await photography.json();
+  if(data.graticule) $('map-graticule').setAttribute('d',data.graticule);
   visited = new Set(guest.filter(code => countries.some(c => c.code === code)));
   [...countries].sort((a,b) => a.name.localeCompare(b.name, 'it')).forEach(c => { const option = document.createElement('option'); option.value = c.code; option.textContent = c.name; $('country-select').append(option); });
   countries.filter(c => c.path).forEach(c => {
@@ -63,10 +97,11 @@ try {
     const pattern = svg('pattern', {id: `flag-${c.code}`, patternUnits: 'userSpaceOnUse', x, y, width, height});
     pattern.append(svg('use', {href:`assets/flags.svg#flag-${c.code}`,width,height})); $('map-defs').append(pattern);
     const path = svg('path', {d:c.path,fill:`url(#flag-${c.code})`,class:'map-country',tabindex:0,role:'button','data-code':c.code,'vector-effect':'non-scaling-stroke'});
+    path.style.setProperty('--country-flag',`url(#flag-${c.code})`);
     const title=svg('title',{});title.textContent=c.name;path.append(title);
     path.onclick = event => { if(event.detail===0) openCountry(c.code); };
     path.onkeydown = event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openCountry(c.code); } };
-    path.onpointerenter = () => { $('map-tooltip').textContent = c.name; $('map-tooltip').hidden = false; };
+    path.onpointerenter = () => { $('tooltip-name').textContent=c.name; $('tooltip-flag').setAttribute('href',`assets/flags.svg#flag-${c.code}`); $('map-tooltip').hidden = false; };
     path.onpointerleave = () => { $('map-tooltip').hidden = true; };
     nodes.set(c.code,path); $('map-layer').append(path);
   });

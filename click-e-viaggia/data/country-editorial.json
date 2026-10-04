@@ -1,0 +1,1252 @@
+{
+  "aw": {
+    "headline": "Il vento tra i divi-divi",
+    "description": "Ad Aruba, gli alberi divi-divi piegati dal vento e la sabbia chiara disegnano un paesaggio immediatamente riconoscibile. Tra le facciate colorate di Oranjestad e le coste rocciose di Arikok, l'isola racconta un volto caraibico anche fuori dalla spiaggia.",
+    "imageQuery": "Aruba Eagle Beach divi divi"
+  },
+  "af": {
+    "headline": "Montagne sulla Via della Seta",
+    "description": "L'Hindu Kush attraversa l'Afghanistan con vallate profonde e cime che dominano gli antichi percorsi dell'Asia centrale. I laghi di Band-e Amir e il patrimonio di Herat raccontano un territorio dove natura, artigianato e storia conservano una straordinaria ricchezza.",
+    "imageQuery": "Band e Amir lakes Afghanistan"
+  },
+  "ao": {
+    "headline": "L'acqua incontra la terra rossa",
+    "description": "Le cascate di Kalandula aprono un grande arco d'acqua nel paesaggio angolano, mentre le rocce di Pungo Andongo emergono dalla pianura. Luanda aggiunge il ritmo di una capitale atlantica a un paese di altopiani, coste e tradizioni musicali.",
+    "imageQuery": "Kalandula Falls Angola"
+  },
+  "ai": {
+    "headline": "Spiagge dalla luce più chiara",
+    "description": "Anguilla lascia spazio al mare con spiagge luminose come Shoal Bay e piccole baie separate da promontori. A The Valley e nei villaggi costieri, la dimensione raccolta dell'isola accompagna una cultura caraibica fatta di musica, pesca e cucina di mare.",
+    "imageQuery": "Shoal Bay Anguilla beach"
+  },
+  "ax": {
+    "headline": "Un arcipelago da navigare piano",
+    "description": "Le Åland disseminano nel Baltico isole rocciose, villaggi di legno e piccoli approdi protetti. A Mariehamn, il veliero Pommern custodisce la memoria marittima dell'arcipelago, mentre il mare e le strade tra le isole invitano a osservare il paesaggio con calma.",
+    "imageQuery": "Aland Mariehamn Pommern"
+  },
+  "al": {
+    "headline": "Tra pietra bianca e Ionio",
+    "description": "L'Albania accosta i vicoli di pietra di Gjirokastër e le finestre di Berat alle acque della Riviera ionica. Più a nord, le montagne di Theth raccontano un altro paesaggio, fatto di vallate, case tradizionali e sentieri tra le cime.",
+    "imageQuery": "Berat Albania old town"
+  },
+  "ad": {
+    "headline": "Il cuore verde dei Pirenei",
+    "description": "Andorra si raccoglie tra le montagne dei Pirenei, con valli alpine e piccoli edifici romanici in pietra. La chiesa di Sant Joan de Caselles e i paesaggi della valle Madriu mostrano una dimensione del principato legata alla montagna e alla memoria rurale.",
+    "imageQuery": "Andorra Sant Joan de Caselles"
+  },
+  "ae": {
+    "headline": "Dune dorate e città verticali",
+    "description": "Negli Emirati Arabi Uniti, le dune del deserto convivono con il profilo verticale di Dubai e le architetture di Abu Dhabi. La grande moschea Sheikh Zayed e i quartieri storici lungo il Creek permettono di leggere tradizione e trasformazione nello stesso panorama.",
+    "imageQuery": "Sheikh Zayed Grand Mosque Abu Dhabi"
+  },
+  "ar": {
+    "headline": "Orizzonti che non finiscono mai",
+    "description": "L'Argentina cambia volto tra il tango di Buenos Aires, le montagne della Patagonia e i ghiacci del Perito Moreno. Le cascate di Iguazú e i paesaggi del nord ampliano il racconto di un paese dove ogni regione possiede colori e ritmi propri.",
+    "imageQuery": "Perito Moreno glacier Argentina"
+  },
+  "am": {
+    "headline": "Monasteri tra cielo e pietra",
+    "description": "In Armenia, i monasteri di Geghard e Tatev sembrano proseguire la forma delle montagne che li circondano. Erevan, costruita anche nella caratteristica pietra rosata, e le rive del lago Sevan raccontano una cultura antica attraverso architettura, musica e paesaggio.",
+    "imageQuery": "Tatev monastery Armenia"
+  },
+  "as": {
+    "headline": "Il Pacifico oltre la baia",
+    "description": "Le Samoa Americane uniscono montagne verdi, scogliere e la profonda baia di Pago Pago. Nel paesaggio di Tutuila e delle isole Manu'a, le case aperte e la tradizione samoana ricordano quanto la vita dell'arcipelago sia legata alla comunità e all'oceano.",
+    "imageQuery": "Pago Pago American Samoa harbour"
+  },
+  "aq": {
+    "headline": "Il silenzio dei grandi ghiacci",
+    "description": "L'Antartide è un continente di ghiaccio, montagne e coste dove gli iceberg cambiano forma e colore con la luce. Le colonie di pinguini e le stazioni di ricerca raccontano due presenze molto diverse in un paesaggio che invita a riflettere sulla scala della natura.",
+    "imageQuery": "Antarctica iceberg penguins landscape"
+  },
+  "tf": {
+    "headline": "Terre remote nel vento australe",
+    "description": "Le isole subantartiche dei Territori Francesi del Sud offrono coste scure, montagne spoglie e grandi spazi battuti dal vento. Alle Kerguelen e a Crozet, uccelli marini e colonie di pinguini danno vita a un paesaggio lontano dalle città e dalle rotte consuete.",
+    "imageQuery": "Kerguelen islands landscape"
+  },
+  "ag": {
+    "headline": "Baie caraibiche e vele bianche",
+    "description": "Antigua e Barbuda mostrano due volti del mare caraibico, tra le baie riparate della prima e le lunghe spiagge della seconda. A English Harbour, i moli storici di Nelson's Dockyard raccontano la storia della navigazione in un paesaggio di vele e colline.",
+    "imageQuery": "English Harbour Antigua Nelson Dockyard"
+  },
+  "au": {
+    "headline": "Dalla terra rossa all'oceano",
+    "description": "L'Australia intreccia la terra rossa dell'interno, il profilo di Uluru e i colori della Grande Barriera Corallina. Le città costiere, dalle vele dell'Opera House di Sydney alle strade di Melbourne, aggiungono una dimensione urbana a paesaggi di sorprendente ampiezza.",
+    "imageQuery": "Uluru Australia landscape"
+  },
+  "at": {
+    "headline": "Note di città e montagne",
+    "description": "L'Austria passa dalle sale e dai caffè di Vienna ai laghi alpini e alle montagne del Tirolo. Salisburgo, con le sue facciate barocche e la fortezza, custodisce una storia musicale che si intreccia con villaggi, pascoli e paesaggi d'acqua.",
+    "imageQuery": "Hallstatt Austria lake village"
+  },
+  "az": {
+    "headline": "Il Caspio incontra la storia",
+    "description": "A Baku, le mura della città antica dialogano con nuove architetture affacciate sul Caspio. L'Azerbaijan prosegue il suo racconto tra le incisioni rupestri di Gobustan, le montagne del Caucaso e l'artigianato dei tappeti, dove motivi e colori custodiscono memorie locali.",
+    "imageQuery": "Baku Azerbaijan old city"
+  },
+  "bi": {
+    "headline": "Colline verdi sul Tanganica",
+    "description": "Il Burundi si distende tra colline coltivate e le rive del lago Tanganica, che aprono un orizzonte diverso dall'interno. A Gitega, la tradizione dei tamburi reali rende visibile il legame tra musica, cerimonia e identità culturale del paese.",
+    "imageQuery": "Burundi Lake Tanganyika landscape"
+  },
+  "be": {
+    "headline": "Piazze che raccontano l'Europa",
+    "description": "Il Belgio si riconosce nelle facciate della Grand Place di Bruxelles e nei canali di Bruges, dove la luce cambia il volto degli edifici. Anversa, Gand e le tradizioni del cioccolato e della birra completano un mosaico di città vicine e caratteri distinti.",
+    "imageQuery": "Bruges Belgium canals"
+  },
+  "bj": {
+    "headline": "Acqua, palazzi e memoria",
+    "description": "In Benin, le case su palafitte di Ganvié trasformano il lago Nokoué in uno spazio di vita e incontro. I palazzi di Abomey e i luoghi storici di Ouidah raccontano altre pagine del paese, tra patrimoni reali, tradizioni spirituali e memoria atlantica.",
+    "imageQuery": "Ganvie Benin stilt village"
+  },
+  "bf": {
+    "headline": "Architetture di terra e colore",
+    "description": "Il Burkina Faso custodisce nelle case dipinte di Tiébélé un linguaggio di forme e motivi legato alla cultura kassena. Ouagadougou e Bobo-Dioulasso aggiungono musica, mercati e architetture in terra a un paesaggio che alterna savana, campi e villaggi.",
+    "imageQuery": "Tiebele Burkina Faso painted houses"
+  },
+  "bd": {
+    "headline": "La vita lungo i fiumi",
+    "description": "Il Bangladesh è un paese d'acqua, attraversato da grandi fiumi e dai canali del delta del Gange e del Brahmaputra. Le mangrovie delle Sundarbans, i giardini del tè di Sylhet e il patrimonio di Dhaka mostrano paesaggi molto diversi, uniti dal ritmo delle stagioni.",
+    "imageQuery": "Bangladesh river boat landscape"
+  },
+  "bg": {
+    "headline": "Rose, monasteri e montagne",
+    "description": "In Bulgaria, il monastero di Rila emerge tra le montagne con portici dipinti e cupole che accompagnano lo sguardo. Le strade di Plovdiv, la Valle delle Rose e la costa del Mar Nero raccontano un paese dove storia e paesaggio cambiano a ogni regione.",
+    "imageQuery": "Rila Monastery Bulgaria"
+  },
+  "bh": {
+    "headline": "Un arcipelago di antiche rotte",
+    "description": "Il Bahrein conserva nei resti di Qal'at al-Bahrain e nelle tradizioni della pesca delle perle una lunga memoria marittima. I vicoli di Muharraq e lo skyline di Manama raccontano, su queste isole del Golfo, il dialogo tra mercati storici e architettura contemporanea.",
+    "imageQuery": "Bahrain Qalat al Bahrain fort"
+  },
+  "bs": {
+    "headline": "Sfumature d'acqua tra le isole",
+    "description": "Le Bahamas sono un arcipelago di spiagge chiare, bassi fondali e passaggi d'acqua dalle sfumature sorprendenti. Nassau conserva facciate colorate e forti storici, mentre le isole più piccole portano il racconto verso baie, villaggi e un rapporto quotidiano con il mare.",
+    "imageQuery": "Bahamas Exuma turquoise islands"
+  },
+  "ba": {
+    "headline": "Ponti tra storie e montagne",
+    "description": "La Bosnia ed Erzegovina si racconta nei vicoli di Sarajevo e nell'arco dello Stari Most sul fiume Neretva. Le montagne, le cascate e le città storiche compongono un paesaggio dove diverse tradizioni culturali hanno lasciato tracce visibili nell'architettura e nella vita quotidiana.",
+    "imageQuery": "Mostar Stari Most Bosnia Herzegovina"
+  },
+  "bl": {
+    "headline": "La luce raccolta di Gustavia",
+    "description": "Saint-Barthélemy disegna un piccolo paesaggio caraibico di baie, colline e case affacciate sull'acqua. Nel porto di Gustavia, i tetti rossi e le tracce della storia svedese aggiungono carattere a un'isola dove il mare accompagna quasi ogni prospettiva.",
+    "imageQuery": "Gustavia Saint Barthelemy harbour"
+  },
+  "sh": {
+    "headline": "Isole oltre l'orizzonte atlantico",
+    "description": "Sant'Elena, Ascensione e Tristan da Cunha riuniscono paesaggi molto diversi nel vasto Atlantico, tra scogliere vulcaniche e pendii verdi. La valle di Jamestown e il profilo montuoso di Tristan ricordano quanto isolamento, navigazione e natura abbiano segnato la storia di queste isole.",
+    "imageQuery": "Saint Helena Jamestown landscape"
+  },
+  "by": {
+    "headline": "Foreste e castelli d'acqua",
+    "description": "La Bielorussia affianca grandi foreste e paesaggi di laghi ai castelli di Mir e Nesvizh. Minsk mostra ampi viali e architetture monumentali, mentre le campagne e il patrimonio di Belovežskaja Pušča raccontano un'altra dimensione del paese, legata alla natura e alla storia rurale.",
+    "imageQuery": "Mir Castle Belarus"
+  },
+  "bz": {
+    "headline": "Giungla e orizzonti di corallo",
+    "description": "Il Belize accosta la barriera corallina e gli isolotti caraibici alle foreste che custodiscono siti maya come Xunantunich. Nei villaggi costieri, le tradizioni garifuna e creole danno voce a una cultura plurale, mentre il mare e la giungla restano parte dello stesso racconto.",
+    "imageQuery": "Belize Great Blue Hole aerial"
+  },
+  "bm": {
+    "headline": "Tetti bianchi sul mare rosa",
+    "description": "Bermuda si riconosce nei tetti bianchi, nelle case pastello e nelle spiagge dalle sfumature rosate come Horseshoe Bay. Le strade storiche di Saint George's e il porto di Hamilton raccontano un arcipelago atlantico segnato dal mare, dalla navigazione e da una luce particolare.",
+    "imageQuery": "Bermuda Horseshoe Bay beach"
+  },
+  "bo": {
+    "headline": "Il cielo riflesso nel sale",
+    "description": "In Bolivia, il Salar de Uyuni apre una distesa bianca capace di riflettere il cielo quando è coperta da un velo d'acqua. Le città andine, il lago Titicaca e le regioni amazzoniche aggiungono al paesaggio tradizioni, colori e altitudini profondamente diverse.",
+    "imageQuery": "Salar de Uyuni Bolivia reflection"
+  },
+  "bq": {
+    "headline": "Tre isole, tre paesaggi caraibici",
+    "description": "Bonaire, Sint Eustatius e Saba compongono i Paesi Bassi caraibici con paesaggi che vanno dai fondali alle montagne vulcaniche. Le saline di Bonaire, il cratere del Quill e i villaggi sui pendii di Saba danno a ciascuna isola un'identità visiva distinta.",
+    "imageQuery": "Bonaire salt pans Caribbean Netherlands"
+  },
+  "br": {
+    "headline": "Un continente di ritmi e colori",
+    "description": "Il Brasile intreccia le montagne e le spiagge di Rio de Janeiro con la foresta amazzonica e le dune del Lençóis Maranhenses. Salvador, Brasília e le tradizioni musicali raccontano altre anime di un paese dove il paesaggio cambia quanto le espressioni culturali.",
+    "imageQuery": "Rio de Janeiro Sugarloaf Brazil"
+  },
+  "bb": {
+    "headline": "Il ritmo dell'Atlantico caraibico",
+    "description": "Barbados mostra spiagge tranquille su un lato e le onde atlantiche della costa di Bathsheba sull'altro. Bridgetown, con il suo patrimonio storico, e le tradizioni del rum e della musica completano il ritratto di un'isola dal carattere riconoscibile.",
+    "imageQuery": "Bathsheba Barbados rocks coast"
+  },
+  "bn": {
+    "headline": "Cupole riflesse e foreste tropicali",
+    "description": "In Brunei, la moschea Omar Ali Saifuddien si riflette nell'acqua accanto alle case su palafitte di Kampong Ayer. Le foreste di Temburong aprono un altro mondo, dove il paesaggio fluviale e la vegetazione tropicale accompagnano la dimensione urbana di Bandar Seri Begawan.",
+    "imageQuery": "Omar Ali Saifuddien Mosque Brunei"
+  },
+  "bt": {
+    "headline": "Bandierine nel vento dell'Himalaya",
+    "description": "Il Bhutan conserva monasteri e fortezze dzong tra montagne, boschi e valli coltivate. Il Taktsang, aggrappato alla roccia sopra Paro, rende visibile il legame tra paesaggio e spiritualità, mentre l'architettura tradizionale e le feste locali raccontano una cultura himalayana dal carattere preciso.",
+    "imageQuery": "Paro Taktsang Bhutan monastery"
+  },
+  "bv": {
+    "headline": "Un'isola nel silenzio australe",
+    "description": "L'isola Bouvet emerge nell'Atlantico meridionale con scogliere vulcaniche e un manto di ghiaccio che ne domina il paesaggio. In questa terra disabitata, uccelli marini, foche e oceano raccontano una natura remota, lontana dall'immagine consueta di un'isola da vacanza.",
+    "imageQuery": "Bouvet Island coastline"
+  },
+  "bw": {
+    "headline": "L'acqua che attraversa la savana",
+    "description": "Il Botswana custodisce nel delta dell'Okavango un mosaico di canali, isole e pianure allagate nel cuore dell'Africa australe. Il Kalahari e le distese salate del Makgadikgadi mostrano altri volti del paese, dove acqua e aridità modellano paesaggi di grande ampiezza.",
+    "imageQuery": "Okavango Delta Botswana aerial"
+  },
+  "cf": {
+    "headline": "Foreste nel cuore del continente",
+    "description": "La Repubblica Centrafricana unisce paesaggi di savana a foreste tropicali attraversate da fiumi. Nell'area di Dzanga-Sangha, le radure e gli alberi raccontano la ricchezza del bacino del Congo, mentre Bangui si affaccia sull'Ubangi con il ritmo di una città fluviale.",
+    "imageQuery": "Dzanga Sangha Central African Republic"
+  },
+  "ca": {
+    "headline": "Laghi turchesi e grandi distanze",
+    "description": "Il Canada passa dalle montagne rocciose e dai laghi di Banff alle coste atlantiche e alle foreste settentrionali. Québec, Montréal e Vancouver aggiungono identità urbane differenti a un territorio dove le culture indigene e la natura sono parti essenziali del racconto.",
+    "imageQuery": "Moraine Lake Canada mountains"
+  },
+  "cc": {
+    "headline": "Anelli di corallo nell'Indiano",
+    "description": "Le Isole Cocos e Keeling disegnano atolli di sabbia, palme e lagune nell'oceano Indiano. Le case di Home Island e le rive di West Island raccontano un arcipelago raccolto, dove la cultura cocos malese e la vita sul mare danno significato al paesaggio.",
+    "imageQuery": "Cocos Keeling Islands lagoon"
+  },
+  "ch": {
+    "headline": "Paesaggi alpini da cartolina viva",
+    "description": "La Svizzera accosta laghi limpidi, villaggi alpini e montagne come il Cervino a città segnate da secoli di storia. I portici di Berna, le rive del Lemano e i vigneti di Lavaux mostrano come acqua, architettura e paesaggio rurale possano condividere lo stesso sguardo.",
+    "imageQuery": "Matterhorn Switzerland Zermatt"
+  },
+  "cl": {
+    "headline": "Dal deserto ai fiordi australi",
+    "description": "Il Cile si allunga tra i paesaggi aridi dell'Atacama, le Ande e i fiordi della Patagonia. Le case colorate di Valparaíso e le torri di granito del Torres del Paine rendono evidente una varietà che cambia seguendo la grande distanza tra nord e sud.",
+    "imageQuery": "Torres del Paine Chile"
+  },
+  "cn": {
+    "headline": "Sentieri tra storia e paesaggio",
+    "description": "La Cina affianca la Grande Muraglia e i palazzi di Pechino alle montagne carsiche attorno a Guilin. I giardini di Suzhou, le terrazze coltivate e le città contemporanee raccontano un paese di dimensioni immense, dove tradizioni regionali e paesaggi richiedono sguardi diversi.",
+    "imageQuery": "Li River Guilin China landscape"
+  },
+  "ci": {
+    "headline": "L'Atlantico e le voci della laguna",
+    "description": "La Costa d'Avorio si racconta nelle facciate storiche di Grand-Bassam e nella vita urbana di Abidjan, distesa intorno alla laguna Ébrié. Le foreste, i paesaggi coltivati e le tradizioni artistiche dell'interno aggiungono profondità a un'identità che guarda anche all'Atlantico.",
+    "imageQuery": "Grand Bassam Ivory Coast architecture"
+  },
+  "cm": {
+    "headline": "Vulcani, foreste e coste tropicali",
+    "description": "Il Camerun riunisce le pendici del monte Camerun, le foreste tropicali e le spiagge di Kribi in un territorio dai molti paesaggi. Le città, le architetture tradizionali e i mercati dell'altopiano mostrano altre sfumature di una cultura che cambia da regione a regione.",
+    "imageQuery": "Mount Cameroon landscape"
+  },
+  "cd": {
+    "headline": "Il grande fiume e la foresta",
+    "description": "La Repubblica Democratica del Congo si distende intorno a un grande sistema fluviale e a foreste che sembrano proseguire oltre l'orizzonte. Il paesaggio vulcanico dei Virunga e la creatività musicale di Kinshasa raccontano due anime molto diverse dello stesso vasto paese.",
+    "imageQuery": "Virunga mountains Democratic Republic Congo"
+  },
+  "cg": {
+    "headline": "Fiumi e foreste dell'Equatore",
+    "description": "La Repubblica del Congo si racconta tra il grande fiume su cui si affaccia Brazzaville e le foreste dell'interno. Le lagune e le coste atlantiche di Pointe-Noire mostrano un'altra prospettiva, mentre musica, mercati e natura compongono un paesaggio umano ricco di sfumature.",
+    "imageQuery": "Brazzaville Congo river skyline"
+  },
+  "ck": {
+    "headline": "La laguna e il cuore polinesiano",
+    "description": "Le Isole Cook portano lo sguardo dalle montagne verdi di Rarotonga alla laguna luminosa di Aitutaki. Nei villaggi, le danze, le chiese e l'artigianato raccontano la cultura polinesiana, mentre i piccoli isolotti disegnano un paesaggio fatto di acqua, sabbia e palme.",
+    "imageQuery": "Aitutaki Cook Islands lagoon"
+  },
+  "co": {
+    "headline": "Colori caraibici e montagne verdi",
+    "description": "La Colombia unisce le facciate di Cartagena ai paesaggi andini e alle colline coltivate a caffè. Le palme altissime della valle di Cocora e la creatività urbana di Bogotá e Medellín raccontano un paese in cui altitudine, musica e architettura cambiano continuamente prospettiva.",
+    "imageQuery": "Cocora Valley Colombia wax palms"
+  },
+  "km": {
+    "headline": "Isole vulcaniche profumate di spezie",
+    "description": "Le Comore emergono nell'oceano Indiano con montagne vulcaniche, coste laviche e vegetazione tropicale. I vicoli di Moroni e il profilo del vulcano Karthala raccontano un arcipelago in cui le rotte dell'Africa orientale, del mondo arabo e dell'oceano hanno lasciato tracce culturali.",
+    "imageQuery": "Moroni Comoros old town mosque"
+  },
+  "cv": {
+    "headline": "Il vento sulle isole della morna",
+    "description": "Capo Verde cambia carattere tra i pendii verdi di Santo Antão, il paesaggio vulcanico di Fogo e le spiagge di Sal. A Mindelo, la musica della morna dà voce a un arcipelago atlantico dove le distanze e il mare sono parte dell'identità.",
+    "imageQuery": "Santo Antao Cape Verde mountains"
+  },
+  "cr": {
+    "headline": "Una foresta tra due oceani",
+    "description": "La Costa Rica accosta vulcani, foreste nebulose e coste affacciate sul Pacifico e sul Mar dei Caraibi. Il profilo dell'Arenal e i ponti tra gli alberi di Monteverde invitano a guardare da vicino un paesaggio dove la biodiversità è parte centrale del racconto.",
+    "imageQuery": "Arenal Volcano Costa Rica landscape"
+  },
+  "cu": {
+    "headline": "Facciate pastello e ritmo caraibico",
+    "description": "Cuba si riconosce nei portici dell'Avana, nelle strade acciottolate di Trinidad e nei mogotes della valle di Viñales. La musica e i paesaggi agricoli aggiungono profondità alle immagini più note, raccontando un'isola dove architettura, terra e mare conservano caratteri distinti.",
+    "imageQuery": "Vinales Cuba valley"
+  },
+  "cw": {
+    "headline": "Colori riflessi nel porto",
+    "description": "Curaçao trova una delle sue immagini più riconoscibili nelle facciate colorate di Willemstad, affacciate sull'acqua del porto. Le baie della costa e i paesaggi aridi dell'interno mostrano un'altra faccia dell'isola, mentre il papiamento custodisce l'incontro di diverse tradizioni culturali.",
+    "imageQuery": "Willemstad Curacao Handelskade"
+  },
+  "cx": {
+    "headline": "La foresta sull'oceano Indiano",
+    "description": "L'Isola di Natale accosta una fitta foresta tropicale a scogliere e piccole insenature affacciate sull'oceano Indiano. I granchi rossi, protagonisti di una celebre migrazione, e le diverse tradizioni delle comunità locali danno a questa isola un carattere che va oltre le sue dimensioni.",
+    "imageQuery": "Christmas Island red crabs coast"
+  },
+  "ky": {
+    "headline": "Acque chiare oltre la barriera",
+    "description": "Le Isole Cayman mostrano fondali limpidi, barriere coralline e spiagge come Seven Mile Beach, che segue il profilo di Grand Cayman. Le altre isole aggiungono coste rocciose e una dimensione più raccolta, mentre George Town conserva il volto urbano dell'arcipelago.",
+    "imageQuery": "Seven Mile Beach Grand Cayman"
+  },
+  "cy": {
+    "headline": "Pietra antica e mare mediterraneo",
+    "description": "Cipro intreccia i mosaici di Paphos, le spiagge mediterranee e i villaggi sui monti Troodos. Le chiese dipinte e i vicoli di Nicosia raccontano una storia stratificata, mentre uliveti e paesaggi di costa compongono un'isola da osservare oltre la sua linea d'acqua.",
+    "imageQuery": "Paphos Cyprus coast archaeological site"
+  },
+  "cz": {
+    "headline": "Torri e tetti sopra la Moldava",
+    "description": "La Cechia si racconta nel ponte Carlo e nei tetti di Praga, dove la Moldava accompagna secoli di architettura. Český Krumlov, i paesaggi della Boemia e le colline della Moravia aggiungono città raccolte, boschi e tradizioni artigiane a questa memoria europea.",
+    "imageQuery": "Prague Charles Bridge Czechia"
+  },
+  "de": {
+    "headline": "Tra città creative e boschi",
+    "description": "La Germania affianca l'energia culturale di Berlino alle città storiche, ai vigneti lungo il Reno e ai paesaggi della Foresta Nera. Le case a graticcio e le architetture contemporanee raccontano identità regionali differenti, mentre castelli e fiumi offrono altre prospettive sul territorio.",
+    "imageQuery": "Heidelberg Germany old town river"
+  },
+  "dj": {
+    "headline": "Sale bianco e paesaggi vulcanici",
+    "description": "Gibuti offre il contrasto tra il sale luminoso del lago Assal, le rocce vulcaniche e le acque del Golfo di Tadjoura. Nel Corno d'Africa, questi paesaggi essenziali convivono con una storia di porti e incontri culturali legati alle rotte del Mar Rosso.",
+    "imageQuery": "Lake Assal Djibouti landscape"
+  },
+  "dm": {
+    "headline": "L'isola dove domina la foresta",
+    "description": "Dominica emerge dal Mar dei Caraibi con montagne verdi, cascate e un paesaggio segnato dall'attività vulcanica. Il lago bollente e i sentieri del Morne Trois Pitons raccontano la forza della natura, mentre la cultura kalinago conserva una presenza importante nella storia dell'isola.",
+    "imageQuery": "Dominica Trafalgar Falls"
+  },
+  "dk": {
+    "headline": "Case colorate e orizzonti nordici",
+    "description": "La Danimarca si riconosce nelle facciate di Nyhavn, nelle biciclette di Copenaghen e nelle coste aperte dello Jutland. Le città portuali, le dune e le isole del Baltico raccontano una cultura che ha intrecciato mare, design e vita quotidiana.",
+    "imageQuery": "Nyhavn Copenhagen Denmark"
+  },
+  "do": {
+    "headline": "Merengue e paesaggi caraibici",
+    "description": "La Repubblica Dominicana accosta le architetture storiche di Santo Domingo alle spiagge e alle palme della costa. Le montagne dell'interno e i paesaggi di Samaná aggiungono prospettive diverse, mentre il merengue e la bachata accompagnano il racconto culturale dell'isola.",
+    "imageQuery": "Samana Dominican Republic coast"
+  },
+  "dz": {
+    "headline": "Il Sahara incontra il Mediterraneo",
+    "description": "L'Algeria si estende dalle facciate di Algeri e dalle rovine romane di Timgad ai grandi paesaggi del Sahara. Le città della valle del M'Zab e le rocce del Tassili raccontano modi diversi di abitare e interpretare un territorio vastissimo.",
+    "imageQuery": "Ghardaia Algeria Mzab valley"
+  },
+  "ec": {
+    "headline": "L'Equatore tra vulcani e isole",
+    "description": "L'Ecuador riunisce le piazze storiche di Quito, i vulcani delle Ande e la foresta amazzonica. Alle Galápagos, coste laviche e animali caratteristici aggiungono una dimensione insulare a un paese in cui grandi cambiamenti di paesaggio si incontrano in distanze relativamente contenute.",
+    "imageQuery": "Cotopaxi Ecuador volcano"
+  },
+  "eg": {
+    "headline": "Il Nilo e la memoria millenaria",
+    "description": "L'Egitto lega il suo paesaggio al Nilo, che attraversa campi e città prima di raggiungere il Mediterraneo. Le piramidi di Giza, i templi di Luxor e i colori del Mar Rosso raccontano, con prospettive molto diverse, la profondità della sua storia.",
+    "imageQuery": "Giza pyramids Egypt"
+  },
+  "er": {
+    "headline": "Architetture moderne e Mar Rosso",
+    "description": "L'Eritrea mostra ad Asmara un patrimonio di edifici modernisti che dà alla città un profilo inconfondibile. Gli altopiani e le isole Dahlak aggiungono il contrasto tra paesaggi montani e Mar Rosso, mentre la costa racconta antiche connessioni marittime.",
+    "imageQuery": "Asmara Eritrea Fiat Tagliero"
+  },
+  "eh": {
+    "headline": "Dune affacciate sull'Atlantico",
+    "description": "Nel Sahara Occidentale, le distese desertiche raggiungono un Atlantico di spiagge, promontori e lagune. Il paesaggio intorno a Dakhla rende visibile questo incontro tra sabbia e oceano, mentre la cultura sahrawi racconta tradizioni legate al deserto e alla memoria delle comunità.",
+    "imageQuery": "Dakhla Western Sahara lagoon dunes"
+  },
+  "es": {
+    "headline": "Piazze vive e paesaggi mediterranei",
+    "description": "La Spagna passa dalle architetture di Gaudí a Barcellona ai cortili dell'Alhambra e alle strade di Madrid. Le coste, gli altopiani e le città del nord aggiungono identità regionali diverse, raccontate attraverso lingue, cucina, musica e modi di vivere lo spazio pubblico.",
+    "imageQuery": "Alhambra Granada Spain palace"
+  },
+  "ee": {
+    "headline": "Torri medievali e foreste baltiche",
+    "description": "L'Estonia accosta i tetti e le torri della città vecchia di Tallinn a foreste, torbiere e isole del Baltico. Le passerelle tra i paesaggi umidi di Lahemaa e i villaggi costieri mostrano una dimensione naturale che accompagna la storia urbana del paese.",
+    "imageQuery": "Tallinn Estonia old town skyline"
+  },
+  "et": {
+    "headline": "Altopiani e chiese nella roccia",
+    "description": "L'Etiopia custodisce nelle chiese scavate nella roccia di Lalibela un patrimonio che sembra nascere direttamente dalla terra. I monti Simien, le tradizioni del caffè e la memoria di Aksum raccontano altre sfumature di un paese dalle profonde radici storiche.",
+    "imageQuery": "Lalibela Ethiopia rock church"
+  },
+  "fi": {
+    "headline": "Luce nordica tra mille laghi",
+    "description": "La Finlandia si distende tra foreste, laghi e arcipelaghi rocciosi, con paesaggi che cambiano radicalmente attraverso le stagioni. Helsinki, le architetture in legno e la cultura della sauna aggiungono una dimensione quotidiana a un territorio dove acqua e boschi restano sempre presenti.",
+    "imageQuery": "Finland lake forest landscape"
+  },
+  "fj": {
+    "headline": "Il mare e il saluto bula",
+    "description": "Le Figi uniscono isole vulcaniche, lagune e barriere coralline in un arcipelago del Pacifico dal carattere composito. I villaggi, i mercati di Suva e le tradizioni delle comunità iTaukei e indofigiane raccontano un'identità che nasce dall'incontro tra mare, terra e persone.",
+    "imageQuery": "Fiji Mamanuca islands lagoon"
+  },
+  "fk": {
+    "headline": "Praterie e pinguini nell'Atlantico",
+    "description": "Le Falkland, note anche come Malvine, mostrano coste frastagliate, praterie aperte e colonie di uccelli marini nell'Atlantico meridionale. Le case colorate di Stanley e le spiagge popolate dai pinguini raccontano un paesaggio dove vento, oceano e vita animale definiscono ogni orizzonte.",
+    "imageQuery": "Falkland Islands king penguins beach"
+  },
+  "fr": {
+    "headline": "L'arte di abitare il paesaggio",
+    "description": "La Francia intreccia i boulevard di Parigi, i villaggi della Provenza e le coste della Bretagna con montagne e vigneti. Musei, mercati e architetture regionali danno forma a un viaggio culturale che cambia insieme alla luce e al carattere dei luoghi.",
+    "imageQuery": "Mont Saint Michel France"
+  },
+  "fo": {
+    "headline": "Case d'erba sopra l'oceano",
+    "description": "Le Far Oer emergono dal Nord Atlantico con scogliere, vallate verdi e villaggi dalle case con il tetto erboso. La cascata di Múlafossur e i porti raccolti mostrano un paesaggio in cui oceano, vento e vita delle comunità si incontrano continuamente.",
+    "imageQuery": "Mulafossur Faroe Islands waterfall"
+  },
+  "fm": {
+    "headline": "Isole e città di pietra sull'acqua",
+    "description": "Gli Stati Federati di Micronesia riuniscono isole e atolli del Pacifico con tradizioni culturali diverse. Le costruzioni in basalto di Nan Madol, a Pohnpei, e le pietre-moneta di Yap raccontano patrimoni distinti, mentre lagune e montagne verdi danno continuità al paesaggio oceanico.",
+    "imageQuery": "Nan Madol Pohnpei Micronesia"
+  },
+  "ga": {
+    "headline": "La foresta arriva fino al mare",
+    "description": "Il Gabon accosta grandi foreste equatoriali alle lagune e alle spiagge dell'Atlantico. I paesaggi di Loango e le savane di Lopé mostrano ecosistemi differenti, mentre Libreville e le tradizioni artistiche del paese aggiungono una prospettiva culturale al racconto della natura.",
+    "imageQuery": "Loango Gabon coast forest"
+  },
+  "gb": {
+    "headline": "Storie urbane e paesaggi d'isola",
+    "description": "Il Regno Unito passa dai musei e dalle strade di Londra alle Highlands scozzesi, alle coste gallesi e ai paesaggi nordirlandesi. Castelli, città universitarie e villaggi raccontano identità diverse, unite da una storia che resta leggibile nelle architetture e negli spazi quotidiani.",
+    "imageQuery": "Isle of Skye Scotland landscape"
+  },
+  "ge": {
+    "headline": "Il Caucaso tra torri e vigne",
+    "description": "La Georgia si racconta nelle case con balconi di Tbilisi, nelle torri della Svaneti e nelle montagne del Grande Caucaso. Le vigne della Kakheti e la tradizione dei qvevri, i recipienti di terracotta per il vino, collegano paesaggio, artigianato e memoria conviviale.",
+    "imageQuery": "Gergeti Trinity Church Georgia Kazbegi"
+  },
+  "gg": {
+    "headline": "Un porto tra giardini e scogliere",
+    "description": "Guernsey affaccia il porto di Saint Peter Port su un paesaggio di case in pietra, giardini e baie. Castle Cornet e le scogliere meridionali raccontano la storia marittima dell'isola, mentre i vicoli conservano un carattere distinto nel cuore della Manica.",
+    "imageQuery": "Saint Peter Port Guernsey harbour"
+  },
+  "gh": {
+    "headline": "L'Atlantico e i colori dei tessuti",
+    "description": "Il Ghana intreccia il patrimonio dei forti costieri, la vita di Accra e le tradizioni ashanti dell'interno. I tessuti kente e le architetture di Kumasi danno colore al racconto, mentre le foreste e il lago Volta mostrano paesaggi diversi dalla costa.",
+    "imageQuery": "Cape Coast Ghana castle coast"
+  },
+  "gi": {
+    "headline": "La rocca tra due mari",
+    "description": "Gibilterra si riconosce nella rocca calcarea che domina il passaggio tra Mediterraneo e Atlantico. I vicoli della città, le fortificazioni e le viste verso lo stretto raccontano una storia di navigazione e incontri culturali raccolta in un territorio di piccole dimensioni.",
+    "imageQuery": "Rock of Gibraltar landscape"
+  },
+  "gn": {
+    "headline": "Acqua e altopiani dell'Africa occidentale",
+    "description": "La Guinea custodisce negli altopiani del Fouta Djallon paesaggi di montagne, cascate e sorgenti che alimentano grandi fiumi dell'Africa occidentale. Conakry e le isole di Los aggiungono una prospettiva atlantica, mentre le tradizioni musicali raccontano una cultura ricca di ritmi e memoria.",
+    "imageQuery": "Fouta Djallon Guinea waterfall"
+  },
+  "gp": {
+    "headline": "Due ali verdi sul mare",
+    "description": "La Guadalupa disegna un arcipelago in cui Basse-Terre offre foreste e il vulcano della Soufrière, mentre Grande-Terre mostra coste e spiagge. I mercati, le case creole e le isole vicine raccontano un paesaggio caraibico che unisce natura tropicale e cultura francocaraibica.",
+    "imageQuery": "Guadeloupe Soufriere volcano landscape"
+  },
+  "gm": {
+    "headline": "Un paese lungo il fiume",
+    "description": "Il Gambia segue il corso del fiume che gli dà nome, tra mangrovie, villaggi e rive frequentate da uccelli. I mercati di Banjul, la costa atlantica e i luoghi della memoria lungo l'acqua raccontano quanto il paesaggio fluviale abbia segnato la vita del paese.",
+    "imageQuery": "Gambia river mangroves"
+  },
+  "gw": {
+    "headline": "Il mare custodisce le Bijagós",
+    "description": "La Guinea-Bissau si affaccia sull'Atlantico con estuari, mangrovie e l'arcipelago delle Bijagós. Su queste isole, paesaggio e tradizioni delle comunità locali si intrecciano, mentre le strade di Bissau aggiungono un racconto urbano fatto di architetture, mercati e memoria.",
+    "imageQuery": "Bijagos Islands Guinea Bissau beach"
+  },
+  "gq": {
+    "headline": "Vulcani verdi sul Golfo di Guinea",
+    "description": "La Guinea Equatoriale unisce la parte continentale alle isole del Golfo di Guinea, con foreste e paesaggi vulcanici. A Bioko, il profilo del Pico Basilé e le architetture di Malabo mostrano il contrasto tra natura tropicale e storia urbana.",
+    "imageQuery": "Malabo Equatorial Guinea cathedral"
+  },
+  "gr": {
+    "headline": "Luce mediterranea tra templi e isole",
+    "description": "La Grecia accosta le colonne dell'Acropoli di Atene ai villaggi bianchi delle Cicladi e ai monasteri di Meteora. Le coste, gli uliveti e le piazze raccontano una cultura mediterranea in cui il paesaggio e la memoria del passato continuano a dialogare.",
+    "imageQuery": "Santorini Greece Oia village"
+  },
+  "gd": {
+    "headline": "L'isola dei profumi e delle baie",
+    "description": "Grenada unisce colline tropicali, piantagioni di spezie e spiagge luminose come Grand Anse. Il porto di Saint George's, con le case colorate e i tetti rossi, racconta la dimensione urbana di un'isola in cui noce moscata, musica e mare sono immagini ricorrenti.",
+    "imageQuery": "St Georges Grenada harbour"
+  },
+  "gl": {
+    "headline": "Case colorate davanti ai ghiacci",
+    "description": "La Groenlandia accosta le case vivaci delle città costiere a fiordi, montagne e iceberg che cambiano volto con la luce. Ilulissat e Nuuk raccontano una vita legata al mare, mentre la cultura inuit dà profondità umana a paesaggi di dimensioni imponenti.",
+    "imageQuery": "Ilulissat Greenland icebergs town"
+  },
+  "gt": {
+    "headline": "Templi nella foresta e colori maya",
+    "description": "Il Guatemala intreccia le piramidi di Tikal, immerse nella foresta, con i vulcani che circondano il lago Atitlán. Le facciate di Antigua e i tessuti delle comunità maya aggiungono colore a un paesaggio dove storia, lingua e tradizioni rimangono strettamente connesse.",
+    "imageQuery": "Tikal Guatemala temple jungle"
+  },
+  "gf": {
+    "headline": "Foresta amazzonica sull'Atlantico",
+    "description": "La Guyana francese affianca foresta tropicale, grandi fiumi e coste atlantiche punteggiate da mangrovie. Cayenne e le Îles du Salut raccontano pagine diverse della sua storia, mentre il paesaggio fluviale mostra quanto acqua e vegetazione definiscano questo territorio sudamericano.",
+    "imageQuery": "Iles du Salut French Guiana"
+  },
+  "gu": {
+    "headline": "Scogliere sul Pacifico chamorro",
+    "description": "Guam offre baie luminose e scogliere come Two Lovers Point, da cui il Pacifico occupa quasi tutto lo sguardo. I resti delle pietre latte e le tradizioni chamorro collegano il paesaggio alla storia dell'isola, affiancando l'immagine del mare a una precisa identità culturale.",
+    "imageQuery": "Two Lovers Point Guam coast"
+  },
+  "gy": {
+    "headline": "L'acqua cade nel cuore verde",
+    "description": "La Guyana custodisce nella cascata Kaieteur una delle sue immagini più intense, tra pareti rocciose e foresta tropicale. Georgetown, con gli edifici in legno, e le savane del Rupununi mostrano altri paesaggi di un paese dove fiumi e natura definiscono grandi distanze.",
+    "imageQuery": "Kaieteur Falls Guyana"
+  },
+  "hk": {
+    "headline": "Grattacieli tra porto e montagne",
+    "description": "Hong Kong si riconosce nel profilo dei grattacieli affacciati sul Victoria Harbour e nelle strade animate da mercati e insegne. Le montagne, i sentieri costieri e le isole mostrano una dimensione naturale che accompagna, spesso a poca distanza, il paesaggio urbano.",
+    "imageQuery": "Victoria Harbour Hong Kong skyline"
+  },
+  "hm": {
+    "headline": "Vulcani tra ghiaccio e oceano",
+    "description": "Le isole Heard e McDonald emergono nell'oceano Indiano meridionale con paesaggi vulcanici, ghiacciai e coste battute dalle onde. Il massiccio del Big Ben domina Heard, mentre pinguini e uccelli marini raccontano la vita di queste terre subantartiche disabitate.",
+    "imageQuery": "Heard Island Big Ben volcano"
+  },
+  "hn": {
+    "headline": "Memorie maya e isole caraibiche",
+    "description": "L'Honduras accosta le stele e le sculture maya di Copán alle isole caraibiche di Roatán e Utila. Le montagne dell'interno e la costa danno al paese paesaggi differenti, mentre mercati, artigianato e tradizioni garifuna aggiungono una dimensione culturale riconoscibile.",
+    "imageQuery": "Copan Honduras Mayan ruins"
+  },
+  "hr": {
+    "headline": "Pietra chiara sull'Adriatico",
+    "description": "La Croazia si riconosce nelle mura di Dubrovnik e nelle architetture romane di Spalato, affacciate sull'Adriatico. Le isole, i laghi di Plitvice e le colline dell'Istria ampliano il racconto, alternando paesaggi d'acqua, città storiche e piccoli borghi in pietra.",
+    "imageQuery": "Dubrovnik Croatia old town coast"
+  },
+  "ht": {
+    "headline": "Arte e montagne del Caribe",
+    "description": "Haiti custodisce nella Citadelle Laferrière un'imponente architettura arroccata tra le montagne, legata alla storia della sua indipendenza. I dipinti, l'artigianato e le case storiche di Jacmel raccontano una creatività riconoscibile, mentre le coste e i rilievi completano il paesaggio dell'isola.",
+    "imageQuery": "Citadelle Laferriere Haiti"
+  },
+  "hu": {
+    "headline": "Il Danubio tra cupole e ponti",
+    "description": "L'Ungheria si racconta nei ponti di Budapest, nelle facciate del Parlamento e nelle acque termali che attraversano la sua cultura urbana. Il lago Balaton, le pianure e i vigneti di Tokaj mostrano altre prospettive, tra paesaggi aperti e tradizioni conviviali.",
+    "imageQuery": "Budapest Hungary parliament Danube"
+  },
+  "id": {
+    "headline": "Mille isole, molti mondi",
+    "description": "L'Indonesia intreccia i templi di Giava, le terrazze coltivate di Bali e i paesaggi vulcanici di un vasto arcipelago. Da Borobudur alle isole orientali, lingue, architetture e tradizioni cambiano insieme alla natura, rendendo ogni regione una storia da osservare con attenzione.",
+    "imageQuery": "Borobudur Indonesia temple sunrise"
+  },
+  "im": {
+    "headline": "Una ruota tra colline e mare",
+    "description": "L'Isola di Man accosta porti come Peel a colline, vallate e coste rocciose nel mare d'Irlanda. La grande ruota di Laxey e le ferrovie storiche raccontano il patrimonio industriale dell'isola, mentre castelli e paesaggi rurali conservano altre tracce della sua identità.",
+    "imageQuery": "Laxey Wheel Isle of Man"
+  },
+  "in": {
+    "headline": "Un mosaico di forme e colori",
+    "description": "L'India passa dai marmi del Taj Mahal alle città del Rajasthan, dalle montagne himalayane ai canali del Kerala. Templi, mercati e tradizioni regionali raccontano una pluralità culturale profonda, che invita a guardare ogni luogo attraverso la sua storia e il suo paesaggio.",
+    "imageQuery": "Taj Mahal India Agra"
+  },
+  "io": {
+    "headline": "Atolli nel cuore dell'Indiano",
+    "description": "L'arcipelago delle Chagos disegna anelli di corallo, lagune e palme nel cuore dell'oceano Indiano. Diego Garcia mostra la forma caratteristica di un atollo, mentre il paesaggio conserva una storia umana complessa, intrecciata alla memoria delle comunità chagossiane e alle rotte oceaniche.",
+    "imageQuery": "Diego Garcia Chagos aerial lagoon"
+  },
+  "ie": {
+    "headline": "Il verde incontra l'Atlantico",
+    "description": "L'Irlanda apre lo sguardo sulle scogliere di Moher, sui pascoli e sulle penisole della costa atlantica. Dublino, i villaggi e i siti antichi come Newgrange aggiungono storie, musica e letteratura a un paesaggio che cambia volto con nuvole e luce.",
+    "imageQuery": "Cliffs of Moher Ireland"
+  },
+  "ir": {
+    "headline": "Giardini e cupole color turchese",
+    "description": "L'Iran custodisce nelle piazze di Isfahan, nei giardini di Shiraz e nei resti di Persepoli una storia di grande profondità. Le architetture in terra di Yazd e i paesaggi desertici mostrano altri modi di leggere il rapporto tra acqua, città e cultura.",
+    "imageQuery": "Isfahan Iran Naqsh e Jahan square"
+  },
+  "iq": {
+    "headline": "Tra i fiumi della Mesopotamia",
+    "description": "L'Iraq lega il suo paesaggio al Tigri e all'Eufrate, tra città, campi e paludi meridionali. Le tracce di Babilonia e la ziggurat di Ur raccontano antiche civiltà, mentre Baghdad conserva una memoria culturale legata a letteratura, architettura e vita lungo il fiume.",
+    "imageQuery": "Ziggurat of Ur Iraq"
+  },
+  "is": {
+    "headline": "L'acqua incontra fuoco e ghiaccio",
+    "description": "L'Islanda accosta cascate, campi di lava e ghiacciai a spiagge scure battute dall'Atlantico. La laguna di Jökulsárlón e i geyser raccontano le forze che modellano l'isola, mentre Reykjavík aggiunge colore e creatività urbana a un paesaggio dall'identità immediata.",
+    "imageQuery": "Jokulsarlon Iceland glacier lagoon"
+  },
+  "il": {
+    "headline": "Tra pietra antica e Mediterraneo",
+    "description": "Israele accosta i quartieri storici di Gerusalemme alle architetture e al lungomare di Tel Aviv. I paesaggi del Negev, le rive del Mar Morto e i siti archeologici mostrano altre prospettive, in un territorio attraversato da storie, tradizioni religiose e culture differenti.",
+    "imageQuery": "Jaffa Israel old city coast"
+  },
+  "it": {
+    "headline": "Bellezza che cambia a ogni regione",
+    "description": "L'Italia intreccia le piazze di Roma, i canali di Venezia e le colline della Toscana con coste, isole e montagne. Arte, cucina e architetture locali raccontano identità regionali molto diverse, trasformando anche un piccolo borgo in una nuova prospettiva sul paesaggio.",
+    "imageQuery": "Cinque Terre Italy Manarola"
+  },
+  "jm": {
+    "headline": "Il reggae tra montagne e mare",
+    "description": "La Giamaica si racconta nel ritmo del reggae, nelle Blue Mountains e nelle cascate che attraversano la vegetazione tropicale. Kingston e i villaggi costieri aggiungono storie e colori a un'isola dove musica, paesaggio e tradizioni culinarie sono strettamente connessi.",
+    "imageQuery": "Dunns River Falls Jamaica"
+  },
+  "je": {
+    "headline": "Castelli tra maree e giardini",
+    "description": "Jersey cambia paesaggio seguendo le maree, tra spiagge, promontori e castelli affacciati sulla Manica. Mont Orgueil e le strade di Saint Helier raccontano la storia dell'isola, mentre case in granito e piccoli sentieri aggiungono una dimensione rurale al suo carattere marittimo.",
+    "imageQuery": "Mont Orgueil Castle Jersey"
+  },
+  "jo": {
+    "headline": "La pietra rosa del deserto",
+    "description": "La Giordania custodisce a Petra facciate scolpite nell'arenaria, raggiunte attraverso una stretta gola di roccia. Il Wadi Rum, le architetture di Amman e i mosaici di Madaba raccontano altre sfumature di un paese dove deserto, città e memoria archeologica si incontrano.",
+    "imageQuery": "Petra Jordan Treasury"
+  },
+  "jp": {
+    "headline": "Templi e città che guardano avanti",
+    "description": "Il Giappone accosta i santuari di Kyoto e i giardini tradizionali ai quartieri contemporanei di Tokyo. Il profilo del Fuji, le campagne e le coste raccontano altri paesaggi, mentre artigianato, cucina e gesti quotidiani danno profondità al dialogo tra memoria e innovazione.",
+    "imageQuery": "Mount Fuji Japan Chureito Pagoda"
+  },
+  "kz": {
+    "headline": "La steppa sotto un cielo immenso",
+    "description": "Il Kazakistan apre grandi orizzonti di steppa, interrotti dalle montagne presso Almaty e dalle forme del canyon di Charyn. Le architetture di Astana aggiungono un paesaggio urbano contemporaneo, mentre la memoria delle culture nomadi collega il territorio a tradizioni di movimento e ospitalità.",
+    "imageQuery": "Charyn Canyon Kazakhstan"
+  },
+  "ke": {
+    "headline": "Savana, altopiani e oceano",
+    "description": "Il Kenya unisce le pianure del Maasai Mara alle montagne e alle coste dell'oceano Indiano. I vicoli di Lamu, le tradizioni delle diverse comunità e la vita di Nairobi aggiungono un racconto umano a paesaggi spesso conosciuti soprattutto attraverso la loro fauna.",
+    "imageQuery": "Maasai Mara Kenya landscape"
+  },
+  "kg": {
+    "headline": "Montagne e yurte sotto le stelle",
+    "description": "Il Kirghizistan si distende tra le montagne del Tian Shan, con laghi alpini e pascoli che conservano la memoria della vita nomade. Le rive dell'Issyk-Kul e le yurte presso il Song-Kul raccontano un paesaggio in cui altitudine, acqua e tradizioni si intrecciano.",
+    "imageQuery": "Song Kul Kyrgyzstan yurt lake"
+  },
+  "kh": {
+    "headline": "Templi che emergono dalla foresta",
+    "description": "La Cambogia custodisce ad Angkor templi, bassorilievi e alberi che avvolgono le antiche pietre. Il Tonlé Sap, le rive del Mekong e le strade di Phnom Penh mostrano un'altra dimensione del paese, dove acqua, città e tradizioni khmer rimangono fortemente legate.",
+    "imageQuery": "Angkor Wat Cambodia temple"
+  },
+  "ki": {
+    "headline": "La terra sottile tra due blu",
+    "description": "Kiribati si distribuisce nel Pacifico con atolli e isole in cui laguna e oceano sembrano incontrarsi a ogni passo. A Tarawa, le strisce di terra, le canoe e le case aperte raccontano una vita comunitaria legata alla navigazione e al paesaggio marino.",
+    "imageQuery": "South Tarawa Kiribati aerial"
+  },
+  "kn": {
+    "headline": "Due isole ai piedi dei vulcani",
+    "description": "Saint Kitts e Nevis accostano pendii vulcanici, vecchie piantagioni e coste caraibiche. La fortezza di Brimstone Hill e le strade di Basseterre raccontano la storia di Saint Kitts, mentre il profilo di Nevis Peak dà all'isola vicina una silhouette riconoscibile.",
+    "imageQuery": "Brimstone Hill Saint Kitts Nevis"
+  },
+  "kr": {
+    "headline": "Palazzi antichi, energia contemporanea",
+    "description": "La Corea del Sud unisce i cortili dei palazzi di Seoul ai quartieri creativi e alle architetture contemporanee. Le case hanok, i templi tra le montagne e il paesaggio vulcanico di Jeju raccontano altre sfumature di una cultura che conserva tradizioni dentro una quotidianità dinamica.",
+    "imageQuery": "Gyeongbokgung Seoul South Korea"
+  },
+  "xk": {
+    "headline": "Ponti di pietra e cime balcaniche",
+    "description": "Il Kosovo si racconta nelle strade di Prizren, dove il ponte in pietra e le architetture storiche accompagnano il fiume. Le montagne Šar e i luoghi del patrimonio religioso aggiungono paesaggi e memorie diverse, mentre Pristina mostra una vivace dimensione urbana contemporanea.",
+    "imageQuery": "Prizren Kosovo stone bridge"
+  },
+  "kw": {
+    "headline": "Le torri guardano il Golfo",
+    "description": "Il Kuwait si riconosce nelle sue torri affacciate sul Golfo e nei mercati storici di Kuwait City. Il mare, le imbarcazioni tradizionali e i paesaggi desertici raccontano un'identità legata alle rotte commerciali, mentre l'architettura contemporanea aggiunge nuove forme al profilo della capitale.",
+    "imageQuery": "Kuwait Towers Kuwait City"
+  },
+  "la": {
+    "headline": "Il Mekong e i tetti dei templi",
+    "description": "Il Laos si racconta nei monasteri di Luang Prabang, dove i tetti inclinati accompagnano il paesaggio lungo il Mekong. Le montagne, le cascate di Kuang Si e i villaggi fluviali mostrano un territorio in cui acqua, tradizioni buddhiste e vita quotidiana conservano legami profondi.",
+    "imageQuery": "Kuang Si Falls Laos"
+  },
+  "lb": {
+    "headline": "Cedri e città di antiche rotte",
+    "description": "Il Libano intreccia i templi di Baalbek, i vicoli di Byblos e la vita culturale di Beirut. Le montagne dei cedri e le coste mediterranee aggiungono paesaggi diversi, mentre cucina, architettura e tradizioni raccontano una storia fatta di incontri e stratificazioni.",
+    "imageQuery": "Baalbek Lebanon temple columns"
+  },
+  "lr": {
+    "headline": "La foresta incontra la costa atlantica",
+    "description": "La Liberia accosta coste sabbiose e lagune alle foreste tropicali dell'interno, tra cui il paesaggio del Sapo National Park. Monrovia e i villaggi costieri raccontano una storia atlantica complessa, mentre musica, artigianato e comunità danno voce alle diverse tradizioni del paese.",
+    "imageQuery": "Liberia Robertsport coast"
+  },
+  "ly": {
+    "headline": "Marmi antichi e città del deserto",
+    "description": "La Libia custodisce nelle rovine di Leptis Magna e Sabratha una memoria monumentale affacciata sul Mediterraneo. I vicoli coperti di Ghadames e i paesaggi del Sahara mostrano un'altra relazione con il territorio, dove architettura, ombra e vita comunitaria rispondono all'ambiente desertico.",
+    "imageQuery": "Leptis Magna Libya ruins"
+  },
+  "lc": {
+    "headline": "Due vette sopra il Caribe",
+    "description": "Santa Lucia si riconosce nei Pitons, due rilievi vulcanici che emergono accanto al mare caraibico. Le foreste, le baie e i paesaggi intorno a Soufrière raccontano una natura intensa, mentre i mercati e le tradizioni creole aggiungono colori e voci alla vita dell'isola.",
+    "imageQuery": "Saint Lucia Pitons coast"
+  },
+  "li": {
+    "headline": "Un castello tra le Alpi",
+    "description": "Il Liechtenstein si raccoglie tra il Reno e le montagne alpine, con villaggi e vigneti ai piedi dei pendii. Il castello sopra Vaduz dà un volto riconoscibile al principato, mentre i musei e il paesaggio rurale raccontano una realtà più articolata delle sue dimensioni.",
+    "imageQuery": "Vaduz Castle Liechtenstein"
+  },
+  "lk": {
+    "headline": "Tè, templi e oceano Indiano",
+    "description": "Lo Sri Lanka accosta la rocca di Sigiriya, le città antiche e i templi ai pendii coltivati a tè dell'altopiano. Le coste dell'oceano Indiano e le architetture di Galle aggiungono un paesaggio marittimo a un'isola attraversata da tradizioni culturali diverse.",
+    "imageQuery": "Sigiriya Sri Lanka rock"
+  },
+  "ls": {
+    "headline": "Un regno sulle montagne",
+    "description": "Il Lesotho si distende su altopiani e montagne dove villaggi, pascoli e strade seguono la forma dei rilievi. La cascata Maletsunyane e le tradizioni basotho, dai tessuti ai cappelli conici, raccontano un'identità culturale profondamente legata alla vita in quota.",
+    "imageQuery": "Maletsunyane Falls Lesotho"
+  },
+  "lt": {
+    "headline": "Castelli d'acqua e dune baltiche",
+    "description": "La Lituania intreccia le architetture di Vilnius, il castello di Trakai circondato dai laghi e le dune della penisola dei Curi. Le foreste e le tradizioni artigiane aggiungono un racconto rurale a un paesaggio in cui acqua e memoria restano molto presenti.",
+    "imageQuery": "Trakai Castle Lithuania lake"
+  },
+  "lu": {
+    "headline": "Una città tra ponti e vallate",
+    "description": "Il Lussemburgo trova nella capitale un paesaggio di ponti, bastioni e quartieri raccolti lungo le vallate. I castelli delle Ardenne e i vigneti della Mosella mostrano altre prospettive, raccontando come storia urbana e paesaggio rurale convivano in un territorio contenuto.",
+    "imageQuery": "Luxembourg Grund old town"
+  },
+  "lv": {
+    "headline": "Riga tra ornamenti e Baltico",
+    "description": "La Lettonia si riconosce nelle facciate Art Nouveau e nelle strade storiche di Riga, attraversate dalla Daugava. Le spiagge di Jūrmala, le foreste e i paesaggi della Gauja aggiungono una dimensione naturale, mentre il canto corale custodisce una tradizione culturale condivisa.",
+    "imageQuery": "Riga Latvia old town skyline"
+  },
+  "mo": {
+    "headline": "Tra azulejos e piazze cinesi",
+    "description": "Macao conserva nelle piazze, nei templi e nelle rovine di San Paolo le tracce di un lungo incontro tra culture cinesi e portoghesi. Le pavimentazioni di Largo do Senado e i nuovi profili urbani raccontano una città dove architetture di epoche diverse condividono lo stesso spazio.",
+    "imageQuery": "Ruins of Saint Paul Macau"
+  },
+  "mf": {
+    "headline": "La baia e il mercato creolo",
+    "description": "La parte francese di Saint Martin si racconta nel porto di Marigot, nei mercati e nelle baie aperte sul Caribe. Le case colorate e i paesaggi di spiaggia accompagnano una cultura creola che, su questa isola condivisa, intreccia lingue e tradizioni differenti.",
+    "imageQuery": "Marigot Saint Martin harbour"
+  },
+  "ma": {
+    "headline": "Medine, atlanti e sabbie dorate",
+    "description": "Il Marocco accosta le medine di Fès e Marrakech ai villaggi dell'Atlante e alle dune del Sahara. Le facciate blu di Chefchaouen, i cortili e l'artigianato raccontano un paese dove colori, materiali e paesaggi conservano identità locali molto riconoscibili.",
+    "imageQuery": "Chefchaouen Morocco blue streets"
+  },
+  "mc": {
+    "headline": "Giardini e terrazze sul Mediterraneo",
+    "description": "Il Principato di Monaco si raccoglie tra promontori, porto e terrazze affacciate sul Mediterraneo. Il quartiere storico sulla rocca, i giardini e le facciate di Monte Carlo raccontano un paesaggio urbano compatto, dove il mare accompagna l'architettura a quasi ogni svolta.",
+    "imageQuery": "Monaco Monte Carlo harbour panorama"
+  },
+  "md": {
+    "headline": "Vigne e monasteri nella valle",
+    "description": "La Moldavia si racconta nei vigneti, nelle cantine e nei paesaggi rurali attraversati dai fiumi. A Orheiul Vechi, la roccia e i monasteri aggiungono una memoria antica, mentre Chișinău mostra viali alberati e una vita urbana legata alle tradizioni del territorio.",
+    "imageQuery": "Orheiul Vechi Moldova monastery"
+  },
+  "mg": {
+    "headline": "Baobab e forme di un altro mondo",
+    "description": "Il Madagascar si riconosce nei grandi baobab, nei lemuri e nelle formazioni rocciose degli tsingy. Gli altopiani, le foreste e le coste mostrano paesaggi molto diversi, mentre le tradizioni malgasce raccontano un'identità insulare nata da antiche connessioni tra Africa e oceano Indiano.",
+    "imageQuery": "Avenue of Baobabs Madagascar"
+  },
+  "mv": {
+    "headline": "Atolli disegnati nell'acqua turchese",
+    "description": "Le Maldive formano nell'oceano Indiano un mosaico di atolli, spiagge chiare e lagune attraversate da imbarcazioni. Malé e le isole abitate aggiungono una dimensione quotidiana all'immagine del mare, con moschee, mercati e tradizioni legate alla pesca e alla navigazione.",
+    "imageQuery": "Maldives atoll aerial lagoon"
+  },
+  "mx": {
+    "headline": "Piazze vive e memorie mesoamericane",
+    "description": "Il Messico intreccia le piramidi di Teotihuacán, le città coloniali e i paesaggi dello Yucatán con deserti e coste. I mercati di Oaxaca, i murales e le tradizioni regionali raccontano una cultura plurale, in cui arte, cucina e memoria prendono forme differenti.",
+    "imageQuery": "Chichen Itza Mexico pyramid"
+  },
+  "mh": {
+    "headline": "Lagune tra i grandi spazi oceanici",
+    "description": "Le Isole Marshall disseminano atolli e piccole isole nel Pacifico, con sottili strisce di terra tra oceano e laguna. A Majuro, le palme e le rive raccontano il paesaggio quotidiano, mentre le tradizioni di navigazione custodiscono la memoria di un rapporto profondo con il mare.",
+    "imageQuery": "Majuro Marshall Islands lagoon"
+  },
+  "mk": {
+    "headline": "Chiese e acque dei Balcani",
+    "description": "La Macedonia del Nord si racconta nelle chiese di Ohrid, affacciate su un lago dal colore intenso. Le montagne, i monasteri e le strade di Skopje aggiungono altre prospettive, intrecciando paesaggio naturale e memorie culturali che attraversano la storia dei Balcani.",
+    "imageQuery": "Ohrid North Macedonia Saint John Kaneo"
+  },
+  "ml": {
+    "headline": "Architetture di terra lungo il Niger",
+    "description": "Il Mali custodisce nelle architetture di Djenné e nei luoghi di Timbuctù una storia di città, commerci e sapere. Il fiume Niger, le falesie di Bandiagara e le tradizioni musicali raccontano altri paesaggi del paese, dove terra, acqua e memoria culturale si intrecciano.",
+    "imageQuery": "Great Mosque Djenne Mali"
+  },
+  "mt": {
+    "headline": "Miele di pietra sul Mediterraneo",
+    "description": "Malta si riconosce nella pietra dorata della Valletta, nei vicoli di Mdina e nei templi megalitici. Le coste di Gozo e le acque tra le isole aggiungono paesaggi luminosi a un arcipelago in cui architetture e lingue raccontano secoli di incontri mediterranei.",
+    "imageQuery": "Valletta Malta skyline harbour"
+  },
+  "mm": {
+    "headline": "Pagode dorate e paesaggi d'acqua",
+    "description": "Il Myanmar custodisce nella pianura di Bagan una straordinaria concentrazione di templi e stupa, visibili tra alberi e campi. Il lago Inle e la pagoda Shwedagon di Yangon raccontano altre dimensioni del paese, intrecciando paesaggio, artigianato e tradizioni spirituali.",
+    "imageQuery": "Bagan Myanmar temples landscape"
+  },
+  "me": {
+    "headline": "Montagne riflesse nelle bocche di Cattaro",
+    "description": "Il Montenegro accosta le mura di Kotor e le acque delle Bocche di Cattaro alle montagne del Durmitor. I villaggi in pietra, i laghi e la costa adriatica mostrano un territorio compatto ma vario, dove il paesaggio cambia rapidamente dal mare alle cime.",
+    "imageQuery": "Kotor Montenegro bay mountains"
+  },
+  "mn": {
+    "headline": "La steppa sotto un cielo aperto",
+    "description": "La Mongolia si distende in steppe e montagne dove le ger, le abitazioni tradizionali, punteggiano grandi spazi. Le dune del Gobi e i monasteri raccontano altri paesaggi, mentre cavalli e cultura nomade custodiscono un legame profondo tra movimento, territorio e comunità.",
+    "imageQuery": "Mongolia steppe ger landscape"
+  },
+  "mp": {
+    "headline": "Scogliere e lagune del Pacifico",
+    "description": "Le Marianne Settentrionali mostrano isole del Pacifico con lagune, scogliere e rilievi verdi, da Saipan a Tinian e Rota. Le tracce delle pietre latte e i luoghi della memoria raccontano storie differenti, mentre le tradizioni chamorro e caroliniane danno carattere alla vita dell'arcipelago.",
+    "imageQuery": "Saipan Northern Mariana Islands lagoon"
+  },
+  "mz": {
+    "headline": "Dhow e isole sull'oceano Indiano",
+    "description": "Il Mozambico accosta spiagge e arcipelaghi come Bazaruto alle architetture storiche dell'Ilha de Moçambique. Le imbarcazioni dhow e i mercati costieri raccontano le rotte dell'oceano Indiano, mentre Maputo aggiunge una prospettiva urbana fatta di musica, arte e architettura.",
+    "imageQuery": "Bazaruto Mozambique dunes sea"
+  },
+  "mr": {
+    "headline": "Città di sabbia e rotte sahariane",
+    "description": "La Mauritania custodisce a Chinguetti vicoli e costruzioni in pietra e terra legati alle antiche rotte del Sahara. Le dune, gli altopiani e la costa del Banc d'Arguin aggiungono paesaggi distinti, dove deserto e Atlantico mostrano la loro vicinanza.",
+    "imageQuery": "Chinguetti Mauritania old town"
+  },
+  "ms": {
+    "headline": "Il verde e la memoria del vulcano",
+    "description": "Montserrat accosta montagne verdi e coste caraibiche al paesaggio trasformato del vulcano Soufrière Hills. Le tracce di Plymouth e i villaggi del nord raccontano pagine diverse della storia dell'isola, mentre musica e tradizioni locali danno voce al rapporto tra comunità e territorio.",
+    "imageQuery": "Soufriere Hills Montserrat volcano landscape"
+  },
+  "mq": {
+    "headline": "Giardini creoli sotto il vulcano",
+    "description": "La Martinica unisce la montagna Pelée, le foreste tropicali e le spiagge affacciate sul Caribe. I mercati di Fort-de-France, i giardini e le case creole raccontano una cultura francocaraibica riconoscibile, dove colori, musica e tradizioni del rum accompagnano il paesaggio.",
+    "imageQuery": "Martinique Mount Pelee landscape"
+  },
+  "mu": {
+    "headline": "Una montagna tra laguna e memoria",
+    "description": "Mauritius si riconosce nel profilo di Le Morne, che domina una laguna dai colori intensi. Port Louis, i giardini di Pamplemousses e le tradizioni di diverse comunità raccontano un'isola in cui il paesaggio tropicale si intreccia con una storia umana composita.",
+    "imageQuery": "Le Morne Mauritius lagoon"
+  },
+  "mw": {
+    "headline": "La luce sulle rive del Malawi",
+    "description": "Il Malawi trova nel suo grande lago un paesaggio di spiagge, villaggi e piccole imbarcazioni tra colline e acqua. L'altopiano di Nyika e il monte Mulanje aggiungono prati e rilievi, mentre le tradizioni delle comunità raccontano un'identità legata al territorio.",
+    "imageQuery": "Lake Malawi Cape Maclear"
+  },
+  "my": {
+    "headline": "Foreste antiche e città di incontro",
+    "description": "La Malesia accosta lo skyline di Kuala Lumpur alle case e ai templi di George Town. Le foreste del Borneo, le piantagioni di tè e le coste mostrano altri paesaggi, mentre le culture malese, cinese, indiana e indigene contribuiscono a un racconto plurale.",
+    "imageQuery": "Petronas Towers Kuala Lumpur Malaysia"
+  },
+  "yt": {
+    "headline": "Una laguna intorno alla terra vulcanica",
+    "description": "Mayotte si raccoglie nell'oceano Indiano con rilievi verdi, villaggi costieri e una grande laguna protetta dalla barriera corallina. Il paesaggio di Grande-Terre e Petite-Terre racconta l'origine vulcanica delle isole, mentre lingue e tradizioni locali conservano connessioni con l'arcipelago delle Comore.",
+    "imageQuery": "Mayotte lagoon island aerial"
+  },
+  "na": {
+    "headline": "Dune rosse sotto un cielo immenso",
+    "description": "La Namibia si riconosce nelle dune del Namib e negli alberi scuri di Deadvlei, sospesi su una distesa chiara. La costa atlantica, i paesaggi di Etosha e le rocce del Damaraland mostrano altri volti di un territorio segnato da grandi spazi.",
+    "imageQuery": "Deadvlei Namibia red dunes"
+  },
+  "nc": {
+    "headline": "Lagune e pini sul Pacifico",
+    "description": "La Nuova Caledonia accosta una grande laguna a montagne, coste e piccole isole come l'Île des Pins. Le architetture del centro culturale Tjibaou a Nouméa e le tradizioni kanak raccontano una dimensione culturale essenziale per leggere il paesaggio di questo arcipelago.",
+    "imageQuery": "Isle of Pines New Caledonia lagoon"
+  },
+  "ne": {
+    "headline": "Il deserto e le città di terra",
+    "description": "Il Niger intreccia il paesaggio sahariano del Ténéré e dei monti Aïr alle città e ai villaggi del sud. Il minareto in terra di Agadez e le rive del fiume Niger raccontano due immagini diverse, legate a commerci, comunità e antiche rotte.",
+    "imageQuery": "Agadez Niger mosque minaret"
+  },
+  "nf": {
+    "headline": "Pini alti sopra le baie",
+    "description": "L'Isola Norfolk si riconosce nei suoi pini, nelle colline verdi e nelle baie del Pacifico come Emily Bay. Gli edifici storici di Kingston raccontano una memoria complessa, mentre il paesaggio rurale e le tradizioni degli abitanti aggiungono una dimensione quotidiana alla storia dell'isola.",
+    "imageQuery": "Norfolk Island Emily Bay pines"
+  },
+  "ng": {
+    "headline": "Arte e città in movimento",
+    "description": "La Nigeria si racconta nell'energia urbana di Lagos e nei patrimoni artistici legati a molte culture del territorio. La roccia di Zuma, i paesaggi del fiume Niger e il bosco sacro di Osun-Osogbo mostrano come natura, memoria spirituale e creatività convivano in forme differenti.",
+    "imageQuery": "Zuma Rock Nigeria landscape"
+  },
+  "ni": {
+    "headline": "Vulcani tra laghi e città colorate",
+    "description": "Il Nicaragua accosta le facciate di Granada, il lago Nicaragua e i vulcani che danno forma al paesaggio. L'isola di Ometepe, le coste del Pacifico e i territori caraibici mostrano identità differenti, mentre mercati, poesia e tradizioni locali accompagnano il racconto.",
+    "imageQuery": "Ometepe Nicaragua volcano lake"
+  },
+  "nu": {
+    "headline": "Acqua limpida nella roccia corallina",
+    "description": "Niue emerge dal Pacifico con una costa di roccia corallina, grotte e piscine naturali come Limu Pools. I villaggi e la vegetazione dell'interno raccontano una dimensione insulare raccolta, mentre lingua e tradizioni niueane conservano un preciso legame con il territorio e con l'oceano.",
+    "imageQuery": "Limu Pools Niue"
+  },
+  "nl": {
+    "headline": "Canali e orizzonti d'acqua",
+    "description": "I Paesi Bassi si riconoscono nei canali di Amsterdam, nei mulini e nei paesaggi in cui terra e acqua sono continuamente connessi. Le città storiche, l'architettura di Rotterdam e le isole del Mare del Nord aggiungono prospettive differenti a una cultura del paesaggio molto caratteristica.",
+    "imageQuery": "Kinderdijk Netherlands windmills"
+  },
+  "no": {
+    "headline": "Fiordi che portano verso il nord",
+    "description": "La Norvegia accosta fiordi profondi, montagne e villaggi costieri dalle case colorate. Le isole Lofoten e i quartieri storici di Bergen raccontano una vita legata al mare, mentre i paesaggi settentrionali e la cultura sami aggiungono altre dimensioni al territorio.",
+    "imageQuery": "Reine Lofoten Norway mountains"
+  },
+  "np": {
+    "headline": "Le cime sopra i cortili dei templi",
+    "description": "Il Nepal intreccia le montagne himalayane ai cortili, agli stupa e alle piazze storiche della valle di Kathmandu. I paesaggi dell'Annapurna e le pianure del Terai mostrano ambienti molto diversi, mentre lingue, artigianato e tradizioni spirituali rendono il racconto culturale altrettanto vario.",
+    "imageQuery": "Boudhanath Kathmandu Nepal stupa"
+  },
+  "nr": {
+    "headline": "Una piccola isola, molte memorie",
+    "description": "Nauru accosta una costa corallina alla laguna interna di Buada, circondata da vegetazione. I pinnacoli dell'altopiano raccontano la storia dell'estrazione del fosfato, mentre i villaggi lungo il mare mostrano la vita di una comunità raccolta in un piccolo spazio del Pacifico.",
+    "imageQuery": "Buada Lagoon Nauru"
+  },
+  "nz": {
+    "headline": "Fiordi, vulcani e cultura māori",
+    "description": "La Nuova Zelanda unisce i fiordi dell'Isola del Sud ai paesaggi vulcanici e geotermici dell'Isola del Nord. Le montagne, le coste e le tradizioni māori raccontano un'identità in cui nomi, storie e luoghi rimangono profondamente connessi al territorio.",
+    "imageQuery": "Milford Sound New Zealand mountains"
+  },
+  "om": {
+    "headline": "Forti di terra e baie d'Arabia",
+    "description": "L'Oman accosta i forti di Nizwa, le montagne dell'Hajar e i wadi dalle acque raccolte tra le rocce. Muscat e le coste raccontano una storia di navigazione, mentre i souq, le oasi e i paesaggi desertici custodiscono altri modi di abitare il territorio.",
+    "imageQuery": "Wadi Shab Oman landscape"
+  },
+  "pk": {
+    "headline": "Montagne sulle antiche rotte asiatiche",
+    "description": "Il Pakistan si distende dai rilievi del Karakoram alle pianure dell'Indo, con paesaggi che cambiano profondamente da nord a sud. Le architetture di Lahore, i siti della civiltà dell'Indo e le valli montane raccontano diverse memorie culturali lungo grandi vie di comunicazione.",
+    "imageQuery": "Hunza Valley Pakistan mountains"
+  },
+  "pa": {
+    "headline": "Due oceani e un ponte di terra",
+    "description": "Panama accosta il suo celebre canale alle foreste tropicali e alle isole affacciate su due oceani. I vicoli del Casco Antiguo e lo skyline della capitale mostrano architetture di epoche diverse, mentre gli arcipelaghi raccontano altre storie legate al mare e alle comunità locali.",
+    "imageQuery": "Panama City Casco Viejo skyline"
+  },
+  "pn": {
+    "headline": "Una roccia verde nel Pacifico",
+    "description": "Le Pitcairn riuniscono isole remote del Pacifico meridionale, con coste rocciose e vegetazione che accompagna pendii e vallate. Ad Adamstown, sull'isola abitata, la storia della comunità conserva il legame con il Bounty, mentre le altre isole mostrano paesaggi corallini e spazi naturali.",
+    "imageQuery": "Pitcairn Island Adamstown landscape"
+  },
+  "pe": {
+    "headline": "Terrazze tra nuvole e memoria andina",
+    "description": "Il Perù custodisce a Machu Picchu un paesaggio di terrazze e pietra sospeso tra le montagne. Cusco, il lago Titicaca, la costa desertica e l'Amazzonia raccontano altre prospettive, mentre le tradizioni andine e la cucina mostrano la ricchezza culturale delle diverse regioni.",
+    "imageQuery": "Machu Picchu Peru"
+  },
+  "ph": {
+    "headline": "Isole di calcare e risaie verdi",
+    "description": "Le Filippine intrecciano le lagune e le rocce di Palawan alle terrazze coltivate della Cordillera. Le città, le case tradizionali e le spiagge raccontano un vasto arcipelago di identità regionali differenti, dove il mare è spesso il filo che collega luoghi e comunità.",
+    "imageQuery": "El Nido Palawan Philippines lagoon"
+  },
+  "pw": {
+    "headline": "Isole verdi sospese nella laguna",
+    "description": "Palau si riconosce nelle Rock Islands, rilievi calcarei coperti di vegetazione che emergono da una laguna dai colori intensi. Le coste di Babeldaob e le tradizioni delle comunità raccontano un arcipelago dove il patrimonio marino accompagna una cultura altrettanto importante da conoscere.",
+    "imageQuery": "Palau Rock Islands aerial"
+  },
+  "pg": {
+    "headline": "Molte culture tra montagne e oceano",
+    "description": "La Papua Nuova Guinea accosta altopiani, foreste e isole in un paesaggio che cambia insieme alle lingue e alle tradizioni locali. Le architetture lungo il Sepik e le canoe costiere mostrano forme diverse di vita comunitaria, legate a fiumi, montagne e mare.",
+    "imageQuery": "Papua New Guinea Sepik river landscape"
+  },
+  "pl": {
+    "headline": "Piazze di memoria e foreste antiche",
+    "description": "La Polonia intreccia le piazze di Cracovia, le facciate di Danzica e il patrimonio urbano di Varsavia. Le montagne dei Tatra, i laghi della Masuria e le foreste di Białowieża aggiungono paesaggi naturali a un racconto segnato da storia, arte e tradizioni regionali.",
+    "imageQuery": "Krakow Poland main square"
+  },
+  "pr": {
+    "headline": "Facciate caraibiche e foresta tropicale",
+    "description": "Porto Rico si racconta nelle case colorate della vecchia San Juan e nelle fortificazioni affacciate sull'Atlantico. La foresta di El Yunque, le spiagge e la musica raccontano altre anime dell'isola, dove tradizioni caraibiche e storia urbana compongono un'identità riconoscibile.",
+    "imageQuery": "Old San Juan Puerto Rico colorful houses"
+  },
+  "kp": {
+    "headline": "Montagne e architetture monumentali",
+    "description": "La Corea del Nord accosta i grandi viali e gli edifici monumentali di Pyongyang ai paesaggi montani della penisola. Il massiccio del Kumgang e i luoghi storici di Kaesong raccontano altre prospettive, legate alla natura e alla memoria culturale coreana.",
+    "imageQuery": "Mount Kumgang North Korea mountains"
+  },
+  "pt": {
+    "headline": "L'Atlantico illumina vicoli e azulejos",
+    "description": "Il Portogallo si riconosce nei vicoli di Lisbona, negli azulejos e nei ponti sul Douro a Porto. Le coste atlantiche, i vigneti e i paesaggi delle isole aggiungono caratteri diversi, mentre il fado racconta con la musica la memoria dei luoghi.",
+    "imageQuery": "Porto Portugal Douro river Ribeira"
+  },
+  "py": {
+    "headline": "Il ritmo lento dei grandi fiumi",
+    "description": "Il Paraguay si racconta nei paesaggi dei suoi fiumi, nelle città e nelle campagne dell'interno sudamericano. Le missioni di Trinidad e Jesús e le tradizioni guaraní mostrano una memoria culturale precisa, mentre Asunción aggiunge architetture, mercati e vita urbana al paesaggio.",
+    "imageQuery": "Trinidad Jesuit ruins Paraguay"
+  },
+  "ps": {
+    "headline": "Pietra, ulivi e memoria mediterranea",
+    "description": "La Palestina custodisce nelle architetture di Betlemme e nei vicoli di Hebron un patrimonio legato a molte tradizioni culturali e religiose. Le terrazze coltivate di Battir, gli uliveti e l'artigianato raccontano altre relazioni tra comunità, terra e memoria dei luoghi.",
+    "imageQuery": "Battir Palestine terraces landscape"
+  },
+  "pf": {
+    "headline": "Lagune sotto le montagne polinesiane",
+    "description": "La Polinesia Francese unisce le montagne verdi di Tahiti e Moorea agli atolli delle Tuamotu. Le lagune di Bora Bora, le canoe e le tradizioni di danza e artigianato raccontano un mondo oceanico in cui paesaggio e cultura condividono una memoria di navigazione.",
+    "imageQuery": "Bora Bora French Polynesia lagoon"
+  },
+  "qa": {
+    "headline": "Il deserto davanti allo skyline",
+    "description": "Il Qatar accosta le dune e le acque del Khor Al Adaid al profilo urbano di Doha. I vicoli del Souq Waqif e le architetture dei musei raccontano il rapporto tra storia commerciale, cultura e trasformazione, in un paesaggio sempre vicino al mare.",
+    "imageQuery": "Doha Qatar skyline corniche"
+  },
+  "re": {
+    "headline": "Circhi verdi e terre vulcaniche",
+    "description": "La Riunione si riconosce nei grandi circhi montani come Mafate e nel paesaggio del Piton de la Fournaise. Le coste e le città creole aggiungono altre prospettive a un'isola dell'oceano Indiano in cui rilievi, vegetazione e tradizioni culturali cambiano rapidamente lungo il territorio.",
+    "imageQuery": "Mafate Reunion mountain landscape"
+  },
+  "ro": {
+    "headline": "Castelli, Carpazi e città di memoria",
+    "description": "La Romania intreccia i boschi dei Carpazi, i borghi della Transilvania e le chiese dipinte della Bucovina. Le strade di Sibiu e il delta del Danubio mostrano paesaggi molto diversi, mentre le tradizioni rurali aggiungono una dimensione quotidiana alla memoria architettonica.",
+    "imageQuery": "Sibiu Romania old town"
+  },
+  "ru": {
+    "headline": "Cupole e orizzonti senza fine",
+    "description": "La Russia accosta le architetture di Mosca e San Pietroburgo a paesaggi di foreste, montagne e laghi di grande ampiezza. Il Bajkal e le città storiche raccontano altre prospettive di un territorio vastissimo, dove regioni e culture richiedono sguardi distinti.",
+    "imageQuery": "Lake Baikal Russia landscape"
+  },
+  "rw": {
+    "headline": "Colline verdi e rive africane",
+    "description": "Il Ruanda si distende tra colline coltivate, montagne e le rive del lago Kivu. Le foreste di Nyungwe e il profilo dei vulcani mostrano paesaggi naturali differenti, mentre Kigali aggiunge una dimensione urbana e culturale al racconto del territorio.",
+    "imageQuery": "Lake Kivu Rwanda landscape"
+  },
+  "sa": {
+    "headline": "La roccia racconta antiche rotte",
+    "description": "L'Arabia Saudita accosta le tombe scolpite di Hegra ai vicoli storici di Al-Balad a Gedda e ai paesaggi desertici. Le oasi, le montagne e la costa del Mar Rosso mostrano un territorio vario, segnato da antiche vie commerciali e architetture regionali.",
+    "imageQuery": "Hegra Saudi Arabia tomb rock"
+  },
+  "sd": {
+    "headline": "Piramidi tra sabbia e Nilo",
+    "description": "Il Sudan custodisce nelle piramidi di Meroe una memoria del regno di Kush, visibile tra le sabbie. Il Nilo, le città e i paesaggi del deserto raccontano altre connessioni tra acqua e territorio, mentre le tradizioni culturali conservano storie lungo antiche rotte africane.",
+    "imageQuery": "Meroe pyramids Sudan"
+  },
+  "sn": {
+    "headline": "L'Atlantico e le voci del sahel",
+    "description": "Il Senegal intreccia la vita di Dakar, le facciate di Saint-Louis e i luoghi della memoria sull'isola di Gorée. Il delta del Saloum e i paesaggi della Casamance aggiungono natura e culture locali, mentre la musica racconta una forte tradizione di creatività.",
+    "imageQuery": "Goree Island Senegal colorful houses"
+  },
+  "sg": {
+    "headline": "Giardini tropicali nella città verticale",
+    "description": "Singapore accosta giardini tropicali e nuove architetture a quartieri come Chinatown, Little India e Kampong Glam. Il paesaggio della baia e gli hawker centre raccontano una città in cui verde, cucina e tradizioni di diverse comunità sono parte della stessa esperienza urbana.",
+    "imageQuery": "Singapore Gardens by the Bay skyline"
+  },
+  "gs": {
+    "headline": "Montagne e colonie dell'Atlantico australe",
+    "description": "La Georgia del Sud e le Sandwich Meridionali emergono nell'Atlantico australe con montagne, ghiacciai e paesaggi vulcanici. Le colonie di pinguini e i resti delle antiche stazioni baleniere raccontano presenze molto diverse, in un ambiente in cui oceano e natura dominano lo sguardo.",
+    "imageQuery": "South Georgia king penguins mountains"
+  },
+  "sj": {
+    "headline": "Il nord tra ghiacciai e vulcani",
+    "description": "Svalbard e Jan Mayen riuniscono territori artici molto diversi, tra fiordi, ghiacciai e coste prive di grandi città. Le case colorate di Longyearbyen e il vulcano Beerenberg a Jan Mayen offrono due immagini di un paesaggio in cui luce e oceano dominano le stagioni.",
+    "imageQuery": "Longyearbyen Svalbard mountains houses"
+  },
+  "sb": {
+    "headline": "Isole e lagune della Melanesia",
+    "description": "Le Isole Salomone accostano rilievi verdi, lagune e villaggi costieri disseminati nel Pacifico. Le canoe, l'artigianato e le tradizioni delle diverse comunità raccontano identità locali precise, mentre Honiara e i luoghi della memoria aggiungono una dimensione storica al paesaggio oceanico.",
+    "imageQuery": "Marovo Lagoon Solomon Islands"
+  },
+  "sl": {
+    "headline": "Montagne verdi sulla costa atlantica",
+    "description": "La Sierra Leone si riconosce nei rilievi che accompagnano Freetown e nelle spiagge della sua penisola. Le isole, gli estuari e le foreste dell'interno mostrano altri paesaggi, mentre musica, mercati e tradizioni delle comunità raccontano una cultura fatta di molte voci.",
+    "imageQuery": "Sierra Leone Freetown peninsula beach"
+  },
+  "sv": {
+    "headline": "Vulcani sopra città e coltivazioni",
+    "description": "El Salvador accosta laghi vulcanici, città e paesaggi coltivati ai pendii della sua catena di vulcani. Suchitoto e il sito di Joya de Cerén raccontano memorie di epoche differenti, mentre la costa del Pacifico aggiunge un orizzonte di spiagge e onde.",
+    "imageQuery": "Santa Ana volcano El Salvador crater"
+  },
+  "sm": {
+    "headline": "Tre torri sopra il Monte Titano",
+    "description": "San Marino si riconosce nelle tre torri che seguono la cresta del Monte Titano. I vicoli in pietra, le piazze e gli edifici storici raccontano una piccola repubblica dalla lunga memoria, mentre lo sguardo dalla montagna abbraccia un ampio paesaggio di colline.",
+    "imageQuery": "San Marino Guaita tower"
+  },
+  "so": {
+    "headline": "Coste lunghe e memoria dell'Indiano",
+    "description": "La Somalia si affaccia sull'oceano Indiano e sul Golfo di Aden con coste, città portuali e paesaggi aridi. Le tracce delle antiche rotte commerciali e le tradizioni poetiche e pastorali raccontano un'identità culturale in cui mare, terra e memoria orale hanno ruoli importanti.",
+    "imageQuery": "Mogadishu Somalia coastline"
+  },
+  "pm": {
+    "headline": "Case colorate nel Nord Atlantico",
+    "description": "Saint-Pierre e Miquelon mostrano porti, case di legno colorate e paesaggi aperti al largo di Terranova. I piccoli edifici dell'Île aux Marins e le coste di Miquelon raccontano la memoria della pesca, mentre l'Atlantico accompagna il carattere di questo arcipelago francese.",
+    "imageQuery": "Saint Pierre Miquelon colorful houses harbour"
+  },
+  "rs": {
+    "headline": "Fiumi e monasteri dei Balcani",
+    "description": "La Serbia si racconta nella confluenza del Danubio e della Sava a Belgrado e nei monasteri che punteggiano il territorio. Le facciate di Novi Sad, le montagne e le campagne aggiungono paesaggi differenti, mentre musica e tradizioni conviviali danno voce alla vita quotidiana.",
+    "imageQuery": "Belgrade Serbia Kalemegdan rivers"
+  },
+  "ss": {
+    "headline": "Il Nilo attraversa grandi pianure",
+    "description": "Il Sudan del Sud accosta grandi pianure, fiumi e paesaggi umidi come il Sudd, modellati dal Nilo Bianco. Le tradizioni delle sue numerose comunità raccontano rapporti diversi con terra e acqua, mentre Juba aggiunge una prospettiva urbana a un territorio vasto.",
+    "imageQuery": "Sudd South Sudan wetland"
+  },
+  "st": {
+    "headline": "Isole verdi sul Golfo di Guinea",
+    "description": "São Tomé e Príncipe emergono dal Golfo di Guinea con montagne vulcaniche, foreste e spiagge raccolte. Le antiche roças legate alle coltivazioni e il profilo del Pico Cão Grande raccontano due immagini dell'arcipelago, dove natura e storia dell'isola si leggono nello stesso paesaggio.",
+    "imageQuery": "Pico Cao Grande Sao Tome Principe"
+  },
+  "sr": {
+    "headline": "Legno, fiumi e foresta tropicale",
+    "description": "Il Suriname si racconta nelle architetture in legno di Paramaribo e nei grandi fiumi che attraversano la foresta dell'interno. Le tradizioni delle comunità indigene, maroon e di altre origini aggiungono una dimensione culturale plurale a un paesaggio segnato dall'acqua e dagli alberi.",
+    "imageQuery": "Paramaribo Suriname wooden architecture"
+  },
+  "sk": {
+    "headline": "Castelli tra foreste e Tatra",
+    "description": "La Slovacchia accosta le montagne dei Tatra ai castelli e alle città storiche come Bratislava e Banská Štiavnica. I villaggi, le foreste e le chiese in legno mostrano altre prospettive del territorio, dove paesaggio rurale e patrimonio architettonico conservano caratteri regionali riconoscibili.",
+    "imageQuery": "High Tatras Slovakia lake mountains"
+  },
+  "si": {
+    "headline": "Un lago tra Alpi e boschi",
+    "description": "La Slovenia si riconosce nell'isola del lago di Bled, circondata da montagne e vegetazione. Lubiana, la valle dell'Isonzo e i paesaggi carsici mostrano altri volti di un territorio raccolto, dove fiumi, grotte, architetture e una breve costa adriatica cambiano rapidamente prospettiva.",
+    "imageQuery": "Lake Bled Slovenia island"
+  },
+  "se": {
+    "headline": "Il nord tra arcipelaghi e foreste",
+    "description": "La Svezia accosta le isole e le facciate di Stoccolma ai laghi, alle foreste e ai paesaggi del nord. Le case rosse e le tradizioni del design raccontano una dimensione quotidiana, mentre la cultura sami aggiunge una voce essenziale alla storia settentrionale del paese.",
+    "imageQuery": "Stockholm Sweden Gamla Stan waterfront"
+  },
+  "sz": {
+    "headline": "Colline e tradizioni dell'Africa australe",
+    "description": "Eswatini si distende tra montagne, colline verdi e paesaggi di savana in uno spazio raccolto dell'Africa australe. Le tradizioni di danza, i tessuti e l'artigianato raccontano il carattere culturale del regno, mentre villaggi e vallate mostrano il rapporto quotidiano con il territorio.",
+    "imageQuery": "Eswatini Ezulwini valley landscape"
+  },
+  "sx": {
+    "headline": "Un porto tra spiagge e colori",
+    "description": "Sint Maarten, la parte neerlandese dell'isola condivisa con Saint Martin, si racconta nelle strade di Philipsburg e nelle baie caraibiche. Le facciate colorate e il lungomare mostrano una dimensione urbana vicina all'acqua, mentre le colline disegnano il paesaggio dell'interno.",
+    "imageQuery": "Philipsburg Sint Maarten beach town"
+  },
+  "sc": {
+    "headline": "Granito e palme sul mare chiaro",
+    "description": "Le Seychelles si riconoscono nelle grandi rocce di granito che accompagnano spiagge come Anse Source d'Argent. Le foreste di Praslin, le isole coralline e le tradizioni creole aggiungono altre prospettive a un arcipelago dell'oceano Indiano dal carattere naturale e culturale preciso.",
+    "imageQuery": "Anse Source Argent Seychelles granite"
+  },
+  "sy": {
+    "headline": "Cortili e memoria di antiche città",
+    "description": "La Siria custodisce nelle città di Damasco e Aleppo e nei siti archeologici una storia di incontri e scambi culturali. I cortili, l'artigianato e le architetture raccontano una memoria preziosa, mentre i paesaggi mediterranei e desertici mostrano la varietà del territorio.",
+    "imageQuery": "Damascus Syria old city courtyard"
+  },
+  "tc": {
+    "headline": "Bassi fondali e sabbie luminose",
+    "description": "Le Turks e Caicos si riconoscono nei bassi fondali e nelle spiagge chiare come Grace Bay, affacciate su acque dalle molte sfumature. I paesaggi delle saline e i piccoli centri delle isole raccontano una storia marittima che accompagna l'immagine più conosciuta del mare.",
+    "imageQuery": "Grace Bay Turks Caicos beach"
+  },
+  "td": {
+    "headline": "Rocce sahariane e grandi acque africane",
+    "description": "Il Ciad accosta i paesaggi rocciosi dell'Ennedi, le montagne del Tibesti e i territori legati al lago che gli dà nome. Le oasi e le tradizioni delle diverse comunità raccontano modi di vivere molto differenti, in un paese attraversato da grandi distanze.",
+    "imageQuery": "Ennedi Chad rock arch"
+  },
+  "tg": {
+    "headline": "Case di terra e orizzonti atlantici",
+    "description": "Il Togo custodisce nel paesaggio del Koutammakou le case-torri in terra dei Batammariba, legate alla vita e alle tradizioni delle comunità. Lomé, i mercati e la breve costa atlantica aggiungono una prospettiva urbana, mentre colline e villaggi raccontano altre dimensioni del paese.",
+    "imageQuery": "Koutammakou Togo takienta houses"
+  },
+  "th": {
+    "headline": "Templi dorati e isole tropicali",
+    "description": "La Thailandia intreccia i templi di Bangkok e Chiang Mai alle rovine di Ayutthaya e ai paesaggi delle isole. I mercati, le campagne e le coste mostrano identità regionali diverse, mentre cucina, artigianato e tradizioni spirituali danno profondità alle immagini più conosciute.",
+    "imageQuery": "Wat Arun Bangkok Thailand"
+  },
+  "tj": {
+    "headline": "Strade e valli del Pamir",
+    "description": "Il Tagikistan si distende tra le montagne del Pamir e i rilievi dei monti Fann, con valli e laghi dal colore intenso. Le città e i villaggi raccontano una memoria culturale legata alle rotte dell'Asia centrale, mentre il paesaggio montano accompagna grandi distanze.",
+    "imageQuery": "Iskanderkul Tajikistan lake mountains"
+  },
+  "tk": {
+    "headline": "Tre atolli tra laguna e oceano",
+    "description": "Tokelau riunisce gli atolli di Atafu, Nukunonu e Fakaofo nel Pacifico, con piccoli isolotti e lagune. I villaggi, le canoe e le case raccontano una vita comunitaria legata alla cultura polinesiana, dove il mare è insieme paesaggio, collegamento e memoria quotidiana.",
+    "imageQuery": "Nukunonu Tokelau lagoon village"
+  },
+  "tm": {
+    "headline": "Deserti e memorie della Via della Seta",
+    "description": "Il Turkmenistan accosta i paesaggi del Karakum alle architetture di Ashgabat e ai resti delle antiche città di Merv. Le tradizioni dei tappeti e le testimonianze delle rotte carovaniere raccontano una cultura in cui deserto, commerci e artigianato conservano un legame profondo.",
+    "imageQuery": "Merv Turkmenistan Sultan Sanjar mausoleum"
+  },
+  "tl": {
+    "headline": "Montagne verdi sul mare di Timor",
+    "description": "Timor Est unisce pendii montani, villaggi e coste che guardano l'isola di Atauro e il mare di Timor. Dili e le tradizioni dei tessuti tais raccontano la vita culturale del paese, mentre paesaggi rurali e coltivazioni aggiungono una prospettiva legata alla terra.",
+    "imageQuery": "Atauro Timor Leste coast"
+  },
+  "to": {
+    "headline": "Il Pacifico tra corallo e memoria",
+    "description": "Tonga accosta isole coralline e vulcaniche, con lagune, villaggi e paesaggi oceanici differenti. Il trilite Ha'amonga 'a Maui e le tradizioni di danza e artigianato raccontano il patrimonio del regno, mentre le coste mostrano il rapporto quotidiano tra terra e mare.",
+    "imageQuery": "Haamonga a Maui Tonga"
+  },
+  "tt": {
+    "headline": "Due isole, molti ritmi caraibici",
+    "description": "Trinidad e Tobago uniscono la vita urbana e culturale di Port of Spain alle baie e alle colline dell'isola di Tobago. Il carnevale, lo steelpan e le diverse tradizioni culinarie raccontano un'identità composita, mentre mangrovie e foreste aggiungono paesaggi naturali distinti.",
+    "imageQuery": "Tobago Pigeon Point beach"
+  },
+  "tn": {
+    "headline": "Medine bianche e memorie mediterranee",
+    "description": "La Tunisia si riconosce nei colori di Sidi Bou Saïd, nei vicoli delle medine e nelle rovine di Cartagine. L'anfiteatro di El Jem, le oasi e i paesaggi sahariani raccontano altri volti del paese, dove costa e deserto conservano patrimoni differenti.",
+    "imageQuery": "Sidi Bou Said Tunisia village"
+  },
+  "tr": {
+    "headline": "Tra cupole, camini di fata e mare",
+    "description": "La Turchia intreccia le cupole e i mercati di Istanbul ai paesaggi rocciosi della Cappadocia. Le rovine di Efeso, le coste e le terrazze di Pamukkale mostrano altre prospettive, mentre città e tradizioni regionali raccontano il continuo incontro tra molte storie culturali.",
+    "imageQuery": "Cappadocia Turkey fairy chimneys"
+  },
+  "tv": {
+    "headline": "La laguna custodisce il villaggio",
+    "description": "Tuvalu riunisce piccole isole e atolli del Pacifico dove le strisce di terra separano oceano e laguna. A Funafuti, case, palme e imbarcazioni raccontano il paesaggio quotidiano, mentre le tradizioni di danza e vita comunitaria conservano il carattere polinesiano dell'arcipelago.",
+    "imageQuery": "Funafuti Tuvalu lagoon aerial"
+  },
+  "tw": {
+    "headline": "Templi e montagne sopra la città",
+    "description": "Taiwan accosta lo skyline di Taipei e i mercati notturni ai paesaggi montani e alle coste dell'isola. I templi, il lago Sun Moon e le tradizioni delle comunità indigene aggiungono prospettive diverse, raccontando un territorio in cui natura e cultura urbana convivono da vicino.",
+    "imageQuery": "Sun Moon Lake Taiwan mountains"
+  },
+  "tz": {
+    "headline": "La savana incontra l'Indiano",
+    "description": "La Tanzania unisce le pianure del Serengeti e il profilo del Kilimanjaro alle coste dell'oceano Indiano. I vicoli di Stone Town a Zanzibar raccontano antiche connessioni marittime, mentre paesaggi e tradizioni delle diverse comunità mostrano un'identità che va oltre le immagini della fauna.",
+    "imageQuery": "Kilimanjaro Tanzania mountain landscape"
+  },
+  "ug": {
+    "headline": "Acque e montagne dell'Africa orientale",
+    "description": "L'Uganda accosta le rive del lago Vittoria alle montagne del Rwenzori e alle foreste di Bwindi. Le cascate Murchison e la vita di Kampala mostrano altre prospettive, mentre le tradizioni delle diverse comunità raccontano il rapporto tra paesaggio, storia e quotidianità.",
+    "imageQuery": "Murchison Falls Uganda"
+  },
+  "ua": {
+    "headline": "Cupole, pianure e memoria europea",
+    "description": "L'Ucraina custodisce nelle architetture di Kyiv e nei vicoli di Leopoli patrimoni di epoche e tradizioni diverse. I Carpazi, le pianure e le rive del Dnipro aggiungono paesaggi riconoscibili, mentre musica, ricami e cultura letteraria raccontano una forte identità dei luoghi.",
+    "imageQuery": "Lviv Ukraine old town skyline"
+  },
+  "um": {
+    "headline": "Piccole terre nei grandi oceani",
+    "description": "Le isole minori esterne degli Stati Uniti riuniscono terre lontane tra Pacifico e Caraibi, con atolli, scogli e coste. Midway e altre isole ospitano importanti ambienti per gli uccelli marini, mostrando paesaggi in cui oceano e vita animale prevalgono sull'immagine urbana.",
+    "imageQuery": "Midway Atoll albatross beach"
+  },
+  "uy": {
+    "headline": "Il Plata incontra la costa atlantica",
+    "description": "L'Uruguay accosta i quartieri e il lungomare di Montevideo alle strade in pietra di Colonia del Sacramento. Le praterie e le spiagge atlantiche mostrano altri paesaggi, mentre il candombe, il mate e le tradizioni rurali raccontano il ritmo culturale del paese.",
+    "imageQuery": "Colonia del Sacramento Uruguay old town"
+  },
+  "us": {
+    "headline": "Città iconiche e grandi paesaggi",
+    "description": "Gli Stati Uniti passano dai profili urbani di New York ai canyon del sudovest, dalle coste alle montagne e alle foreste. Le culture delle comunità indigene e le molte tradizioni regionali aggiungono profondità a un territorio che cambia identità, architettura e paesaggio lungo grandi distanze.",
+    "imageQuery": "Grand Canyon United States landscape"
+  },
+  "uz": {
+    "headline": "Cupole blu lungo la Via della Seta",
+    "description": "L'Uzbekistan si racconta nelle madrase del Registan a Samarcanda, nei vicoli di Bukhara e nelle mura di Khiva. Le maioliche, i cortili e le tradizioni artigiane custodiscono una memoria delle rotte carovaniere, mentre città e paesaggi mostrano il cuore storico dell'Asia centrale.",
+    "imageQuery": "Registan Samarkand Uzbekistan"
+  },
+  "va": {
+    "headline": "Arte e architettura in un piccolo stato",
+    "description": "La Città del Vaticano raccoglie nella piazza e nella basilica di San Pietro un paesaggio architettonico di forte valore simbolico. I Musei Vaticani e la Cappella Sistina custodiscono opere di epoche diverse, raccontando una storia dell'arte concentrata in uno spazio di piccole dimensioni.",
+    "imageQuery": "Saint Peters Square Vatican City"
+  },
+  "vc": {
+    "headline": "Vele tra le isole verdi",
+    "description": "Saint Vincent e Grenadine uniscono l'isola vulcanica principale a un arcipelago di baie, spiagge e piccoli centri sul mare. Il paesaggio di Bequia e le acque dei Tobago Cays mostrano immagini diverse dello stesso mondo caraibico, dove navigazione e vita insulare sono strettamente legate.",
+    "imageQuery": "Tobago Cays Saint Vincent Grenadines"
+  },
+  "ve": {
+    "headline": "Montagne piatte e grandi cascate",
+    "description": "Il Venezuela custodisce nei tepui e nel Salto Ángel un paesaggio di rocce e acqua dalle forme imponenti. Le coste caraibiche, le isole e le pianure dei Llanos aggiungono altri orizzonti, mentre le tradizioni delle diverse comunità raccontano molte identità culturali.",
+    "imageQuery": "Angel Falls Venezuela Canaima"
+  },
+  "vg": {
+    "headline": "Granito e baie per le vele",
+    "description": "Le Isole Vergini Britanniche si riconoscono nei grandi massi di The Baths a Virgin Gorda, dove la roccia incontra acque chiare. Tortola e gli altri approdi raccontano un arcipelago di baie e colline, con una storia e una vita quotidiana profondamente legate alla navigazione.",
+    "imageQuery": "The Baths Virgin Gorda British Virgin Islands"
+  },
+  "vi": {
+    "headline": "Porti storici e baie caraibiche",
+    "description": "Le Isole Vergini americane accostano le strade storiche di Charlotte Amalie alle spiagge e alle colline di Saint Thomas, Saint John e Saint Croix. Le architetture e i paesaggi costieri raccontano identità insulari differenti, legate a memorie coloniali, tradizioni locali e vita sul mare.",
+    "imageQuery": "Trunk Bay Saint John US Virgin Islands"
+  },
+  "vn": {
+    "headline": "Risaie, lanterne e paesaggi d'acqua",
+    "description": "Il Vietnam intreccia le rocce della baia di Hạ Long, le risaie terrazzate del nord e i canali del delta del Mekong. Le lanterne di Hội An e le strade di Hanoi raccontano altre prospettive, dove architettura, cucina e vita urbana conservano caratteri locali.",
+    "imageQuery": "Ha Long Bay Vietnam limestone islands"
+  },
+  "vu": {
+    "headline": "Vulcani e voci della Melanesia",
+    "description": "Vanuatu accosta isole vulcaniche, foreste e coste dove il Pacifico accompagna villaggi e comunità. Il vulcano Yasur a Tanna e le tradizioni delle diverse isole raccontano un arcipelago culturalmente vario, mentre lingue, artigianato e paesaggi mostrano identità che cambiano da un luogo all'altro.",
+    "imageQuery": "Mount Yasur Vanuatu volcano"
+  },
+  "wf": {
+    "headline": "Lagune e laghi della Polinesia",
+    "description": "Wallis e Futuna uniscono il paesaggio lagunare di Wallis alle montagne di Futuna, nel Pacifico meridionale. Il lago vulcanico Lalolalo, le chiese e i villaggi raccontano luoghi distinti, mentre i regni tradizionali e la cultura polinesiana danno profondità alla vita delle comunità.",
+    "imageQuery": "Lake Lalolalo Wallis Futuna"
+  },
+  "ws": {
+    "headline": "Il Pacifico sotto i tetti aperti",
+    "description": "Samoa unisce le isole verdi di Upolu e Savai'i, con cascate, coste laviche e piscine naturali. Le fale, le abitazioni dai lati aperti, e le tradizioni della fa'a Samoa raccontano una cultura in cui la comunità e il paesaggio oceanico mantengono legami profondi.",
+    "imageQuery": "To Sua Ocean Trench Samoa"
+  },
+  "ye": {
+    "headline": "Città di terra e isole straordinarie",
+    "description": "Lo Yemen custodisce nelle case decorate di Sana'a e negli edifici in terra di Shibam un patrimonio architettonico riconoscibile. Le montagne terrazzate e gli alberi caratteristici di Socotra mostrano altri paesaggi, raccontando un territorio dalle profonde connessioni con le rotte dell'Arabia e dell'oceano Indiano.",
+    "imageQuery": "Socotra Yemen dragon blood trees"
+  },
+  "za": {
+    "headline": "Oceani, montagne e molte culture",
+    "description": "Il Sud Africa accosta la Table Mountain e le coste del Capo ai paesaggi di savana e alle montagne dell'interno. Le città, l'arte e le tradizioni delle sue numerose comunità aggiungono un racconto culturale complesso, in cui memoria storica e vita contemporanea restano connesse.",
+    "imageQuery": "Table Mountain Cape Town South Africa"
+  },
+  "zm": {
+    "headline": "Il grande fiume diventa cascata",
+    "description": "Lo Zambia custodisce sullo Zambesi il grande salto delle cascate Vittoria, dove acqua e roccia trasformano il paesaggio. Le pianure e i fiumi di Luangwa e Kafue mostrano altre prospettive naturali, mentre le tradizioni delle comunità raccontano rapporti diversi con terra e acqua.",
+    "imageQuery": "Victoria Falls Zambia Zambezi"
+  },
+  "zw": {
+    "headline": "Pietra, fiumi e memoria africana",
+    "description": "Lo Zimbabwe accosta le costruzioni in pietra del Grande Zimbabwe ai paesaggi delle Matobo e alle cascate Vittoria. Le sculture, le tradizioni e le città raccontano altre sfumature del paese, mentre colline e grandi fiumi collegano la memoria culturale al territorio.",
+    "imageQuery": "Great Zimbabwe stone ruins"
+  }
+}
