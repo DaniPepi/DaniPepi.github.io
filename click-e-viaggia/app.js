@@ -19,6 +19,54 @@ document.addEventListener('keydown', (event) => {
   }
 });
 document.querySelector('#year').textContent = String(new Date().getFullYear());
+const hero = document.querySelector('.hero');
+const heroTitle = document.querySelector('.flow-title');
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+const letters = [];
+heroTitle.querySelectorAll('.title-word, .amp').forEach(word => {
+  const text = word.textContent;
+  word.replaceChildren(...Array.from(text).map(character => {
+    const letter = document.createElement('span');
+    letter.className = 'magnetic-letter';
+    letter.textContent = character;
+    letters.push(letter);
+    return letter;
+  }));
+});
+let pointerFrame = 0;
+let cursor = null;
+function resetMagnet() {
+  cursor = null;
+  if (pointerFrame) cancelAnimationFrame(pointerFrame);
+  pointerFrame = 0;
+  hero.classList.remove('pointer-active');
+  letters.forEach(letter => { letter.style.transform = ''; letter.style.color = ''; });
+}
+hero.addEventListener('pointermove', event => {
+  if (event.pointerType === 'touch' || reducedMotion.matches) return;
+  cursor = { x: event.clientX, y: event.clientY };
+  if (pointerFrame) return;
+  pointerFrame = requestAnimationFrame(() => {
+    pointerFrame = 0;
+    if (!cursor) return;
+    const bounds = hero.getBoundingClientRect();
+    hero.style.setProperty('--cursor-x', ((cursor.x - bounds.left) / bounds.width * 100).toFixed(2) + '%');
+    hero.style.setProperty('--cursor-y', ((cursor.y - bounds.top) / bounds.height * 100).toFixed(2) + '%');
+    hero.classList.add('pointer-active');
+    letters.forEach(letter => {
+      const rect = letter.getBoundingClientRect();
+      const dx = cursor.x - (rect.left + rect.width / 2);
+      const dy = cursor.y - (rect.top + rect.height / 2);
+      const influence = Math.max(0, 1 - Math.hypot(dx, dy) / 230);
+      const x = Math.max(-4, Math.min(4, dx * influence * 0.05));
+      const y = Math.max(-22, Math.min(22, dy * influence * 0.2));
+      letter.style.transform = `translate3d(${x.toFixed(2)}px, ${y.toFixed(2)}px, 0) rotate(${(x * 0.24).toFixed(2)}deg)`;
+      letter.style.color = influence > 0.6 ? '#d8f36b' : '';
+    });
+  });
+});
+hero.addEventListener('pointerleave', resetMagnet);
+reducedMotion.addEventListener('change', resetMagnet);
 const motionButton = document.querySelector('.motion-toggle');
 motionButton.addEventListener('click', () => {
   const paused = motionButton.getAttribute('aria-pressed') !== 'true';
@@ -196,6 +244,8 @@ installButton.addEventListener('click', async () => {
   installButton.hidden = true;
 });
 window.addEventListener('appinstalled', () => { installButton.hidden = true; });
+const requestedSection = new URLSearchParams(window.location.search).get('section');
+if (requestedSection === 'blog' || requestedSection === 'viaggi') showSection(requestedSection);
 if ('serviceWorker' in navigator && window.isSecureContext) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('./sw.js').catch((error) => console.warn('Modalità offline non disponibile:', error.message));
