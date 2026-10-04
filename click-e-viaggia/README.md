@@ -72,3 +72,7 @@ Per una verifica locale opzionale aprire con un server di VS Code (es. Live Serv
 
 Foto di xandro Vandewalle: https://unsplash.com/photos/aerial-photography-of-body-of-water-S2wLuk_Ac2I . Fonte Unsplash. Font di sistema: nessuna richiesta a Google Fonts.
 
+## Diario personale
+La home usa di nuovo la fotografia originale. La sezione I miei viaggi si apre in una nuova scheda: mappa con bandiere, descrizioni e salvataggio personale sul browser. Per Google, Apple e sincronizzazione account seguire AUTH-SETUP.md. I provider sono disattivati finché non si configura il progetto reale e si pubblicano le regole Firestore.
+
+

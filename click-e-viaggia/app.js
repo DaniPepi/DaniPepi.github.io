@@ -64,32 +64,6 @@ hero.addEventListener('pointermove', event => {
 });
 hero.addEventListener('pointerleave', resetMagnet);
 reducedMotion.addEventListener('change', resetMagnet);
-const motionButton = document.querySelector('.motion-toggle');
-const heroVideo = document.querySelector('.hero-video');
-let backgroundPaused = false;
-heroVideo.muted = true;
-heroVideo.playbackRate = 0.55;
-function updateBackground() {
-  const paused = backgroundPaused || reducedMotion.matches;
-  motionButton.setAttribute('aria-pressed', String(paused));
-  motionButton.textContent = paused ? 'Riprendi il movimento dello sfondo' : 'Metti in pausa lo sfondo';
-  if (paused || document.hidden) {
-    heroVideo.pause();
-    if (reducedMotion.matches) heroVideo.hidden = true;
-  } else {
-    heroVideo.hidden = false;
-    heroVideo.play().catch(() => { heroVideo.hidden = true; });
-  }
-}
-motionButton.addEventListener('click', () => {
-  backgroundPaused = !backgroundPaused;
-  updateBackground();
-});
-heroVideo.addEventListener('error', () => { heroVideo.hidden = true; });
-heroVideo.querySelector('source').addEventListener('error', () => { heroVideo.hidden = true; });
-reducedMotion.addEventListener('change', updateBackground);
-document.addEventListener('visibilitychange', updateBackground);
-updateBackground();
 const articles = {
   slow: { label: 'DIARIO · LETTURA DI ESEMPIO', title: 'Il bello di partire senza correre.', paragraphs: ['A volte il miglior itinerario è quello che lascia spazio. Una passeggiata senza una meta precisa, un mercato di quartiere, una conversazione davanti a un caffè: piccoli momenti che danno forma al ricordo di un luogo.', 'Scegli poche tappe e concediti il tempo di viverle. Prima di aggiungere una nuova destinazione, chiediti cosa vorresti scoprire davvero: un paesaggio, una cucina, una storia.', 'Questo è un testo dimostrativo del diario di CLICK&VIAGGIA. I racconti originali arriveranno con il lancio del progetto.'] },
   bag: { label: 'DIARIO · GUIDA DI ESEMPIO', title: 'Meno bagagli. Più libertà.', paragraphs: ['Parti dalla durata del viaggio, dal clima e dalle attività previste. Scegli capi che puoi abbinare tra loro e controlla la possibilità di lavarli durante il percorso.', 'Tieni documenti, eventuali medicinali personali e oggetti essenziali facilmente accessibili. Prima della partenza, verifica dimensioni e peso consentiti direttamente con il vettore.', 'Una lista breve aiuta: documenti, abbigliamento, igiene personale, caricabatterie e ciò che serve per il tuo itinerario. Questa guida è un esempio editoriale.'] },
