@@ -49,9 +49,6 @@ hero.addEventListener('pointermove', event => {
   pointerFrame = requestAnimationFrame(() => {
     pointerFrame = 0;
     if (!cursor) return;
-    const bounds = hero.getBoundingClientRect();
-    hero.style.setProperty('--cursor-x', ((cursor.x - bounds.left) / bounds.width * 100).toFixed(2) + '%');
-    hero.style.setProperty('--cursor-y', ((cursor.y - bounds.top) / bounds.height * 100).toFixed(2) + '%');
     hero.classList.add('pointer-active');
     letters.forEach(letter => {
       const rect = letter.getBoundingClientRect();
@@ -129,7 +126,7 @@ function showSection(section, category = 'Tutti') {
   const blog = section === 'blog';
   setDialog(blog ? 'IL DIARIO' : 'PARTIRE INSIEME', blog ? 'Scegli la tua prossima lettura.' : 'Esplora gli itinerari.');
   backButton.hidden = true;
-  dialogBody.append(paragraph(blog ? 'Articoli dimostrativi. Il cerchietto rosso indica le novità degli ultimi 14 giorni; le date mostrate sono di esempio.' : 'Idee di viaggio dimostrative. Non sono offerte in vendita: date, prezzi e prenotazioni non sono disponibili.', 'collection-note'));
+  dialogBody.append(paragraph(blog ? 'Articoli dimostrativi. Il cerchietto rosso indica le novità degli ultimi 14 giorni; le date mostrate sono di esempio.' : 'Scegli una destinazione, scopri il percorso e condividi la sua scheda. Gli itinerari sono proposte dimostrative da definire con il team.', 'collection-note'));
   if (blog) {
     const filters = document.createElement('div');
     filters.className = 'category-filters';
@@ -152,8 +149,20 @@ function showSection(section, category = 'Tutti') {
   list.className = 'collection-grid';
   Object.entries(blog ? articles : trips).forEach(([id, record], index) => {
     if (blog && category !== 'Tutti' && categories[id] !== category) return;
-    const card = document.createElement('button');
-    card.className = 'collection-card';
+    const card = document.createElement(blog ? 'button' : 'a');
+    card.className = blog ? 'collection-card' : 'collection-card travel-poster';
+    if (!blog) {
+      card.href = 'viaggio-' + id + '.html';
+      const image = document.createElement('img');
+      image.src = 'assets/' + id + '.jpg';
+      image.alt = '';
+      image.loading = 'lazy';
+      image.className = 'poster-image';
+      const tag = document.createElement('span');
+      tag.className = 'poster-tag';
+      tag.textContent = '0' + (index + 1) + ' / CLICK&VIAGGIA';
+      card.append(image, tag);
+    }
     const meta = document.createElement('span');
     meta.className = 'card-meta';
     meta.textContent = blog ? categories[id] : ['7 GIORNI', '8 GIORNI', '6 GIORNI'][index];
@@ -180,7 +189,7 @@ function showSection(section, category = 'Tutti') {
       card.append(date);
     }
     card.append(action);
-    card.addEventListener('click', () => openDetail(record));
+    if (blog) card.addEventListener('click', () => openDetail(record));
     list.append(card);
   });
   dialogBody.append(list);

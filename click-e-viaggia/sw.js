@@ -1,6 +1,6 @@
 'use strict';
-const CACHE = 'click-viaggia-v4';
-const ASSETS = ['./', './index.html', './style.css', './style.css?v=4', './app.js?v=4', './legal.html', './chi-siamo.html', './team.js', './data/team.json', './data/travel-links.json', './icon.svg', './manifest.webmanifest', './assets/ocean.jpg', './assets/icon-192.png', './assets/icon-512.png'];
+const CACHE = 'click-viaggia-v5';
+const ASSETS = ['./', './index.html', './style.css', './style.css?v=5', './app.js?v=5', './legal.html', './chi-siamo.html', './team.js', './data/team.json', './data/contact.json', './trip.js', './viaggio-portogallo.html', './viaggio-islanda.html', './viaggio-marocco.html', './assets/portogallo.jpg', './assets/islanda.jpg', './assets/marocco.jpg', './data/travel-links.json', './icon.svg', './manifest.webmanifest', './assets/ocean.jpg', './assets/icon-192.png', './assets/icon-512.png'];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(ASSETS)).then(() => self.skipWaiting()));
 });

@@ -4,6 +4,16 @@ Sito statico responsive, modificabile in Visual Studio Code, senza dipendenze di
 
 ## Sito pubblicato e gestione dei link
 
+## Schede viaggio condivisibili
+
+Ogni tessera apre una pagina dedicata: viaggio-portogallo.html, viaggio-islanda.html, viaggio-marocco.html. Il pulsante Condividi usa il menu nativo del dispositivo o copia il link. Le schede non contengono prezzi o campi tariffari, neppure nei metadati. I percorsi restano illustrativi fino alla conferma dei dati reali.
+
+Per attivare gli appuntamenti modificare `data/contact.json` impostando `appointmentUrl` con un URL HTTPS di prenotazione o WhatsApp (`https://wa.me/NUMERO_INTERNAZIONALE_SENZA_PIU`), oppure un indirizzo `mailto:`. Un calendario condiviso richiede che l’accesso dei membri sia configurato presso il fornitore del calendario. Il sito non conserva prenotazioni. Con URL vuoto il pulsante spiega come ricontattare il membro che ha condiviso la scheda, senza fingere di inviare richieste.
+
+Foto: Portogallo https://unsplash.com/photos/cliffs-meet-the-ocean-with-waves-crashing-eDss0p0kX-M ; Islanda https://unsplash.com/s/photos/iceland-waterfall ; Marocco (Sander Traa) https://unsplash.com/photos/a-tall-tower-with-a-clock-on-top-of-it-wuEWArCIP28 . Risorse ospitate localmente, secondo licenza Unsplash.
+
+## Collegamenti Travel Advantage
+
 Sito: https://danipepi.github.io/click-e-viaggia/
 
 Gestione: https://danipepi.github.io/click-e-viaggia/admin.html
