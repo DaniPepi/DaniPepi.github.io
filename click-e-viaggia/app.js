@@ -19,46 +19,13 @@ document.addEventListener('keydown', (event) => {
   }
 });
 document.querySelector('#year').textContent = String(new Date().getFullYear());
-const title = document.querySelector('.liquid-title');
-const displacement = document.querySelector('#displacement');
-const noise = document.querySelector('feTurbulence');
-const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
-let target = 0;
-let amplitude = 0;
-let frame = 0;
-let phase = 0;
-let touchTimer;
-function animateWater() {
-  amplitude += (target - amplitude) * 0.085;
-  phase += 0.018;
-  displacement.setAttribute('scale', amplitude.toFixed(2));
-  noise.setAttribute('baseFrequency', `${(0.009 + Math.sin(phase) * 0.003).toFixed(4)} 0.035`);
-  if (!motionPreference.matches && (target > 0 || amplitude > 0.15)) {
-    frame = requestAnimationFrame(animateWater);
-  } else {
-    displacement.setAttribute('scale', '0');
-    amplitude = 0;
-    frame = 0;
-  }
-}
-function startWater(strength) {
-  if (motionPreference.matches) return;
-  target = strength;
-  if (!frame) frame = requestAnimationFrame(animateWater);
-}
-title.addEventListener('pointermove', (event) => {
-  if (event.pointerType === 'touch') return;
-  const bounds = title.getBoundingClientRect();
-  const position = Math.max(0, Math.min(1, (event.clientX - bounds.left) / bounds.width));
-  startWater(14 + position * 24);
+const motionButton = document.querySelector('.motion-toggle');
+motionButton.addEventListener('click', () => {
+  const paused = motionButton.getAttribute('aria-pressed') !== 'true';
+  motionButton.setAttribute('aria-pressed', String(paused));
+  motionButton.textContent = paused ? 'Riprendi il movimento dello sfondo' : 'Metti in pausa lo sfondo';
+  document.querySelector('.hero').classList.toggle('motion-paused', paused);
 });
-title.addEventListener('pointerleave', () => { target = 0; });
-title.addEventListener('pointerdown', () => {
-  clearTimeout(touchTimer);
-  startWater(32);
-  touchTimer = setTimeout(() => { target = 0; }, 900);
-});
-motionPreference.addEventListener('change', () => { target = 0; });
 const articles = {
   slow: { label: 'DIARIO · LETTURA DI ESEMPIO', title: 'Il bello di partire senza correre.', paragraphs: ['A volte il miglior itinerario è quello che lascia spazio. Una passeggiata senza una meta precisa, un mercato di quartiere, una conversazione davanti a un caffè: piccoli momenti che danno forma al ricordo di un luogo.', 'Scegli poche tappe e concediti il tempo di viverle. Prima di aggiungere una nuova destinazione, chiediti cosa vorresti scoprire davvero: un paesaggio, una cucina, una storia.', 'Questo è un testo dimostrativo del diario di CLICK&VIAGGIA. I racconti originali arriveranno con il lancio del progetto.'] },
   bag: { label: 'DIARIO · GUIDA DI ESEMPIO', title: 'Meno bagagli. Più libertà.', paragraphs: ['Parti dalla durata del viaggio, dal clima e dalle attività previste. Scegli capi che puoi abbinare tra loro e controlla la possibilità di lavarli durante il percorso.', 'Tieni documenti, eventuali medicinali personali e oggetti essenziali facilmente accessibili. Prima della partenza, verifica dimensioni e peso consentiti direttamente con il vettore.', 'Una lista breve aiuta: documenti, abbigliamento, igiene personale, caricabatterie e ciò che serve per il tuo itinerario. Questa guida è un esempio editoriale.'] },
@@ -69,28 +36,151 @@ const trips = {
   islanda: { label: 'ITINERARIO DIMOSTRATIVO · 8 GIORNI', title: 'Islanda, fuori dall’ordinario', paragraphs: ['Un’idea di viaggio dedicata a paesaggi vulcanici, cascate e costa meridionale.', 'Giorni 1–2: Reykjavík e dintorni. Giorni 3–5: un percorso sulla costa sud. Giorni 6–8: esplorazione con tappe e tempi da adattare alla stagione.', 'Questa proposta non è in vendita. Percorso, accessibilità, trasporti e attività richiederanno una verifica in base al periodo. Date, prezzi e condizioni non sono ancora disponibili.'] },
   marocco: { label: 'ITINERARIO DIMOSTRATIVO · 6 GIORNI', title: 'Marocco, mille sfumature', paragraphs: ['Un’idea di itinerario tra medine, artigianato e paesaggi dell’Atlante.', 'Giorni 1–3: Marrakech, con tempo per quartieri e mercati. Giorni 4–5: un’escursione nei dintorni da definire. Giorno 6: rientro.', 'La proposta è illustrativa e non prenotabile. Organizzatore, accompagnamento, alloggi, inclusioni e condizioni saranno pubblicati quando il viaggio sarà confermato.'] }
 };
-const dialog = document.querySelector('#detail');
-dialog.setAttribute('aria-labelledby', 'detail-title');
-function openDetail(record) {
-  document.querySelector('#detail-label').textContent = record.label;
-  document.querySelector('#detail-title').textContent = record.title;
-  const body = document.querySelector('#detail-body');
-  body.replaceChildren(...record.paragraphs.map((text) => {
-    const paragraph = document.createElement('p');
-    paragraph.textContent = text;
-    return paragraph;
-  }));
-  dialog.showModal();
+const publicationDates = { slow: '2026-10-04', bag: '2026-09-10', weekend: '2026-10-03' };
+const categories = { slow: 'Ispirazioni', bag: 'Consigli', weekend: 'Idee' };
+let travelLinks = [];
+let linksUnavailable = false;
+function validTravelUrl(value) {
+  try {
+    const url = new URL(value);
+    return url.protocol === 'https:' && !url.username && !url.password && (url.hostname === 'traveladvantage.com' || url.hostname.endsWith('.traveladvantage.com'));
+  } catch { return false; }
 }
-document.querySelectorAll('[data-article]').forEach((button) => button.addEventListener('click', () => openDetail(articles[button.dataset.article])));
-document.querySelectorAll('[data-trip]').forEach((button) => button.addEventListener('click', () => openDetail(trips[button.dataset.trip])));
+const dialog = document.querySelector('#detail');
+const backButton = dialog.querySelector('.back-button');
+const dialogTitle = document.querySelector('#detail-title');
+const dialogBody = document.querySelector('#detail-body');
+let currentSection = 'blog';
+function paragraph(text, className = '') {
+  const element = document.createElement('p');
+  element.textContent = text;
+  element.className = className;
+  return element;
+}
+function setDialog(label, title) {
+  document.querySelector('#detail-label').textContent = label;
+  dialogTitle.textContent = title;
+  dialogBody.replaceChildren();
+  if (!dialog.open) dialog.showModal();
+  document.body.classList.add('dialog-open');
+  dialog.scrollTop = 0;
+}
+function isNew(date) {
+  const published = new Date(date + 'T00:00:00');
+  const age = Date.now() - published.getTime();
+  return age >= 0 && age < 14 * 86400000;
+}
+function openDetail(record) {
+  setDialog(record.label, record.title);
+  backButton.hidden = false;
+  dialogBody.append(...record.paragraphs.map(text => paragraph(text)));
+  dialogTitle.focus();
+}
+function showSection(section, category = 'Tutti') {
+  currentSection = section;
+  const blog = section === 'blog';
+  setDialog(blog ? 'IL DIARIO' : 'PARTIRE INSIEME', blog ? 'Scegli la tua prossima lettura.' : 'Esplora gli itinerari.');
+  backButton.hidden = true;
+  dialogBody.append(paragraph(blog ? 'Articoli dimostrativi. Il cerchietto rosso indica le novità degli ultimi 14 giorni; le date mostrate sono di esempio.' : 'Idee di viaggio dimostrative. Non sono offerte in vendita: date, prezzi e prenotazioni non sono disponibili.', 'collection-note'));
+  if (blog) {
+    const filters = document.createElement('div');
+    filters.className = 'category-filters';
+    filters.setAttribute('role', 'group');
+    filters.setAttribute('aria-label', 'Filtra gli articoli per categoria');
+    ['Tutti', 'Ispirazioni', 'Consigli', 'Idee'].forEach(name => {
+      const button = document.createElement('button');
+      button.className = 'category-filter';
+      button.textContent = name;
+      button.setAttribute('aria-pressed', String(category === name));
+      button.addEventListener('click', () => {
+        showSection('blog', name);
+        [...dialogBody.querySelectorAll('.category-filter')].find(item => item.textContent === name).focus();
+      });
+      filters.append(button);
+    });
+    dialogBody.append(filters);
+  }
+  const list = document.createElement('div');
+  list.className = 'collection-grid';
+  Object.entries(blog ? articles : trips).forEach(([id, record], index) => {
+    if (blog && category !== 'Tutti' && categories[id] !== category) return;
+    const card = document.createElement('button');
+    card.className = 'collection-card';
+    const meta = document.createElement('span');
+    meta.className = 'card-meta';
+    meta.textContent = blog ? categories[id] : ['7 GIORNI', '8 GIORNI', '6 GIORNI'][index];
+    if (blog && isNew(publicationDates[id])) {
+      const badge = document.createElement('span');
+      badge.className = 'new-badge';
+      badge.textContent = 'Nuovo';
+      card.append(badge);
+    }
+    const heading = document.createElement('span');
+    heading.className = 'card-title';
+    heading.textContent = record.title;
+    const summary = document.createElement('span');
+    summary.className = 'card-summary';
+    summary.textContent = record.paragraphs[0];
+    const action = document.createElement('span');
+    action.className = 'card-action';
+    action.textContent = blog ? 'Leggi articolo' : 'Scopri l’itinerario';
+    card.append(meta, heading, summary);
+    if (blog) {
+      const date = document.createElement('time');
+      date.dateTime = publicationDates[id];
+      date.textContent = new Intl.DateTimeFormat('it-IT', { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(publicationDates[id] + 'T00:00:00'));
+      card.append(date);
+    }
+    card.append(action);
+    card.addEventListener('click', () => openDetail(record));
+    list.append(card);
+  });
+  dialogBody.append(list);
+  if (!blog) {
+    const partner = document.createElement('section');
+    partner.className = 'partner-links';
+    const heading = document.createElement('h3');
+    heading.textContent = 'Travel Advantage';
+    partner.append(heading, paragraph('Collegamenti alla piattaforma esterna. Gli itinerari dimostrativi sopra non rappresentano offerte di Travel Advantage. Condizioni e disponibilità si verificano sul sito di destinazione.'));
+    if (!travelLinks.length) partner.append(paragraph(linksUnavailable ? 'Collegamenti temporaneamente non disponibili. Riprova con una connessione attiva.' : 'I link personali saranno disponibili quando pubblicati dal titolare.'));
+    travelLinks.forEach(link => {
+      const item = document.createElement('div');
+      item.className = 'partner-item';
+      item.append(paragraph(link.affiliate ? 'Link affiliato: il suo utilizzo può generare una commissione per chi lo pubblica.' : 'Collegamento esterno a Travel Advantage.', 'collection-note'));
+      const anchor = document.createElement('a');
+      anchor.href = link.url;
+      anchor.textContent = link.title + ' · Sito esterno';
+      anchor.className = 'button secondary';
+      anchor.target = '_blank';
+      anchor.rel = link.affiliate ? 'sponsored noopener noreferrer' : 'noopener noreferrer';
+      item.append(anchor);
+      partner.append(item);
+    });
+    dialogBody.append(partner);
+  }
+}
+document.querySelectorAll('[data-section]').forEach(button => button.addEventListener('click', () => showSection(button.dataset.section)));
+navigation.querySelectorAll('a[href="#blog"], a[href="#viaggi"]').forEach(link => link.addEventListener('click', event => {
+  event.preventDefault();
+  showSection(link.getAttribute('href').slice(1));
+}));
+backButton.addEventListener('click', () => { showSection(currentSection); dialogTitle.focus(); });
 dialog.querySelector('.close').addEventListener('click', () => dialog.close());
-dialog.addEventListener('click', (event) => {
+dialog.addEventListener('close', () => document.body.classList.remove('dialog-open'));
+dialog.addEventListener('click', event => {
   if (event.target === dialog) {
     const bounds = dialog.getBoundingClientRect();
     if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) dialog.close();
   }
 });
+fetch('./data/travel-links.json', { cache: 'no-store' }).then(response => {
+  if (!response.ok) throw new Error('Links unavailable');
+  return response.json();
+}).then(data => {
+  if (!Array.isArray(data.links)) throw new Error('Invalid configuration');
+  travelLinks = data.links.filter(link => typeof link.title === 'string' && link.title.trim() && validTravelUrl(link.url) && typeof link.affiliate === 'boolean');
+  if (dialog.open && currentSection === 'viaggi' && backButton.hidden) showSection('viaggi');
+}).catch(() => { linksUnavailable = true; });
 let installPrompt;
 const installButton = document.querySelector('#install');
 window.addEventListener('beforeinstallprompt', (event) => {

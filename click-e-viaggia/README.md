@@ -1,6 +1,22 @@
 # CLICK&VIAGGIA
 
-Sito statico responsive, modificabile in Visual Studio Code, senza dipendenze di compilazione. Home a tutto schermo, titolo con deformazione liquida, diario, itinerari dimostrativi e predisposizione PWA.
+Sito statico responsive, modificabile in Visual Studio Code, senza dipendenze di compilazione. Home a tutto schermo, titolo serif con movimento morbido al passaggio del mouse, sfondo con panoramica lenta e pausa, pannelli vetrificati, finestre per articoli e itinerari, PWA.
+
+## Sito pubblicato e gestione dei link
+
+Sito: https://danipepi.github.io/click-e-viaggia/
+
+Gestione: https://danipepi.github.io/click-e-viaggia/admin.html
+
+La pagina di gestione prepara una bozza dei link. Copiare la configurazione, aprire l’editor GitHub tramite il pulsante dedicato, sostituire il contenuto di `click-e-viaggia/data/travel-links.json` e confermare con Commit changes. La scrittura è autorizzata da GitHub; la pagina pubblica non contiene credenziali e non può pubblicare da sola. Sono consentiti URL HTTPS su traveladvantage.com e sottodomini. Indicare correttamente se il collegamento è affiliato. Le modifiche alla bozza non persistono dopo la chiusura della pagina.
+
+Gli indicatori rossi del blog si mostrano per 14 giorni dalla data in `publicationDates` in app.js. Le date attuali sono dimostrative.
+
+## Informazioni legali ancora da completare
+
+`legal.html` descrive il funzionamento tecnico attuale; non è un’informativa GDPR definitiva. Mancano identità e recapiti del titolare, dati dell’attività e dettagli verificati del rapporto con Travel Advantage. Nessun cookie, analytics o font esterno è introdotto dal codice. Gli IP possono essere registrati dal fornitore dell’hosting.
+
+GitHub Pages non è destinato a ospitare attività principalmente orientate a transazioni commerciali. Prima di pubblicare una versione commerciale con link affiliati o vendita di viaggi valutare un hosting conforme, mantenendo il codice su GitHub. https://docs.github.com/en/site-policy/github-terms/github-terms-for-additional-products-and-features
 
 ## Pubblicazione su GitHub
 
@@ -30,5 +46,5 @@ Per una verifica locale opzionale aprire con un server di VS Code (es. Live Serv
 
 ## Immagine
 
-Foto di xandro Vandewalle: https://unsplash.com/photos/aerial-photography-of-body-of-water-S2wLuk_Ac2I . Fonte Unsplash. Font DM Sans e Manrope da Google Fonts; sono previsti font di sistema in assenza di rete.
+Foto di xandro Vandewalle: https://unsplash.com/photos/aerial-photography-of-body-of-water-S2wLuk_Ac2I . Fonte Unsplash. Font di sistema: nessuna richiesta a Google Fonts.
 
