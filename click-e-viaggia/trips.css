@@ -1,0 +1,207 @@
+/* Two destinations, readable photography and clear actions. */
+.trips-dialog {
+  color-scheme: light;
+  background: #eff2e9;
+  color: #173b38;
+  border-color: #dce3d6;
+  max-width: 1180px;
+  padding: 32px;
+}
+.trips-dialog .dialog-bar {
+  position: absolute;
+  right: 28px;
+  top: 24px;
+  min-height: 0;
+  margin: 0;
+}
+.trips-dialog .close {
+  color: #294a43;
+  border-color: #c8d3c5;
+  background: #ffffff65;
+}
+.trips-dialog a:focus-visible,
+.trips-dialog button:focus-visible { outline-color: #426640; }
+.trips-dialog > .eyebrow {
+  color: #557153;
+  margin: 0 120px 10px 0;
+}
+.trips-dialog h2 {
+  font-size: clamp(32px, 3.8vw, 48px);
+  margin: 0 110px 18px 0;
+}
+.trips-dialog #detail-body > .collection-note {
+  color: #567063;
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.7;
+  max-width: 780px;
+}
+.trips-dialog .trip-collection {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 28px;
+}
+.trip-card {
+  overflow: hidden;
+  border: 1px solid #dae2d4;
+  border-radius: 18px;
+  background: #fffef9;
+  color: #173b38;
+  display: flex;
+  flex-direction: column;
+  transition: transform .3s, box-shadow .3s;
+}
+.trip-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px #173b3812;
+}
+.trip-card:focus-visible {
+  outline: 3px solid #426640;
+  outline-offset: 4px;
+}
+.trip-card-media {
+  position: relative;
+  overflow: hidden;
+  background: #dce8e3;
+}
+.trip-card-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+.trip-country {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  border-radius: 30px;
+  padding: 8px 14px;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: #fffef9eb;
+  color: #26473b;
+}
+.trip-card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+}
+.trip-card-body h3 {
+  font-size: clamp(26px, 2.5vw, 34px);
+  letter-spacing: -.045em;
+  font-weight: 650;
+  line-height: 1.15;
+  margin: 0 0 8px;
+}
+.trip-card-story {
+  font-family: var(--serif);
+  font-size: 21px;
+  line-height: 1.3;
+  margin: 0 0 14px;
+  color: #42644d;
+}
+.trip-card-summary {
+  font-size: 14px;
+  color: #5c7066;
+  line-height: 1.7;
+  margin: 0;
+}
+.trip-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0;
+  margin: 20px 0;
+  list-style: none;
+}
+.trip-tags li {
+  font-size: 11px;
+  padding: 6px 10px;
+  border: 1px solid #dce4d5;
+  border-radius: 20px;
+  color: #54714c;
+}
+.trip-card-action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid #e0e7da;
+  font-weight: 600;
+  font-size: 14px;
+}
+.trip-card-action > span { font-size: 23px; line-height: 1; }
+.trips-dialog #detail-body > .trip-preparation {
+  font-size: 12px;
+  color: #556550;
+  margin: 18px 0 0;
+}
+.trip-guide {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  counter-reset: trip-step;
+  list-style: none;
+  padding: 28px 0 0;
+  margin: 28px 0 0;
+  border-top: 1px solid #d2dccb;
+}
+.trip-guide li { counter-increment: trip-step; }
+.trip-guide li::before {
+  content: '0' counter(trip-step);
+  color: #526c40;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+.trip-guide h3 { font-size: 16px; font-weight: 600; margin: 10px 0 8px; }
+.trip-guide p { font-size: 13px; color: #536551; line-height: 1.6; margin: 0; }
+.trips-dialog .partner-links { border-color: #d2dccb; }
+.trips-dialog .partner-links p { color: #536551; }
+.trips-dialog .partner-links .button { background: #284c43; color: #fffef9; }
+
+.trip-gallery { padding-top: 60px; padding-bottom: 60px; }
+.trip-gallery-heading { max-width: 760px; margin-bottom: 30px; }
+.trip-gallery-heading > p:last-child { color: var(--muted); }
+.trip-photo-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.trip-photo-grid figure { margin: 0; min-width: 0; }
+.trip-photo-grid img { width: 100%; height: auto; display: block; border-radius: 18px; }
+.trip-photo-grid figcaption { font-size: 13px; color: var(--muted); line-height: 1.6; margin-top: 12px; }
+.trip-photo-grid figcaption strong { color: var(--ink); font-weight: 500; display: block; margin-bottom: 4px; }
+.trip-disney .trip-gallery { background: #102a30; }
+.trip-disney .trip-photo-grid { grid-template-columns: 1.25fr 1fr; align-items: center; }
+.trip-disney .trip-photo-grid > div { padding: 24px; }
+.trip-disney .trip-photo-grid > div p { color: var(--muted); }
+.trip-page .trip-hero > img[src$="disney-panorama.jpg"] { object-fit: contain; background: #0c2227; }
+.trip-page .trip-route .route-list { min-width: 0; }
+.trip-photo-grid h3 { font-size: clamp(24px, 2.8vw, 36px); font-family: var(--serif); font-weight: 400; line-height: 1.3; }
+
+@media (max-width: 1023px) {
+  .trip-page .trip-hero { display: flex; flex-direction: column; height: auto; min-height: 0; align-items: stretch; }
+  .trip-page .trip-hero > img { position: static; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
+  .trip-page .trip-hero > img[src$="disney-panorama.jpg"] { object-fit: contain; }
+  .trip-page .trip-hero-shade { display: none; }
+  .trip-page .trip-hero-content { padding: 36px 6vw 44px; }
+  .trip-page .trip-hero h1 { font-size: clamp(38px, 7vw, 64px); }
+}
+
+@media (min-width: 1024px) {
+  .trip-page .trip-hero > img[src$="disney-panorama.jpg"] { height: auto; aspect-ratio: 3 / 2; }
+}
+@media (max-width: 700px) {
+  .trips-dialog { padding: 24px 18px; }
+  .trips-dialog .dialog-bar { right: 18px; top: 18px; }
+  .trips-dialog h2 { margin-right: 0; max-width: 90%; }
+  .trips-dialog > .eyebrow { font-size: 10px; letter-spacing: 1.3px; margin-bottom: 28px; }
+  .trips-dialog .trip-collection { grid-template-columns: 1fr; gap: 24px; margin-top: 24px; }
+  .trip-guide { grid-template-columns: 1fr; gap: 22px; }
+  .trip-card-body { padding: 22px; }
+  .trip-photo-grid, .trip-disney .trip-photo-grid { grid-template-columns: 1fr; }
+  .trip-disney .trip-photo-grid > div { padding: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .trip-card:hover { transform: none; }
+}

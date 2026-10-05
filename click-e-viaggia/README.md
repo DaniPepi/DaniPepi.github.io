@@ -12,11 +12,13 @@ Fonte: https://mixkit.co/free-stock-video/aerial-view-of-waves-and-surfers-1070/
 
 ## Schede viaggio condivisibili
 
-Ogni tessera apre una pagina dedicata: viaggio-portogallo.html, viaggio-islanda.html, viaggio-marocco.html. Il pulsante Condividi usa il menu nativo del dispositivo o copia il link. Le schede non contengono prezzi o campi tariffari, neppure nei metadati. I percorsi restano illustrativi fino alla conferma dei dati reali.
+La sezione Viaggi organizzati presenta solo **Fátima** e **Disneyland Paris**. Ogni tessera è un collegamento che apre la pagina dedicata in una nuova scheda del browser: `viaggio-fatima.html` e `viaggio-disney.html`. Le schede hanno fotografie, descrizioni della destinazione e un contatto chiaro con il team. Il pulsante Condividi usa il menu nativo del dispositivo o copia il link; Scarica la grafica salva la copertina PNG.
 
-Per attivare gli appuntamenti modificare `data/contact.json` impostando `appointmentUrl` con un URL HTTPS di prenotazione o WhatsApp (`https://wa.me/NUMERO_INTERNAZIONALE_SENZA_PIU`), oppure un indirizzo `mailto:`. Un calendario condiviso richiede che l’accesso dei membri sia configurato presso il fornitore del calendario. Il sito non conserva prenotazioni. Con URL vuoto il pulsante spiega come ricontattare il membro che ha condiviso la scheda, senza fingere di inviare richieste.
+Entrambi i viaggi sono **proposte in preparazione**. Le schede non contengono prezzi o campi tariffari, neppure nei metadati. Date, programma, servizi e organizzatore saranno comunicati quando definiti. Le fotografie illustrano i luoghi e non attestano servizi inclusi. Le tre vecchie pagine Portogallo, Islanda e Marocco rimandano al catalogo aggiornato.
 
-Foto: Portogallo https://unsplash.com/photos/cliffs-meet-the-ocean-with-waves-crashing-eDss0p0kX-M ; Islanda https://unsplash.com/s/photos/iceland-waterfall ; Marocco (Sander Traa) https://unsplash.com/photos/a-tall-tower-with-a-clock-on-top-of-it-wuEWArCIP28 . Risorse ospitate localmente, secondo licenza Unsplash.
+`data/contact.json` configura il contatto WhatsApp `https://wa.me/393892962059`, corrispondente a +39 389 296 2059. Il pulsante Richiedi un appuntamento apre WhatsApp con un messaggio precompilato che cita la destinazione; l’invio resta a scelta del visitatore. Il sito non conserva richieste né prenotazioni e non gestisce un calendario.
+
+Le fotografie sono ospitate localmente. Autori, fonti, licenze e modifiche sono elencati in `TRIP-GRAPHICS-SOURCES.md` e nelle schede pubbliche. La copertina Disney fotografica è disponibile in `assets/grafica-disney-v2.svg` e `assets/grafica-disney-v2.png`; la copertina Fátima in `assets/grafica-fatima.svg` e `assets/grafica-fatima.png`.
 
 ## Collegamenti Travel Advantage
 
@@ -53,7 +55,7 @@ Il sito usa percorsi relativi e funziona anche sotto `/nome-repository/`. Un dom
 
 ## Contenuti prima del lancio commerciale
 
-I racconti e gli itinerari sono dimostrativi. Sostituire la presentazione del team e inserire contatti reali, dettagli dei viaggi, organizzatore, condizioni e informazioni richieste per l’attività. Non sono presenti prenotazioni o pagamenti.
+I racconti del blog sono dimostrativi; le proposte Fátima e Disneyland Paris sono in preparazione. Prima del lancio commerciale completare i dettagli dei viaggi, l’identità dell’organizzatore, le condizioni e le informazioni richieste per l’attività. Non sono presenti prenotazioni o pagamenti.
 
 ## Applicazione
 
@@ -63,8 +65,11 @@ Manifest e service worker consentono l’installazione dove supportata e la lett
 
 - `index.html`: struttura e testi principali.
 - `style.css`: grafica e responsive.
-- `app.js`: effetto acqua, menu e contenuti dei dettagli.
-- `sw.js`: aumentare la versione del cache quando si aggiornano risorse per gli utenti offline.
+- `trips.css`: vetrina dei due viaggi, tessere fotografiche e gallerie delle schede.
+- `trip-layout.css`: impaginazione delle schede su desktop e dispositivi mobili.
+- `app.js`: menu, blog e catalogo viaggi; riferimento pubblico aggiornato a `app.js?v=13`.
+- `trip.js`: condivisione delle schede e contatto WhatsApp con destinazione.
+- `sw.js`: cache `click-viaggia-v13` con le nuove fotografie e copertine; le vecchie proposte non sono più precaricate. Aumentare la versione della cache quando si aggiornano risorse per gli utenti offline.
 
 Per una verifica locale opzionale aprire con un server di VS Code (es. Live Server). La destinazione finale è il sito online.
 
@@ -78,5 +83,4 @@ La home usa di nuovo la fotografia originale. La sezione I miei viaggi si apre i
 
 ## Atlante fotografico
 Grafica vettoriale dell'atlante, modalità Bandiere e schede fotografiche per paesi e territori. Testi: data/country-editorial.json. Fotografie e attribuzioni: data/country-photos.json; licenze e fonti descritte in PHOTO-SOURCES.md. La foto viene richiesta quando si apre una scheda e richiede connessione.
-
 

@@ -70,11 +70,16 @@ const articles = {
   weekend: { label: 'DIARIO · ISPIRAZIONE DI ESEMPIO', title: 'Un weekend, un’altra prospettiva.', paragraphs: ['Apri una mappa e cerca un luogo vicino che non hai mai visitato. Un borgo, un sentiero, un museo: due giorni possono bastare per cambiare ritmo.', 'Scegli una sola esperienza centrale e costruisci il resto intorno. Lascia tempo per camminare, fermarti e scoprire qualcosa che non avevi programmato.', 'Questa lettura dimostrativa anticipa lo stile del blog. Gli articoli definitivi saranno accompagnati da luoghi, fotografie e informazioni verificate.'] }
 };
 const trips = {
-  fatima: { title: 'Fátima · Un cammino da condividere', graphic: 'grafica-fatima.svg' },
-  disney: { title: 'Disneyland Paris · La meraviglia si vive insieme', graphic: 'grafica-disney.svg' },
-  portogallo: { label: 'ITINERARIO DIMOSTRATIVO · 7 GIORNI', meta: '7 GIORNI', title: 'Portogallo, verso l’oceano', paragraphs: ['Un’idea di percorso tra città, paesaggi costieri e piccoli borghi.', 'Giorni 1–2: Lisbona e i suoi quartieri. Giorni 3–4: Sintra e la costa atlantica. Giorni 5–7: un soggiorno lungo la costa, con tempo per passeggiate e soste.', 'La durata e le tappe sono una proposta illustrativa. Date, prezzi, servizi inclusi, organizzatore e condizioni saranno definiti prima della vendita. Non è possibile prenotare questo itinerario.'] },
-  islanda: { label: 'ITINERARIO DIMOSTRATIVO · 8 GIORNI', meta: '8 GIORNI', title: 'Islanda, fuori dall’ordinario', paragraphs: ['Un’idea di viaggio dedicata a paesaggi vulcanici, cascate e costa meridionale.', 'Giorni 1–2: Reykjavík e dintorni. Giorni 3–5: un percorso sulla costa sud. Giorni 6–8: esplorazione con tappe e tempi da adattare alla stagione.', 'Questa proposta non è in vendita. Percorso, accessibilità, trasporti e attività richiederanno una verifica in base al periodo. Date, prezzi e condizioni non sono ancora disponibili.'] },
-  marocco: { label: 'ITINERARIO DIMOSTRATIVO · 6 GIORNI', meta: '6 GIORNI', title: 'Marocco, mille sfumature', paragraphs: ['Un’idea di itinerario tra medine, artigianato e paesaggi dell’Atlante.', 'Giorni 1–3: Marrakech, con tempo per quartieri e mercati. Giorni 4–5: un’escursione nei dintorni da definire. Giorno 6: rientro.', 'La proposta è illustrativa e non prenotabile. Organizzatore, accompagnamento, alloggi, inclusioni e condizioni saranno pubblicati quando il viaggio sarà confermato.'] }
+  fatima: {
+    name: 'Fátima', country: 'Portogallo', title: 'Un cammino da condividere.',
+    image: 'fatima.jpg', summary: 'Un luogo che invita a fermarsi e ritrovare ciò che conta. Spiritualità, tempo per sé e il piacere di partire insieme.',
+    tags: ['Raccoglimento', 'Condivisione']
+  },
+  disney: {
+    name: 'Disneyland Paris', country: 'Francia', title: 'La meraviglia, insieme.',
+    image: 'disney-panorama.jpg', summary: 'Lascia spazio alla fantasia con le persone che ami. Un’idea da immaginare in famiglia, in coppia o con gli amici.',
+    tags: ['Fantasia', 'Ricordi insieme']
+  }
 };
 const publicationDates = { slow: '2026-10-04', bag: '2026-09-10', weekend: '2026-10-03' };
 const categories = { slow: 'Ispirazioni', bag: 'Consigli', weekend: 'Idee' };
@@ -116,12 +121,56 @@ function openDetail(record) {
   dialogBody.append(...record.paragraphs.map(text => paragraph(text)));
   dialogTitle.focus();
 }
+function tripCard(id, record) {
+  const card = document.createElement('a');
+  card.className = 'trip-card';
+  card.href = 'viaggio-' + id + '.html';
+  card.target = '_blank';
+  card.rel = 'noopener noreferrer';
+  card.setAttribute('aria-label', record.name + '. Apri la scheda del viaggio in una nuova scheda.');
+  const media = document.createElement('div');
+  media.className = 'trip-card-media';
+  const image = document.createElement('img');
+  image.src = 'assets/' + record.image;
+  image.alt = '';
+  image.width = 1600;
+  image.height = id === 'fatima' ? 900 : 1067;
+  image.decoding = 'async';
+  const country = document.createElement('span');
+  country.className = 'trip-country';
+  country.textContent = record.country;
+  media.append(image, country);
+  const body = document.createElement('div');
+  body.className = 'trip-card-body';
+  const heading = document.createElement('h3');
+  heading.textContent = record.name;
+  const title = paragraph(record.title, 'trip-card-story');
+  const summary = paragraph(record.summary, 'trip-card-summary');
+  const tags = document.createElement('ul');
+  tags.className = 'trip-tags';
+  record.tags.forEach(text => {
+    const item = document.createElement('li');
+    item.textContent = text;
+    tags.append(item);
+  });
+  const action = document.createElement('span');
+  action.className = 'trip-card-action';
+  action.textContent = 'Apri la scheda';
+  const arrow = document.createElement('span');
+  arrow.setAttribute('aria-hidden', 'true');
+  arrow.textContent = '↗';
+  action.append(arrow);
+  body.append(heading, title, summary, tags, action);
+  card.append(media, body);
+  return card;
+}
 function showSection(section, category = 'Tutti') {
   currentSection = section;
   const blog = section === 'blog';
-  setDialog(blog ? 'IL DIARIO' : 'PARTIRE INSIEME', blog ? 'Scegli la tua prossima lettura.' : 'Esplora gli itinerari.');
+  setDialog(blog ? 'IL DIARIO' : 'VIAGGI CON CLICK&VIAGGIA', blog ? 'Scegli la tua prossima lettura.' : 'Da quale sogno partiamo?');
+  dialog.classList.toggle('trips-dialog', !blog);
   backButton.hidden = true;
-  dialogBody.append(paragraph(blog ? 'Articoli dimostrativi. Il cerchietto rosso indica le novità degli ultimi 14 giorni; le date mostrate sono di esempio.' : 'Fátima e Disneyland Paris: due nuove idee per partire insieme. Apri una scheda, lasciati ispirare e condividila. Le proposte sono in preparazione; date e programma saranno definiti con il team.', 'collection-note'));
+  dialogBody.append(paragraph(blog ? 'Articoli dimostrativi. Il cerchietto rosso indica le novità degli ultimi 14 giorni; le date mostrate sono di esempio.' : 'Due mete, due modi di emozionarsi. Scegli il viaggio che ti ispira: la sua pagina si apre in una nuova scheda, pronta da esplorare e condividere.', 'collection-note'));
   if (blog) {
     const filters = document.createElement('div');
     filters.className = 'category-filters';
@@ -142,37 +191,17 @@ function showSection(section, category = 'Tutti') {
   }
   const list = document.createElement('div');
   list.className = blog ? 'collection-grid' : 'collection-grid trip-collection';
-  Object.entries(blog ? articles : trips).forEach(([id, record], index) => {
-    if (blog && category !== 'Tutti' && categories[id] !== category) return;
-    const card = document.createElement(blog ? 'button' : 'a');
-    card.className = blog ? 'collection-card' : 'collection-card travel-poster';
+  Object.entries(blog ? articles : trips).forEach(([id, record]) => {
     if (!blog) {
-      card.href = 'viaggio-' + id + '.html';
-      const image = document.createElement('img');
-      if (record.graphic) {
-        card.classList.add('artwork-card');
-        card.setAttribute('aria-label', record.title + '. Proposta in preparazione. Scopri il viaggio.');
-        image.src = 'assets/' + record.graphic;
-        image.alt = '';
-        image.width = 900;
-        image.height = 1200;
-        image.className = 'poster-artwork';
-        card.append(image);
-        list.append(card);
-        return;
-      }
-      image.src = 'assets/' + id + '.jpg';
-      image.alt = '';
-      image.loading = 'lazy';
-      image.className = 'poster-image';
-      const tag = document.createElement('span');
-      tag.className = 'poster-tag';
-      tag.textContent = '0' + (index + 1) + ' / CLICK&VIAGGIA';
-      card.append(image, tag);
+      list.append(tripCard(id, record));
+      return;
     }
+    if (blog && category !== 'Tutti' && categories[id] !== category) return;
+    const card = document.createElement('button');
+    card.className = 'collection-card';
     const meta = document.createElement('span');
     meta.className = 'card-meta';
-    meta.textContent = blog ? categories[id] : record.meta;
+    meta.textContent = categories[id];
     if (blog && isNew(publicationDates[id])) {
       const badge = document.createElement('span');
       badge.className = 'new-badge';
@@ -187,7 +216,7 @@ function showSection(section, category = 'Tutti') {
     summary.textContent = record.paragraphs[0];
     const action = document.createElement('span');
     action.className = 'card-action';
-    action.textContent = blog ? 'Leggi articolo' : 'Scopri l’itinerario';
+    action.textContent = 'Leggi articolo';
     card.append(meta, heading, summary);
     if (blog) {
       const date = document.createElement('time');
@@ -201,6 +230,23 @@ function showSection(section, category = 'Tutti') {
   });
   dialogBody.append(list);
   if (!blog) {
+    dialogBody.append(paragraph('Proposte in preparazione. Date, programma e servizi saranno comunicati quando definiti.', 'trip-preparation'));
+    const guide = document.createElement('ol');
+    guide.className = 'trip-guide';
+    [
+      ['Scegli la tua meta', 'Fátima o Disneyland Paris: segui ciò che ti ispira.'],
+      ['Esplora la scheda', 'Foto e descrizione ti aiutano a conoscere il viaggio.'],
+      ['Parliamone su WhatsApp', 'Richiedi un appuntamento al team dalla pagina del viaggio.']
+    ].forEach(([title, text]) => {
+      const item = document.createElement('li');
+      const heading = document.createElement('h3');
+      heading.textContent = title;
+      item.append(heading, paragraph(text));
+      guide.append(item);
+    });
+    dialogBody.append(guide);
+  }
+  if (!blog && travelLinks.length) {
     const partner = document.createElement('section');
     partner.className = 'partner-links';
     const heading = document.createElement('h3');
@@ -267,4 +313,3 @@ if ('serviceWorker' in navigator && window.isSecureContext) {
     navigator.serviceWorker.register('./sw.js').catch((error) => console.warn('Modalità offline non disponibile:', error.message));
   });
 }
-
