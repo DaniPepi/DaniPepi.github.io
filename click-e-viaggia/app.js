@@ -70,9 +70,11 @@ const articles = {
   weekend: { label: 'DIARIO · ISPIRAZIONE DI ESEMPIO', title: 'Un weekend, un’altra prospettiva.', paragraphs: ['Apri una mappa e cerca un luogo vicino che non hai mai visitato. Un borgo, un sentiero, un museo: due giorni possono bastare per cambiare ritmo.', 'Scegli una sola esperienza centrale e costruisci il resto intorno. Lascia tempo per camminare, fermarti e scoprire qualcosa che non avevi programmato.', 'Questa lettura dimostrativa anticipa lo stile del blog. Gli articoli definitivi saranno accompagnati da luoghi, fotografie e informazioni verificate.'] }
 };
 const trips = {
-  portogallo: { label: 'ITINERARIO DIMOSTRATIVO · 7 GIORNI', title: 'Portogallo, verso l’oceano', paragraphs: ['Un’idea di percorso tra città, paesaggi costieri e piccoli borghi.', 'Giorni 1–2: Lisbona e i suoi quartieri. Giorni 3–4: Sintra e la costa atlantica. Giorni 5–7: un soggiorno lungo la costa, con tempo per passeggiate e soste.', 'La durata e le tappe sono una proposta illustrativa. Date, prezzi, servizi inclusi, organizzatore e condizioni saranno definiti prima della vendita. Non è possibile prenotare questo itinerario.'] },
-  islanda: { label: 'ITINERARIO DIMOSTRATIVO · 8 GIORNI', title: 'Islanda, fuori dall’ordinario', paragraphs: ['Un’idea di viaggio dedicata a paesaggi vulcanici, cascate e costa meridionale.', 'Giorni 1–2: Reykjavík e dintorni. Giorni 3–5: un percorso sulla costa sud. Giorni 6–8: esplorazione con tappe e tempi da adattare alla stagione.', 'Questa proposta non è in vendita. Percorso, accessibilità, trasporti e attività richiederanno una verifica in base al periodo. Date, prezzi e condizioni non sono ancora disponibili.'] },
-  marocco: { label: 'ITINERARIO DIMOSTRATIVO · 6 GIORNI', title: 'Marocco, mille sfumature', paragraphs: ['Un’idea di itinerario tra medine, artigianato e paesaggi dell’Atlante.', 'Giorni 1–3: Marrakech, con tempo per quartieri e mercati. Giorni 4–5: un’escursione nei dintorni da definire. Giorno 6: rientro.', 'La proposta è illustrativa e non prenotabile. Organizzatore, accompagnamento, alloggi, inclusioni e condizioni saranno pubblicati quando il viaggio sarà confermato.'] }
+  fatima: { title: 'Fátima · Un cammino da condividere', graphic: 'grafica-fatima.svg' },
+  disney: { title: 'Disneyland Paris · La meraviglia si vive insieme', graphic: 'grafica-disney.svg' },
+  portogallo: { label: 'ITINERARIO DIMOSTRATIVO · 7 GIORNI', meta: '7 GIORNI', title: 'Portogallo, verso l’oceano', paragraphs: ['Un’idea di percorso tra città, paesaggi costieri e piccoli borghi.', 'Giorni 1–2: Lisbona e i suoi quartieri. Giorni 3–4: Sintra e la costa atlantica. Giorni 5–7: un soggiorno lungo la costa, con tempo per passeggiate e soste.', 'La durata e le tappe sono una proposta illustrativa. Date, prezzi, servizi inclusi, organizzatore e condizioni saranno definiti prima della vendita. Non è possibile prenotare questo itinerario.'] },
+  islanda: { label: 'ITINERARIO DIMOSTRATIVO · 8 GIORNI', meta: '8 GIORNI', title: 'Islanda, fuori dall’ordinario', paragraphs: ['Un’idea di viaggio dedicata a paesaggi vulcanici, cascate e costa meridionale.', 'Giorni 1–2: Reykjavík e dintorni. Giorni 3–5: un percorso sulla costa sud. Giorni 6–8: esplorazione con tappe e tempi da adattare alla stagione.', 'Questa proposta non è in vendita. Percorso, accessibilità, trasporti e attività richiederanno una verifica in base al periodo. Date, prezzi e condizioni non sono ancora disponibili.'] },
+  marocco: { label: 'ITINERARIO DIMOSTRATIVO · 6 GIORNI', meta: '6 GIORNI', title: 'Marocco, mille sfumature', paragraphs: ['Un’idea di itinerario tra medine, artigianato e paesaggi dell’Atlante.', 'Giorni 1–3: Marrakech, con tempo per quartieri e mercati. Giorni 4–5: un’escursione nei dintorni da definire. Giorno 6: rientro.', 'La proposta è illustrativa e non prenotabile. Organizzatore, accompagnamento, alloggi, inclusioni e condizioni saranno pubblicati quando il viaggio sarà confermato.'] }
 };
 const publicationDates = { slow: '2026-10-04', bag: '2026-09-10', weekend: '2026-10-03' };
 const categories = { slow: 'Ispirazioni', bag: 'Consigli', weekend: 'Idee' };
@@ -119,7 +121,7 @@ function showSection(section, category = 'Tutti') {
   const blog = section === 'blog';
   setDialog(blog ? 'IL DIARIO' : 'PARTIRE INSIEME', blog ? 'Scegli la tua prossima lettura.' : 'Esplora gli itinerari.');
   backButton.hidden = true;
-  dialogBody.append(paragraph(blog ? 'Articoli dimostrativi. Il cerchietto rosso indica le novità degli ultimi 14 giorni; le date mostrate sono di esempio.' : 'Scegli una destinazione, scopri il percorso e condividi la sua scheda. Gli itinerari sono proposte dimostrative da definire con il team.', 'collection-note'));
+  dialogBody.append(paragraph(blog ? 'Articoli dimostrativi. Il cerchietto rosso indica le novità degli ultimi 14 giorni; le date mostrate sono di esempio.' : 'Fátima e Disneyland Paris: due nuove idee per partire insieme. Apri una scheda, lasciati ispirare e condividila. Le proposte sono in preparazione; date e programma saranno definiti con il team.', 'collection-note'));
   if (blog) {
     const filters = document.createElement('div');
     filters.className = 'category-filters';
@@ -139,7 +141,7 @@ function showSection(section, category = 'Tutti') {
     dialogBody.append(filters);
   }
   const list = document.createElement('div');
-  list.className = 'collection-grid';
+  list.className = blog ? 'collection-grid' : 'collection-grid trip-collection';
   Object.entries(blog ? articles : trips).forEach(([id, record], index) => {
     if (blog && category !== 'Tutti' && categories[id] !== category) return;
     const card = document.createElement(blog ? 'button' : 'a');
@@ -147,6 +149,18 @@ function showSection(section, category = 'Tutti') {
     if (!blog) {
       card.href = 'viaggio-' + id + '.html';
       const image = document.createElement('img');
+      if (record.graphic) {
+        card.classList.add('artwork-card');
+        card.setAttribute('aria-label', record.title + '. Proposta in preparazione. Scopri il viaggio.');
+        image.src = 'assets/' + record.graphic;
+        image.alt = '';
+        image.width = 900;
+        image.height = 1200;
+        image.className = 'poster-artwork';
+        card.append(image);
+        list.append(card);
+        return;
+      }
       image.src = 'assets/' + id + '.jpg';
       image.alt = '';
       image.loading = 'lazy';
@@ -158,7 +172,7 @@ function showSection(section, category = 'Tutti') {
     }
     const meta = document.createElement('span');
     meta.className = 'card-meta';
-    meta.textContent = blog ? categories[id] : ['7 GIORNI', '8 GIORNI', '6 GIORNI'][index];
+    meta.textContent = blog ? categories[id] : record.meta;
     if (blog && isNew(publicationDates[id])) {
       const badge = document.createElement('span');
       badge.className = 'new-badge';
@@ -191,7 +205,7 @@ function showSection(section, category = 'Tutti') {
     partner.className = 'partner-links';
     const heading = document.createElement('h3');
     heading.textContent = 'Travel Advantage';
-    partner.append(heading, paragraph('Collegamenti alla piattaforma esterna. Gli itinerari dimostrativi sopra non rappresentano offerte di Travel Advantage. Condizioni e disponibilità si verificano sul sito di destinazione.'));
+    partner.append(heading, paragraph('Collegamenti alla piattaforma esterna. Le proposte sopra non rappresentano offerte di Travel Advantage. Condizioni e disponibilità si verificano sul sito di destinazione.'));
     if (!travelLinks.length) partner.append(paragraph(linksUnavailable ? 'Collegamenti temporaneamente non disponibili. Riprova con una connessione attiva.' : 'I link personali saranno disponibili quando pubblicati dal titolare.'));
     travelLinks.forEach(link => {
       const item = document.createElement('div');

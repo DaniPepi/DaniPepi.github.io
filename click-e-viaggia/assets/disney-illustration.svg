@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 140 900 860" width="1600" height="1529" role="img" aria-labelledby="title desc"><title id="title">Un mondo di fantasia</title><desc id="desc">Illustrazione originale di un castello immaginario al crepuscolo. Non raffigura il parco o le sue attrazioni.</desc><defs>
+<linearGradient id="sky" x2=".7" y2="1"><stop stop-color="#171b50"/><stop offset=".55" stop-color="#484782"/><stop offset="1" stop-color="#dd969b"/></linearGradient>
+<linearGradient id="lake" x2="0" y2="1"><stop stop-color="#7968a1"/><stop offset="1" stop-color="#171e4d"/></linearGradient>
+<linearGradient id="stone" x2="1" y2=".2"><stop stop-color="#f0dabc"/><stop offset=".6" stop-color="#ceadd3"/><stop offset="1" stop-color="#9b86ba"/></linearGradient>
+<linearGradient id="roof" x2="1" y2="1"><stop stop-color="#35315d"/><stop offset=".5" stop-color="#6d4c99"/><stop offset="1" stop-color="#352b59"/></linearGradient>
+<radialGradient id="haze"><stop stop-color="#f9c9ad" stop-opacity=".55"/><stop offset="1" stop-color="#f9c9ad" stop-opacity="0"/></radialGradient>
+<symbol id="star" viewBox="0 0 20 20"><path d="M10 0 12 8 20 10 12 12 10 20 8 12 0 10 8 8Z" fill="#ffe6b1"/></symbol>
+<symbol id="window" viewBox="0 0 18 32"><path d="M0 32V9a9 9 0 0 1 18 0v23Z" fill="#ffe7b7"/><path d="M9 0V32M0 18H18" stroke="#886a9d" stroke-width="2"/></symbol>
+</defs>
+<rect width="900" height="1000" fill="url(#sky)"/>
+<ellipse cx="450" cy="550" rx="530" ry="400" fill="url(#haze)"/>
+<circle cx="721" cy="267" r="52" fill="#ffd9b6"/><circle cx="741" cy="250" r="49" fill="#47447d"/>
+<g opacity=".8"><use href="#star" x="113" y="218" width="13" height="13"/><use href="#star" x="251" y="326" width="20" height="20"/><use href="#star" x="635" y="149" width="11" height="11"/><use href="#star" x="812" y="456" width="17" height="17"/><use href="#star" x="85" y="496" width="20" height="20"/><use href="#star" x="540" y="276" width="14" height="14"/><use href="#star" x="345" y="178" width="10" height="10"/></g>
+<g fill="none" stroke="#dac3de" stroke-opacity=".3" stroke-width="2"><path d="M-40 409Q110 340 310 390T910 355"/><path d="M-40 451Q190 396 310 441T910 424"/></g>
+<path d="M0 690Q140 526 310 626T660 589Q776 548 900 625V840H0Z" fill="#635f89"/>
+<path d="M0 754Q220 632 407 692T900 688V900H0Z" fill="#343b67"/>
+<path d="M0 805Q200 788 399 829T900 806V1000H0Z" fill="url(#lake)"/>
+<g opacity=".23" fill="none" stroke="#ffe0c3" stroke-width="2"><path d="M313 873H604M249 895H558M359 916H672M190 942H530M411 964H711"/></g>
+<path d="M141 821Q450 716 760 821L758 850H138Z" fill="#1e3458"/>
+<g fill="#253f61"><path d="M179 809V697l-22 46h12l-33 65Z"/><path d="M728 815V678l-25 57h14l-38 80Z"/><path d="M228 790V655l-24 64h13l-36 71Z"/><path d="M670 790V663l-23 54h12l-31 73Z"/></g>
+<g stroke="#8e77ac" stroke-width="2">
+<path d="M292 567h314v233H292Z" fill="url(#stone)"/>
+<path d="M310 568 449 460 591 568Z" fill="url(#roof)"/>
+<path d="M407 447h84v351h-84Z" fill="url(#stone)"/><path d="M395 448 449 332 503 448Z" fill="url(#roof)"/>
+<path d="M264 617h73v190h-73Z" fill="url(#stone)"/><path d="M251 620 301 522 349 620Z" fill="url(#roof)"/>
+<path d="M563 617h73v190h-73Z" fill="url(#stone)"/><path d="M552 620 601 511 650 620Z" fill="url(#roof)"/>
+<path d="M346 693h69v110h-69Z" fill="url(#stone)"/><path d="M335 695 381 630 426 695Z" fill="url(#roof)"/>
+<path d="M485 693h69v110h-69Z" fill="url(#stone)"/><path d="M474 695 520 630 565 695Z" fill="url(#roof)"/>
+<path d="M416 804v-51a34 34 0 0 1 68 0v51Z" fill="#51416e"/>
+</g>
+<g stroke="#ffdfb0" stroke-width="2"><path d="M449 334V306m0 0 34 11-34 10M301 524V500m300 11V486"/></g>
+<g><use href="#window" x="438" y="477" width="23" height="39"/><use href="#window" x="438" y="554" width="23" height="39"/><use href="#window" x="291" y="646" width="20" height="35"/><use href="#window" x="591" y="646" width="20" height="35"/><use href="#window" x="371" y="727" width="19" height="32"/><use href="#window" x="510" y="727" width="19" height="32"/><use href="#window" x="351" y="600" width="21" height="37"/><use href="#window" x="528" y="600" width="21" height="37"/></g>
+<path d="M426 804Q375 844 468 876T619 959L677 1000H506Q470 954 462 947T400 890Q333 856 423 804Z" fill="#e4bfc4"/>
+<path d="M421 804Q368 849 458 883" fill="none" stroke="#f9dbcc" stroke-width="4"/>
+<path d="M0 933Q80 917 193 948T335 1000H0ZM900 927Q805 916 731 952T660 1000H900Z" fill="#182c4e"/>
+<g fill="#193553"><path d="M50 958V771l-43 96h27L0 958Z"/><path d="M143 993V830l-41 91h25l-39 72Z"/><path d="M853 966V785l-43 100h28l-41 81Z"/><path d="M780 1000V868l-36 83h24l-32 49Z"/></g></svg>
