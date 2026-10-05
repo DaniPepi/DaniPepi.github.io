@@ -1,0 +1,99 @@
+/* Travel pages adapt to the available browser width. */
+.trip-page {
+  --trip-gutter: max(4vw, calc((100% - 1440px) / 2));
+}
+
+.trip-hero-cta {
+  margin-top: 24px;
+}
+
+@media (min-width: 1024px) {
+  .trip-page .team-header,
+  .trip-page .trip-tools,
+  .trip-page .trip-image-credit {
+    padding-inline: var(--trip-gutter);
+  }
+
+  .trip-page .trip-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: clamp(32px, 4vw, 72px);
+    align-items: center;
+    height: auto;
+    min-height: 0;
+    padding: 40px var(--trip-gutter) 48px;
+    background: #081c20;
+  }
+
+  .trip-page .trip-hero > img {
+    position: static;
+    grid-column: 2;
+    grid-row: 1;
+    width: 100%;
+    height: clamp(500px, 64svh, 640px);
+    object-fit: cover;
+    border-radius: 22px;
+  }
+
+  .trip-page .trip-hero-shade {
+    display: none;
+  }
+
+  .trip-page .trip-hero-content {
+    grid-column: 1;
+    grid-row: 1;
+    width: 100%;
+    max-width: none;
+    padding: 20px 0;
+  }
+
+  .trip-page .trip-hero h1 {
+    max-width: 15ch;
+    margin: 20px 0 24px;
+    font-size: clamp(46px, 4.3vw, 78px);
+    line-height: 1.08;
+    text-wrap: balance;
+    overflow-wrap: break-word;
+  }
+
+  .trip-page .trip-hero-content > p:not(.eyebrow) {
+    max-width: 48ch;
+    font-size: 17px;
+    line-height: 1.75;
+  }
+
+  .trip-page .trip-facts {
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .trip-page .trip-facts > span + span {
+    padding-left: 12px;
+  }
+
+  .trip-page .trip-editorial,
+  .trip-page .trip-route {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    gap: clamp(48px, 7vw, 100px);
+    padding-inline: var(--trip-gutter);
+  }
+
+  .trip-page .trip-editorial h2,
+  .trip-page .trip-route h2 {
+    max-width: 17ch;
+    font-size: clamp(36px, 3.5vw, 58px);
+    text-wrap: balance;
+  }
+
+  .trip-page .trip-editorial > div,
+  .trip-page .trip-route > div {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .trip-hero-cta {
+    margin-top: 18px;
+  }
+}
+
