@@ -26,7 +26,7 @@ Gestione: https://danipepi.github.io/click-e-viaggia/admin.html
 
 La pagina di gestione prepara una bozza dei link. Copiare la configurazione, aprire l’editor GitHub tramite il pulsante dedicato, sostituire il contenuto di `click-e-viaggia/data/travel-links.json` e confermare con Commit changes. La scrittura è autorizzata da GitHub; la pagina pubblica non contiene credenziali e non può pubblicare da sola. Sono consentiti URL HTTPS su traveladvantage.com e sottodomini. Indicare correttamente se il collegamento è affiliato. Le modifiche alla bozza non persistono dopo la chiusura della pagina.
 
-Gli indicatori rossi del blog si mostrano per 14 giorni dalla data in `publicationDates` in app.js. Le tre guide originali sono state pubblicate il 5 ottobre 2026; le date non si aggiornano automaticamente.
+Gli indicatori rossi del blog si mostrano per 14 giorni dalla data in `publicationDates` in app.js. I tre racconti originali sono stati pubblicati il 6 ottobre 2026; le date non si aggiornano automaticamente. Il blog comprende soltanto Fátima/Nazaré, Nosy Be e Marsa Alam.
 
 ## Informazioni legali ancora da completare
 
@@ -53,7 +53,7 @@ Il sito usa percorsi relativi e funziona anche sotto `/nome-repository/`. Un dom
 
 ## Contenuti prima del lancio commerciale
 
-Il blog contiene tre guide originali di viaggio; le proposte Fátima e Disneyland Paris sono in preparazione. Prima del lancio commerciale completare i dettagli dei viaggi, l’identità dell’organizzatore, le condizioni e le informazioni richieste per l’attività. Non sono presenti prenotazioni o pagamenti.
+Il blog contiene tre racconti originali sulle esperienze indicate dal team; le proposte Fátima e Disneyland Paris sono in preparazione. Prima del lancio commerciale completare i dettagli dei viaggi, l’identità dell’organizzatore, le condizioni e le informazioni richieste per l’attività. Non sono presenti prenotazioni o pagamenti.
 
 ## Applicazione
 
@@ -67,9 +67,9 @@ Manifest e service worker consentono l’installazione dove supportata e la lett
 - `brand.css`: logo su una riga e navigazione adattiva.
 - `trips.css`: vetrina dei due viaggi, tessere fotografiche e gallerie delle schede.
 - `trip-layout.css`: impaginazione delle schede su desktop e dispositivi mobili.
-- `app.js`: menu, blog e catalogo viaggi; riferimento pubblico aggiornato a `app.js?v=15`.
+- `app.js`: menu, blog e catalogo viaggi; riferimento pubblico aggiornato a `app.js?v=16`.
 - `trip.js`: condivisione delle schede e contatto WhatsApp con destinazione.
-- `sw.js`: cache `click-viaggia-v15` con fotografie, copertine e nuovo marchio; le vecchie proposte non sono più precaricate. Aumentare la versione della cache quando si aggiornano risorse per gli utenti offline.
+- `sw.js`: cache `click-viaggia-v16` con fotografie, copertine e nuovo marchio; le vecchie proposte non sono più precaricate. Aumentare la versione della cache quando si aggiornano risorse per gli utenti offline.
 
 ## Logo del sito e dell’app
 
@@ -92,3 +92,9 @@ La home usa di nuovo la fotografia originale. La sezione I miei viaggi si apre i
 ## Atlante fotografico
 Grafica vettoriale dell'atlante, modalità Bandiere e schede fotografiche per paesi e territori. Testi: data/country-editorial.json. Fotografie e attribuzioni: data/country-photos.json; licenze e fonti descritte in PHOTO-SOURCES.md. La foto viene richiesta quando si apre una scheda e richiede connessione.
 
+
+## Articoli fotografici
+
+Le pagine `blog-fatima-nazare.html`, `blog-nosy-be.html` e `blog-marsa-alam.html` contengono i racconti completi e possono essere condivise con il proprio URL. La selezione della home ha copertine fotografiche e filtri per paese. Le vecchie tre guide generiche non sono più pubblicate.
+
+I testi editoriali sono conservati anche in `data/blog-articles.json`; le fotografie e le relative attribuzioni in `data/blog-photos.json`. Le pagine HTML sono statiche: modificare testo e metadati in Visual Studio Code, aggiornando anche le anteprime in `app.js` e `index.html` quando cambia un titolo. `blog.css` gestisce la lettura e la selezione, `article.js` condivisione e copia del link. Le fotografie sono illustrative, con crediti visibili, e non sono immagini dei viaggi personali. Fonti: `BLOG-EDITORIAL-SOURCES.md` e `BLOG-PHOTO-SOURCES.md`. I nuovi articoli e le fotografie sono inclusi nella cache offline v16.
