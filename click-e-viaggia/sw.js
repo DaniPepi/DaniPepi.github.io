@@ -1,5 +1,5 @@
 'use strict';
-const CACHE = 'click-viaggia-v13';
+const CACHE = 'click-viaggia-v14';
 const ASSETS = [
   './trip-layout.css?v=1', './trips.css?v=1', './viaggio-fatima.html', './viaggio-disney.html',
   './assets/grafica-fatima.svg', './assets/grafica-fatima.png',
@@ -9,7 +9,11 @@ const ASSETS = [
   './i-miei-viaggi.html', './map.js?v=10', './map-auth.js', './map.css?v=10', './data/map.json', './assets/flags.svg',
   './', './index.html', './style.css', './style.css?v=11', './app.js?v=13', './legal.html', './chi-siamo.html',
   './team.js', './data/team.json', './data/contact.json', './trip.js', './data/travel-links.json',
-  './icon.svg', './manifest.webmanifest', './assets/ocean.jpg', './assets/icon-192.png', './assets/icon-512.png'
+  './icon.svg', './manifest.webmanifest', './manifest.webmanifest?v=14', './assets/ocean.jpg',
+  './brand.css?v=1', './assets/brand-logo-v2.svg', './assets/brand-mark-v2.svg',
+  './assets/app-icon-v2.svg', './assets/app-icon-192-v2.png', './assets/app-icon-512-v2.png',
+  './assets/app-icon-maskable-512-v2.png', './assets/apple-touch-icon-v2.png', './assets/favicon-32-v2.png',
+  './assets/brand-social-v2.png', './assets/icon-192.png', './assets/icon-512.png'
 ];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(ASSETS)).then(() => self.skipWaiting()));

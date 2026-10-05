@@ -69,7 +69,15 @@ Manifest e service worker consentono l’installazione dove supportata e la lett
 - `trip-layout.css`: impaginazione delle schede su desktop e dispositivi mobili.
 - `app.js`: menu, blog e catalogo viaggi; riferimento pubblico aggiornato a `app.js?v=13`.
 - `trip.js`: condivisione delle schede e contatto WhatsApp con destinazione.
-- `sw.js`: cache `click-viaggia-v13` con le nuove fotografie e copertine; le vecchie proposte non sono più precaricate. Aumentare la versione della cache quando si aggiornano risorse per gli utenti offline.
+- `sw.js`: cache `click-viaggia-v14` con fotografie, copertine e nuovo marchio; le vecchie proposte non sono più precaricate. Aumentare la versione della cache quando si aggiornano risorse per gli utenti offline.
+
+## Logo del sito e dell’app
+
+Il marchio vettoriale originale unisce una C e una freccia ispirata all’aeroplano e al cursore. `assets/brand-logo-v2.svg` contiene simbolo e scritta, `assets/brand-mark-v2.svg` il solo simbolo. `brand.css` regola la misura del logo e mantiene la navigazione leggibile su schermi piccoli.
+
+`manifest.webmanifest` usa le icone PNG 192 e 512, più una versione maskable con sfondo pieno; Apple Touch Icon 180 e favicon 32 sono collegate nelle pagine. Tutti gli asset sono locali e modificabili. Le icone precedenti mantengono URL compatibili e mostrano lo stesso marchio. Le app già installate possono richiedere una riapertura o una nuova installazione per mostrare l’icona aggiornata, secondo il browser e il sistema operativo.
+
+Il sito è pubblico all’indirizzo sopra, senza login per le pagine di presentazione e le schede viaggio. `sitemap.xml` elenca le pagine principali; i canonical indicano gli URL pubblici. La presenza nei risultati di ricerca dipende dall’indicizzazione del motore di ricerca.
 
 Per una verifica locale opzionale aprire con un server di VS Code (es. Live Server). La destinazione finale è il sito online.
 
