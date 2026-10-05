@@ -1,53 +1,10 @@
-/* Click&Viaggia: an orbit, a click and a direction to explore. */
-.brand-logo {
-  display: inline-flex;
-  align-items: center;
-  flex: 0 0 auto;
-  line-height: 0;
-}
-.brand-logo .brand-image {
-  display: block;
-  width: 176px;
-  height: auto;
-}
-.site-home > header { gap: 20px; }
+/* One-line wordmark and compass shared by the site and installed app. */
+.brand-logo{display:inline-flex;align-items:center;flex:0 0 auto;line-height:0}
+.brand-logo .brand-image{display:block;width:232px;height:auto}
+.site-home>header{gap:20px}
+@media(min-width:1001px) and (max-width:1280px){.site-home>header .header-note{display:none}.site-home #navigation{gap:22px}}
+@media(max-width:1000px){.site-home>header .header-note{display:none}.site-home .menu-toggle{display:block;background:#081c2060;border:1px solid var(--line);border-radius:30px;color:var(--ink);padding:10px 18px}.site-home #navigation{display:none;position:absolute;top:86px;left:16px;right:16px;background:#081c20f5;padding:20px;border:1px solid var(--line);border-radius:12px;flex-direction:column;gap:10px}.site-home #navigation.open{display:flex}}
+@media(max-width:640px){.brand-logo .brand-image{width:210px}.team-header{padding:18px;gap:14px;flex-wrap:wrap}.team-header .brand-image{width:206px}.team-header .team-nav{margin-left:auto;gap:14px;font-size:13px}}
+@media(max-width:480px){.team-header .team-nav{flex-basis:100%;justify-content:flex-end}.site-home>header{padding:18px 16px;gap:12px}.site-home #navigation{top:82px}}
+@media(max-width:360px){.site-home .brand-image{width:182px}}
 
-@media (min-width: 1001px) and (max-width: 1200px) {
-  .site-home > header .header-note { display: none; }
-  .site-home #navigation { gap: 22px; }
-}
-@media (max-width: 1000px) {
-  .site-home > header .header-note { display: none; }
-  .site-home .menu-toggle {
-    display: block;
-    background: #081c2060;
-    border: 1px solid var(--line);
-    border-radius: 30px;
-    color: var(--ink);
-    padding: 10px 18px;
-  }
-  .site-home #navigation {
-    display: none;
-    position: absolute;
-    top: 96px;
-    left: 16px;
-    right: 16px;
-    background: #081c20f5;
-    padding: 20px;
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .site-home #navigation.open { display: flex; }
-}
-@media (max-width: 640px) {
-  .brand-logo .brand-image { width: 142px; }
-  .site-home #navigation { top: 88px; }
-}
-@media (max-width: 480px) {
-  .team-header { padding: 16px; gap: 12px; flex-wrap: wrap; }
-  .team-header .brand-logo .brand-image { width: 112px; }
-  .team-header .team-nav { margin-left: auto; gap: 12px; font-size: 12px; }
-  .team-header .map-login-link { padding: 10px 12px; }
-}

@@ -10,6 +10,8 @@ fetch('./data/team.json', { cache: 'no-store' }).then(response => {
   if (!Array.isArray(data.members)) throw new Error('Configurazione non valida');
   const members = data.members.filter(validMember);
   if (!members.length) return;
+  document.querySelector('#persone').hidden = false;
+  document.querySelector('#team-members-link').hidden = false;
   memberGrid.replaceChildren(...members.map(member => {
     const card = document.createElement('article');
     card.className = 'member-card';
@@ -31,6 +33,6 @@ fetch('./data/team.json', { cache: 'no-store' }).then(response => {
     return card;
   }));
 }).catch(() => {
-  memberGrid.textContent = 'Le presentazioni del team non sono disponibili in questo momento. Riprova più tardi.';
+  document.querySelector('#persone').hidden = true;
+  document.querySelector('#team-members-link').hidden = true;
 });
-

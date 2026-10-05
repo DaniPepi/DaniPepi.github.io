@@ -66,7 +66,7 @@ async function save(next) {
     if (user) { if (!account) throw Error(); await account.save([...next]); }
     else { localStorage.setItem(key, JSON.stringify([...next])); guest = [...next]; }
     if (savingUid !== user?.uid) return;
-    visited = next; refresh(); $('storage-status').textContent = user ? 'Diario personale salvato nel tuo account.' : 'Diario personale salvato su questo browser. Accedi per sincronizzarlo quando l’accesso sarà attivo.';
+    visited = next; refresh(); $('storage-status').textContent = user ? 'Diario personale salvato nel tuo account.' : 'Diario personale salvato su questo browser.';
   } catch { $('storage-status').textContent = 'Salvataggio non riuscito. Verifica la connessione o consenti il salvataggio del browser e riprova.'; }
   finally { busy = false; $('toggle-visited').disabled = false; }
 }
@@ -114,12 +114,14 @@ try {
     error(message) { $('auth-status').textContent = message; }
   });
   if (account) {
-    $('auth-status').textContent = 'Scegli come accedere al tuo diario personale.';
+    const canSignIn = ['google', 'apple'].some(provider => account.providers?.[provider]);
+    $('remember-account-option').hidden = !canSignIn;
+    if (!user) $('account-info').textContent = canSignIn ? 'Accedi per ritrovare il tuo diario su più dispositivi.' : 'Puoi già esplorare la mappa e salvare i paesi visitati su questo browser.';
+    $('auth-status').textContent = canSignIn ? 'Scegli come accedere al tuo diario personale.' : 'L’accesso con Google e Apple non è ancora disponibile.';
     for (const provider of ['google','apple']) {
       const button = $(`login-${provider}`); button.disabled = !account.providers?.[provider];
       button.onclick = async () => { button.disabled = true; try { await account.login(provider,$('remember-account').checked); $('account-dialog').close(); } catch { $('auth-status').textContent = 'Accesso non completato. Riprova e verifica che il browser consenta la finestra di accesso.'; } finally { button.disabled = false; } };
     }
     $('logout').onclick = async () => { try { await account.logout(); } catch { $('auth-status').textContent = 'Uscita non riuscita. Riprova.'; } };
   }
-} catch { $('auth-status').textContent = 'Accesso account non disponibile. La mappa resta utilizzabile su questo browser.'; }
-
+} catch { $('auth-status').textContent = 'L’accesso account non è disponibile in questo momento. Puoi continuare a usare il diario su questo browser.'; }

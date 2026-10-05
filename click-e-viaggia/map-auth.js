@@ -1,7 +1,7 @@
 export async function connectAccount(callbacks) {
   const config = await fetch('data/auth-config.json', {cache: 'no-store'}).then(r => { if (!r.ok) throw Error(); return r.json(); });
   if (!config.enabled) return null;
-  if (!config.apiKey || !config.authDomain || !config.projectId || !config.appId) throw Error('Configurazione Firebase incompleta.');
+  if (!config.apiKey || !config.authDomain || !config.projectId || !config.appId) throw Error('L’accesso account non è disponibile in questo momento.');
   const base = 'https://www.gstatic.com/firebasejs/10.14.1/';
   const [appSDK, authSDK, dbSDK] = await Promise.all([import(base + 'firebase-app.js'), import(base + 'firebase-auth.js'), import(base + 'firebase-firestore.js')]);
   const app = appSDK.initializeApp({apiKey: config.apiKey, authDomain: config.authDomain, projectId: config.projectId, appId: config.appId});
@@ -12,7 +12,7 @@ export async function connectAccount(callbacks) {
     if (!user) return;
     unsubscribe = dbSDK.onSnapshot(dbSDK.doc(db, 'travelDiaries', user.uid), snapshot => {
       ready = true; callbacks.data(snapshot.exists() ? snapshot.data().visited : []);
-    }, () => callbacks.error('Non è possibile leggere il diario. Verifica le regole Firestore e la connessione.'));
+    }, () => callbacks.error('Non è possibile caricare il tuo diario in questo momento. Controlla la connessione e riprova.'));
   });
   return {
     providers: config.providers,
@@ -27,4 +27,3 @@ export async function connectAccount(callbacks) {
     }
   };
 }
-

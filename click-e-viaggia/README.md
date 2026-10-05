@@ -1,14 +1,12 @@
 # CLICK&VIAGGIA
 
-Sito statico responsive, modificabile in Visual Studio Code, senza dipendenze di compilazione. Home a tutto schermo, titolo serif con movimento morbido al passaggio del mouse, sfondo con panoramica lenta e pausa, pannelli vetrificati, finestre per articoli e itinerari, PWA.
+Sito statico responsive, modificabile in Visual Studio Code, senza dipendenze di compilazione. Home a tutto schermo, titolo moderno con movimento morbido al passaggio del mouse, sfondo con panoramica lenta e pausa, pannelli vetrificati, finestre per articoli e itinerari, PWA.
 
 ## Sito pubblicato e gestione dei link
 
-## Sfondo video
+## Sfondo della home
 
-La homepage riproduce un video aereo delle onde al 55% della velocità normale, in loop, senza audio e con playsinline. Pausa/ripresa, riduzione del movimento e fallback fotografico sono supportati. Il video non viene memorizzato dal service worker: offline viene mostrata la fotografia.
-
-Fonte: https://mixkit.co/free-stock-video/aerial-view-of-waves-and-surfers-1070/ . Licenza Mixkit Stock Video Free: https://mixkit.co/license/ . Il file è servito dal sito, senza incorporamenti o richieste a Mixkit durante la visita.
+Fotografia originale delle onde con panoramica lenta di 48 secondi, pulsante pausa/ripresa e rispetto della preferenza di riduzione del movimento. La fotografia è locale e disponibile offline.
 
 ## Schede viaggio condivisibili
 
@@ -28,13 +26,13 @@ Gestione: https://danipepi.github.io/click-e-viaggia/admin.html
 
 La pagina di gestione prepara una bozza dei link. Copiare la configurazione, aprire l’editor GitHub tramite il pulsante dedicato, sostituire il contenuto di `click-e-viaggia/data/travel-links.json` e confermare con Commit changes. La scrittura è autorizzata da GitHub; la pagina pubblica non contiene credenziali e non può pubblicare da sola. Sono consentiti URL HTTPS su traveladvantage.com e sottodomini. Indicare correttamente se il collegamento è affiliato. Le modifiche alla bozza non persistono dopo la chiusura della pagina.
 
-Gli indicatori rossi del blog si mostrano per 14 giorni dalla data in `publicationDates` in app.js. Le date attuali sono dimostrative.
+Gli indicatori rossi del blog si mostrano per 14 giorni dalla data in `publicationDates` in app.js. Le tre guide originali sono state pubblicate il 5 ottobre 2026; le date non si aggiornano automaticamente.
 
 ## Informazioni legali ancora da completare
 
 ## Foto e biografie del team
 
-La pagina `chi-siamo.html` legge i membri da `data/team.json`. Per aggiungere un membro inserire un oggetto nell’array `members` con `name`, `role`, `bio` e `photo` (esempio percorso: `assets/nome-membro.jpg`). Caricare la fotografia corrispondente nella cartella assets tramite GitHub o Visual Studio Code. Sono accettate foto locali JPG, JPEG, PNG e WebP; usare fotografie autorizzate dalla persona ritratta. Nessun nome o profilo dimostrativo è stato pubblicato.
+La pagina `chi-siamo.html` legge i membri da `data/team.json`. Per aggiungere un membro inserire un oggetto nell’array `members` con `name`, `role`, `bio` e `photo` (esempio percorso: `assets/nome-membro.jpg`). Caricare la fotografia corrispondente nella cartella assets tramite GitHub o Visual Studio Code. Sono accettate foto locali JPG, JPEG, PNG e WebP; usare fotografie autorizzate dalla persona ritratta. Nessun nome o profilo dimostrativo è stato pubblicato. La sezione persone e il relativo collegamento restano nascosti finché non vengono inseriti profili validi.
 
 Il file può essere modificato su https://github.com/DaniPepi/DaniPepi.github.io/edit/main/click-e-viaggia/data/team.json . La modifica viene resa pubblica dopo il commit.
 
@@ -55,7 +53,7 @@ Il sito usa percorsi relativi e funziona anche sotto `/nome-repository/`. Un dom
 
 ## Contenuti prima del lancio commerciale
 
-I racconti del blog sono dimostrativi; le proposte Fátima e Disneyland Paris sono in preparazione. Prima del lancio commerciale completare i dettagli dei viaggi, l’identità dell’organizzatore, le condizioni e le informazioni richieste per l’attività. Non sono presenti prenotazioni o pagamenti.
+Il blog contiene tre guide originali di viaggio; le proposte Fátima e Disneyland Paris sono in preparazione. Prima del lancio commerciale completare i dettagli dei viaggi, l’identità dell’organizzatore, le condizioni e le informazioni richieste per l’attività. Non sono presenti prenotazioni o pagamenti.
 
 ## Applicazione
 
@@ -64,16 +62,18 @@ Manifest e service worker consentono l’installazione dove supportata e la lett
 ## Modifiche
 
 - `index.html`: struttura e testi principali.
-- `style.css`: grafica e responsive.
+- `style.css`: grafica di base e responsive.
+- `presentation.css`: presentazione, percorsi e CTA della home e della pagina team.
+- `brand.css`: logo su una riga e navigazione adattiva.
 - `trips.css`: vetrina dei due viaggi, tessere fotografiche e gallerie delle schede.
 - `trip-layout.css`: impaginazione delle schede su desktop e dispositivi mobili.
-- `app.js`: menu, blog e catalogo viaggi; riferimento pubblico aggiornato a `app.js?v=13`.
+- `app.js`: menu, blog e catalogo viaggi; riferimento pubblico aggiornato a `app.js?v=15`.
 - `trip.js`: condivisione delle schede e contatto WhatsApp con destinazione.
-- `sw.js`: cache `click-viaggia-v14` con fotografie, copertine e nuovo marchio; le vecchie proposte non sono più precaricate. Aumentare la versione della cache quando si aggiornano risorse per gli utenti offline.
+- `sw.js`: cache `click-viaggia-v15` con fotografie, copertine e nuovo marchio; le vecchie proposte non sono più precaricate. Aumentare la versione della cache quando si aggiornano risorse per gli utenti offline.
 
 ## Logo del sito e dell’app
 
-Il marchio vettoriale originale unisce una C e una freccia ispirata all’aeroplano e al cursore. `assets/brand-logo-v2.svg` contiene simbolo e scritta, `assets/brand-mark-v2.svg` il solo simbolo. `brand.css` regola la misura del logo e mantiene la navigazione leggibile su schermi piccoli.
+Il marchio vettoriale originale raffigura una bussola essenziale. La scritta CLICK&VIAGGIA occupa una sola riga. `assets/brand-logo-v3.svg` contiene simbolo e scritta, `assets/brand-mark-v3.svg` il solo simbolo. `brand.css` regola la misura del logo e mantiene la navigazione leggibile su schermi piccoli.
 
 `manifest.webmanifest` usa le icone PNG 192 e 512, più una versione maskable con sfondo pieno; Apple Touch Icon 180 e favicon 32 sono collegate nelle pagine. Tutti gli asset sono locali e modificabili. Le icone precedenti mantengono URL compatibili e mostrano lo stesso marchio. Le app già installate possono richiedere una riapertura o una nuova installazione per mostrare l’icona aggiornata, secondo il browser e il sistema operativo.
 

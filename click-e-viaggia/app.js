@@ -64,10 +64,49 @@ hero.addEventListener('pointermove', event => {
 });
 hero.addEventListener('pointerleave', resetMagnet);
 reducedMotion.addEventListener('change', resetMagnet);
+const motionToggle = document.querySelector('#motion-toggle');
+motionToggle.addEventListener('click', () => {
+  const paused = hero.classList.toggle('motion-paused');
+  motionToggle.setAttribute('aria-pressed', String(paused));
+  motionToggle.textContent = paused ? 'Riprendi lo sfondo' : 'Metti in pausa lo sfondo';
+});
 const articles = {
-  slow: { label: 'DIARIO · LETTURA DI ESEMPIO', title: 'Il bello di partire senza correre.', paragraphs: ['A volte il miglior itinerario è quello che lascia spazio. Una passeggiata senza una meta precisa, un mercato di quartiere, una conversazione davanti a un caffè: piccoli momenti che danno forma al ricordo di un luogo.', 'Scegli poche tappe e concediti il tempo di viverle. Prima di aggiungere una nuova destinazione, chiediti cosa vorresti scoprire davvero: un paesaggio, una cucina, una storia.', 'Questo è un testo dimostrativo del diario di CLICK&VIAGGIA. I racconti originali arriveranno con il lancio del progetto.'] },
-  bag: { label: 'DIARIO · GUIDA DI ESEMPIO', title: 'Meno bagagli. Più libertà.', paragraphs: ['Parti dalla durata del viaggio, dal clima e dalle attività previste. Scegli capi che puoi abbinare tra loro e controlla la possibilità di lavarli durante il percorso.', 'Tieni documenti, eventuali medicinali personali e oggetti essenziali facilmente accessibili. Prima della partenza, verifica dimensioni e peso consentiti direttamente con il vettore.', 'Una lista breve aiuta: documenti, abbigliamento, igiene personale, caricabatterie e ciò che serve per il tuo itinerario. Questa guida è un esempio editoriale.'] },
-  weekend: { label: 'DIARIO · ISPIRAZIONE DI ESEMPIO', title: 'Un weekend, un’altra prospettiva.', paragraphs: ['Apri una mappa e cerca un luogo vicino che non hai mai visitato. Un borgo, un sentiero, un museo: due giorni possono bastare per cambiare ritmo.', 'Scegli una sola esperienza centrale e costruisci il resto intorno. Lascia tempo per camminare, fermarti e scoprire qualcosa che non avevi programmato.', 'Questa lettura dimostrativa anticipa lo stile del blog. Gli articoli definitivi saranno accompagnati da luoghi, fotografie e informazioni verificate.'] }
+  "slow": {
+    "label": "IL DIARIO · ISPIRAZIONI",
+    "title": "Viaggiare con più tempo: un itinerario da vivere",
+    "paragraphs": [
+      "Il ritmo di un viaggio si decide spesso prima della partenza. Riempire ogni giornata di appuntamenti può rendere difficile apprezzare ciò che accade tra una visita e l’altra. Un itinerario ben costruito lascia spazio alla curiosità, alle pause e alle scoperte inattese.",
+      "Comincia dalle tue priorità. Scegli i luoghi che desideri davvero conoscere e chiediti cosa ti attira: un paesaggio, una storia, una cucina, un’atmosfera. Questa scelta aiuta a dare un senso al percorso e a distinguere le tappe essenziali da quelle che puoi valutare sul momento.",
+      "Organizza poi le giornate per zone, considerando anche gli spostamenti. La distanza sulla carta racconta soltanto una parte dell’esperienza: raggiungere una stazione, trovare un ingresso o orientarsi in un quartiere richiede tempo. Prevedere questi passaggi rende il programma più semplice da seguire.",
+      "Lascia un intervallo libero tra le attività principali. Potrai usarlo per sederti in una piazza, entrare in una bottega o prolungare una passeggiata. Se viaggi in compagnia, confronta prima interessi e ritmi: una pausa condivisa può diventare un momento piacevole per tutti.",
+      "Prima di partire, verifica le informazioni utili alle visite che hai scelto e prepara un’alternativa per le attività all’aperto. Mantieni il programma facile da consultare, con indirizzi e riferimenti raccolti nello stesso posto. Una buona preparazione ti permette di adattarti con maggiore serenità.",
+      "Al ritorno, prova a ricordare quali momenti ti hanno coinvolto di più. Saranno un’indicazione preziosa per il viaggio successivo. Esplora le nostre mete e racconta al team che tipo di esperienza desideri vivere: il punto di partenza è proprio questo."
+    ]
+  },
+  "bag": {
+    "label": "IL DIARIO · CONSIGLI",
+    "title": "Bagaglio essenziale: scegliere ciò che serve al tuo viaggio",
+    "paragraphs": [
+      "Preparare un bagaglio essenziale significa collegare ogni oggetto al viaggio che stai organizzando. La durata del soggiorno conta, insieme alle attività previste, agli spostamenti e alle tue abitudini. Partire da queste esigenze rende la scelta più chiara e aiuta a gestire meglio ciò che porterai.",
+      "Scrivi una lista divisa per situazioni: giornate fuori, momenti di riposo, eventuali occasioni particolari. Consulta le previsioni vicino alla partenza e valuta gli ambienti che frequenterai. Potrai così scegliere capi adatti, evitando di aggiungere indumenti sulla base di possibilità troppo vaghe.",
+      "Costruisci gli abbinamenti prima di mettere tutto in valigia. Colori coordinabili e capi che puoi usare in occasioni diverse semplificano il guardaroba. Per le calzature, considera le attività e preferisci quelle con cui ti trovi già bene, soprattutto quando prevedi di camminare a lungo.",
+      "Raccogli gli accessori in piccoli gruppi facili da riconoscere. Tieni a portata di mano ciò che utilizzerai durante gli spostamenti e verifica quali dotazioni sono disponibili nella sistemazione scelta. Un elenco delle cose già presenti ti aiuterà a evitare doppioni e a organizzare gli spazi.",
+      "Se viaggi in aereo, controlla le regole della compagnia relative al tuo biglietto e ai bagagli, insieme alle indicazioni aggiornate per ciò che puoi trasportare. Fai poi una prova completa: chiudi il bagaglio, sollevalo e verifica che gli oggetti più utili siano facilmente raggiungibili.",
+      "Conserva la lista e aggiornala al ritorno, segnando ciò che hai usato davvero. Diventerà una base personale per le prossime partenze. Quando esplori una meta, pensa anche al modo in cui vorresti viverla: parlarne con il team può aiutarti a mettere a fuoco le tue esigenze."
+    ]
+  },
+  "weekend": {
+    "label": "IL DIARIO · IDEE",
+    "title": "Un weekend vicino: dare spazio a una piccola partenza",
+    "paragraphs": [
+      "Una pausa di pochi giorni può cominciare da un luogo vicino che hai sempre rimandato. Un borgo, una città o un tratto di costa diventano una buona occasione per cambiare ritmo. Il primo passo è scegliere l’esperienza che cerchi: passeggiare, scoprire una cucina, visitare o semplicemente riposare.",
+      "Valuta la meta a partire dal tempo che hai realmente a disposizione. Considera l’orario di partenza, il rientro e gli spostamenti necessari una volta arrivato. Una destinazione comoda da raggiungere ti permette di dedicare una parte maggiore del weekend a ciò che desideri fare.",
+      "Scegli una base coerente con il programma. Se vuoi muoverti a piedi, osserva la posizione della sistemazione rispetto ai luoghi che ti interessano. Se preferisci esplorare i dintorni, valuta i collegamenti e le modalità di spostamento. Questi dettagli influenzano la semplicità delle giornate.",
+      "Dai al weekend un punto di riferimento: una visita che ti incuriosisce, un percorso panoramico o un’esperienza gastronomica. Costruisci il resto intorno a questa scelta, lasciando spazio per fermarti dove ti trovi bene. Anche un programma breve beneficia di un’alternativa in caso di cambiamenti.",
+      "Prima di prenotare, raccogli le informazioni aggiornate sulle attività scelte e valuta il costo complessivo della partenza, includendo gli spostamenti e le esigenze quotidiane. Confronta il programma con chi viaggia con te: interessi condivisi e aspettative chiare rendono più facile godersi il tempo insieme.",
+      "Durante il soggiorno, presta attenzione ai dettagli che danno carattere al luogo: una strada tranquilla, una piazza animata, una conversazione. Sono spesso questi momenti a rendere personale una piccola partenza. Cerca nuove idee nel blog e condividi con il team la meta che ti incuriosisce."
+    ]
+  }
 };
 const trips = {
   fatima: {
@@ -81,7 +120,7 @@ const trips = {
     tags: ['Fantasia', 'Ricordi insieme']
   }
 };
-const publicationDates = { slow: '2026-10-04', bag: '2026-09-10', weekend: '2026-10-03' };
+const publicationDates = { slow: '2026-10-05', bag: '2026-10-05', weekend: '2026-10-05' };
 const categories = { slow: 'Ispirazioni', bag: 'Consigli', weekend: 'Idee' };
 let travelLinks = [];
 let linksUnavailable = false;
@@ -117,8 +156,23 @@ function isNew(date) {
 }
 function openDetail(record) {
   setDialog(record.label, record.title);
+  dialog.classList.remove('trips-dialog');
   backButton.hidden = false;
   dialogBody.append(...record.paragraphs.map(text => paragraph(text)));
+  const actions = document.createElement('div');
+  actions.className = 'article-cta';
+  const explore = document.createElement('button');
+  explore.className = 'button primary';
+  explore.textContent = 'Esplora le mete';
+  explore.addEventListener('click', () => showSection('viaggi'));
+  const talk = document.createElement('a');
+  talk.className = 'button secondary';
+  talk.href = 'https://wa.me/393892962059?text=' + encodeURIComponent('Ciao team Click&Viaggia, vorrei concordare un appuntamento per informazioni sulle vostre proposte di viaggio. Quando possiamo sentirci?');
+  talk.target = '_blank';
+  talk.rel = 'noopener noreferrer';
+  talk.textContent = 'Parla con il team';
+  actions.append(explore, talk);
+  dialogBody.append(actions);
   dialogTitle.focus();
 }
 function tripCard(id, record) {
@@ -170,7 +224,7 @@ function showSection(section, category = 'Tutti') {
   setDialog(blog ? 'IL DIARIO' : 'VIAGGI CON CLICK&VIAGGIA', blog ? 'Scegli la tua prossima lettura.' : 'Da quale sogno partiamo?');
   dialog.classList.toggle('trips-dialog', !blog);
   backButton.hidden = true;
-  dialogBody.append(paragraph(blog ? 'Articoli dimostrativi. Il cerchietto rosso indica le novità degli ultimi 14 giorni; le date mostrate sono di esempio.' : 'Due mete, due modi di emozionarsi. Scegli il viaggio che ti ispira: la sua pagina si apre in una nuova scheda, pronta da esplorare e condividere.', 'collection-note'));
+  dialogBody.append(paragraph(blog ? 'Guide originali per dare forma alle tue prossime partenze. Il cerchietto rosso indica gli articoli pubblicati negli ultimi 14 giorni.' : 'Due mete, due modi di emozionarsi. Scegli il viaggio che ti ispira: la sua pagina si apre in una nuova scheda, pronta da esplorare e condividere.', 'collection-note'));
   if (blog) {
     const filters = document.createElement('div');
     filters.className = 'category-filters';
@@ -269,6 +323,12 @@ function showSection(section, category = 'Tutti') {
     dialogBody.append(partner);
   }
 }
+document.querySelectorAll('[data-article]').forEach(button => button.addEventListener('click', () => {
+  const record = articles[button.dataset.article];
+  if (!record) return;
+  currentSection = 'blog';
+  openDetail(record);
+}));
 document.querySelectorAll('[data-section]').forEach(button => button.addEventListener('click', () => showSection(button.dataset.section)));
 navigation.querySelectorAll('a[href="#blog"], a[href="#viaggi"]').forEach(link => link.addEventListener('click', event => {
   event.preventDefault();

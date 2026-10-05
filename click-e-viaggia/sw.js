@@ -1,19 +1,19 @@
 'use strict';
-const CACHE = 'click-viaggia-v14';
+const CACHE = 'click-viaggia-v15';
 const ASSETS = [
   './trip-layout.css?v=1', './trips.css?v=1', './viaggio-fatima.html', './viaggio-disney.html',
   './assets/grafica-fatima.svg', './assets/grafica-fatima.png',
   './assets/grafica-disney-v2.svg', './assets/grafica-disney-v2.png',
   './assets/fatima.jpg', './assets/disney-panorama.jpg', './assets/fatima-basilica.jpg', './assets/fatima-chapel.jpg',
   './data/country-editorial.json', './data/country-photos.json', './map-navigation.js?v=9',
-  './i-miei-viaggi.html', './map.js?v=10', './map-auth.js', './map.css?v=10', './data/map.json', './assets/flags.svg',
-  './', './index.html', './style.css', './style.css?v=11', './app.js?v=13', './legal.html', './chi-siamo.html',
-  './team.js', './data/team.json', './data/contact.json', './trip.js', './data/travel-links.json',
-  './icon.svg', './manifest.webmanifest', './manifest.webmanifest?v=14', './assets/ocean.jpg',
-  './brand.css?v=1', './assets/brand-logo-v2.svg', './assets/brand-mark-v2.svg',
-  './assets/app-icon-v2.svg', './assets/app-icon-192-v2.png', './assets/app-icon-512-v2.png',
-  './assets/app-icon-maskable-512-v2.png', './assets/apple-touch-icon-v2.png', './assets/favicon-32-v2.png',
-  './assets/brand-social-v2.png', './assets/icon-192.png', './assets/icon-512.png'
+  './i-miei-viaggi.html', './map.js?v=11', './map-auth.js', './map.css?v=10', './data/map.json', './assets/flags.svg',
+  './', './index.html', './style.css', './style.css?v=11', './app.js?v=15', './legal.html', './chi-siamo.html',
+  './team.js?v=15', './data/team.json', './data/contact.json', './trip.js', './data/travel-links.json',
+  './icon.svg', './manifest.webmanifest', './manifest.webmanifest?v=15', './assets/ocean.jpg',
+  './presentation.css?v=1', './brand.css?v=2', './assets/brand-logo-v3.svg', './assets/brand-mark-v3.svg',
+  './assets/app-icon-v3.svg', './assets/app-icon-192-v3.png', './assets/app-icon-512-v3.png',
+  './assets/app-icon-maskable-512-v3.png', './assets/apple-touch-icon-v3.png', './assets/favicon-32-v3.png',
+  './assets/brand-social-v3.png', './assets/icon-192.png', './assets/icon-512.png'
 ];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(ASSETS)).then(() => self.skipWaiting()));
