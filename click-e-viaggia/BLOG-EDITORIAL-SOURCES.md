@@ -1,8 +1,10 @@
 # Fonti e criteri editoriali dei tre articoli
 
-Verifica editoriale: 5 ottobre 2026. Testi originali, senza citazioni letterali delle fonti.
+Verifica editoriale: 6 ottobre 2026. Testi originali, senza citazioni letterali delle fonti.
 
 ## Dati forniti direttamente dall’utente
+
+L’utente ha indicato il nome completo **Daniele Pepi** e il profilo Instagram **@daniele_pepi98**, chiedendo un taglio giornalistico in terza persona e la promozione di quel profilo. La voce resta quella della redazione Click&Viaggia; non è attribuita a un giornale esterno. Il collegamento usa https://www.instagram.com/daniele_pepi98/ senza incorporare contenuti o formulare affermazioni su follower, frequenza o contenuti del profilo.
 
 - Fátima: viaggio organizzato da Click&Viaggia dall’11 al 15 settembre **2026**, con **18 partecipanti**; escursioni a Nazaré; divertimento avuto insieme. L’anno è confermato dall’utente.
 - Nosy Be: soggiorno di **8 mesi** di Daniele; località richieste Nosy Iranja, Sakatia, Lokobe, Lemuria Land. Nessun anno, ruolo professionale o attività specifica non dichiarata attribuiti a Daniele.

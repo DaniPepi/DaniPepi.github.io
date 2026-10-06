@@ -69,7 +69,7 @@ Manifest e service worker consentono l’installazione dove supportata e la lett
 - `trip-layout.css`: impaginazione delle schede su desktop e dispositivi mobili.
 - `app.js`: menu e catalogo viaggi; riferimento pubblico aggiornato a `app.js?v=17`.
 - `trip.js`: condivisione delle schede e contatto WhatsApp con destinazione.
-- `sw.js`: cache `click-viaggia-v18` con fotografie, copertine e nuovo marchio; le vecchie proposte non sono più precaricate. Aumentare la versione della cache quando si aggiornano risorse per gli utenti offline.
+- `sw.js`: cache `click-viaggia-v19` con fotografie, copertine e nuovo marchio; le vecchie proposte non sono più precaricate. Aumentare la versione della cache quando si aggiornano risorse per gli utenti offline.
 
 ## Logo del sito e dell’app
 
@@ -97,10 +97,15 @@ Grafica vettoriale dell'atlante, modalità Bandiere e schede fotografiche per pa
 
 Le pagine `blog-fatima-nazare.html`, `blog-nosy-be.html` e `blog-marsa-alam.html` contengono i racconti completi e possono essere condivise con il proprio URL. La pagina dedicata `blog.html` presenta il racconto di Fátima e Nazaré in evidenza e le altre due storie, con filtri per paese. La home rimanda al diario. I vecchi link `?section=blog` portano alla nuova pagina. Le vecchie tre guide generiche non sono più pubblicate.
 
-I testi editoriali sono conservati anche in `data/blog-articles.json`; le fotografie e le relative attribuzioni in `data/blog-photos.json`. Le pagine HTML sono statiche: modificare testo e metadati in Visual Studio Code, aggiornando anche le anteprime in `blog.html` e `index.html` quando cambia un titolo. `journal.css` e `journal.js` gestiscono la selezione; `blog.css` gestisce la lettura, `article.js` condivisione e copia del link. Le fotografie sono illustrative, con crediti visibili, e non sono immagini dei viaggi personali. Fonti: `BLOG-EDITORIAL-SOURCES.md` e `BLOG-PHOTO-SOURCES.md`. I nuovi articoli e le fotografie sono inclusi nella cache offline v18.
+I testi editoriali sono conservati anche in `data/blog-articles.json`; le fotografie e le relative attribuzioni in `data/blog-photos.json`. Le pagine HTML sono statiche: modificare testo e metadati in Visual Studio Code, aggiornando anche le anteprime in `blog.html` e `index.html` quando cambia un titolo. `journal.css` e `journal.js` gestiscono la selezione; `blog.css` gestisce la lettura, `article.js` condivisione e copia del link. Le fotografie sono illustrative, con crediti visibili, e non sono immagini dei viaggi personali. Fonti: `BLOG-EDITORIAL-SOURCES.md` e `BLOG-PHOTO-SOURCES.md`. I nuovi articoli e le fotografie sono inclusi nella cache offline v19.
 
 
 Il diario ha un’impaginazione editoriale con copertine fotografiche. I box delle esperienze di Daniele riportano esclusivamente le due durate fornite dal team e collegano i relativi racconti.
 
 
 I due pannelli della home usano titoli diretti, maiuscoli e in grassetto: VIAGGI ORGANIZZATI e IL BLOG. Le misure del testo si adattano allo spazio disponibile mantenendo i titoli su una riga. Le introduzioni e i pulsanti hanno allineamenti comuni; su tablet e telefono i pannelli si dispongono in colonna. `presentation.css?v=2` e la cache offline v18 pubblicano queste rifiniture.
+
+
+## Articoli dedicati a Daniele Pepi
+
+I tre racconti usano una narrazione giornalistica in terza persona, pubblicata dalla redazione Click&Viaggia. Titoli, anteprime, metadati e schema BlogPosting indicano Daniele Pepi come protagonista; non come autore di un’intervista o testimonial di una testata. Il profilo Instagram @daniele_pepi98 compare come semplice collegamento esterno nell’apertura e nel riquadro a fine articolo, senza embed o richieste automatiche alla piattaforma. Modificare l’URL e il testo negli HTML quando necessario. `instagramPitch` in `data/blog-articles.json` conserva l’invito editoriale. Le fotografie restano illustrative. `blog.css?v=3` e la cache offline v19 includono questo aggiornamento.

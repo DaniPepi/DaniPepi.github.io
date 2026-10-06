@@ -1,8 +1,8 @@
 'use strict';
-const CACHE = 'click-viaggia-v18';
+const CACHE = 'click-viaggia-v19';
 const ASSETS = [
   './blog.html', './journal.css?v=1', './journal.js?v=1',
-  "./blog.css?v=2", "./article.js?v=1", "./blog-fatima-nazare.html", "./blog-nosy-be.html", "./blog-marsa-alam.html", "./assets/blog-nazare.jpg", "./assets/blog-nosy-iranja.jpg", "./assets/blog-nosy-sakatia.jpg", "./assets/blog-lokobe.jpg", "./assets/blog-sharm-el-luli.jpg", "./assets/blog-port-ghalib.jpg", "./assets/blog-marsa-desert.jpg", "./assets/blog-camels-red-sea.jpg",
+  "./blog.css?v=3", "./article.js?v=1", "./blog-fatima-nazare.html", "./blog-nosy-be.html", "./blog-marsa-alam.html", "./assets/blog-nazare.jpg", "./assets/blog-nosy-iranja.jpg", "./assets/blog-nosy-sakatia.jpg", "./assets/blog-lokobe.jpg", "./assets/blog-sharm-el-luli.jpg", "./assets/blog-port-ghalib.jpg", "./assets/blog-marsa-desert.jpg", "./assets/blog-camels-red-sea.jpg",
   './trip-layout.css?v=1', './trips.css?v=1', './viaggio-fatima.html', './viaggio-disney.html',
   './assets/grafica-fatima.svg', './assets/grafica-fatima.png',
   './assets/grafica-disney-v2.svg', './assets/grafica-disney-v2.png',
