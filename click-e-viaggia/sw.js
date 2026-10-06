@@ -1,5 +1,5 @@
 'use strict';
-const CACHE = 'click-viaggia-v17';
+const CACHE = 'click-viaggia-v18';
 const ASSETS = [
   './blog.html', './journal.css?v=1', './journal.js?v=1',
   "./blog.css?v=2", "./article.js?v=1", "./blog-fatima-nazare.html", "./blog-nosy-be.html", "./blog-marsa-alam.html", "./assets/blog-nazare.jpg", "./assets/blog-nosy-iranja.jpg", "./assets/blog-nosy-sakatia.jpg", "./assets/blog-lokobe.jpg", "./assets/blog-sharm-el-luli.jpg", "./assets/blog-port-ghalib.jpg", "./assets/blog-marsa-desert.jpg", "./assets/blog-camels-red-sea.jpg",
@@ -12,7 +12,7 @@ const ASSETS = [
   './', './index.html', './style.css', './style.css?v=11', './app.js?v=17', './legal.html', './chi-siamo.html',
   './team.js?v=15', './data/team.json', './data/contact.json', './trip.js', './data/travel-links.json',
   './icon.svg', './manifest.webmanifest', './manifest.webmanifest?v=17', './assets/ocean.jpg',
-  './presentation.css?v=1', './brand.css?v=2', './assets/brand-logo-v3.svg', './assets/brand-mark-v3.svg',
+  './presentation.css?v=2', './brand.css?v=2', './assets/brand-logo-v3.svg', './assets/brand-mark-v3.svg',
   './assets/app-icon-v3.svg', './assets/app-icon-192-v3.png', './assets/app-icon-512-v3.png',
   './assets/app-icon-maskable-512-v3.png', './assets/apple-touch-icon-v3.png', './assets/favicon-32-v3.png',
   './assets/brand-social-v3.png', './assets/icon-192.png', './assets/icon-512.png'
