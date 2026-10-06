@@ -70,41 +70,6 @@ motionToggle.addEventListener('click', () => {
   motionToggle.setAttribute('aria-pressed', String(paused));
   motionToggle.textContent = paused ? 'Riprendi lo sfondo' : 'Metti in pausa lo sfondo';
 });
-const articles = {
-  "fatima": {
-    "title": "Fátima e Nazaré: cinque giorni, diciotto persone, un ricordo condiviso",
-    "summary": "Fátima, le escursioni a Nazaré e il piacere della compagnia: il nostro viaggio in Portogallo con diciotto partecipanti.",
-    "location": "Fátima e Nazaré · Portogallo",
-    "category": "Portogallo",
-    "href": "blog-fatima-nazare.html",
-    "image": "assets/fatima.jpg",
-    "imageAlt": "La piazza e la Basilica di Nostra Signora del Rosario a Fátima",
-    "date": "2026-10-06",
-    "minutes": 4
-  },
-  "nosy-be": {
-    "title": "Otto mesi a Nosy Be: il Madagascar nel viaggio di Daniele",
-    "summary": "Il lungo soggiorno di Daniele a Nosy Be apre una storia di mare e natura: Nosy Iranja, Sakatia, Lokobe e Lemuria Land.",
-    "location": "Nosy Be · Madagascar",
-    "category": "Madagascar",
-    "href": "blog-nosy-be.html",
-    "image": "assets/blog-nosy-iranja.jpg",
-    "imageAlt": "Spiaggia di sabbia bianca e acqua turchese a Nosy Iranja, Madagascar",
-    "date": "2026-10-06",
-    "minutes": 4
-  },
-  "marsa-alam": {
-    "title": "Un mese a Marsa Alam: Daniele tra Mar Rosso e deserto",
-    "summary": "Il mese di Daniele a Marsa Alam, tra deserto, quad e cammelli, con il mare di Sharm El Luli e il carattere della marina di Port Ghalib.",
-    "location": "Marsa Alam · Egitto",
-    "category": "Egitto",
-    "href": "blog-marsa-alam.html",
-    "image": "assets/blog-sharm-el-luli.jpg",
-    "imageAlt": "Sabbia chiara e mare turchese a Sharm El Luli, sulla costa egiziana del Mar Rosso",
-    "date": "2026-10-06",
-    "minutes": 4
-  }
-};
 const trips = {
   fatima: {
     name: 'Fátima', country: 'Portogallo', title: 'Un cammino da condividere.',
@@ -127,7 +92,6 @@ function validTravelUrl(value) {
 const dialog = document.querySelector('#detail');
 const dialogTitle = document.querySelector('#detail-title');
 const dialogBody = document.querySelector('#detail-body');
-let currentSection = 'blog';
 function paragraph(text, className = '') {
   const element = document.createElement('p');
   element.textContent = text;
@@ -141,53 +105,6 @@ function setDialog(label, title) {
   if (!dialog.open) dialog.showModal();
   document.body.classList.add('dialog-open');
   dialog.scrollTop = 0;
-}
-function isNew(date) {
-  const published = new Date(date + 'T00:00:00');
-  const age = Date.now() - published.getTime();
-  return age >= 0 && age < 14 * 86400000;
-}
-function blogCard(record) {
-  const card = document.createElement('a');
-  card.className = 'collection-card blog-card';
-  card.href = record.href;
-  const image = document.createElement('img');
-  image.className = 'blog-card-image';
-  image.src = record.image;
-  image.alt = record.imageAlt;
-  image.width = 640;
-  image.height = 400;
-  image.decoding = 'async';
-  const body = document.createElement('div');
-  body.className = 'blog-card-content';
-  const meta = document.createElement('span');
-  meta.className = 'card-meta';
-  meta.textContent = record.category;
-  const heading = document.createElement('h3');
-  heading.className = 'card-title';
-  heading.textContent = record.title;
-  const summary = document.createElement('span');
-  summary.className = 'card-summary';
-  summary.textContent = record.summary;
-  const date = document.createElement('time');
-  date.dateTime = record.date;
-  date.textContent = new Intl.DateTimeFormat('it-IT', {day: 'numeric', month: 'long', year: 'numeric'}).format(new Date(record.date + 'T00:00:00'));
-  const action = document.createElement('span');
-  action.className = 'card-action';
-  action.textContent = 'Leggi il racconto · ' + record.minutes + ' min';
-  const arrow = document.createElement('span');
-  arrow.setAttribute('aria-hidden', 'true');
-  arrow.textContent = '↗';
-  action.append(arrow);
-  body.append(meta, heading, summary, date, action);
-  card.append(image, body);
-  if (isNew(record.date)) {
-    const badge = document.createElement('span');
-    badge.className = 'new-badge';
-    badge.textContent = 'Nuovo';
-    card.append(badge);
-  }
-  return card;
 }
 function tripCard(id, record) {
   const card = document.createElement('a');
@@ -232,56 +149,30 @@ function tripCard(id, record) {
   card.append(media, body);
   return card;
 }
-function showSection(section, category = 'Tutti') {
-  currentSection = section;
-  const blog = section === 'blog';
-  setDialog(blog ? 'IL DIARIO' : 'VIAGGI CON CLICK&VIAGGIA', blog ? 'Scegli la tua prossima lettura.' : 'Da quale sogno partiamo?');
-  dialog.classList.toggle('trips-dialog', !blog);
-  dialog.classList.toggle('blog-dialog', blog);
-  dialogBody.append(paragraph(blog ? 'Un viaggio in gruppo e due lunghi soggiorni: Fátima e Nazaré, Nosy Be e Marsa Alam. Fotografie dei luoghi e racconti da leggere con calma. Il cerchietto rosso indica le nuove letture degli ultimi 14 giorni.' : 'Due mete, due modi di emozionarsi. Scegli il viaggio che ti ispira: la sua pagina si apre in una nuova scheda, pronta da esplorare e condividere.', 'collection-note'));
-  if (blog) {
-    const filters = document.createElement('div');
-    filters.className = 'category-filters';
-    filters.setAttribute('role', 'group');
-    filters.setAttribute('aria-label', 'Filtra gli articoli per categoria');
-    ['Tutti', ...new Set(Object.values(articles).map(article => article.category))].forEach(name => {
-      const button = document.createElement('button');
-      button.className = 'category-filter';
-      button.textContent = name;
-      button.setAttribute('aria-pressed', String(category === name));
-      button.addEventListener('click', () => {
-        showSection('blog', name);
-        [...dialogBody.querySelectorAll('.category-filter')].find(item => item.textContent === name).focus();
-      });
-      filters.append(button);
-    });
-    dialogBody.append(filters);
-  }
+function showTrips() {
+  setDialog('VIAGGI CON CLICK&VIAGGIA', 'Da quale sogno partiamo?');
+  dialog.classList.add('trips-dialog');
+  dialogBody.append(paragraph('Due mete, due modi di emozionarsi. Scegli il viaggio che ti ispira: la sua pagina si apre in una nuova scheda, pronta da esplorare e condividere.', 'collection-note'));
   const list = document.createElement('div');
-  list.className = blog ? 'collection-grid' : 'collection-grid trip-collection';
-  Object.entries(blog ? articles : trips).forEach(([id, record]) => {
-    if (!blog) list.append(tripCard(id, record));
-    else if (category === 'Tutti' || record.category === category) list.append(blogCard(record));
-  });
+  list.className = 'collection-grid trip-collection';
+  Object.entries(trips).forEach(([id, record]) => list.append(tripCard(id, record)));
   dialogBody.append(list);
-  if (!blog) {
-    dialogBody.append(paragraph('Proposte in preparazione. Date, programma e servizi saranno comunicati quando definiti.', 'trip-preparation'));
-    const guide = document.createElement('ol');
-    guide.className = 'trip-guide';
-    [
-      ['Scegli la tua meta', 'Fátima o Disneyland Paris: segui ciò che ti ispira.'],
-      ['Esplora la scheda', 'Foto e descrizione ti aiutano a conoscere il viaggio.'],
-      ['Parliamone su WhatsApp', 'Richiedi un appuntamento al team dalla pagina del viaggio.']
-    ].forEach(([title, text]) => {
-      const item = document.createElement('li');
-      const heading = document.createElement('h3');
-      heading.textContent = title;
-      item.append(heading, paragraph(text));
-      guide.append(item);
-    });
-    dialogBody.append(guide);
-  }
-  if (!blog && travelLinks.length) {
+  dialogBody.append(paragraph('Proposte in preparazione. Date, programma e servizi saranno comunicati quando definiti.', 'trip-preparation'));
+  const guide = document.createElement('ol');
+  guide.className = 'trip-guide';
+  [
+    ['Scegli la tua meta', 'Fátima o Disneyland Paris: segui ciò che ti ispira.'],
+    ['Esplora la scheda', 'Foto e descrizione ti aiutano a conoscere il viaggio.'],
+    ['Parliamone su WhatsApp', 'Richiedi un appuntamento al team dalla pagina del viaggio.']
+  ].forEach(([title, text]) => {
+    const item = document.createElement('li');
+    const heading = document.createElement('h3');
+    heading.textContent = title;
+    item.append(heading, paragraph(text));
+    guide.append(item);
+  });
+  dialogBody.append(guide);
+  if (travelLinks.length) {
     const partner = document.createElement('section');
     partner.className = 'partner-links';
     const heading = document.createElement('h3');
@@ -303,10 +194,10 @@ function showSection(section, category = 'Tutti') {
     dialogBody.append(partner);
   }
 }
-document.querySelectorAll('[data-section]').forEach(button => button.addEventListener('click', () => showSection(button.dataset.section)));
-navigation.querySelectorAll('a[href="#blog"], a[href="#viaggi"]').forEach(link => link.addEventListener('click', event => {
+document.querySelectorAll('[data-section="viaggi"]').forEach(button => button.addEventListener('click', showTrips));
+navigation.querySelectorAll('a[href="#viaggi"]').forEach(link => link.addEventListener('click', event => {
   event.preventDefault();
-  showSection(link.getAttribute('href').slice(1));
+  showTrips();
 }));
 dialog.querySelector('.close').addEventListener('click', () => dialog.close());
 dialog.addEventListener('close', () => document.body.classList.remove('dialog-open'));
@@ -322,7 +213,7 @@ fetch('./data/travel-links.json', { cache: 'no-store' }).then(response => {
 }).then(data => {
   if (!Array.isArray(data.links)) throw new Error('Invalid configuration');
   travelLinks = data.links.filter(link => typeof link.title === 'string' && link.title.trim() && validTravelUrl(link.url) && typeof link.affiliate === 'boolean');
-  if (dialog.open && currentSection === 'viaggi') showSection('viaggi');
+  if (dialog.open) showTrips();
 }).catch(() => { travelLinks = []; });
 let installPrompt;
 const installButton = document.querySelector('#install');
@@ -340,7 +231,8 @@ installButton.addEventListener('click', async () => {
 });
 window.addEventListener('appinstalled', () => { installButton.hidden = true; });
 const requestedSection = new URLSearchParams(window.location.search).get('section');
-if (requestedSection === 'blog' || requestedSection === 'viaggi') showSection(requestedSection);
+if (requestedSection === 'blog') window.location.replace('blog.html');
+else if (requestedSection === 'viaggi') showTrips();
 if ('serviceWorker' in navigator && window.isSecureContext) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('./sw.js').catch((error) => console.warn('Modalità offline non disponibile:', error.message));

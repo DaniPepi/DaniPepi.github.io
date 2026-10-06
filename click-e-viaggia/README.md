@@ -26,7 +26,7 @@ Gestione: https://danipepi.github.io/click-e-viaggia/admin.html
 
 La pagina di gestione prepara una bozza dei link. Copiare la configurazione, aprire l’editor GitHub tramite il pulsante dedicato, sostituire il contenuto di `click-e-viaggia/data/travel-links.json` e confermare con Commit changes. La scrittura è autorizzata da GitHub; la pagina pubblica non contiene credenziali e non può pubblicare da sola. Sono consentiti URL HTTPS su traveladvantage.com e sottodomini. Indicare correttamente se il collegamento è affiliato. Le modifiche alla bozza non persistono dopo la chiusura della pagina.
 
-Gli indicatori rossi del blog si mostrano per 14 giorni dalla data in `publicationDates` in app.js. I tre racconti originali sono stati pubblicati il 6 ottobre 2026; le date non si aggiornano automaticamente. Il blog comprende soltanto Fátima/Nazaré, Nosy Be e Marsa Alam.
+Gli indicatori rossi del blog si mostrano per 14 giorni dalla data `data-published` del badge in `blog.html`, gestita da `journal.js`. Mantenere la stessa data nei metadati e negli elementi `time` dell’articolo. I tre racconti originali sono stati pubblicati il 6 ottobre 2026; le date non si aggiornano automaticamente. Il blog comprende soltanto Fátima/Nazaré, Nosy Be e Marsa Alam.
 
 ## Informazioni legali ancora da completare
 
@@ -67,9 +67,9 @@ Manifest e service worker consentono l’installazione dove supportata e la lett
 - `brand.css`: logo su una riga e navigazione adattiva.
 - `trips.css`: vetrina dei due viaggi, tessere fotografiche e gallerie delle schede.
 - `trip-layout.css`: impaginazione delle schede su desktop e dispositivi mobili.
-- `app.js`: menu, blog e catalogo viaggi; riferimento pubblico aggiornato a `app.js?v=16`.
+- `app.js`: menu e catalogo viaggi; riferimento pubblico aggiornato a `app.js?v=17`.
 - `trip.js`: condivisione delle schede e contatto WhatsApp con destinazione.
-- `sw.js`: cache `click-viaggia-v16` con fotografie, copertine e nuovo marchio; le vecchie proposte non sono più precaricate. Aumentare la versione della cache quando si aggiornano risorse per gli utenti offline.
+- `sw.js`: cache `click-viaggia-v17` con fotografie, copertine e nuovo marchio; le vecchie proposte non sono più precaricate. Aumentare la versione della cache quando si aggiornano risorse per gli utenti offline.
 
 ## Logo del sito e dell’app
 
@@ -95,6 +95,9 @@ Grafica vettoriale dell'atlante, modalità Bandiere e schede fotografiche per pa
 
 ## Articoli fotografici
 
-Le pagine `blog-fatima-nazare.html`, `blog-nosy-be.html` e `blog-marsa-alam.html` contengono i racconti completi e possono essere condivise con il proprio URL. La selezione della home ha copertine fotografiche e filtri per paese. Le vecchie tre guide generiche non sono più pubblicate.
+Le pagine `blog-fatima-nazare.html`, `blog-nosy-be.html` e `blog-marsa-alam.html` contengono i racconti completi e possono essere condivise con il proprio URL. La pagina dedicata `blog.html` presenta il racconto di Fátima e Nazaré in evidenza e le altre due storie, con filtri per paese. La home rimanda al diario. I vecchi link `?section=blog` portano alla nuova pagina. Le vecchie tre guide generiche non sono più pubblicate.
 
-I testi editoriali sono conservati anche in `data/blog-articles.json`; le fotografie e le relative attribuzioni in `data/blog-photos.json`. Le pagine HTML sono statiche: modificare testo e metadati in Visual Studio Code, aggiornando anche le anteprime in `app.js` e `index.html` quando cambia un titolo. `blog.css` gestisce la lettura e la selezione, `article.js` condivisione e copia del link. Le fotografie sono illustrative, con crediti visibili, e non sono immagini dei viaggi personali. Fonti: `BLOG-EDITORIAL-SOURCES.md` e `BLOG-PHOTO-SOURCES.md`. I nuovi articoli e le fotografie sono inclusi nella cache offline v16.
+I testi editoriali sono conservati anche in `data/blog-articles.json`; le fotografie e le relative attribuzioni in `data/blog-photos.json`. Le pagine HTML sono statiche: modificare testo e metadati in Visual Studio Code, aggiornando anche le anteprime in `blog.html` e `index.html` quando cambia un titolo. `journal.css` e `journal.js` gestiscono la selezione; `blog.css` gestisce la lettura, `article.js` condivisione e copia del link. Le fotografie sono illustrative, con crediti visibili, e non sono immagini dei viaggi personali. Fonti: `BLOG-EDITORIAL-SOURCES.md` e `BLOG-PHOTO-SOURCES.md`. I nuovi articoli e le fotografie sono inclusi nella cache offline v17.
+
+
+Il diario ha un’impaginazione editoriale con copertine fotografiche. I box delle esperienze di Daniele riportano esclusivamente le due durate fornite dal team e collegano i relativi racconti.
