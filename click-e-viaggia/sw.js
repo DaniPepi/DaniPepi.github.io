@@ -1,7 +1,8 @@
 'use strict';
-const CACHE = 'click-viaggia-v21';
+const CACHE = 'click-viaggia-v22';
 const ASSETS = [
-  './travel-deck.css?v=1', './travel-deck.js?v=1',
+  './home-sections.css?v=1', './home-blog-strip.js?v=1',
+  './travel-deck.css?v=1', './travel-deck.js?v=2',
   './trip-compact.css?v=2', './data/group-trips.json', './site-account.css?v=1', './site-account.js?v=1', './account-core.js?v=1',
   './blog.html', './journal.css?v=1', './journal.js?v=1',
   "./blog.css?v=3", "./article.js?v=1", "./blog-fatima-nazare.html", "./blog-nosy-be.html", "./blog-marsa-alam.html", "./assets/blog-nazare.jpg", "./assets/blog-nosy-iranja.jpg", "./assets/blog-nosy-sakatia.jpg", "./assets/blog-lokobe.jpg", "./assets/blog-sharm-el-luli.jpg", "./assets/blog-port-ghalib.jpg", "./assets/blog-marsa-desert.jpg", "./assets/blog-camels-red-sea.jpg",

@@ -254,7 +254,7 @@
     new ResizeObserver(() => {
       if (resizeFrame) cancelAnimationFrame(resizeFrame);
       resizeFrame = requestAnimationFrame(() => { resizeFrame = 0; measure(); });
-    }).observe(track);
+    }).observe(track, { box: 'border-box' });
   } else window.addEventListener('resize', measure);
   motion.addEventListener('change', () => center(active, false));
 })();
