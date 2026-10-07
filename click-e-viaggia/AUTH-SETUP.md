@@ -2,6 +2,8 @@
 
 Il login è predisposto ma disattivato finché non viene configurato il progetto reale.
 
+Il pannello account è facoltativo: si chiude con la X, con Esc o con “Continua senza account”. La chiusura vale per la sessione della scheda del browser; “Accedi” nel menu lo riapre in ogni momento. Se il browser vieta l'archiviazione, il sito resta utilizzabile e il pannello potrà ricomparire nelle altre pagine. Nessuna finestra Google/Apple si apre automaticamente. Con configurazione incompleta i pulsanti sono disabilitati e non vengono caricati gli SDK esterni di Firebase.
+
 1. Firebase → Impostazioni progetto → Le tue app: registra un'app web e copia la configurazione pubblica in `data/auth-config.json`.
 2. Authentication → Metodo di accesso: abilita Google e aggiungi `danipepi.github.io` ai domini autorizzati. Abilita Apple solo dopo aver configurato Service ID, team Apple e chiave nel pannello Firebase, seguendo https://firebase.google.com/docs/auth/web/apple. Le chiavi private devono restare nel servizio, mai nel repository.
 3. Crea Firestore, preferibilmente in una regione europea. Pubblica le regole del file `firestore.rules`: ogni persona può leggere e modificare solo `travelDiaries/{proprioUid}`. Non usare regole aperte.
@@ -9,5 +11,8 @@ Il login è predisposto ma disattivato finché non viene configurato il progetto
 
 “Resta connesso” conserva la sessione tramite Firebase, senza salvare password. Il diario senza accesso resta separato nel browser; dopo il login vengono mostrati i paesi dell'account. La sincronizzazione richiede connessione. Non è previsto un calendario.
 
-Prima dell'attivazione completa l'informativa con titolare, recapiti, finalità, basi giuridiche, tempi di conservazione, fornitori e modalità di cancellazione account e dati. Il file legale esistente è ancora provvisorio.
+Nel nuovo pannello “Resta connesso” è facoltativo e inizialmente non selezionato: altrimenti viene usata la persistenza della sessione della finestra. `account-core.js` gestisce una sola inizializzazione Firebase condivisa fra il pannello e `map-auth.js`. I provider sono disponibili soltanto con `enabled: true`, tutti e quattro i campi pubblici compilati e il relativo provider impostato a `true`. Le password vengono gestite esclusivamente da Google e Apple.
 
+Il login reale Google/Apple e la sincronizzazione non sono verificabili finché manca la configurazione del progetto. Prima del lancio con accessi attivi, provare popup consentiti e bloccati, annullamento del login, uscita, persistenza facoltativa, diario su due dispositivi e separazione dei dati fra due account. Il pannello non promette prenotazioni, sconti o notifiche riservate agli iscritti: queste funzioni non sono implementate.
+
+Prima dell'attivazione completa l'informativa con titolare, recapiti, finalità, basi giuridiche, tempi di conservazione, fornitori e modalità di cancellazione account e dati. Il file legale esistente è ancora provvisorio.

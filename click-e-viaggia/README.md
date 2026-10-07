@@ -67,9 +67,9 @@ Manifest e service worker consentono l’installazione dove supportata e la lett
 - `brand.css`: logo su una riga e navigazione adattiva.
 - `trips.css`: vetrina dei due viaggi, tessere fotografiche e gallerie delle schede.
 - `trip-layout.css`: impaginazione delle schede su desktop e dispositivi mobili.
-- `app.js`: menu e catalogo viaggi; riferimento pubblico aggiornato a `app.js?v=17`.
+- `app.js`: menu e catalogo viaggi; riferimento pubblico aggiornato a `app.js?v=18`.
 - `trip.js`: condivisione delle schede e contatto WhatsApp con destinazione.
-- `sw.js`: cache `click-viaggia-v19` con fotografie, copertine e nuovo marchio; le vecchie proposte non sono più precaricate. Aumentare la versione della cache quando si aggiornano risorse per gli utenti offline.
+- `sw.js`: cache `click-viaggia-v20` con fotografie, schede compatte, pannello account e nuovo marchio; le vecchie proposte non sono più precaricate. Aumentare la versione della cache quando si aggiornano risorse per gli utenti offline.
 
 ## Logo del sito e dell’app
 
@@ -109,3 +109,17 @@ I due pannelli della home usano titoli diretti, maiuscoli e in grassetto: VIAGGI
 ## Articoli dedicati a Daniele Pepi
 
 I tre racconti usano una narrazione giornalistica in terza persona, pubblicata dalla redazione Click&Viaggia. Titoli, anteprime, metadati e schema BlogPosting indicano Daniele Pepi come protagonista; non come autore di un’intervista o testimonial di una testata. Il profilo Instagram @daniele_pepi98 compare come semplice collegamento esterno nell’apertura e nel riquadro a fine articolo, senza embed o richieste automatiche alla piattaforma. Modificare l’URL e il testo negli HTML quando necessario. `instagramPitch` in `data/blog-articles.json` conserva l’invito editoriale. Le fotografie restano illustrative. `blog.css?v=3` e la cache offline v19 includono questo aggiornamento.
+
+## Schede compatte dei viaggi di gruppo
+
+`viaggio-fatima.html` e `viaggio-disney.html` presentano immagini a sinistra e riepilogo, inclusioni, programma e contatto a destra. `trip-compact.css` sostituisce l’impaginazione lunga delle due pagine; su telefoni, finestre basse e zoom elevato lo scorrimento naturale mantiene accessibili tutti i contenuti. Non è presente uno scorrimento interno della scheda. Crediti fotografici e condizioni sono in un dettaglio espandibile sotto la scheda. Gli URL da condividere restano gli stessi.
+
+`data/group-trips.json` contiene due oggetti, `fatima` e `disney`. Compilare `dates` e `duration` con i valori reali, `inclusions` con un elenco di servizi confermati e `programme` con un oggetto per ciascun giorno: `day`, `title`, `description`. `trip.js?v=2` mostra i dati come testo, senza interpretare HTML. Al momento gli elenchi sono vuoti: non sono stati inventati programmi, durate o servizi. Le date del racconto Fátima del settembre 2026 riguardano un viaggio concluso.
+
+Il pulsante “Prenota il tuo posto senza impegno” apre WhatsApp al numero +39 389 296 2059 con la destinazione nel messaggio; non effettua una prenotazione o un pagamento. Il collegamento statico funziona anche senza JavaScript. `data/contact.json` può aggiornare il recapito. L’eventuale `whatsappGroupUrl` nella singola proposta può contenere un link d’invito HTTPS valido su `chat.whatsapp.com`: aggiunge il pulsante distinto “Entra nel gruppo del viaggio”. Nessun gruppo è attualmente configurato e nessun messaggio viene inviato dal sito.
+
+## Accesso facoltativo
+
+`site-account.js` e `site-account.css` aggiungono il pannello facoltativo con X, “Continua senza account” e apertura manuale “Accedi”. La chiusura viene ricordata nella sessione di navigazione. Nessuna pagina del sito richiede un account per la lettura. `account-core.js` condivide la configurazione Firebase con il diario personale; “Resta connesso” riguarda la sessione, mai le password Google o Apple.
+
+La configurazione pubblica `data/auth-config.json` è ancora vuota e disabilitata: i pulsanti Google e Apple mostrano questo stato e non simulano un accesso. Per attivarli servono i dati pubblici dell’app e i provider reali configurati, come indicato in `AUTH-SETUP.md`. La sincronizzazione del diario va verificata sul progetto reale prima del lancio. Nessun SDK esterno viene caricato dal pannello mentre l’accesso è disabilitato.

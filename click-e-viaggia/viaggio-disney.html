@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#081c20">
-  <title>Disneyland Paris · La meraviglia, insieme. | Click&amp;Viaggia</title>
+  <title>Disneyland Paris · Viaggio di gruppo | Click&amp;Viaggia</title>
   <meta name="description" content="Scopri la proposta Click&amp;Viaggia per Disneyland Paris. Fantasia e ricordi da condividere in famiglia, in coppia o con gli amici. Richiedi un appuntamento.">
   <link rel="canonical" href="https://danipepi.github.io/click-e-viaggia/viaggio-disney.html">
   <meta property="og:title" content="Disneyland Paris · La meraviglia, insieme.">
@@ -20,71 +20,41 @@
   <meta name="apple-mobile-web-app-title" content="Click&amp;Viaggia">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon-v3.png" sizes="180x180">
   <link rel="stylesheet" href="style.css?v=11">
-  <link rel="stylesheet" href="trip-layout.css?v=1">
-  <link rel="stylesheet" href="trips.css?v=1">
-  <script src="trip.js" defer>
-  </script>
+  <link rel="stylesheet" href="trip-compact.css?v=1">
+  <script src="trip.js?v=2" defer></script>
   <link rel="manifest" href="manifest.webmanifest?v=17">
   <link rel="stylesheet" href="brand.css?v=2">
+  <link rel="stylesheet" href="site-account.css?v=1">
+  <script type="module" src="site-account.js?v=1"></script>
 </head>
-<body class="trip-page trip-disney" data-destination="Disneyland Paris">
-  <a class="skip" href="#esperienza">Vai ai contenuti</a>
+<body class="trip-page compact-trip trip-disney" data-trip-id="disney" data-destination="Disneyland Paris">
+  <a class="skip" href="#esperienza">Vai alla scheda viaggio</a>
   <header class="team-header">
     <a class="brand brand-logo" href="./" aria-label="Click&amp;Viaggia, home"><img class="brand-image" src="assets/brand-logo-v3.svg" width="290" height="52" alt="" decoding="async"></a>
     <nav class="team-nav" aria-label="Menu scheda viaggio"><a href="./?section=viaggi">Tutti i viaggi</a><a href="chi-siamo.html">Il team</a></nav>
   </header>
-  <main>
-    <section class="trip-hero" aria-labelledby="trip-title">
-      <img src="assets/disney-panorama.jpg" alt="Giardini, aiuole e laghetti di Fantasyland a Disneyland Paris" fetchpriority="high">
-      <div class="trip-hero-shade"></div>
-      <div class="trip-hero-content">
-        <p class="eyebrow">CLICK&amp;VIAGGIA / DISNEYLAND PARIS</p>
-        <h1 id="trip-title">La meraviglia,<br> insieme.</h1>
-        <p>Immagina una pausa dal quotidiano, tra fantasia e momenti da condividere con chi ami.</p>
-        <div class="trip-facts"><span>FRANCIA</span><span>Proposta in preparazione</span></div>
-        <a class="button primary trip-hero-cta" href="#appuntamento">Parliamo di questo viaggio</a>
+  <main class="trip-workspace">
+    <div class="trip-breadcrumb"><a href="./?section=viaggi">← Viaggi di gruppo</a><span>Francia / Disneyland Paris</span></div>
+    <section id="esperienza" class="trip-sheet" aria-labelledby="trip-title">
+      <div class="trip-visual">
+        <figure class="trip-main-photo"><img id="trip-photo" src="assets/disney-panorama.jpg" width="1600" height="1067" alt="Giardini, aiuole e laghetti di Fantasyland a Disneyland Paris" fetchpriority="high" decoding="async"><figcaption id="trip-photo-caption">Fantasyland · Disneyland Paris · Foto illustrativa del 2016</figcaption></figure>
+        <div class="trip-thumbnails" role="group" aria-label="Scegli un’immagine del viaggio"><button type="button" class="trip-thumbnail" data-trip-photo="assets/disney-panorama.jpg" data-trip-alt="Giardini, aiuole e laghetti di Fantasyland a Disneyland Paris" data-trip-caption="Fantasyland · Disneyland Paris · Foto illustrativa del 2016" aria-pressed="true" aria-controls="trip-photo" aria-label="Mostra immagine 1: Fantasyland · Disneyland Paris · Foto illustrativa del 2016"><img src="assets/disney-panorama.jpg" width="160" height="100" alt="" decoding="async"></button>
+<button type="button" class="trip-thumbnail" data-trip-photo="assets/grafica-disney-v2.png" data-trip-alt="La grafica Click&amp;Viaggia dedicata alla proposta Disneyland Paris" data-trip-caption="La grafica del viaggio · Proposta in preparazione" aria-pressed="false" aria-controls="trip-photo" aria-label="Mostra immagine 2: La grafica del viaggio · Proposta in preparazione"><img src="assets/grafica-disney-v2.png" width="160" height="100" alt="" decoding="async"></button></div>
+        
+      </div>
+      <div class="trip-details">
+        <div class="trip-summary-grid">
+          <div class="trip-summary"><p class="trip-kicker">CLICK&amp;VIAGGIA · VIAGGIO DI GRUPPO</p><h1 id="trip-title">Disneyland Paris</h1><p class="trip-tagline">La meraviglia, insieme.</p><p class="trip-short-copy">Un’idea di viaggio da condividere in famiglia, in coppia o con gli amici.</p></div>
+          <aside class="trip-inclusions" aria-labelledby="inclusions-title"><h2 id="inclusions-title">Inclusioni</h2><div id="trip-inclusions-empty"><span class="trip-pending">In definizione</span><p>Il dettaglio dei servizi sarà comunicato dal team.</p></div><ul id="trip-inclusions-list" hidden></ul></aside>
+        </div>
+        <dl class="trip-meta"><div><dt>Partenza</dt><dd id="trip-date">Da definire</dd></div><div><dt>Durata</dt><dd id="trip-duration">Da definire</dd></div></dl>
+        <section class="trip-programme" aria-labelledby="programme-title"><div class="trip-programme-heading"><h2 id="programme-title">Programma giorno per giorno</h2><span id="trip-programme-status">In preparazione</span></div><ol id="trip-programme-list" hidden></ol><div id="trip-programme-empty" class="trip-programme-empty"><span aria-hidden="true">01 — …</span><div><h3>Il prossimo viaggio prende forma.</h3><p>Le attività giorno per giorno saranno pubblicate appena definite. Scrivici per conoscere gli aggiornamenti.</p></div></div></section>
+        <div class="trip-contact"><a id="appointment-button" class="button primary" href="https://wa.me/393892962059?text=Ciao%20team%20Click%26Viaggia%2C%20vorrei%20prendere%20un%20appuntamento%20per%20informazioni%20sul%20VIAGGIO%20%E2%80%9CDISNEYLAND%20PARIS%E2%80%9D.%20Mi%20interessa%20partecipare%20senza%20impegno.%20Quando%20possiamo%20sentirci%3F" target="_blank" rel="noopener noreferrer">Prenota il tuo posto senza impegno <span aria-hidden="true">↗</span></a><p>Si apre WhatsApp con un messaggio pronto per Disneyland Paris.<br>La richiesta non conferma una prenotazione e non prevede pagamenti.</p><a id="trip-group" class="trip-group-link" target="_blank" rel="noopener noreferrer" hidden>Entra nel gruppo del viaggio ↗</a></div>
+        <div class="trip-sheet-tools"><button id="share-trip" type="button">Condividi la scheda ↗</button><a href="assets/grafica-disney-v2.png" download="Click-e-Viaggia-disney.png">Scarica la grafica ↓</a><p id="share-status" role="status"></p><input id="share-link" aria-label="Link da condividere" readonly hidden></div>
       </div>
     </section>
-    <div class="trip-tools">
-      <span>SCHEDA VIAGGIO · DISNEYLAND PARIS</span>
-      <div class="trip-tool-actions"><button id="share-trip" class="button secondary">Condividi questa scheda</button><a class="button secondary" href="assets/grafica-disney-v2.png" download="Click-e-Viaggia-disney.png">Scarica la grafica</a></div>
-      <p id="share-status" role="status"></p>
-      <input id="share-link" aria-label="Link da condividere" readonly hidden>
-    </div>
-    <section id="esperienza" class="section trip-editorial">
-      <div><p class="eyebrow">L’ESPERIENZA</p><h2>Lascia spazio<br>alla fantasia.</h2></div>
-      <div><p>Disneyland Paris invita a sognare in grande: in famiglia, in coppia o con gli amici. È l’idea di una pausa che accende lo stupore e diventa un ricordo da custodire insieme.</p><p>Raccontaci con chi vorresti partire e cosa renderebbe questo viaggio speciale per te. La proposta sta prendendo forma: ogni dettaglio sarà presentato appena definito.</p><ul class="trip-highlights"><li>Fantasia e voglia di meravigliarsi</li><li>Un’idea da vivere con le persone che ami</li><li>Momenti da trasformare in ricordi</li></ul></div>
-    </section>
-    <section class="section trip-gallery" aria-labelledby="gallery-title">
-      <div class="trip-gallery-heading"><p class="eyebrow">UNO SGUARDO A DISNEYLAND PARIS</p><h2 id="gallery-title">La fantasia incontra il paesaggio.</h2></div>
-      <div class="trip-photo-grid">
-        <figure><img src="assets/disney-panorama.jpg" width="1920" height="1280" alt="Una veduta dei giardini di Fantasyland, tra acqua, fiori e alberi a Disneyland Paris" loading="lazy" decoding="async"><figcaption><strong>Fantasyland · Disneyland Paris</strong>Fotografia del 2016, illustrativa della destinazione.</figcaption></figure>
-        <div><h3>Immagina con chi vorresti esserci.</h3><p>Il verde dei giardini, i colori, la curiosità di scoprire qualcosa insieme. Ogni viaggio comincia da un’immagine e dalle persone che scegli di avere accanto.</p><p>Parlane con il team: potrai raccontare le tue aspettative e conoscere la proposta quando sarà definita.</p></div>
-      </div>
-    </section>
-    <section class="section trip-route" aria-labelledby="steps-title">
-      <div><p class="eyebrow">COME SAPERNE DI PIÙ</p><h2 id="steps-title">Dal primo messaggio<br>alla tua prossima idea.</h2><p class="route-note">La proposta è in preparazione e non è ancora prenotabile. Date, durata, programma, servizi, organizzatore e condizioni saranno comunicati prima di qualsiasi conferma.</p></div>
-      <div class="route-list">
-        <article class="route-stage"><span>01</span><div><h3>Scrivici su WhatsApp</h3><p>Il pulsante qui sotto prepara un messaggio con il nome del viaggio. Puoi modificarlo e inviarlo quando vuoi.</p></div></article>
-        <article class="route-stage"><span>02</span><div><h3>Concordiamo un appuntamento</h3><p>Raccontaci con chi vorresti partire, il periodo che immagini e ciò che conta per te.</p></div></article>
-        <article class="route-stage"><span>03</span><div><h3>Conosci la proposta</h3><p>Il team ti presenta gli aggiornamenti e risponde alle tue domande. Valuta ogni dettaglio prima di decidere.</p></div></article>
-      </div>
-    </section>
-    <section id="appuntamento" class="section contact trip-appointment">
-      <p class="eyebrow">PARLIAMO DI DISNEYLAND PARIS</p>
-      <h2>Il primo passo è<br>una conversazione.</h2>
-      <p>Scrivici per concordare un appuntamento dedicato a Disneyland Paris.<br>Il team ti aiuterà a conoscere questa idea di viaggio.</p>
-      <button id="appointment-button" class="button primary">Richiedi un appuntamento su WhatsApp</button>
-      <p class="collection-note">Messaggio già pronto per Disneyland Paris · +39 389 296 2059</p>
-    </section>
-    <section class="trip-image-credit" aria-label="Crediti delle immagini"><p>Fotografia dei giardini di Fantasyland (2016): <a href="https://commons.wikimedia.org/wiki/File:Disneyland_Paris_-_panoramio_(4).jpg" target="_blank" rel="noopener noreferrer">Andrei Dan Suciu · Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener noreferrer">CC BY 3.0</a>. Immagine ridimensionata; la grafica scaricabile aggiunge impaginazione e testi. La fotografia illustra la destinazione e non rappresenta servizi inclusi. Questa pagina presenta una proposta indipendente del team: non è materiale ufficiale Disney e non dichiara un’affiliazione con Disneyland Paris.</p></section>
+    <details class="trip-credits"><summary>Crediti delle immagini e dettagli della proposta</summary><p>Proposta in preparazione. Date, durata, programma, servizi, organizzatore e condizioni saranno comunicati prima di qualsiasi conferma. Le fotografie sono illustrative.</p><p>Fotografia dei giardini di Fantasyland (2016): <a href="https://commons.wikimedia.org/wiki/File:Disneyland_Paris_-_panoramio_(4).jpg" target="_blank" rel="noopener noreferrer">Andrei Dan Suciu · Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener noreferrer">CC BY 3.0</a>. Immagine ridimensionata; la grafica scaricabile aggiunge impaginazione e testi. La fotografia illustra la destinazione e non rappresenta servizi inclusi. Questa pagina presenta una proposta indipendente del team: non è materiale ufficiale Disney e non dichiara un’affiliazione con Disneyland Paris.</p></details>
   </main>
-  <footer><a class="footer-brand" href="./">Click&amp;Viaggia</a><a href="./?section=viaggi">Tutti i viaggi</a><a href="legal.html">Privacy e informazioni legali</a></footer>
-  <dialog id="appointment-dialog" aria-labelledby="appointment-title">
-    <button class="close" aria-label="Chiudi appuntamento">Chiudi ×</button>
-    <h2 id="appointment-title">Parliamone con il team.</h2>
-    <p>Scrivici al +39 389 296 2059 per concordare un appuntamento dedicato a Disneyland Paris.</p>
-    <a class="button primary" href="https://wa.me/393892962059?text=Ciao%20team%20Click%26Viaggia%2C%20vorrei%20prendere%20un%20appuntamento%20per%20informazioni%20sul%20VIAGGIO%20%E2%80%9CDISNEYLAND%20PARIS%E2%80%9D.%20Quando%20possiamo%20sentirci%3F">Apri WhatsApp</a>
-  </dialog>
+  <footer class="trip-footer"><span>CLICK&amp;VIAGGIA · Partiamo dalle persone.</span><a href="legal.html">Privacy e informazioni legali</a></footer>
 </body>
 </html>

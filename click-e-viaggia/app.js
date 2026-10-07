@@ -140,7 +140,7 @@ function tripCard(id, record) {
   });
   const action = document.createElement('span');
   action.className = 'trip-card-action';
-  action.textContent = 'Apri la scheda';
+  action.textContent = 'Programma e dettagli';
   const arrow = document.createElement('span');
   arrow.setAttribute('aria-hidden', 'true');
   arrow.textContent = '↗';
@@ -150,28 +150,14 @@ function tripCard(id, record) {
   return card;
 }
 function showTrips() {
-  setDialog('VIAGGI CON CLICK&VIAGGIA', 'Da quale sogno partiamo?');
+  setDialog('VIAGGI DI GRUPPO', 'Scegli la tua prossima meta.');
   dialog.classList.add('trips-dialog');
-  dialogBody.append(paragraph('Due mete, due modi di emozionarsi. Scegli il viaggio che ti ispira: la sua pagina si apre in una nuova scheda, pronta da esplorare e condividere.', 'collection-note'));
+  dialogBody.append(paragraph('Fátima o Disneyland Paris? Apri la scheda per vedere le immagini, conoscere la proposta e parlare con il team.', 'collection-note'));
   const list = document.createElement('div');
   list.className = 'collection-grid trip-collection';
   Object.entries(trips).forEach(([id, record]) => list.append(tripCard(id, record)));
   dialogBody.append(list);
   dialogBody.append(paragraph('Proposte in preparazione. Date, programma e servizi saranno comunicati quando definiti.', 'trip-preparation'));
-  const guide = document.createElement('ol');
-  guide.className = 'trip-guide';
-  [
-    ['Scegli la tua meta', 'Fátima o Disneyland Paris: segui ciò che ti ispira.'],
-    ['Esplora la scheda', 'Foto e descrizione ti aiutano a conoscere il viaggio.'],
-    ['Parliamone su WhatsApp', 'Richiedi un appuntamento al team dalla pagina del viaggio.']
-  ].forEach(([title, text]) => {
-    const item = document.createElement('li');
-    const heading = document.createElement('h3');
-    heading.textContent = title;
-    item.append(heading, paragraph(text));
-    guide.append(item);
-  });
-  dialogBody.append(guide);
   if (travelLinks.length) {
     const partner = document.createElement('section');
     partner.className = 'partner-links';

@@ -1,29 +1,33 @@
+import {getAccountService} from './account-core.js?v=1';
+
 export async function connectAccount(callbacks) {
-  const config = await fetch('data/auth-config.json', {cache: 'no-store'}).then(r => { if (!r.ok) throw Error(); return r.json(); });
-  if (!config.enabled) return null;
-  if (!config.apiKey || !config.authDomain || !config.projectId || !config.appId) throw Error('L’accesso account non è disponibile in questo momento.');
-  const base = 'https://www.gstatic.com/firebasejs/10.14.1/';
-  const [appSDK, authSDK, dbSDK] = await Promise.all([import(base + 'firebase-app.js'), import(base + 'firebase-auth.js'), import(base + 'firebase-firestore.js')]);
-  const app = appSDK.initializeApp({apiKey: config.apiKey, authDomain: config.authDomain, projectId: config.projectId, appId: config.appId});
-  const auth = authSDK.getAuth(app), db = dbSDK.getFirestore(app);
-  let unsubscribe = () => {}, ready = false;
-  authSDK.onAuthStateChanged(auth, user => {
-    unsubscribe(); ready = false; callbacks.user(user);
+  const account = await getAccountService();
+  if (!account) return null;
+  const dbSDK = await import('https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js');
+  const db = dbSDK.getFirestore(account.app);
+  let stopDiary = () => {}, ready = false, currentUid = null;
+  const stopAccount = account.observe(user => {
+    stopDiary(); ready = false; currentUid = user?.uid || null; callbacks.user(user);
     if (!user) return;
-    unsubscribe = dbSDK.onSnapshot(dbSDK.doc(db, 'travelDiaries', user.uid), snapshot => {
+    const uid = user.uid;
+    stopDiary = dbSDK.onSnapshot(dbSDK.doc(db, 'travelDiaries', uid), snapshot => {
+      if (currentUid !== uid) return;
       ready = true; callbacks.data(snapshot.exists() ? snapshot.data().visited : []);
-    }, () => callbacks.error('Non è possibile caricare il tuo diario in questo momento. Controlla la connessione e riprova.'));
-  });
+    }, () => {
+      if (currentUid !== uid) return;
+      ready = false; callbacks.error('Non è possibile caricare il tuo diario in questo momento. Controlla la connessione e riprova.');
+    });
+  }, () => callbacks.error('Non è possibile verificare il tuo account in questo momento.'));
+  const dispose = () => { stopDiary(); stopAccount(); ready = false; currentUid = null; };
+  window.addEventListener('pagehide', event => { if (!event.persisted) dispose(); });
   return {
-    providers: config.providers,
-    async login(provider, remember) {
-      await authSDK.setPersistence(auth, remember ? authSDK.browserLocalPersistence : authSDK.browserSessionPersistence);
-      await authSDK.signInWithPopup(auth, provider === 'google' ? new authSDK.GoogleAuthProvider() : new authSDK.OAuthProvider('apple.com'));
-    },
-    logout: () => authSDK.signOut(auth),
+    providers: account.providers,
+    login: (provider, remember) => account.login(provider, remember),
+    logout: () => account.logout(),
+    dispose,
     async save(visited) {
-      if (!auth.currentUser || !ready) throw Error('Attendi il caricamento del diario.');
-      await dbSDK.setDoc(dbSDK.doc(db, 'travelDiaries', auth.currentUser.uid), {visited, updatedAt: dbSDK.serverTimestamp()});
+      if (!account.currentUser || !ready || account.currentUser.uid !== currentUid) throw Error('Attendi il caricamento del diario.');
+      await dbSDK.setDoc(dbSDK.doc(db, 'travelDiaries', currentUid), {visited, updatedAt: dbSDK.serverTimestamp()});
     }
   };
 }

@@ -1,16 +1,17 @@
 'use strict';
-const CACHE = 'click-viaggia-v19';
+const CACHE = 'click-viaggia-v20';
 const ASSETS = [
+  './trip-compact.css?v=1', './data/group-trips.json', './site-account.css?v=1', './site-account.js?v=1', './account-core.js?v=1',
   './blog.html', './journal.css?v=1', './journal.js?v=1',
   "./blog.css?v=3", "./article.js?v=1", "./blog-fatima-nazare.html", "./blog-nosy-be.html", "./blog-marsa-alam.html", "./assets/blog-nazare.jpg", "./assets/blog-nosy-iranja.jpg", "./assets/blog-nosy-sakatia.jpg", "./assets/blog-lokobe.jpg", "./assets/blog-sharm-el-luli.jpg", "./assets/blog-port-ghalib.jpg", "./assets/blog-marsa-desert.jpg", "./assets/blog-camels-red-sea.jpg",
-  './trip-layout.css?v=1', './trips.css?v=1', './viaggio-fatima.html', './viaggio-disney.html',
+  './trip-layout.css?v=1', './trips.css?v=2', './viaggio-fatima.html', './viaggio-disney.html',
   './assets/grafica-fatima.svg', './assets/grafica-fatima.png',
   './assets/grafica-disney-v2.svg', './assets/grafica-disney-v2.png',
   './assets/fatima.jpg', './assets/disney-panorama.jpg', './assets/fatima-basilica.jpg', './assets/fatima-chapel.jpg',
   './data/country-editorial.json', './data/country-photos.json', './map-navigation.js?v=9',
   './i-miei-viaggi.html', './map.js?v=11', './map-auth.js', './map.css?v=10', './data/map.json', './assets/flags.svg',
-  './', './index.html', './style.css', './style.css?v=11', './app.js?v=17', './legal.html', './chi-siamo.html',
-  './team.js?v=15', './data/team.json', './data/contact.json', './trip.js', './data/travel-links.json',
+  './', './index.html', './style.css', './style.css?v=11', './app.js?v=18', './legal.html', './chi-siamo.html',
+  './team.js?v=15', './data/team.json', './data/contact.json', './trip.js?v=2', './data/travel-links.json',
   './icon.svg', './manifest.webmanifest', './manifest.webmanifest?v=17', './assets/ocean.jpg',
   './presentation.css?v=2', './brand.css?v=2', './assets/brand-logo-v3.svg', './assets/brand-mark-v3.svg',
   './assets/app-icon-v3.svg', './assets/app-icon-192-v3.png', './assets/app-icon-512-v3.png',
