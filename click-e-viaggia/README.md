@@ -69,7 +69,7 @@ Manifest e service worker consentono l’installazione dove supportata e la lett
 - `trip-layout.css`: impaginazione delle schede su desktop e dispositivi mobili.
 - `app.js`: menu, collegamenti alla sezione viaggi e link alla piattaforma; riferimento pubblico aggiornato a `app.js?v=19`.
 - `trip.js`: condivisione delle schede e contatto WhatsApp con destinazione.
-- `sw.js`: cache `click-viaggia-v22` con fotografie, fasce compatte della home, carte viaggio, schede compatte, pannello account e nuovo marchio; le vecchie proposte non sono più precaricate. Aumentare la versione della cache quando si aggiornano risorse per gli utenti offline.
+- `sw.js`: cache `click-viaggia-v23` con fotografie, fasce compatte della home, carte viaggio, schede compatte, pannello account e nuovo marchio; le vecchie proposte non sono più precaricate. Aumentare la versione della cache quando si aggiornano risorse per gli utenti offline.
 
 ## Logo del sito e dell’app
 
@@ -130,10 +130,12 @@ La configurazione pubblica `data/auth-config.json` è ancora vuota e disabilitat
 
 Il clic apre un’anteprima in primo piano con fronte fotografico e retro informativo. “Gira la carta” e “Torna alla foto” cambiano lato; i comandi del lato inattivo sono esclusi dalla navigazione. “Maggiori dettagli” apre il relativo URL permanente in una nuova scheda. Escape e il pulsante di chiusura restituiscono il focus al comando iniziale. Con movimento ridotto il cambio di lato è immediato. Senza JavaScript le carte restano collegamenti diretti alle pagine viaggio.
 
-I dati base sono negli attributi delle carte in `index.html`; date, durata ed eventuale stato aggiornato vengono letti da `data/group-trips.json`, senza inventare partenze o servizi. I collegamenti Travel Advantage configurati restano accessibili sotto il carosello. I vecchi URL `?section=viaggi` e i pulsanti della home ora portano alla stessa sezione; la precedente finestra del catalogo è stata sostituita dalle carte. `trip-compact.css?v=2` usa lo sfondo petrolio della home e mantiene l’impaginazione compatta delle due pagine viaggio. Cache offline v22.
+I dati base sono negli attributi delle carte in `index.html`; date, durata ed eventuale stato aggiornato vengono letti da `data/group-trips.json`, senza inventare partenze o servizi. I collegamenti Travel Advantage configurati restano accessibili sotto il carosello. I vecchi URL `?section=viaggi` e i pulsanti della home ora portano alla stessa sezione; la precedente finestra del catalogo è stata sostituita dalle carte. `trip-compact.css?v=2` usa lo sfondo petrolio della home e mantiene l’impaginazione compatta delle due pagine viaggio. Cache offline v23.
 
 ## Fasce compatte della homepage
 
-`home-sections.css?v=1` impagina i viaggi in una fascia panoramica a tutta larghezza e il blog nella fascia sottostante. La home mostra fotografie e titoli essenziali delle due mete; il fronte e il retro delle anteprime conservano le informazioni complete.
+`home-sections.css?v=2` dispone il titolo “VIAGGI ORGANIZZATI” sopra alle carte centrate, senza sottotitoli. Il fronte e il retro delle anteprime conservano le informazioni complete.
 
-Il pulsante “SFOGLIA IL BLOG” porta a `blog.html`. Le tre miniature a destra rimandano direttamente agli articoli. `home-blog-strip.js?v=1` le fa scorrere una alla volta ogni 3 secondi; il pulsante pausa consente di fermarle. Lo scorrimento si sospende durante lettura con mouse o tastiera, quando la fascia è fuori vista o la pagina non è visibile. Con la preferenza di sistema per movimento ridotto parte in pausa. Le fotografie sono locali e non viene contattato alcun servizio esterno. Senza JavaScript i collegamenti restano accessibili tramite scorrimento manuale.
+Il blog occupa un riquadro più ampio, separato dai viaggi, con un articolo alla volta e una foto grande. `home-blog-strip.js?v=2` alterna le tre storie ogni 3 secondi; frecce e indicatori permettono di scegliere la storia, mentre il pulsante pausa ferma la rotazione. Il collegamento “SFOGLIA IL BLOG” apre `blog.html`; la storia visibile apre direttamente il relativo articolo. Le altre due storie sono nascoste e inattive per tastiera e lettori di schermo. Non ci sono copie dei link.
+
+La rotazione si sospende durante lettura con mouse o tastiera, quando il riquadro è fuori vista o la pagina non è visibile. Con la preferenza di sistema per movimento ridotto parte in pausa e le animazioni sono disattivate. Le fotografie sono locali. Senza JavaScript tutte le storie restano accessibili tramite scorrimento manuale.

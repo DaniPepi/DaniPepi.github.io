@@ -1,7 +1,7 @@
 'use strict';
-const CACHE = 'click-viaggia-v22';
+const CACHE = 'click-viaggia-v23';
 const ASSETS = [
-  './home-sections.css?v=1', './home-blog-strip.js?v=1',
+  './home-sections.css?v=2', './home-blog-strip.js?v=2',
   './travel-deck.css?v=1', './travel-deck.js?v=2',
   './trip-compact.css?v=2', './data/group-trips.json', './site-account.css?v=1', './site-account.js?v=1', './account-core.js?v=1',
   './blog.html', './journal.css?v=1', './journal.js?v=1',
