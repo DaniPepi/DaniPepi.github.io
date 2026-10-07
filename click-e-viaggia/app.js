@@ -70,137 +70,35 @@ motionToggle.addEventListener('click', () => {
   motionToggle.setAttribute('aria-pressed', String(paused));
   motionToggle.textContent = paused ? 'Riprendi lo sfondo' : 'Metti in pausa lo sfondo';
 });
-const trips = {
-  fatima: {
-    name: 'Fátima', country: 'Portogallo', title: 'Un cammino da condividere.',
-    image: 'fatima.jpg', summary: 'Un luogo che invita a fermarsi e ritrovare ciò che conta. Spiritualità, tempo per sé e il piacere di partire insieme.',
-    tags: ['Raccoglimento', 'Condivisione']
-  },
-  disney: {
-    name: 'Disneyland Paris', country: 'Francia', title: 'La meraviglia, insieme.',
-    image: 'disney-panorama.jpg', summary: 'Lascia spazio alla fantasia con le persone che ami. Un’idea da immaginare in famiglia, in coppia o con gli amici.',
-    tags: ['Fantasia', 'Ricordi insieme']
-  }
-};
-let travelLinks = [];
-function validTravelUrl(value) {
-  try {
-    const url = new URL(value);
-    return url.protocol === 'https:' && !url.username && !url.password && (url.hostname === 'traveladvantage.com' || url.hostname.endsWith('.traveladvantage.com'));
-  } catch { return false; }
-}
-const dialog = document.querySelector('#detail');
-const dialogTitle = document.querySelector('#detail-title');
-const dialogBody = document.querySelector('#detail-body');
-function paragraph(text, className = '') {
-  const element = document.createElement('p');
-  element.textContent = text;
-  element.className = className;
-  return element;
-}
-function setDialog(label, title) {
-  document.querySelector('#detail-label').textContent = label;
-  dialogTitle.textContent = title;
-  dialogBody.replaceChildren();
-  if (!dialog.open) dialog.showModal();
-  document.body.classList.add('dialog-open');
-  dialog.scrollTop = 0;
-}
-function tripCard(id, record) {
-  const card = document.createElement('a');
-  card.className = 'trip-card';
-  card.href = 'viaggio-' + id + '.html';
-  card.target = '_blank';
-  card.rel = 'noopener noreferrer';
-  card.setAttribute('aria-label', record.name + '. Apri la scheda del viaggio in una nuova scheda.');
-  const media = document.createElement('div');
-  media.className = 'trip-card-media';
-  const image = document.createElement('img');
-  image.src = 'assets/' + record.image;
-  image.alt = '';
-  image.width = 1600;
-  image.height = id === 'fatima' ? 900 : 1067;
-  image.decoding = 'async';
-  const country = document.createElement('span');
-  country.className = 'trip-country';
-  country.textContent = record.country;
-  media.append(image, country);
-  const body = document.createElement('div');
-  body.className = 'trip-card-body';
-  const heading = document.createElement('h3');
-  heading.textContent = record.name;
-  const title = paragraph(record.title, 'trip-card-story');
-  const summary = paragraph(record.summary, 'trip-card-summary');
-  const tags = document.createElement('ul');
-  tags.className = 'trip-tags';
-  record.tags.forEach(text => {
-    const item = document.createElement('li');
-    item.textContent = text;
-    tags.append(item);
-  });
-  const action = document.createElement('span');
-  action.className = 'trip-card-action';
-  action.textContent = 'Programma e dettagli';
-  const arrow = document.createElement('span');
-  arrow.setAttribute('aria-hidden', 'true');
-  arrow.textContent = '↗';
-  action.append(arrow);
-  body.append(heading, title, summary, tags, action);
-  card.append(media, body);
-  return card;
-}
-function showTrips() {
-  setDialog('VIAGGI DI GRUPPO', 'Scegli la tua prossima meta.');
-  dialog.classList.add('trips-dialog');
-  dialogBody.append(paragraph('Fátima o Disneyland Paris? Apri la scheda per vedere le immagini, conoscere la proposta e parlare con il team.', 'collection-note'));
-  const list = document.createElement('div');
-  list.className = 'collection-grid trip-collection';
-  Object.entries(trips).forEach(([id, record]) => list.append(tripCard(id, record)));
-  dialogBody.append(list);
-  dialogBody.append(paragraph('Proposte in preparazione. Date, programma e servizi saranno comunicati quando definiti.', 'trip-preparation'));
-  if (travelLinks.length) {
-    const partner = document.createElement('section');
-    partner.className = 'partner-links';
-    const heading = document.createElement('h3');
-    heading.textContent = 'Travel Advantage';
-    partner.append(heading, paragraph('Collegamenti alla piattaforma esterna. Le proposte sopra non rappresentano offerte di Travel Advantage. Condizioni e disponibilità si verificano sul sito di destinazione.'));
-    travelLinks.forEach(link => {
-      const item = document.createElement('div');
-      item.className = 'partner-item';
-      item.append(paragraph(link.affiliate ? 'Link affiliato: il suo utilizzo può generare una commissione per chi lo pubblica.' : 'Collegamento esterno a Travel Advantage.', 'collection-note'));
-      const anchor = document.createElement('a');
-      anchor.href = link.url;
-      anchor.textContent = link.title + ' · Sito esterno';
-      anchor.className = 'button secondary';
-      anchor.target = '_blank';
-      anchor.rel = link.affiliate ? 'sponsored noopener noreferrer' : 'noopener noreferrer';
-      item.append(anchor);
-      partner.append(item);
-    });
-    dialogBody.append(partner);
-  }
+function showTrips(options = {}) {
+  const section = document.querySelector('#viaggi');
+  section.scrollIntoView({behavior: options.instant || reducedMotion.matches ? 'auto' : 'smooth', block: 'start'});
 }
 document.querySelectorAll('[data-section="viaggi"]').forEach(button => button.addEventListener('click', showTrips));
 navigation.querySelectorAll('a[href="#viaggi"]').forEach(link => link.addEventListener('click', event => {
-  event.preventDefault();
-  showTrips();
+  event.preventDefault(); showTrips();
 }));
-dialog.querySelector('.close').addEventListener('click', () => dialog.close());
-dialog.addEventListener('close', () => document.body.classList.remove('dialog-open'));
-dialog.addEventListener('click', event => {
-  if (event.target === dialog) {
-    const bounds = dialog.getBoundingClientRect();
-    if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) dialog.close();
-  }
-});
-fetch('./data/travel-links.json', { cache: 'no-store' }).then(response => {
-  if (!response.ok) throw new Error('Links unavailable');
-  return response.json();
+function validTravelUrl(value) {
+  try { const url = new URL(value); return url.protocol === 'https:' && !url.username && !url.password && (url.hostname === 'traveladvantage.com' || url.hostname.endsWith('.traveladvantage.com')); } catch { return false; }
+}
+fetch('./data/travel-links.json', {cache:'no-store'}).then(response => {
+  if (!response.ok) throw Error('Links unavailable'); return response.json();
 }).then(data => {
-  if (!Array.isArray(data.links)) throw new Error('Invalid configuration');
-  travelLinks = data.links.filter(link => typeof link.title === 'string' && link.title.trim() && validTravelUrl(link.url) && typeof link.affiliate === 'boolean');
-  if (dialog.open) showTrips();
-}).catch(() => { travelLinks = []; });
+  if (!Array.isArray(data.links)) return;
+  const links = data.links.filter(link => typeof link.title === 'string' && link.title.trim() && validTravelUrl(link.url) && typeof link.affiliate === 'boolean');
+  const panel = document.querySelector('#travel-partner-links');
+  if (!panel || !links.length) return;
+  const heading = document.createElement('h3'); heading.textContent = 'Travel Advantage';
+  const note = document.createElement('p'); note.textContent = 'Collegamenti alla piattaforma esterna. Le proposte sopra non rappresentano offerte di Travel Advantage. Condizioni e disponibilità si verificano sul sito di destinazione.';
+  panel.replaceChildren(heading, note);
+  links.forEach(link => {
+    const item = document.createElement('div'); item.className = 'partner-item';
+    const disclosure = document.createElement('p'); disclosure.className = 'collection-note'; disclosure.textContent = link.affiliate ? 'Link affiliato: il suo utilizzo può generare una commissione per chi lo pubblica.' : 'Collegamento esterno a Travel Advantage.';
+    const anchor = document.createElement('a'); anchor.href = link.url; anchor.textContent = link.title + ' · Sito esterno'; anchor.className = 'button secondary'; anchor.target = '_blank'; anchor.rel = link.affiliate ? 'sponsored noopener noreferrer' : 'noopener noreferrer';
+    item.append(disclosure, anchor); panel.append(item);
+  });
+  panel.hidden = false;
+}).catch(() => {});
 let installPrompt;
 const installButton = document.querySelector('#install');
 window.addEventListener('beforeinstallprompt', (event) => {
@@ -218,7 +116,7 @@ installButton.addEventListener('click', async () => {
 window.addEventListener('appinstalled', () => { installButton.hidden = true; });
 const requestedSection = new URLSearchParams(window.location.search).get('section');
 if (requestedSection === 'blog') window.location.replace('blog.html');
-else if (requestedSection === 'viaggi') showTrips();
+else if (requestedSection === 'viaggi') requestAnimationFrame(() => showTrips({instant:true}));
 if ('serviceWorker' in navigator && window.isSecureContext) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('./sw.js').catch((error) => console.warn('Modalità offline non disponibile:', error.message));

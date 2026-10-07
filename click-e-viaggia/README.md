@@ -67,9 +67,9 @@ Manifest e service worker consentono l’installazione dove supportata e la lett
 - `brand.css`: logo su una riga e navigazione adattiva.
 - `trips.css`: vetrina dei due viaggi, tessere fotografiche e gallerie delle schede.
 - `trip-layout.css`: impaginazione delle schede su desktop e dispositivi mobili.
-- `app.js`: menu e catalogo viaggi; riferimento pubblico aggiornato a `app.js?v=18`.
+- `app.js`: menu, collegamenti alla sezione viaggi e link alla piattaforma; riferimento pubblico aggiornato a `app.js?v=19`.
 - `trip.js`: condivisione delle schede e contatto WhatsApp con destinazione.
-- `sw.js`: cache `click-viaggia-v20` con fotografie, schede compatte, pannello account e nuovo marchio; le vecchie proposte non sono più precaricate. Aumentare la versione della cache quando si aggiornano risorse per gli utenti offline.
+- `sw.js`: cache `click-viaggia-v21` con fotografie, carte della home, schede compatte, pannello account e nuovo marchio; le vecchie proposte non sono più precaricate. Aumentare la versione della cache quando si aggiornano risorse per gli utenti offline.
 
 ## Logo del sito e dell’app
 
@@ -123,3 +123,11 @@ Il pulsante “Prenota il tuo posto senza impegno” apre WhatsApp al numero +39
 `site-account.js` e `site-account.css` aggiungono il pannello facoltativo con X, “Continua senza account” e apertura manuale “Accedi”. La chiusura viene ricordata nella sessione di navigazione. Nessuna pagina del sito richiede un account per la lettura. `account-core.js` condivide la configurazione Firebase con il diario personale; “Resta connesso” riguarda la sessione, mai le password Google o Apple.
 
 La configurazione pubblica `data/auth-config.json` è ancora vuota e disabilitata: i pulsanti Google e Apple mostrano questo stato e non simulano un accesso. Per attivarli servono i dati pubblici dell’app e i provider reali configurati, come indicato in `AUTH-SETUP.md`. La sincronizzazione del diario va verificata sul progetto reale prima del lancio. Nessun SDK esterno viene caricato dal pannello mentre l’accesso è disabilitato.
+
+## Carte dei viaggi nella homepage
+
+`travel-deck.css` e `travel-deck.js` gestiscono le due carte di Fátima e Disneyland Paris nella sezione Viaggi organizzati. La carta più vicina al centro si ingrandisce; il carosello si scorre con le frecce, la tastiera, il trascinamento del mouse o il gesto nativo sul telefono. Non c’è scorrimento automatico. Le dimensioni vengono ricalcolate quando cambia lo spazio disponibile.
+
+Il clic apre un’anteprima in primo piano con fronte fotografico e retro informativo. “Gira la carta” e “Torna alla foto” cambiano lato; i comandi del lato inattivo sono esclusi dalla navigazione. “Maggiori dettagli” apre il relativo URL permanente in una nuova scheda. Escape e il pulsante di chiusura restituiscono il focus al comando iniziale. Con movimento ridotto il cambio di lato è immediato. Senza JavaScript le carte restano collegamenti diretti alle pagine viaggio.
+
+I dati base sono negli attributi delle carte in `index.html`; date, durata ed eventuale stato aggiornato vengono letti da `data/group-trips.json`, senza inventare partenze o servizi. I collegamenti Travel Advantage configurati restano accessibili sotto il carosello. I vecchi URL `?section=viaggi` e i pulsanti della home ora portano alla stessa sezione; la precedente finestra del catalogo è stata sostituita dalle carte. `trip-compact.css?v=2` usa lo sfondo petrolio della home e mantiene l’impaginazione compatta delle due pagine viaggio. Cache offline v21.

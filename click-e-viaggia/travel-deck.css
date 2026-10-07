@@ -1,0 +1,62 @@
+/* Scrollable destination cards with an enlarged, reversible preview. */
+.travel-deck{width:100%;min-width:0}
+.deck-instruction{font-size:11px;line-height:1.6;color:#adbfbd;letter-spacing:.3px;margin:0 0 4px}
+.deck-track{--deck-card-width:240px;--deck-edge:max(0px,calc((100% - 240px)/2));display:flex;position:relative;gap:18px;align-items:center;overflow-x:auto;overflow-y:hidden;width:100%;padding:22px var(--deck-edge) 24px;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;touch-action:pan-x pan-y pinch-zoom;isolation:isolate}
+.deck-track::-webkit-scrollbar{display:none}
+.deck-track:focus-visible{outline:2px solid var(--accent);outline-offset:-2px;border-radius:18px}
+.deck-track.is-dragging{scroll-snap-type:none;cursor:grabbing;user-select:none}
+.deck-track.is-dragging *{cursor:grabbing}
+.deck-card{position:relative;container-type:inline-size;flex:0 0 var(--deck-card-width);width:var(--deck-card-width);min-width:0;aspect-ratio:4/5;border:1px solid #ffffff38;border-radius:18px;overflow:hidden;scroll-snap-align:center;scroll-snap-stop:always;transform:scale(.83);transform-origin:center;opacity:.58;filter:saturate(.7);box-shadow:0 15px 35px #0002;background:#0b2227;transition:transform .45s cubic-bezier(.2,.7,.2,1),opacity .45s,filter .45s,border-color .45s;cursor:grab;-webkit-user-drag:none}
+.deck-card[data-selected="true"]{transform:scale(1);opacity:1;filter:none;border-color:#d9e8c7a6;box-shadow:0 18px 42px #0004}
+.deck-card>img{display:block;width:100%;height:100%;object-fit:cover;pointer-events:none;-webkit-user-drag:none}
+.deck-card:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,#03171b25 10%,#03171b00 28%,#03171bc9 70%,#03171bfa);pointer-events:none}
+.deck-country{position:absolute;z-index:1;top:16px;left:16px;font-size:9px;line-height:1.5;letter-spacing:1px;text-transform:uppercase;color:#f1f4ed;background:#0c2729b3;border:1px solid #ffffff42;border-radius:24px;padding:7px 11px;backdrop-filter:blur(10px)}
+.deck-card-copy{position:absolute;z-index:1;left:20px;right:20px;bottom:20px;color:#f1f4ed;pointer-events:none}
+.deck-card-kicker{display:block;font-size:8px;letter-spacing:1.2px;line-height:1.6;color:#dfebc6;margin-bottom:8px}
+.deck-card-copy h3{font:800 clamp(20px,12cqi,28px)/1.05 var(--sans);text-transform:uppercase;letter-spacing:-1px;margin:0 0 9px;text-wrap:balance}
+.deck-card-copy .deck-tagline{font:400 16px/1.35 var(--serif);margin:0 0 15px;color:#e1e9df}
+.deck-card-action{display:flex;align-items:center;justify-content:space-between;border-top:1px solid #ffffff38;padding-top:12px;font-size:10px;font-weight:600;line-height:1.5;color:#dfebc6}
+.deck-card-action>span{font-size:17px}
+.deck-controls{display:flex;align-items:center;justify-content:center;gap:18px;margin:0}
+.deck-controls button{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid #ffffff32;border-radius:50%;color:#dfebc6;background:#ffffff05;font-size:20px;line-height:1}
+.deck-controls button:hover{background:#ffffff12}
+.deck-controls button:disabled{opacity:.3;cursor:default}
+#deck-position{font-size:11px;color:#c7d5cb;min-width:150px;text-align:center;line-height:1.6}
+.site-home #viaggi .gateway-footer{padding-top:22px}
+.site-home #viaggi .gateway-footer .panel-caption{font-size:8px;letter-spacing:1px}
+body.deck-open{overflow:hidden}
+dialog.deck-preview{color-scheme:dark;position:fixed;inset:0;z-index:50;width:min(410px,calc(100vw - 32px));max-width:none;max-height:calc(100svh - 36px);margin:auto;padding:0;overflow-x:hidden;overflow-y:auto;border:1px solid #91a88c55;border-radius:22px;background:#10282d;color:#f1f4ed;box-shadow:0 35px 100px #0009}
+dialog.deck-preview::backdrop{background:#020e13c7;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.deck-preview-close{position:absolute;top:12px;right:12px;z-index:5;width:44px;height:44px;border:1px solid #ffffff40;border-radius:50%;background:#081c20c9;color:#f1f4ed;font-size:26px;line-height:1;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(10px)}
+.deck-preview-close:hover{background:#203d3f}
+.deck-focus{perspective:1300px}
+.deck-preview[open] .deck-focus{animation:deck-arrive .32s cubic-bezier(.2,.7,.2,1)}
+@keyframes deck-arrive{from{opacity:0;transform:translateY(12px) scale(.92)}to{opacity:1;transform:none}}
+.deck-flipper{position:relative;display:grid;transform-style:preserve-3d;transition:transform .65s cubic-bezier(.2,.65,.2,1)}
+.deck-preview.is-flipped .deck-flipper{transform:rotateY(180deg)}
+.deck-face-front,.deck-face-back{grid-area:1/1;position:relative;min-width:0;min-height:min(560px,calc(100svh - 38px));backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow-wrap:anywhere}
+.deck-face-front{display:flex;align-items:flex-end;background:#0b2227;visibility:visible}
+.deck-face-front:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,#04131705 20%,#04131728 40%,#041317f5 82%);pointer-events:none}
+#deck-preview-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.deck-preview-country{position:absolute;z-index:1;top:24px;left:24px;max-width:calc(100% - 100px);margin:0;padding:7px 12px;font-size:10px;line-height:1.5;letter-spacing:1px;text-transform:uppercase;background:#081c20b3;border:1px solid #ffffff40;border-radius:30px}
+.deck-preview-copy{position:relative;z-index:1;padding:28px;width:100%}
+.deck-preview-label{font-size:8px;letter-spacing:1.4px;line-height:1.6;color:#dfebc6;margin:0 0 10px}
+.deck-preview h2{font-family:var(--sans);font-size:clamp(27px,7vw,36px);font-weight:800;text-transform:uppercase;letter-spacing:-1px;line-height:1.08;margin:0 0 12px;color:#f1f4ed;text-wrap:balance}
+#deck-preview-tagline{font-family:var(--serif);font-size:21px;line-height:1.35;margin:0 0 24px;color:#d8e4d3}
+.deck-flip-button,.deck-details-link{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:48px;gap:12px;padding:13px 18px;border-radius:9px;border:1px solid #dce9c6;background:#dce9c6;color:#102921;font-size:13px;font-weight:700;line-height:1.5}
+.deck-flip-button:hover,.deck-details-link:hover{background:#eef5df}
+.deck-face-back{transform:rotateY(180deg);display:flex;flex-direction:column;padding:32px 28px 22px;background:radial-gradient(ellipse at 100% 0,#27443b,#10282d 70%)}
+.deck-back-eyebrow{font-size:8px;letter-spacing:1.3px;line-height:1.6;color:#dfebc6;margin:3px 50px 15px 0}
+#deck-back-summary{font-size:13px;line-height:1.7;color:#b6c8bd;margin:0 0 20px}
+.deck-back-facts{display:grid;grid-template-columns:1fr 1fr;gap:18px 22px;border-block:1px solid #ffffff26;padding:20px 0;margin:0 0 20px}
+.deck-back-facts dt{font-size:9px;line-height:1.6;letter-spacing:1px;text-transform:uppercase;color:#a8bda9;margin-bottom:5px}
+.deck-back-facts dd{font-size:13px;line-height:1.5;margin:0;color:#f1f4ed}
+.deck-back-status{font-size:11px;font-weight:600;color:#dfebc6;margin:0 0 6px}
+.deck-back-note{font-size:11px;line-height:1.7;color:#a9c0b5;margin:0 0 24px}
+.deck-details-link{margin-top:auto;text-decoration:none}
+.deck-return-button{display:flex;align-items:center;justify-content:center;gap:8px;min-height:42px;margin-top:8px;padding:8px;border:0;background:transparent;color:#c2d2c4;font-size:11px;text-decoration:underline;text-underline-offset:4px}
+.deck-preview button:focus-visible,.deck-preview a:focus-visible{outline:3px solid #dfebc6;outline-offset:3px}
+.deck-card:focus-visible{outline:3px solid #dfebc6;outline-offset:4px}
+@media(max-width:640px){.deck-track{padding-top:18px;padding-bottom:18px;gap:12px}.deck-card-copy{left:18px;right:18px;bottom:18px}.deck-controls{gap:12px}.deck-instruction{font-size:10px}.deck-preview-copy{padding:24px}.deck-face-back{padding:28px 24px 18px}.deck-back-facts{gap:16px}.deck-preview-country{top:20px;left:20px}.deck-card-kicker{font-size:7px}}
+@container(max-width:200px){.deck-card-kicker{display:none}.deck-country{top:12px;left:12px;font-size:8px;padding:5px 9px}.deck-card-copy{left:14px;right:14px;bottom:14px}.deck-card-copy h3{font-size:19px;letter-spacing:-.7px;margin-bottom:7px}.deck-card-copy .deck-tagline{font-size:13px;line-height:1.25;margin-bottom:10px}.deck-card-action{padding-top:9px;font-size:9px}}
+@media(prefers-reduced-motion:reduce){.deck-track{scroll-behavior:auto}.deck-card,.deck-flipper{transition:none}.deck-preview[open] .deck-focus{animation:none}.deck-preview.is-flipped .deck-flipper{transform:none}.deck-face-back{transform:none}.deck-preview.is-flipped .deck-face-front{display:none}.deck-preview:not(.is-flipped) .deck-face-back{display:none}}

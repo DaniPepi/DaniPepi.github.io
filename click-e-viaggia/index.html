@@ -14,9 +14,10 @@
   <link rel="stylesheet" href="brand.css?v=2">
   <link rel="stylesheet" href="presentation.css?v=2">
   <link rel="canonical" href="https://danipepi.github.io/click-e-viaggia/">
-  <link rel="stylesheet" href="trips.css?v=2">
   <link rel="stylesheet" href="blog.css?v=3">
-  <script src="app.js?v=18" defer></script>
+  <link rel="stylesheet" href="travel-deck.css?v=1">
+  <script src="travel-deck.js?v=1" defer></script>
+  <script src="app.js?v=19" defer></script>
   <meta property="og:title" content="Click&amp;Viaggia · La prossima partenza comincia da un’idea">
   <meta property="og:description" content="Click&amp;Viaggia: un team italiano, idee di viaggio e proposte a Fátima e Disneyland Paris. Esplora le mete e richiedi un appuntamento su WhatsApp.">
   <meta property="og:url" content="https://danipepi.github.io/click-e-viaggia/">
@@ -42,9 +43,17 @@
   <div class="hero-bottom"><span>ISPIRAZIONE. PERSONE. NUOVE METE.</span><a href="#viaggi">Scorri per esplorare <span class="scroll-line" aria-hidden="true"></span></a><span>LA PROSSIMA IDEA TI ASPETTA</span></div>
 </section>
 <div class="gateways">
-  <section id="viaggi" class="section gateway" aria-labelledby="gateway-trips-title"><div class="glass-panel"><p class="eyebrow">PARTIAMO INSIEME</p><span class="panel-number" aria-hidden="true">01</span><h2 id="gateway-trips-title">VIAGGI ORGANIZZATI</h2><p class="gateway-intro">Fátima e Disneyland Paris: due proposte in preparazione. Scopri le mete e parlane con il team.</p>
-    <div class="gateway-destinations"><a href="viaggio-fatima.html" target="_blank" rel="noopener noreferrer"><img src="assets/fatima.jpg" width="1600" height="900" alt="La piazza e la basilica del santuario di Fátima" loading="lazy"><span>Fátima ↗</span></a><a href="viaggio-disney.html" target="_blank" rel="noopener noreferrer"><img src="assets/disney-panorama.jpg" width="1600" height="1067" alt="Il castello e i giardini di Disneyland Paris" loading="lazy"><span>Disneyland Paris ↗</span></a></div>
-    <div class="gateway-footer"><button class="button primary" data-section="viaggi">Esplora i viaggi</button><span class="panel-caption">FÁTIMA · DISNEYLAND PARIS</span></div>
+  <section id="viaggi" class="section gateway" aria-labelledby="gateway-trips-title"><div class="glass-panel"><p class="eyebrow">PARTIAMO INSIEME</p><span class="panel-number" aria-hidden="true">01</span><h2 id="gateway-trips-title">VIAGGI ORGANIZZATI</h2><p class="gateway-intro">Fátima e Disneyland Paris: scorri le carte, scegli la tua meta e scopri la proposta.</p>
+    <div id="trip-deck" class="travel-deck" aria-label="Carte dei viaggi organizzati">
+      <p class="deck-instruction">Scorri, scegli, lasciati ispirare.</p>
+      <div id="trip-deck-track" class="deck-track" tabindex="0" role="group" aria-label="Scorri i viaggi di gruppo. Usa le frecce sinistra e destra per scegliere una carta.">
+        <a class="deck-card" data-deck-id="fatima" data-country="Portogallo" data-tagline="Un cammino da condividere." data-summary="Spiritualità, raccoglimento e il piacere di vivere un’esperienza insieme." data-selected="true" aria-current="true" href="viaggio-fatima.html" target="_blank" rel="noopener noreferrer" aria-label="Fátima: apri la carta del viaggio"><img src="assets/fatima.jpg" width="900" height="1125" alt="La piazza e la Basilica del Santuario di Fátima" loading="lazy" decoding="async"><span class="deck-country">Portogallo</span><div class="deck-card-copy"><span class="deck-card-kicker">PARTI CON CLICK&amp;VIAGGIA</span><h3>Fátima</h3><p class="deck-tagline">Un cammino da condividere.</p><span class="deck-card-action">Scopri la carta <span aria-hidden="true">↗</span></span></div></a>
+<a class="deck-card" data-deck-id="disney" data-country="Francia" data-tagline="La meraviglia, insieme." data-summary="Un’idea di viaggio da condividere in famiglia, in coppia o con gli amici." data-selected="false" href="viaggio-disney.html" target="_blank" rel="noopener noreferrer" aria-label="Disneyland Paris: apri la carta del viaggio"><img src="assets/disney-panorama.jpg" width="900" height="1125" alt="I giardini di Fantasyland a Disneyland Paris" loading="lazy" decoding="async"><span class="deck-country">Francia</span><div class="deck-card-copy"><span class="deck-card-kicker">PARTI CON CLICK&amp;VIAGGIA</span><h3>Disneyland Paris</h3><p class="deck-tagline">La meraviglia, insieme.</p><span class="deck-card-action">Scopri la carta <span aria-hidden="true">↗</span></span></div></a>
+      </div>
+      <div id="deck-controls" class="deck-controls" hidden><button id="deck-prev" type="button" aria-label="Viaggio precedente" aria-controls="trip-deck-track">←</button><output id="deck-position" role="status" aria-live="polite" aria-atomic="true">1 / 2 · Fátima</output><button id="deck-next" type="button" aria-label="Viaggio successivo" aria-controls="trip-deck-track">→</button></div>
+    </div>
+    <div class="gateway-footer"><button id="deck-open-current" class="button primary" type="button" hidden>Apri la carta</button><span class="panel-caption">DUE METE · PROPOSTE IN PREPARAZIONE</span></div>
+    <section id="travel-partner-links" class="partner-links" aria-label="Collegamenti Travel Advantage" hidden></section>
   </div></section>
   <section id="blog" class="section gateway" aria-labelledby="gateway-blog-title"><div class="glass-panel"><p class="eyebrow">STORIE DAL MONDO</p><span class="panel-number" aria-hidden="true">02</span><h2 id="gateway-blog-title">IL BLOG</h2><p class="gateway-intro">Daniele Pepi e il team: Fátima e Nazaré, otto mesi a Nosy Be e un mese a Marsa Alam. Tre esperienze da cui lasciarti ispirare.</p><div class="article-teasers"><a class="article-teaser" href="blog-fatima-nazare.html"><img class="article-teaser-image" src="assets/blog-nazare.jpg" width="152" height="156" alt="" loading="lazy" decoding="async"><span>Portogallo</span><strong>Daniele Pepi: Fátima e Nazaré</strong><i aria-hidden="true">↗</i></a>
 <a class="article-teaser" href="blog-nosy-be.html"><img class="article-teaser-image" src="assets/blog-nosy-iranja.jpg" width="152" height="156" alt="" loading="lazy" decoding="async"><span>Madagascar</span><strong>Daniele Pepi a Nosy Be</strong><i aria-hidden="true">↗</i></a>
@@ -56,5 +65,20 @@
 <section id="contatti" class="section contact"><p class="eyebrow">PARLIAMO DEL TUO PROSSIMO VIAGGIO</p><h2>Un’idea in mente?<br>Cominciamo da qui.</h2><p>Raccontaci dove vorresti andare e con chi. Scrivi al team per concordare un appuntamento dedicato alle informazioni che cerchi.</p><a class="button primary" href="https://wa.me/393892962059?text=Ciao%20team%20Click%26Viaggia%2C%20vorrei%20concordare%20un%20appuntamento%20per%20informazioni%20sulle%20vostre%20proposte%20di%20viaggio.%20Quando%20possiamo%20sentirci%3F" target="_blank" rel="noopener noreferrer">Richiedi un appuntamento</a><a class="contact-number" href="https://wa.me/393892962059?text=Ciao%20team%20Click%26Viaggia%2C%20vorrei%20concordare%20un%20appuntamento%20per%20informazioni%20sulle%20vostre%20proposte%20di%20viaggio.%20Quando%20possiamo%20sentirci%3F" target="_blank" rel="noopener noreferrer">WhatsApp · +39 389 296 2059</a><p class="contact-note">Si apre WhatsApp con un messaggio già preparato. Puoi modificarlo e scegliere quando inviarlo.</p></section>
 <section class="section app-callout"><h2>Le tue idee, anche sul telefono.</h2><p>Aggiungi Click&amp;Viaggia alla schermata Home dal menu del browser, dove supportato.</p><button id="install" class="button secondary" hidden>Installa sul telefono</button></section>
 </main><footer><a class="footer-brand" href="./">CLICK&amp;VIAGGIA</a><span>© <span id="year">2026</span> · Il viaggio comincia da un’idea.</span><a href="legal.html">Privacy, informazioni legali e crediti foto</a><a href="admin.html">Gestione link</a></footer>
-<dialog id="detail" aria-labelledby="detail-title"><div class="dialog-bar"><button class="close" aria-label="Chiudi finestra">Chiudi ×</button></div><p id="detail-label" class="eyebrow"></p><h2 id="detail-title" tabindex="-1"></h2><div id="detail-body"></div></dialog>
+<dialog id="travel-preview" class="deck-preview" aria-labelledby="deck-preview-title">
+  <button type="button" class="deck-preview-close" aria-label="Chiudi la carta viaggio">×</button>
+  <div class="deck-focus"><div class="deck-flipper">
+    <section class="deck-face-front" aria-hidden="false">
+      <img id="deck-preview-photo" src="assets/fatima.jpg" width="900" height="1125" alt="La piazza e la Basilica del Santuario di Fátima" decoding="async">
+      <p id="deck-preview-country" class="deck-preview-country">Portogallo</p>
+      <div class="deck-preview-copy"><p class="deck-preview-label">LA TUA PROSSIMA IDEA DI VIAGGIO</p><h2 id="deck-preview-title">Fátima</h2><p id="deck-preview-tagline">Un cammino da condividere.</p><button id="deck-flip-front" type="button" class="deck-flip-button">Gira la carta <span aria-hidden="true">↻</span></button></div>
+    </section>
+    <section class="deck-face-back" aria-hidden="true" inert>
+      <p class="deck-back-eyebrow">IL VIAGGIO, A COLPO D’OCCHIO</p><h2 id="deck-back-title">Fátima</h2><p id="deck-back-summary">Spiritualità, raccoglimento e il piacere di vivere un’esperienza insieme.</p>
+      <dl class="deck-back-facts"><div><dt>Paese</dt><dd id="deck-back-country">Portogallo</dd></div><div><dt>Esperienza</dt><dd>Viaggio di gruppo</dd></div><div><dt>Partenza</dt><dd id="deck-back-date">Da definire</dd></div><div><dt>Durata</dt><dd id="deck-back-duration">Da definire</dd></div></dl>
+      <p id="deck-back-status" class="deck-back-status">Proposta in preparazione</p><p class="deck-back-note">Programma e servizi saranno comunicati appena definiti.</p>
+      <a id="deck-details-link" class="deck-details-link" href="viaggio-fatima.html" target="_blank" rel="noopener noreferrer">Maggiori dettagli <span aria-hidden="true">↗</span></a><button id="deck-flip-back" type="button" class="deck-return-button">Torna alla foto <span aria-hidden="true">↶</span></button>
+    </section>
+  </div></div>
+</dialog>
 </body></html>
