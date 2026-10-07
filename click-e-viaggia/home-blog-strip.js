@@ -23,6 +23,16 @@
   let paused = true;
   let gesture = null;
   let suppressClickUntil = 0;
+  let imagesPrimed = false;
+
+  function primeImages() {
+    if (imagesPrimed) return;
+    imagesPrimed = true;
+    slides.forEach(slide => {
+      const image = slide.querySelector('img');
+      if (image) image.loading = 'eager';
+    });
+  }
 
   function schedule() {
     clearTimeout(timer);
@@ -114,12 +124,14 @@
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(entries => {
       visible = entries[0].isIntersecting;
+      if (visible) primeImages();
       updateState();
     }).observe(section);
   } else {
     const checkVisibility = () => {
       const bounds = section.getBoundingClientRect();
       const nextVisible = bounds.bottom > 0 && bounds.top < innerHeight;
+      if (nextVisible) primeImages();
       if (visible !== nextVisible) { visible = nextVisible; updateState(); }
     };
     addEventListener('scroll', checkVisibility, { passive: true });
