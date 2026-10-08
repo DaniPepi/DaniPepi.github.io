@@ -6,7 +6,7 @@ Sito statico responsive, modificabile in Visual Studio Code, senza dipendenze di
 
 ## Sfondo della home
 
-Fotografia originale delle onde con panoramica lenta di 48 secondi, pulsante pausa/ripresa e rispetto della preferenza di riduzione del movimento. La fotografia è locale e disponibile offline.
+Fotografia originale delle onde con panoramica lenta di 48 secondi e rispetto della preferenza di riduzione del movimento. Non sono presenti pulsanti di stop nella home. La fotografia è locale e disponibile offline.
 
 ## Schede viaggio condivisibili
 
@@ -67,9 +67,9 @@ Manifest e service worker consentono l’installazione dove supportata e la lett
 - `brand.css`: logo su una riga e navigazione adattiva.
 - `trips.css`: vetrina dei due viaggi, tessere fotografiche e gallerie delle schede.
 - `trip-layout.css`: impaginazione delle schede su desktop e dispositivi mobili.
-- `app.js`: menu, collegamenti alla sezione viaggi e link alla piattaforma; riferimento pubblico aggiornato a `app.js?v=19`.
+- `app.js`: menu, collegamenti alla sezione viaggi e link alla piattaforma; riferimento pubblico aggiornato a `app.js?v=20`.
 - `trip.js`: condivisione delle schede e contatto WhatsApp con destinazione.
-- `sw.js`: cache `click-viaggia-v25` con fotografie, fasce compatte della home, carte viaggio, schede compatte, pannello account e nuovo marchio; le vecchie proposte non sono più precaricate. Aumentare la versione della cache quando si aggiornano risorse per gli utenti offline.
+- `sw.js`: cache `click-viaggia-v26` con fotografie, fasce compatte della home, carte viaggio, schede compatte, pannello account e nuovo marchio; le vecchie proposte non sono più precaricate. Aumentare la versione della cache quando si aggiornano risorse per gli utenti offline.
 
 ## Logo del sito e dell’app
 
@@ -97,7 +97,7 @@ Grafica vettoriale dell'atlante, modalità Bandiere e schede fotografiche per pa
 
 Le pagine `blog-fatima-nazare.html`, `blog-nosy-be.html` e `blog-marsa-alam.html` contengono i racconti completi e possono essere condivise con il proprio URL. La pagina dedicata `blog.html` presenta il racconto di Fátima e Nazaré in evidenza e le altre due storie, con filtri per paese. La home rimanda al diario. I vecchi link `?section=blog` portano alla nuova pagina. Le vecchie tre guide generiche non sono più pubblicate.
 
-I testi editoriali sono conservati anche in `data/blog-articles.json`; le fotografie e le relative attribuzioni in `data/blog-photos.json`. Le pagine HTML sono statiche: modificare testo e metadati in Visual Studio Code, aggiornando anche le anteprime in `blog.html` e `index.html` quando cambia un titolo. `journal.css` e `journal.js` gestiscono la selezione; `blog.css` gestisce la lettura, `article.js` condivisione e copia del link. Le fotografie sono illustrative, con crediti visibili, e non sono immagini dei viaggi personali. Fonti: `BLOG-EDITORIAL-SOURCES.md` e `BLOG-PHOTO-SOURCES.md`. I nuovi articoli e le fotografie sono inclusi nella cache offline v25.
+I testi editoriali sono conservati anche in `data/blog-articles.json`; le fotografie e le relative attribuzioni in `data/blog-photos.json`. Le pagine HTML sono statiche: modificare testo e metadati in Visual Studio Code, aggiornando anche le anteprime in `blog.html` e `index.html` quando cambia un titolo. `journal.css` e `journal.js` gestiscono la selezione; `blog.css` gestisce la lettura, `article.js` condivisione e copia del link. Le fotografie sono illustrative, con crediti visibili, e non sono immagini dei viaggi personali. Fonti: `BLOG-EDITORIAL-SOURCES.md` e `BLOG-PHOTO-SOURCES.md`. I nuovi articoli e le fotografie sono inclusi nella cache offline v26.
 
 
 Il diario ha un’impaginazione editoriale con copertine fotografiche. I box delle esperienze di Daniele riportano esclusivamente le due durate fornite dal team e collegano i relativi racconti.
@@ -108,7 +108,7 @@ La home usa un titolo diretto, maiuscolo e in grassetto: VIAGGI ORGANIZZATI, su 
 
 ## Il giornale dei viaggi: Daniele racconta
 
-I tre racconti sono impaginati come articoli di giornale in Times New Roman, con titoli in grassetto, occhiello, sommario, firma, fotografie e indice. Daniele racconta in forma di domande e risposte; una breve nota chiarisce che il testo è rielaborato dalle esperienze condivise e non una trascrizione registrata. Il cognome non compare negli articoli, nelle anteprime o nei metadati. Il profilo @daniele_pepi98 resta un semplice link esterno, senza embed o richieste automatiche a Instagram. Le fotografie sono illustrative e conservano i crediti. CSS: blog.css?v=4 e journal.css?v=2; cache offline v25.
+I tre racconti sono impaginati come articoli di giornale in Times New Roman, con titoli in grassetto, occhiello, sommario, firma, fotografie e indice. Daniele racconta in forma di domande e risposte; una breve nota chiarisce che il testo è rielaborato dalle esperienze condivise e non una trascrizione registrata. Il cognome non compare negli articoli, nelle anteprime o nei metadati. Il profilo @daniele_pepi98 resta un semplice link esterno, senza embed o richieste automatiche a Instagram. Le fotografie sono illustrative e conservano i crediti. CSS: blog.css?v=5 e journal.css?v=3; cache offline v26.
 
 ## Schede compatte dei viaggi di gruppo
 
@@ -130,15 +130,17 @@ La configurazione pubblica `data/auth-config.json` è ancora vuota e disabilitat
 
 Il clic apre un’anteprima in primo piano con fronte fotografico e retro informativo. “Gira la carta” e “Torna alla foto” cambiano lato; i comandi del lato inattivo sono esclusi dalla navigazione. “Maggiori dettagli” apre il relativo URL permanente in una nuova scheda. Escape e il pulsante di chiusura restituiscono il focus al comando iniziale. Con movimento ridotto il cambio di lato è immediato. Senza JavaScript le carte restano collegamenti diretti alle pagine viaggio.
 
-I dati base sono negli attributi delle carte in `index.html`; date, durata ed eventuale stato aggiornato vengono letti da `data/group-trips.json`, senza inventare partenze o servizi. I collegamenti Travel Advantage configurati restano accessibili sotto il carosello. I vecchi URL `?section=viaggi` e i pulsanti della home ora portano alla stessa sezione; la precedente finestra del catalogo è stata sostituita dalle carte. `trip-compact.css?v=3` usa lo sfondo petrolio della home e mantiene l’impaginazione compatta delle due pagine viaggio. Cache offline v25.
+I dati base sono negli attributi delle carte in `index.html`; date, durata ed eventuale stato aggiornato vengono letti da `data/group-trips.json`, senza inventare partenze o servizi. I collegamenti Travel Advantage configurati restano accessibili sotto il carosello. I vecchi URL `?section=viaggi` e i pulsanti della home ora portano alla stessa sezione; la precedente finestra del catalogo è stata sostituita dalle carte. `trip-compact.css?v=3` usa lo sfondo petrolio della home e mantiene l’impaginazione compatta delle due pagine viaggio. Cache offline v26.
 
 ## Fasce compatte della homepage
 
-`home-sections.css?v=3` dispone il titolo “VIAGGI ORGANIZZATI” sopra alle carte centrate, senza sottotitoli. Il fronte e il retro delle anteprime conservano le informazioni complete.
+`home-sections.css?v=4` dispone il titolo “VIAGGI ORGANIZZATI” sopra alle carte centrate, senza sottotitoli. Il fronte e il retro delle anteprime conservano le informazioni complete.
 
-Il blog occupa un riquadro più ampio, separato dai viaggi, con un articolo alla volta e una foto grande. `home-blog-strip.js?v=4` alterna le tre storie ogni 8 secondi con una dissolvenza di 1,1 secondi, movimento lento della foto e comparsa morbida del testo. Il collegamento “SFOGLIA IL BLOG” apre `blog.html`; la storia visibile apre direttamente il relativo articolo. Solo la storia attiva è accessibile a tastiera e lettori di schermo; la precedente rimane visibile e inattiva soltanto durante la dissolvenza. Non ci sono copie dei link.
+Il blog occupa un riquadro più ampio, separato dai viaggi, con un articolo alla volta e una foto grande. `home-blog-strip.js?v=5` alterna le tre storie ogni 8 secondi come un mazzo di carte: la prima scorre lateralmente e la successiva avanza. Il movimento dura circa un secondo, senza dissolvenze o pulsante di stop. Frecce, indicatori e gesto di scorrimento permettono la scelta manuale. Il collegamento “SFOGLIA IL BLOG” apre `blog.html`; la storia visibile apre direttamente il relativo articolo. Solo la carta davanti è accessibile a tastiera e lettori di schermo; le altre rimangono visibili sullo sfondo e inattive. Non ci sono copie dei link.
 
 La rotazione si sospende durante lettura con mouse o tastiera, quando il riquadro è fuori vista o la pagina non è visibile. Con la preferenza di sistema per movimento ridotto parte in pausa e le animazioni sono disattivate. Le fotografie sono locali. Senza JavaScript tutte le storie restano accessibili tramite scorrimento manuale.
 
 
 Le schede dettagliate dei viaggi hanno una galleria a sinistra e un riepilogo compatto a destra. Date e durata appaiono solo quando configurate; inclusioni e programma in preparazione hanno una sola riga di attesa. Il pulsante WhatsApp apre la richiesta senza confermare prenotazioni. Condizioni e crediti restano nel riquadro richiudibile.
+
+Il testo degli articoli usa Times New Roman a 17 px su desktop e 16 px su mobile, con colonna di lettura da 680 px, domande a 22/20 px e introduzioni a 20/18 px. Le anteprime del giornale hanno descrizioni da 17/16 px.

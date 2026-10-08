@@ -12,7 +12,7 @@
   const status = section.querySelector('#blog-strip-status');
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
   const interval = 8000;
-  const transition = 1100;
+  const transition = 1000;
   let index = 0;
   let timer = 0;
   let progress = null;
@@ -51,7 +51,6 @@
     slides.forEach(slide => {
       if (!slide.classList.contains('is-leaving')) return;
       slide.classList.remove('is-leaving');
-      slide.hidden = true;
     });
   }
 
@@ -60,14 +59,18 @@
     const outgoing = slides[index];
     const newIndex = (target + slides.length) % slides.length;
     const animate = newIndex !== index && !motion.matches && outgoing.classList.contains('is-active');
+    section.style.setProperty('--blog-direction', target < index ? '-1' : '1');
     index = newIndex;
     slides.forEach((slide, number) => {
-      const active = number === index;
+      const position = (number - index + slides.length) % slides.length;
+      const active = position === 0;
       const leaving = animate && slide === outgoing;
-      slide.hidden = !active && !leaving;
+      slide.hidden = false;
       slide.inert = !active;
       slide.setAttribute('aria-hidden', String(!active));
       slide.classList.toggle('is-active', active);
+      slide.classList.toggle('is-next', position === 1);
+      slide.classList.toggle('is-last', position > 1);
       slide.classList.toggle('is-leaving', leaving);
     });
     if (animate) cleanup = setTimeout(finishTransition, transition);

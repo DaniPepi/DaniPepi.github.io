@@ -1,18 +1,18 @@
 'use strict';
-const CACHE = 'click-viaggia-v25';
+const CACHE = 'click-viaggia-v26';
 const ASSETS = [
-  './home-sections.css?v=3', './home-blog-strip.js?v=4',
+  './home-sections.css?v=4', './home-blog-strip.js?v=5',
   './travel-deck.css?v=1', './travel-deck.js?v=2',
   './trip-compact.css?v=3', './data/group-trips.json', './site-account.css?v=1', './site-account.js?v=1', './account-core.js?v=1',
-  './blog.html', './journal.css?v=2', './journal.js?v=1',
-  "./blog.css?v=4", "./article.js?v=1", "./blog-fatima-nazare.html", "./blog-nosy-be.html", "./blog-marsa-alam.html", "./assets/blog-nazare.jpg", "./assets/blog-nosy-iranja.jpg", "./assets/blog-nosy-sakatia.jpg", "./assets/blog-lokobe.jpg", "./assets/blog-sharm-el-luli.jpg", "./assets/blog-port-ghalib.jpg", "./assets/blog-marsa-desert.jpg", "./assets/blog-camels-red-sea.jpg",
+  './blog.html', './journal.css?v=3', './journal.js?v=1',
+  "./blog.css?v=5", "./article.js?v=1", "./blog-fatima-nazare.html", "./blog-nosy-be.html", "./blog-marsa-alam.html", "./assets/blog-nazare.jpg", "./assets/blog-nosy-iranja.jpg", "./assets/blog-nosy-sakatia.jpg", "./assets/blog-lokobe.jpg", "./assets/blog-sharm-el-luli.jpg", "./assets/blog-port-ghalib.jpg", "./assets/blog-marsa-desert.jpg", "./assets/blog-camels-red-sea.jpg",
   './viaggio-fatima.html', './viaggio-disney.html',
   './assets/grafica-fatima.svg', './assets/grafica-fatima.png',
   './assets/grafica-disney-v2.svg', './assets/grafica-disney-v2.png',
   './assets/fatima.jpg', './assets/disney-panorama.jpg', './assets/fatima-basilica.jpg', './assets/fatima-chapel.jpg',
   './data/country-editorial.json', './data/country-photos.json', './map-navigation.js?v=9',
   './i-miei-viaggi.html', './map.js?v=11', './map-auth.js', './map.css?v=10', './data/map.json', './assets/flags.svg',
-  './', './index.html', './style.css', './style.css?v=11', './app.js?v=19', './legal.html', './chi-siamo.html',
+  './', './index.html', './style.css', './style.css?v=11', './app.js?v=20', './legal.html', './chi-siamo.html',
   './team.js?v=15', './data/team.json', './data/contact.json', './trip.js?v=3', './data/travel-links.json',
   './icon.svg', './manifest.webmanifest', './manifest.webmanifest?v=17', './assets/ocean.jpg',
   './presentation.css?v=2', './brand.css?v=2', './assets/brand-logo-v3.svg', './assets/brand-mark-v3.svg',

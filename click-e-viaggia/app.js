@@ -64,12 +64,6 @@ hero.addEventListener('pointermove', event => {
 });
 hero.addEventListener('pointerleave', resetMagnet);
 reducedMotion.addEventListener('change', resetMagnet);
-const motionToggle = document.querySelector('#motion-toggle');
-motionToggle.addEventListener('click', () => {
-  const paused = hero.classList.toggle('motion-paused');
-  motionToggle.setAttribute('aria-pressed', String(paused));
-  motionToggle.textContent = paused ? 'Riprendi lo sfondo' : 'Metti in pausa lo sfondo';
-});
 function showTrips(options = {}) {
   const section = document.querySelector('#viaggi');
   section.scrollIntoView({behavior: options.instant || reducedMotion.matches ? 'auto' : 'smooth', block: 'start'});
