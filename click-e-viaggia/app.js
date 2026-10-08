@@ -58,7 +58,7 @@ hero.addEventListener('pointermove', event => {
       const x = Math.max(-4, Math.min(4, dx * influence * 0.05));
       const y = Math.max(-22, Math.min(22, dy * influence * 0.2));
       letter.style.transform = `translate3d(${x.toFixed(2)}px, ${y.toFixed(2)}px, 0) rotate(${(x * 0.24).toFixed(2)}deg)`;
-      letter.style.color = influence > 0.6 ? '#d8f36b' : '';
+      letter.style.color = ''; 
     });
   });
 });

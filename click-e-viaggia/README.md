@@ -83,10 +83,10 @@ Per una verifica locale opzionale aprire con un server di VS Code (es. Live Serv
 
 ## Immagine
 
-Foto di xandro Vandewalle: https://unsplash.com/photos/aerial-photography-of-body-of-water-S2wLuk_Ac2I . Fonte Unsplash. Font di sistema: nessuna richiesta a Google Fonts.
+La fotografia precedente, conservata in assets/ocean.jpg, è di xandro Vandewalle: https://unsplash.com/photos/aerial-photography-of-body-of-water-S2wLuk_Ac2I . Fonte Unsplash. La home attuale usa una grafica procedurale in carbonio. Font di sistema: nessuna richiesta a Google Fonts.
 
 ## Diario personale
-La home usa di nuovo la fotografia originale. La sezione I miei viaggi si apre in una nuova scheda: mappa con bandiere, descrizioni e salvataggio personale sul browser. Per Google, Apple e sincronizzazione account seguire AUTH-SETUP.md. I provider sono disattivati finché non si configura il progetto reale e si pubblicano le regole Firestore.
+La home usa lo sfondo procedurale in carbonio descritto sotto. La sezione I miei viaggi si apre in una nuova scheda: mappa con bandiere, descrizioni e salvataggio personale sul browser. Per Google, Apple e sincronizzazione account seguire AUTH-SETUP.md. I provider sono disattivati finché non si configura il progetto reale e si pubblicano le regole Firestore.
 
 
 ## Atlante fotografico
@@ -160,3 +160,12 @@ https://danipepi.github.io/click-e-viaggia/?utm_source=instagram&utm_medium=soci
 La campagna usa solo i valori fissi instagram/social/bio. Gli altri parametri e frammenti arbitrari sono esclusi dalle misurazioni. I visitatori che rifiutano, usano blocchi o navigano offline possono non comparire nelle statistiche; non si tratta di un censimento esatto delle persone.
 
 Riferimenti: https://developers.google.com/tag-platform/security/concepts/consent-mode e https://www.garanteprivacy.it/home/docweb/-/docweb-display/docweb/9677876 .
+
+
+## Stile metallico e sfondo in carbonio
+
+Le nove pagine pubbliche di presentazione usano `metallic.css?v=1` con la classe opt-in `metallic-site`: grafite, acciaio satinato, pulsanti con stato hover/pressione/focus. Contenuti, gallerie e carte restano invariati; gli articoli conservano Times New Roman. La pagina I miei viaggi e tutti i file della mappa non sono stati modificati.
+
+`carbon-hero.js?v=1` disegna localmente pieghe in carbonio su canvas, senza dipendenze o richieste esterne. La deformazione segue il puntatore con inerzia; su touch resta un movimento lento. Il disegno si sospende fuori vista, in una scheda nascosta e durante le finestre modali. Con movimento ridotto è statico; senza JavaScript resta il fondo CSS a pieghe. Nessun dato del puntatore è salvato o trasmesso. Il service worker v29 include i nuovi asset.
+
+Il pannello account `site-account.css/js?v=2` è scuro, centrale, largo al massimo 360 px e facoltativo; X, Escape e Continua senza account lo chiudono. L’aspetto non cambia lo stato dei provider: Google/Apple restano disabilitati finché non viene configurato Firebase. Le statistiche restano disattivate in attesa del completamento dell’informativa.

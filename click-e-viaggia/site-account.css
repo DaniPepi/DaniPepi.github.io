@@ -1,23 +1,32 @@
-dialog.cva-account-panel{position:fixed;inset:auto 24px 24px auto;z-index:30;width:min(420px,calc(100vw - 32px));max-width:420px;max-height:calc(100dvh - 32px);margin:0;padding:25px;overflow:auto;border:1px solid #c2d0bc;border-radius:18px;background:#f8faf3;color:#183732;box-shadow:0 12px 55px #071e2440;font-family:Arial,Helvetica,sans-serif;text-align:left}
+/* Compact account dialog, independent of the personal travel map. */
+body.cva-account-open{overflow:hidden}
+dialog.cva-account-panel{position:fixed;inset:0;z-index:60;box-sizing:border-box;width:min(360px,calc(100vw - 32px));max-width:360px;max-height:calc(100dvh - 32px);margin:auto;padding:25px 24px 20px;overflow:auto;overscroll-behavior:contain;border:1px solid #62666b;border-radius:18px;background:linear-gradient(145deg,#303338 0%,#1b1e22 35%,#141619 100%);color:#f2f3f4;box-shadow:inset 0 1px 0 #ffffff24,0 24px 90px #0009;font-family:Arial,Helvetica,sans-serif;text-align:left;color-scheme:dark;animation:cva-account-enter .28s cubic-bezier(.22,.8,.25,1) both}
 dialog.cva-account-panel:not([open]){display:none}
+dialog.cva-account-panel::backdrop{background:#07090c9e;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 .cva-account-panel *,.cva-account-panel *::before,.cva-account-panel *::after{box-sizing:border-box}
 .cva-account-panel [hidden]{display:none!important}
-.cva-account-panel .cva-account-close{position:absolute;top:10px;right:10px;width:44px;height:44px;border:0;border-radius:50%;background:transparent;color:#183732;font:26px/1 Arial,Helvetica,sans-serif;cursor:pointer}
-.cva-account-close:hover{background:#e7eee0}
-.cva-account-panel .cva-account-eyebrow{padding-right:28px;margin:3px 0 12px;color:#52714a;font-size:9px;font-weight:700;line-height:1.5;letter-spacing:1.2px}
-.cva-account-panel .cva-account-title{max-width:100%;margin:0 0 12px;padding:0;font:700 26px/1.12 Arial,Helvetica,sans-serif;letter-spacing:-.8px;text-transform:none;overflow-wrap:anywhere}
-.cva-account-panel .cva-account-intro,.cva-account-panel .cva-account-benefits{margin:0 0 14px;color:#425b51;font-size:13px;line-height:1.55;overflow-wrap:anywhere}
-.cva-account-panel .cva-account-benefits{padding-left:18px}.cva-account-benefits li+li{margin-top:5px}
-.cva-account-panel .cva-account-status{padding:11px 13px;margin:0 0 14px;border:1px solid #dce5d3;border-radius:9px;background:#eef3e8;color:#405742;font-size:12px;line-height:1.5}
-.cva-account-remember{display:flex;align-items:center;gap:9px;margin:0 0 14px;font-size:12px;line-height:1.4}
-.cva-account-remember input{flex:0 0 18px;width:18px;height:18px;margin:0;accent-color:#21483c}
+.cva-account-panel .cva-account-close{position:absolute;top:5px;right:5px;display:grid;place-items:center;width:44px;height:44px;padding:0;border:0;border-radius:12px;background:transparent;color:#c1c5ca;font:26px/1 Arial,Helvetica,sans-serif;cursor:pointer;transition:background .18s,color .18s,transform .18s}
+.cva-account-panel .cva-account-close:hover{background:#ffffff0c;color:#fff}
+.cva-account-panel .cva-account-eyebrow{padding-right:28px;margin:0 0 11px;color:#b9bec5;font-size:9px;font-weight:700;line-height:1.4;letter-spacing:1.8px}
+.cva-account-panel .cva-account-title{max-width:100%;margin:0 0 10px;padding:0;font:700 23px/1.15 Arial,Helvetica,sans-serif;letter-spacing:-.85px;text-transform:none;overflow-wrap:anywhere}
+.cva-account-panel .cva-account-intro,.cva-account-panel .cva-account-benefits{margin:0 0 12px;color:#c1c5ca;font-size:12px;line-height:1.5;overflow-wrap:anywhere}
+.cva-account-panel .cva-account-benefits{padding-left:16px;font-size:11px}.cva-account-benefits li+li{margin-top:3px}.cva-account-benefits li::marker{color:#8c939c}
+.cva-account-panel .cva-account-status{padding:10px 11px;margin:0 0 12px;border:1px solid #ffffff12;border-radius:9px;background:#090b0e4a;color:#aeb4bc;font-size:11px;line-height:1.45;overflow-wrap:anywhere}
+.cva-account-remember{display:flex;align-items:center;gap:9px;min-height:36px;margin:0 0 9px;color:#c1c5ca;font-size:11px;line-height:1.4}
+.cva-account-remember input{flex:0 0 18px;width:18px;height:18px;margin:0;accent-color:#c5cad1}
 .cva-account-providers{display:grid;grid-template-columns:1fr;gap:8px}
-.cva-account-panel .cva-account-provider,.cva-account-panel .cva-account-diary{display:flex;align-items:center;justify-content:center;width:100%;min-height:48px;padding:12px 14px;border:1px solid #b4c4b0;border-radius:9px;background:#fffefa;color:#183732;font:700 13px/1.4 Arial,Helvetica,sans-serif;text-align:center;text-decoration:none;cursor:pointer}
-.cva-account-panel .cva-account-provider-apple,.cva-account-panel .cva-account-diary{background:#183732;border-color:#183732;color:#fffefa}
-.cva-account-panel .cva-account-provider:disabled{opacity:.5;cursor:not-allowed}
-.cva-account-panel .cva-account-continue,.cva-account-panel .cva-account-logout{display:block;width:100%;min-height:44px;margin:8px 0 0;padding:9px;border:0;border-radius:8px;background:transparent;color:#405e49;font:700 12px/1.5 Arial,Helvetica,sans-serif;text-align:center;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
-.cva-account-panel .cva-account-privacy{margin:8px 0 0;color:#68746a;font-size:10px;line-height:1.5}.cva-account-privacy a{text-decoration:underline;text-underline-offset:2px}
-.cva-account-panel a:focus-visible,.cva-account-panel button:focus-visible,.cva-account-panel input:focus-visible{outline:3px solid #53724a;outline-offset:3px}
-.cva-account-nav{display:inline-flex;flex:0 0 auto;align-items:center;justify-content:center;min-height:36px;padding:7px 13px;border:1px solid currentColor;border-radius:24px;background:transparent;color:inherit;font:inherit;white-space:nowrap;cursor:pointer}.cva-account-nav:hover{background:#ffffff0c}
-@media(max-width:640px){dialog.cva-account-panel{right:16px;bottom:16px;padding:22px;border-radius:14px}.cva-account-panel .cva-account-title{font-size:24px}.team-nav:has(.cva-account-nav){flex-wrap:wrap;align-items:center}}
-@media(prefers-reduced-motion:reduce){.cva-account-panel{scroll-behavior:auto}}
+.cva-account-panel .cva-account-provider,.cva-account-panel .cva-account-diary{display:flex;align-items:center;justify-content:center;width:100%;min-height:44px;padding:10px 13px;border:1px solid #b7bec6;border-radius:10px;background:linear-gradient(180deg,#edf0f3,#bbc2ca);color:#171b20;box-shadow:inset 0 1px 0 #fff9,0 3px 8px #0003;font:700 12px/1.4 Arial,Helvetica,sans-serif;text-align:center;text-decoration:none;cursor:pointer;transition:transform .18s,filter .18s,box-shadow .18s}
+.cva-account-panel .cva-account-provider-apple{border-color:#626970;background:linear-gradient(180deg,#393e45,#23272d);color:#eef0f3;box-shadow:inset 0 1px 0 #ffffff12,0 3px 8px #0003}
+.cva-account-panel .cva-account-provider:not(:disabled):hover,.cva-account-panel .cva-account-diary:hover{filter:brightness(1.1);transform:translateY(-1px);box-shadow:inset 0 1px 0 #fff5,0 5px 12px #0005}
+.cva-account-panel .cva-account-provider:not(:disabled):active,.cva-account-panel .cva-account-diary:active{transform:translateY(1px);box-shadow:inset 0 2px 5px #0003}
+.cva-account-panel .cva-account-provider:disabled{opacity:.48;cursor:not-allowed}
+.cva-account-panel .cva-account-continue,.cva-account-panel .cva-account-logout{display:block;width:100%;min-height:44px;margin:6px 0 0;padding:9px;border:0;border-radius:9px;background:transparent;color:#c9cdd3;font:600 11px/1.5 Arial,Helvetica,sans-serif;text-align:center;text-decoration:none;cursor:pointer;transition:background .18s,color .18s}
+.cva-account-panel .cva-account-continue:hover,.cva-account-panel .cva-account-logout:hover{background:#ffffff08;color:#fff}
+.cva-account-panel .cva-account-privacy{margin:3px 0 0;color:#949ba4;font-size:9px;line-height:1.5}.cva-account-panel .cva-account-privacy a{color:#c7ccd2;text-decoration:underline;text-underline-offset:2px}
+.cva-account-panel a:focus-visible,.cva-account-panel button:focus-visible,.cva-account-panel input:focus-visible{outline:2px solid #e5e9ef;outline-offset:3px}
+.cva-account-nav{display:inline-flex;flex:0 0 auto;align-items:center;justify-content:center;min-height:36px;padding:7px 13px;border:1px solid #9299a35e;border-radius:10px;background:linear-gradient(180deg,#ffffff12,#ffffff03);color:inherit;box-shadow:inset 0 1px 0 #ffffff12;font:inherit;white-space:nowrap;cursor:pointer;transition:background .18s,transform .18s}.cva-account-nav:hover{background:#ffffff15}.cva-account-nav:active{transform:translateY(1px)}
+@keyframes cva-account-enter{from{opacity:0;transform:translateY(10px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(max-width:380px){dialog.cva-account-panel{padding:23px 20px 18px}.cva-account-panel .cva-account-title{font-size:21px}}
+@media(max-width:640px){.team-nav:has(.cva-account-nav){flex-wrap:wrap;align-items:center}}
+@media(prefers-reduced-motion:reduce){dialog.cva-account-panel{animation:none;scroll-behavior:auto}.cva-account-panel button,.cva-account-panel a,.cva-account-nav{transition:none!important}}
+@media(forced-colors:active){dialog.cva-account-panel{border:1px solid CanvasText;background:Canvas;color:CanvasText}.cva-account-panel .cva-account-provider,.cva-account-panel .cva-account-diary{border:1px solid ButtonText}}

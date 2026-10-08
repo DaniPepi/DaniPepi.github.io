@@ -1,0 +1,239 @@
+/* Graphite and satin steel. Opt-in keeps the personal atlas and admin untouched. */
+body.metallic-site {
+  color-scheme: dark;
+  --bg: #101214;
+  --ink: #f0f2f4;
+  --muted: #b0b7bd;
+  --accent: #dce8bd;
+  --line: #ffffff24;
+  --metal-edge: #ffffff27;
+  --metal-surface: linear-gradient(135deg, #262a2e 0%, #1c1f22 44%, #16191b 100%);
+  --metal-button: linear-gradient(180deg, #edf0f2 0%, #d1d6db 48%, #bcc4cc 100%);
+  --metal-shadow: 0 20px 52px #00000032, inset 0 1px 0 #ffffff0c;
+  background: #101214;
+  background-image: linear-gradient(145deg, #1c1f23 0, #101214 42%, #15181b 100%);
+  color: var(--ink);
+}
+body.metallic-site ::selection { background: #dce8bd; color: #15191a; }
+body.metallic-site :is(a, button, input, summary, select):focus-visible {
+  outline: 2px solid #e7efcf;
+  outline-offset: 4px;
+}
+body.metallic-site :is(header, .team-header, .journal-header) {
+  color: var(--ink);
+  background: linear-gradient(180deg, #202428f5, #121518f0);
+  border-bottom: 1px solid var(--metal-edge);
+  box-shadow: inset 0 1px 0 #ffffff08;
+}
+body.metallic-site.site-home > header {
+  background: linear-gradient(180deg, #111417b8, #11141726);
+  box-shadow: none;
+}
+body.metallic-site :is(nav a:hover, .journal-header .team-nav a[aria-current="page"]) {
+  color: #f5f6f7;
+  border-bottom-color: #dce8bd;
+}
+body.metallic-site :is(.header-note, .hero-bottom, .panel-caption) { color: #b6bdc3; }
+body.metallic-site :is(.hero-copy, .trip-hero-content > p:not(.eyebrow)) { color: #d7dce1; }
+body.metallic-site .flow-title:hover { text-shadow: none; }
+body.metallic-site .eyebrow { color: #d2dbbf; }
+body.metallic-site :is(.button, .journal-button, .deck-flip-button, .deck-details-link, .menu-toggle, .category-filter) {
+  min-height: 44px;
+  border-radius: 9px;
+  border: 1px solid #ffffff2c;
+  font-weight: 650;
+  transition: transform .18s ease, background .18s ease, border-color .18s ease, box-shadow .18s ease;
+  box-shadow: inset 0 1px 0 #ffffff12, 0 4px 10px #00000024;
+  -webkit-tap-highlight-color: transparent;
+}
+body.metallic-site :is(.button.primary, .journal-button, .deck-flip-button, .deck-details-link) {
+  color: #171b1f;
+  background: var(--metal-button);
+  border-color: #e4e8ed;
+  box-shadow: inset 0 1px 0 #ffffffbf, inset 0 -1px 0 #86929c66, 0 5px 12px #00000035;
+}
+body.metallic-site :is(.button.secondary, .menu-toggle, .category-filter) {
+  color: #e5e9ec;
+  background: linear-gradient(180deg, #343a40b3, #20252bc9);
+  border-color: #ffffff35;
+  backdrop-filter: blur(12px);
+}
+body.metallic-site :is(.button.primary, .journal-button, .deck-flip-button, .deck-details-link):hover {
+  color: #11171b;
+  background: linear-gradient(180deg, #ffffff, #d5dce2);
+  border-color: #f8fafc;
+  transform: translateY(-2px);
+  box-shadow: inset 0 1px 0 #ffffff, 0 8px 18px #0000003b;
+}
+body.metallic-site :is(.button.secondary, .menu-toggle, .category-filter):hover {
+  background: linear-gradient(180deg, #424950dc, #2a3037dc);
+  border-color: #ffffff54;
+  transform: translateY(-2px);
+}
+body.metallic-site :is(.button, .journal-button, .deck-flip-button, .deck-details-link, .menu-toggle, .category-filter):active {
+  transform: translateY(1px);
+  box-shadow: inset 0 2px 5px #00000024, 0 1px 3px #00000028;
+}
+body.metallic-site :is(.button, .journal-button, .deck-flip-button, .deck-details-link):disabled {
+  opacity: .48;
+  transform: none;
+  cursor: not-allowed;
+}
+body.metallic-site :is(.deck-controls button, .blog-strip-control) {
+  width: 44px;
+  height: 44px;
+  min-height: 44px;
+  border-radius: 10px;
+  color: #e4e9ed;
+  background: linear-gradient(180deg, #343a40, #22272c);
+  border: 1px solid #ffffff30;
+  box-shadow: inset 0 1px 0 #ffffff10, 0 3px 8px #00000026;
+  transition: transform .18s ease, background .18s ease, border-color .18s ease;
+}
+body.metallic-site :is(.deck-controls button, .blog-strip-control):hover {
+  background: linear-gradient(180deg, #454c53, #30373e);
+  border-color: #ffffff55;
+  transform: translateY(-2px);
+}
+body.metallic-site :is(.deck-controls button, .blog-strip-control):active { transform: translateY(1px); }
+body.metallic-site .deck-controls button:disabled { transform: none; background: #23272b; }
+body.metallic-site :is(.gateways, .team-intro, .team-members, .contact, .trip-route, .trip-story-link) {
+  background: linear-gradient(135deg, #202428, #14171a 65%, #1c2024);
+}
+body.metallic-site :is(.glass-panel, .home-blog-strip, .trip-sheet, dialog.deck-preview, .collection-card) {
+  background: var(--metal-surface);
+  border-color: var(--metal-edge);
+  border-radius: 14px;
+  box-shadow: var(--metal-shadow);
+}
+body.metallic-site.site-home .home-trip-band .glass-panel { border-radius: 14px; }
+body.metallic-site .home-blog-strip::before {
+  background: linear-gradient(115deg, transparent 38%, #ffffff05 49%, transparent 60%);
+}
+body.metallic-site :is(.blog-strip-item, .blog-ready .blog-strip-item) {
+  color: var(--ink);
+  background: linear-gradient(130deg, #2a2f34, #1a1e22 65%);
+  border-color: #ffffff2a;
+  border-radius: 10px;
+}
+body.metallic-site .blog-strip-copy strong { color: #f1f3f5; }
+body.metallic-site :is(.blog-strip-excerpt, #deck-position, .deck-instruction) { color: #bac2c9; }
+body.metallic-site :is(.blog-strip-copy small, .blog-strip-read, .deck-card-action) { color: #d5ddc6; }
+body.metallic-site .blog-strip-dots button::after { background: #ffffff50; }
+body.metallic-site .blog-strip-dots button[aria-current="true"]::after { background: #dce8bd; }
+body.metallic-site .blog-progress { background: #ffffff0d; }
+body.metallic-site .blog-progress > span { background: #c9d3bc; }
+body.metallic-site .deck-card { border-color: #ffffff3d; background: #171b1f; }
+body.metallic-site .deck-card[data-selected="true"] {
+  border-color: #d8dfe7b3;
+  box-shadow: 0 18px 38px #00000050, inset 0 1px 0 #ffffff1a;
+}
+body.metallic-site .deck-card::after {
+  background: linear-gradient(180deg, #090c101c 10%, #090c1000 28%, #090c10c9 70%, #090c10fa);
+}
+body.metallic-site :is(.deck-country, .deck-preview-country, .poster-tag) {
+  background: #171c22c9;
+  color: #edf0f3;
+  border-color: #ffffff40;
+}
+body.metallic-site dialog.deck-preview::backdrop { background: #020407c7; }
+body.metallic-site .deck-face-front { background: #171c21; }
+body.metallic-site .deck-face-front::after {
+  background: linear-gradient(180deg, #080b1005 20%, #080b1028 40%, #080b10f5 82%);
+}
+body.metallic-site .deck-face-back { background: linear-gradient(135deg, #30363c, #191d21 70%); }
+body.metallic-site .deck-preview-close { background: #191e24df; border-color: #ffffff45; color: #edf0f4; }
+body.metallic-site .deck-preview-close:hover { background: #363e46; }
+body.metallic-site :is(#deck-back-summary, .deck-back-note, .deck-return-button) { color: #b9c1c8; }
+body.metallic-site :is(.deck-back-facts dt, .deck-back-eyebrow, .deck-back-status, .deck-preview-label) { color: #ced8bf; }
+body.metallic-site #deck-preview-tagline { color: #dbe1e5; }
+body.metallic-site .process { background: #1a1e22; color: var(--ink); border-block: 1px solid #ffffff1a; }
+body.metallic-site .process .eyebrow { color: #d2dbbf; }
+body.metallic-site .process-steps li { border-top-color: #ffffff30; }
+body.metallic-site .process-steps li::before { color: #c1cbb3; }
+body.metallic-site .process-steps p { color: var(--muted); }
+body.metallic-site :is(.about > div, .team-copy p, .team-lead, .team-note, .member-empty, .member-card > p:last-child) { color: var(--muted); }
+body.metallic-site :is(.team-copy strong, .footer-brand, .contact-number) { color: var(--ink); }
+body.metallic-site :is(footer, .journal-footer, .trip-footer, .cva-analytics-footer) {
+  background: #111417;
+  border-top-color: var(--line);
+  color: #b4bdc5;
+}
+/* The newspaper keeps its Times typography and column widths on dark paper. */
+body.metallic-site.journal-page {
+  --journal-ink: #f0f2f4;
+  --journal-muted: #b0b7bd;
+  --journal-line: #ffffff28;
+}
+body.metallic-site.article-page {
+  --paper: #15181b;
+  --news-ink: #f0f2f4;
+  --news-muted: #b0b7bd;
+  --news-rule: #ffffff28;
+}
+body.metallic-site :is(.journal-eyebrow, .journal-story-country, .journal-story-fact, .journal-read, .article-social-link, .article-toc p, .article-traveler .traveler-label, .article-related-card span) {
+  color: #cbd6bd;
+}
+body.metallic-site :is(.journal-story-description, .article-subtitle, .article-facts, .article-reading section > p, .article-closing > p, .article-traveler p) {
+  color: #cdd3d8;
+}
+body.metallic-site .journal-story-image-link { background: #20262c; border-radius: 3px; }
+body.metallic-site .journal-new { background: #151a1fec; color: #f1f3f4; border: 1px solid #ffffff30; }
+body.metallic-site .journal-filters a { color: #b7c0c8; }
+body.metallic-site .journal-filters a:hover { color: #f2f4f6; border-color: #c0c9d1; }
+body.metallic-site .journal-filters a[aria-current="true"] { color: #f2f4f6; border-color: #dce8bd; }
+body.metallic-site :is(.article-related, .traveler-initial) { background: #20252a; }
+body.metallic-site .traveler-initial { color: #dce8bd; border: 1px solid #ffffff25; }
+body.metallic-site .article-related-card { border-top-color: #ffffff28; }
+body.metallic-site :is(.article-share-link, .trip-sheet-tools input) {
+  color: #e9edf0;
+  background: #11171c;
+  border-color: #6e7983;
+}
+/* Existing compact itinerary, with a darker photographic rail. */
+body.metallic-site.compact-trip .team-header { background: linear-gradient(180deg, #23282d, #14181c); }
+body.metallic-site .trip-visual { background: #14191e; }
+body.metallic-site .trip-main-photo > img { background: #242c34; }
+body.metallic-site :is(.trip-main-photo figcaption, .trip-meta dt, .trip-day p, .trip-contact p, .trip-sheet-tools p, .trip-credits) { color: #b3bcc4; }
+body.metallic-site :is(.trip-tagline, .trip-kicker, .trip-day-label, .trip-sheet h2, .trip-history, .trip-sheet-tools > a, .trip-sheet-tools > button) { color: #d0d9c2; }
+body.metallic-site .trip-inclusions { background: linear-gradient(130deg, #343b42, #242a30); border-color: #ffffff2d; }
+body.metallic-site .trip-pending { color: #d6c6a2; }
+body.metallic-site .trip-programme-empty { background: #171d23; border-color: #59646d; color: #bfc8d0; }
+body.metallic-site .trip-thumbnail { background: #161c22; border-color: #65717b; }
+body.metallic-site .trip-thumbnail[aria-pressed="true"] { border-color: #dce8bd; }
+body.metallic-site .trip-thumbnail:hover { border-color: #e5eaee; }
+body.metallic-site .legal-notice { background: linear-gradient(135deg, #292e33, #1d2227); border-color: #ffffff30; }
+body.metallic-site .legal-page :is(h1, h2) { color: #edf0f3; }
+body.metallic-site .legal-page :is(p, li) { color: #b9c1c9; }
+body.metallic-site .cva-analytics-banner { background: linear-gradient(135deg, #292f35, #191e24); border-color: #64717c; }
+body.metallic-site .cva-analytics-banner p { color: #d4dce3; }
+body.metallic-site .cva-analytics-banner a { color: #dce8bd; }
+body.metallic-site .cva-analytics-actions button {
+  background: var(--metal-button);
+  color: #171b1f;
+  border-color: #e4e8ed;
+  box-shadow: inset 0 1px 0 #ffffffbf, 0 3px 8px #00000026;
+}
+body.metallic-site .cva-analytics-actions button:hover { background: linear-gradient(180deg, #ffffff, #d5dce2); }
+body.metallic-site .cva-analytics-banner .cva-analytics-status { color: #b7c2cb; }
+@media (max-width: 1000px) {
+  body.metallic-site.site-home #navigation { background: #191e24f7; border-color: #ffffff2d; box-shadow: 0 18px 35px #0000004d; }
+}
+@media (max-width: 640px) {
+  body.metallic-site :is(.button, .journal-button) { min-height: 46px; }
+  body.metallic-site .trip-contact .button { min-height: 48px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.metallic-site :is(.button, .journal-button, .deck-flip-button, .deck-details-link, .menu-toggle, .category-filter, .deck-controls button, .blog-strip-control) { transition: none; }
+  body.metallic-site :is(.button, .journal-button, .deck-flip-button, .deck-details-link, .menu-toggle, .category-filter, .deck-controls button, .blog-strip-control):is(:hover, :active) { transform: none; }
+}
+@media (forced-colors: active) {
+  body.metallic-site { background: Canvas; color: CanvasText; }
+  body.metallic-site :is(.button, .journal-button, .deck-flip-button, .deck-details-link, .menu-toggle, .deck-controls button, .blog-strip-control) {
+    background: ButtonFace;
+    color: ButtonText;
+    border: 1px solid ButtonText;
+    box-shadow: none;
+  }
+  body.metallic-site :is(a, button, input, summary, select):focus-visible { outline-color: Highlight; }
+}

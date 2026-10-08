@@ -1,7 +1,7 @@
 import {getAccountService, accountErrorMessage} from './account-core.js?v=1';
 
 const dismissedKey = 'click-viaggia-account-dismissed-v1';
-const unavailable = 'Google e Apple saranno disponibili dopo l’attivazione degli accessi. Il diario resta salvato su questo browser.';
+const unavailable = 'Accessi in preparazione. Per ora il diario resta salvato su questo browser.';
 function dismissed() { try { return sessionStorage.getItem(dismissedKey) === '1'; } catch { return false; } }
 function rememberDismissal() { try { sessionStorage.setItem(dismissedKey, '1'); } catch { /* Browsing remains available without storage. */ } }
 
@@ -11,14 +11,13 @@ function initializeAccountPanel() {
   panel.className = 'cva-account-panel'; panel.id = 'cva-account-panel';
   panel.setAttribute('aria-labelledby', 'cva-account-title'); panel.setAttribute('aria-describedby', 'cva-account-intro');
   panel.innerHTML = `
-    <button type="button" class="cva-account-close" aria-label="Chiudi il pannello account">×</button>
-    <p class="cva-account-eyebrow">IL TUO MONDO, CON CLICK&amp;VIAGGIA</p>
-    <h2 id="cva-account-title" class="cva-account-title">Un account, il tuo diario.</h2>
-    <p id="cva-account-intro" class="cva-account-intro">Accedere è una scelta: puoi visitare il sito e contattarci anche senza registrarti.</p>
+    <button type="button" class="cva-account-close" aria-label="Chiudi il pannello account" autofocus>×</button>
+    <p class="cva-account-eyebrow">IL TUO ACCOUNT</p>
+    <h2 id="cva-account-title" class="cva-account-title">Accedi a Click&amp;Viaggia</h2>
+    <p id="cva-account-intro" class="cva-account-intro">Il tuo diario, sempre con te. L’accesso è facoltativo.</p>
     <ul class="cva-account-benefits">
-      <li>Raccogli i paesi visitati nel tuo diario personale.</li>
-      <li class="cva-account-sync">Con gli accessi attivi, ritrovi il diario su più dispositivi.</li>
-      <li>Usa Google o Apple, senza creare una nuova password.</li>
+      <li>Raccogli i paesi che hai visitato.</li>
+      <li class="cva-account-sync">Con gli accessi attivi, sincronizzi il diario.</li>
     </ul>
     <p class="cva-account-status" role="status" aria-live="polite">Verifica della disponibilità degli accessi…</p>
     <label class="cva-account-remember" hidden><input type="checkbox" name="cva-account-remember"> Resta connesso su questo dispositivo</label>
@@ -31,51 +30,67 @@ function initializeAccountPanel() {
       <button type="button" class="cva-account-logout">Esci dall’account</button>
     </div>
     <button type="button" class="cva-account-continue">Continua senza account</button>
-    <p class="cva-account-privacy">Non chiediamo né conserviamo le password Google o Apple. <a href="legal.html">Privacy</a></p>`;
+    <p class="cva-account-privacy">Le password restano a Google e Apple. <a href="legal.html">Privacy</a></p>`;
   document.body.append(panel);
   const find = selector => panel.querySelector(selector);
   const close = find('.cva-account-close'), continueButton = find('.cva-account-continue'), status = find('.cva-account-status');
   const providerButtons = [...panel.querySelectorAll('[data-provider]')], remember = find('.cva-account-remember'), logout = find('.cva-account-logout');
   const navigation = document.querySelector('#navigation, .team-nav');
-  let account = null, currentUser = null, busy = false, previousFocus = null;
+  let account = null, currentUser = null, busy = false, previousFocus = null, backdropPressed = false;
   const opener = document.createElement('button');
   opener.type = 'button'; opener.className = 'cva-account-nav'; opener.textContent = 'Accedi';
   opener.setAttribute('aria-haspopup', 'dialog'); opener.setAttribute('aria-controls', panel.id);
   if (navigation) navigation.append(opener);
   function open(manual = false) {
-    if (panel.open) return;
-    previousFocus = manual ? document.activeElement : null;
-    const active = document.activeElement;
-    panel.show();
-    if (manual) close.focus({preventScroll: true});
-    else if (active instanceof HTMLElement && active !== document.body && active !== document.documentElement) active.focus({preventScroll: true});
-    else if (panel.contains(document.activeElement)) document.activeElement.blur();
+    if (panel.open || document.querySelector('dialog:modal')) return;
+    previousFocus = document.activeElement;
+    if (manual) {
+      navigation?.classList.remove('open');
+      document.querySelector('.menu-toggle')?.setAttribute('aria-expanded', 'false');
+    }
+    panel.showModal();
+    document.body.classList.add('cva-account-open');
+    close.focus({preventScroll: true});
   }
   function dismiss() {
-    rememberDismissal(); const restore = panel.contains(document.activeElement); panel.close();
-    if (restore && previousFocus instanceof HTMLElement && previousFocus.isConnected) previousFocus.focus({preventScroll: true});
+    rememberDismissal(); panel.close();
   }
   function refresh() {
     opener.textContent = currentUser ? 'Il mio account' : 'Accedi';
-    find('.cva-account-title').textContent = currentUser ? 'Il tuo diario ti aspetta.' : 'Un account, il tuo diario.';
+    find('.cva-account-title').textContent = currentUser ? 'Bentornato nel tuo diario' : 'Accedi a Click&Viaggia';
     find('.cva-account-intro').textContent = currentUser
-      ? `Hai effettuato l’accesso${currentUser.displayName ? ` come ${currentUser.displayName}` : ''}. Le scelte salvate senza accesso restano separate su questo browser.`
-      : 'Accedere è una scelta: puoi visitare il sito e contattarci anche senza registrarti.';
+      ? `Accesso effettuato${currentUser.displayName ? ` come ${currentUser.displayName}` : ''}. Il diario locale resta separato.`
+      : 'Il tuo diario, sempre con te. L’accesso è facoltativo.';
     find('.cva-account-benefits').hidden = Boolean(currentUser);
     find('.cva-account-providers').hidden = Boolean(currentUser);
     find('.cva-account-signed-in').hidden = !currentUser;
     remember.hidden = !account || Boolean(currentUser);
     continueButton.textContent = currentUser ? 'Continua a esplorare' : 'Continua senza account';
-    find('.cva-account-sync').textContent = account ? 'Ritrova il tuo diario sui tuoi dispositivi.' : 'Con gli accessi attivi, ritrovi il diario su più dispositivi.';
+    find('.cva-account-sync').textContent = account ? 'Ritrova il diario sui tuoi dispositivi.' : 'Con gli accessi attivi, sincronizzi il diario.';
     providerButtons.forEach(button => { button.disabled = busy || !account?.providers[button.dataset.provider]; });
     logout.disabled = busy; panel.setAttribute('aria-busy', String(busy));
   }
   opener.addEventListener('click', () => open(true));
   close.addEventListener('click', dismiss); continueButton.addEventListener('click', dismiss);
   panel.addEventListener('cancel', event => { event.preventDefault(); dismiss(); });
-  document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && panel.open && !document.querySelector('dialog:modal')) { event.preventDefault(); dismiss(); }
+  panel.addEventListener('close', () => {
+    document.body.classList.remove('cva-account-open');
+    backdropPressed = false;
+    const menu = document.querySelector('.menu-toggle');
+    const focusTarget = previousFocus instanceof HTMLElement && previousFocus.isConnected && previousFocus.getClientRects().length
+      ? previousFocus : menu?.getClientRects().length ? menu : opener.getClientRects().length ? opener : null;
+    focusTarget?.focus({preventScroll: true});
   });
+  function outsidePanel(event) {
+    const bounds = panel.getBoundingClientRect();
+    return event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom;
+  }
+  panel.addEventListener('pointerdown', event => { backdropPressed = event.target === panel && outsidePanel(event); });
+  panel.addEventListener('pointerup', event => {
+    if (backdropPressed && event.target === panel && outsidePanel(event)) dismiss();
+    backdropPressed = false;
+  });
+  panel.addEventListener('pointercancel', () => { backdropPressed = false; });
   providerButtons.forEach(button => button.addEventListener('click', async () => {
     if (busy || !account?.providers[button.dataset.provider]) return;
     busy = true; status.textContent = 'Completa l’accesso nella finestra di Google o Apple.'; refresh();
@@ -95,7 +110,7 @@ function initializeAccountPanel() {
   (async () => {
     try {
       account = await getAccountService(); currentUser = account?.currentUser || null;
-      status.textContent = account ? (currentUser ? 'Il tuo account è connesso.' : 'Scegli come accedere. La registrazione resta facoltativa.') : unavailable;
+      status.textContent = account ? (currentUser ? 'Il tuo account è connesso.' : 'Scegli Google o Apple per continuare.') : unavailable;
       if (account) {
         const unsubscribe = account.observe(user => { currentUser = user; refresh(); }, () => { status.textContent = 'Non è possibile verificare l’account ora. Puoi continuare senza accedere.'; });
         window.addEventListener('pagehide', event => { if (!event.persisted) unsubscribe(); });

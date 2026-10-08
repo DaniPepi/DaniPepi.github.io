@@ -1,0 +1,18 @@
+/* A procedural carbon surface: the CSS pleats remain available without JS. */
+.metallic-site .hero{isolation:isolate;background:#0c0e11}
+.carbon-stage{position:absolute;inset:0;overflow:hidden;pointer-events:none;background:repeating-linear-gradient(96deg,#080a0d 0%,#1b2026 3.4%,#3b4249 5.5%,#14181d 7.2%,#090b0e 9.6%)}
+.carbon-stage::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(45deg,#0000 0 2px,#ffffff05 2px 3px,#0000 3px 6px),repeating-linear-gradient(-45deg,#0000 0 2px,#00000028 2px 3px,#0000 3px 6px);opacity:.7}
+.carbon-curtain{display:block;width:100%;height:100%;opacity:0;transition:opacity .7s ease}
+.carbon-stage.is-ready .carbon-curtain{opacity:1}
+.metallic-site .hero-shade{pointer-events:none;background:linear-gradient(180deg,#05060838 0%,#05060820 20%,#05060885 54%,#07090bcc 100%),radial-gradient(ellipse at 50% 48%,#080b0d59 0%,#080b0d0d 65%,#0000005c 100%)}
+.metallic-site .hero-content{z-index:1}
+.metallic-site .hero h1{color:#e6e9ec;text-shadow:none}
+.metallic-site .hero .magnetic-letter{background:linear-gradient(180deg,#fcfdfe 8%,#e1e5e9 40%,#a9b2bc 76%,#e4e8ec 100%);background-clip:text;-webkit-background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+.metallic-site .hero .amp .magnetic-letter{background:linear-gradient(180deg,#edf2dc,#bec9a3);background-clip:text;-webkit-background-clip:text}
+.metallic-site .hero-copy{color:#c0c6cc;text-wrap:pretty}
+.metallic-site .hero .eyebrow{color:#c4cbd1;letter-spacing:.23em}
+.metallic-site .hero-bottom{z-index:1;color:#a4adb5}
+.metallic-site .hero-bottom .scroll-line{background:linear-gradient(#bac2c9,#bac2c900)}
+@media(max-width:640px){.metallic-site .hero-shade{background:linear-gradient(180deg,#05060830,#05060880 48%,#07090bdf 100%)}.metallic-site .hero .eyebrow{letter-spacing:.16em}}
+@media(prefers-reduced-motion:reduce){.carbon-curtain{transition:none}}
+@media(forced-colors:active){.carbon-stage{display:none}.metallic-site .hero .magnetic-letter,.metallic-site .hero .amp .magnetic-letter{background:none;color:CanvasText;-webkit-text-fill-color:CanvasText}.metallic-site .hero-shade{display:none}}
