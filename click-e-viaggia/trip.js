@@ -27,6 +27,7 @@
   const photo = find('#trip-photo'), caption = find('#trip-photo-caption');
   const thumbnails = [...document.querySelectorAll('[data-trip-photo]')];
   thumbnails.forEach(button => button.addEventListener('click', () => {
+    if (button.closest('.trip-visual')?.classList.contains('photo-stack-ready')) return;
     const source = button.dataset.tripPhoto || '';
     if (!photo || !/^assets\/[a-zA-Z0-9._-]+\.(?:jpe?g|png|webp)$/i.test(source)) return;
     photo.src = source; photo.alt = button.dataset.tripAlt || destination;

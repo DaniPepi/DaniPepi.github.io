@@ -1,0 +1,130 @@
+/* The itinerary stays compact while photographs move like a deck of postcards. */
+.photo-stack-ready .trip-main-photo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  flex: 0 0 auto;
+  gap: 10px 8px;
+}
+.photo-stack-stage {
+  position: relative;
+  grid-column: 1 / -1;
+  width: 100%;
+  height: clamp(260px, calc(100svh - 360px), 370px);
+  isolation: isolate;
+  overflow: clip;
+  border-radius: 12px;
+  touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent;
+}
+.photo-stack-stage::after {
+  content: "";
+  position: absolute;
+  inset: auto 12% 1px;
+  height: 24px;
+  border-radius: 50%;
+  background: #0007;
+  filter: blur(12px);
+  pointer-events: none;
+  z-index: -1;
+}
+.photo-stack-card {
+  position: absolute;
+  inset: 9px 18px 29px;
+  padding: 5px;
+  overflow: hidden;
+  border: 1px solid #b9c7d159;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #6a757e, #242d35 35%, #404a53 85%, #a1abb1);
+  box-shadow: 0 12px 22px #0005, inset 0 1px 0 #ffffff65;
+  transform-origin: 50% 90%;
+  transition: transform 760ms cubic-bezier(.22, .68, .24, 1), opacity 400ms ease;
+  pointer-events: none;
+  backface-visibility: hidden;
+}
+.photo-stack-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  object-fit: cover;
+  border-radius: 7px;
+  background: #252d34;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+.photo-stack-card[data-depth="0"] { z-index: 4; opacity: 1; transform: translate3d(0, 0, 0) rotate(0) scale(1); }
+.photo-stack-card[data-depth="1"] { z-index: 3; opacity: 1; transform: translate3d(-5px, 10px, 0) rotate(-3.6deg) scale(.965); }
+.photo-stack-card[data-depth="2"] { z-index: 2; opacity: 1; transform: translate3d(8px, 20px, 0) rotate(4.1deg) scale(.93); }
+.photo-stack-card[data-depth="parked"] { z-index: 1; opacity: 0; transform: translate3d(8px, 25px, 0) rotate(4.1deg) scale(.91); }
+.photo-stack-card.is-leaving {
+  z-index: 5;
+  animation: photo-card-out 760ms cubic-bezier(.32, .03, .28, 1) both;
+}
+.photo-stack-stage[data-direction="previous"] .photo-stack-card.is-leaving { animation-name: photo-card-out-previous; }
+@keyframes photo-card-out {
+  0% { opacity: 1; transform: translate3d(0, 0, 0) rotate(0) scale(1); }
+  42% { opacity: 1; transform: translate3d(36%, -9%, 0) rotate(12deg) scale(.98); }
+  70% { opacity: .9; transform: translate3d(29%, 8%, 0) rotate(10deg) scale(.93); }
+  100% { opacity: 0; transform: translate3d(7%, 17px, 0) rotate(4.1deg) scale(.91); }
+}
+@keyframes photo-card-out-previous {
+  0% { opacity: 1; transform: translate3d(0, 0, 0) rotate(0) scale(1); }
+  42% { opacity: 1; transform: translate3d(-36%, -9%, 0) rotate(-12deg) scale(.98); }
+  70% { opacity: .9; transform: translate3d(-29%, 8%, 0) rotate(-10deg) scale(.93); }
+  100% { opacity: 0; transform: translate3d(-7%, 17px, 0) rotate(-4.1deg) scale(.91); }
+}
+.photo-stack-toolbar { display: flex; align-items: center; gap: 5px; }
+.photo-stack-count { min-width: 48px; margin-right: 3px; color: #c2cbd3; font: 500 10px/1.4 var(--sans, sans-serif); text-align: center; font-variant-numeric: tabular-nums; letter-spacing: .06em; }
+.photo-stack-ready :is(.photo-stack-prev, .photo-stack-next) {
+  display: inline-grid;
+  place-items: center;
+  width: 38px;
+  height: 44px;
+  min-height: 44px;
+  padding: 0;
+  border: 1px solid #a5b2bd40;
+  border-radius: 8px;
+  color: #edf1f4;
+  background: linear-gradient(180deg, #353d45, #20272e);
+  box-shadow: inset 0 1px 0 #ffffff1a, 0 3px 8px #0003;
+  cursor: pointer;
+  font: 400 22px/1 var(--sans, sans-serif);
+  transition: transform .18s ease, border-color .18s ease, background .18s ease;
+}
+.photo-stack-ready :is(.photo-stack-prev, .photo-stack-next):hover { background: linear-gradient(180deg, #46515c, #2d363f); border-color: #d2dbe577; transform: translateY(-1px); }
+.photo-stack-ready :is(.photo-stack-prev, .photo-stack-next):active { transform: translateY(1px); box-shadow: inset 0 2px 4px #0004; }
+.photo-stack-ready .trip-main-photo figcaption { margin: 0; min-width: 0; font-size: 11px; line-height: 1.45; }
+.photo-stack-ready .trip-thumbnails { display: grid; grid-template-columns: repeat(var(--photo-stack-count, 6), minmax(44px, 1fr)); gap: 7px; min-width: 0; max-width: 100%; overflow-x: auto; padding: 3px 1px 5px; overscroll-behavior-inline: contain; scrollbar-width: thin; scrollbar-color: #687780 #14191e; }
+.photo-stack-ready .trip-thumbnail { width: 100%; height: 49px; min-width: 44px; min-height: 44px; padding: 3px; transition: transform .2s ease, border-color .2s ease; }
+.photo-stack-ready .trip-thumbnail[aria-pressed="true"] { padding: 2px; box-shadow: 0 0 0 1px #dce8bd18; }
+.photo-stack-ready .trip-thumbnail:hover { transform: translateY(-2px); }
+.photo-stack-ready .trip-thumbnail img { opacity: .62; transition: opacity .2s ease; }
+.photo-stack-ready .trip-thumbnail[aria-pressed="true"] img, .photo-stack-ready .trip-thumbnail:hover img { opacity: 1; }
+.photo-stack-ready .photo-stack-card.is-unavailable img { opacity: 0; }
+.photo-stack-ready .photo-stack-card.is-unavailable::after { content: "Fotografia non disponibile"; position: absolute; inset: 0; display: grid; place-items: center; padding: 24px; color: #cad2d9; font-size: 12px; text-align: center; }
+@media (max-width: 900px) and (min-width: 701px) {
+  .photo-stack-stage { height: 285px; }
+  .photo-stack-ready .trip-main-photo { grid-template-columns: 1fr; gap: 6px; }
+  .photo-stack-toolbar { justify-content: flex-end; }
+  .photo-stack-ready .trip-thumbnails { gap: 4px; }
+}
+@media (max-width: 700px) {
+  .photo-stack-stage { height: clamp(225px, 67vw, 310px); }
+  .photo-stack-card { inset: 8px 15px 27px; padding: 4px; border-radius: 10px; }
+  .photo-stack-card img { border-radius: 6px; }
+  .photo-stack-ready .trip-main-photo { gap: 6px; }
+  .photo-stack-ready .trip-main-photo figcaption { font-size: 10px; }
+  .photo-stack-count { min-width: 41px; font-size: 9px; margin: 0; }
+  .photo-stack-toolbar { gap: 4px; }
+  .photo-stack-ready :is(.photo-stack-prev, .photo-stack-next) { width: 32px; }
+  .photo-stack-ready .trip-thumbnails { gap: 5px; }
+  .photo-stack-ready .trip-thumbnail { height: 44px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .photo-stack-ready *, .photo-stack-ready *::after { animation: none !important; transition: none !important; }
+}
+@media (forced-colors: active) {
+  .photo-stack-card { border: 1px solid CanvasText; background: Canvas; box-shadow: none; }
+  .photo-stack-ready :is(.photo-stack-prev, .photo-stack-next) { border: 1px solid ButtonText; background: ButtonFace; color: ButtonText; }
+}

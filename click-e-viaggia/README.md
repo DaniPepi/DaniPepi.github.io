@@ -169,3 +169,8 @@ Le nove pagine pubbliche di presentazione usano `metallic.css?v=1` con la classe
 `carbon-hero.js?v=1` disegna localmente pieghe in carbonio su canvas, senza dipendenze o richieste esterne. La deformazione segue il puntatore con inerzia; su touch resta un movimento lento. Il disegno si sospende fuori vista, in una scheda nascosta e durante le finestre modali. Con movimento ridotto è statico; senza JavaScript resta il fondo CSS a pieghe. Nessun dato del puntatore è salvato o trasmesso. Il service worker v29 include i nuovi asset.
 
 Il pannello account `site-account.css/js?v=2` è scuro, centrale, largo al massimo 360 px e facoltativo; X, Escape e Continua senza account lo chiudono. L’aspetto non cambia lo stato dei provider: Google/Apple restano disabilitati finché non viene configurato Firebase. Le statistiche restano disattivate in attesa del completamento dell’informativa.
+
+
+## Galleria fotografica a carte di Fátima
+
+`trip-photo-stack.css/js?v=1` migliora solo la galleria con `data-photo-stack` della pagina Fátima: sei fotografie locali, tre carte sovrapposte, cambio animato ogni 6 secondi e scelta manuale con frecce, miniature, tastiera e gesto sul telefono. La rotazione si sospende durante interazione, finestre modali e fuori vista; con movimento ridotto si sfoglia manualmente. Senza il miglioramento JavaScript rimane la foto iniziale con le miniature. Il programma, i servizi e il contatto WhatsApp conservano lo stesso comportamento. Crediti e licenze: TRIP-GRAPHICS-SOURCES.md e dettaglio espandibile della scheda. Cache offline v30.

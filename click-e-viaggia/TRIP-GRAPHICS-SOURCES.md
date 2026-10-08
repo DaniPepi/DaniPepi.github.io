@@ -13,6 +13,14 @@ Fotografie della galleria:
 
 Le copie sono ridimensionate per il web; eventuali ritagli di impaginazione restano soggetti alla licenza CC BY-SA 4.0. Gli autori non approvano implicitamente il team o la proposta.
 
+### Galleria a carte di Fátima
+
+- **“Fátima, Basílica de Nossa Senhora do Rosário, interior (1).jpg”**, di **Palickap**, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:F%C3%A1tima,_Bas%C3%ADlica_de_Nossa_Senhora_do_Ros%C3%A1rio,_interior_(1).jpg), licenza [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0). Copia: `assets/fatima-rosary-interior.jpg`, 1440 × 1080 px. Ridimensionamento e compressione JPEG per il web; nessuna modifica al soggetto.
+- **“Interior of Igreja da Santíssima Trindade, Fátima.jpg”**, di **Joseolgon**, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Interior_of_Igreja_da_Sant%C3%ADssima_Trindade,_F%C3%A1tima.jpg), licenza [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0). Copia: `assets/fatima-trinity-interior.jpg`, 1440 × 960 px. Ridimensionamento e compressione JPEG per il web; nessuna modifica al soggetto.
+- Nazaré: **ほっきー**, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:The_beach_of_Nazar%C3%A9,_view_from_the_S%C3%ADtio_area_2026.jpg), [CC0](https://creativecommons.org/publicdomain/zero/1.0/), copia già presente `assets/blog-nazare.jpg`.
+
+Le sei fotografie hanno finalità illustrative: non definiscono tappe o servizi inclusi. Le immagini rimangono locali e i crediti sono accessibili nella scheda viaggio.
+
 ## Disneyland Paris
 
 Fotografia panoramica dei giardini di Fantasyland: **“Disneyland Paris - panoramio (4)”**, di **Andrei Dan Suciu**, scattata il **24 giugno 2016**, da [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Disneyland_Paris_-_panoramio_(4).jpg), licenza [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/). Copia locale: `assets/disney-panorama.jpg`. È usata nella tessera, nella pagina dedicata e nella nuova copertina.
