@@ -67,7 +67,6 @@
     });
     list.replaceChildren(...items); list.hidden = false;
     const empty = find('#trip-programme-empty'); if (empty) empty.hidden = true;
-    const status = find('#trip-programme-status'); if (status) status.textContent = 'Programma del viaggio';
   }
   function renderInclusions(values) {
     const list = find('#trip-inclusions-list'); if (!list || !Array.isArray(values)) return;
@@ -79,10 +78,17 @@
   fetch('./data/group-trips.json', {cache: 'no-store'}).then(response => {
     if (!response.ok) throw Error('Programma non disponibile.'); return response.json();
   }).then(data => {
-    const record = data[document.body.dataset.tripId]; if (!record || typeof record !== 'object') return;
+    const record = data?.[document.body.dataset.tripId]; if (!record || typeof record !== 'object' || Array.isArray(record)) return;
+    const facts = find('.trip-meta');
+    let hasFacts = false;
     for (const [id, value] of [['#trip-date', record.dates], ['#trip-duration', record.duration]]) {
-      const element = find(id); if (element && text(value)) element.textContent = text(value);
+      const element = find(id), content = text(value);
+      if (!element || !content) continue;
+      element.textContent = content;
+      element.parentElement.hidden = false;
+      hasFacts = true;
     }
+    if (facts) facts.hidden = !hasFacts;
     renderProgramme(record.programme); renderInclusions(record.inclusions);
     const group = find('#trip-group'), url = groupUrl(record.whatsappGroupUrl);
     if (group && url) { group.href = url; group.hidden = false; }

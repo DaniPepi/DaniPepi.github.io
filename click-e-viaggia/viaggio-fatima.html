@@ -20,8 +20,8 @@
   <meta name="apple-mobile-web-app-title" content="Click&amp;Viaggia">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon-v3.png" sizes="180x180">
   <link rel="stylesheet" href="style.css?v=11">
-  <link rel="stylesheet" href="trip-compact.css?v=2">
-  <script src="trip.js?v=2" defer></script>
+  <link rel="stylesheet" href="trip-compact.css?v=3">
+  <script src="trip.js?v=3" defer></script>
   <link rel="manifest" href="manifest.webmanifest?v=17">
   <link rel="stylesheet" href="brand.css?v=2">
   <link rel="stylesheet" href="site-account.css?v=1">
@@ -34,7 +34,6 @@
     <nav class="team-nav" aria-label="Menu scheda viaggio"><a href="./?section=viaggi">Tutti i viaggi</a><a href="chi-siamo.html">Il team</a></nav>
   </header>
   <main class="trip-workspace">
-    <div class="trip-breadcrumb"><a href="./?section=viaggi">← Viaggi di gruppo</a><span>Portogallo / Fátima</span></div>
     <section id="esperienza" class="trip-sheet" aria-labelledby="trip-title">
       <div class="trip-visual">
         <figure class="trip-main-photo"><img id="trip-photo" src="assets/fatima.jpg" width="1600" height="1067" alt="La Basilica e la piazza del Santuario di Fátima" fetchpriority="high" decoding="async"><figcaption id="trip-photo-caption">Il Santuario di Fátima · Portogallo</figcaption></figure>
@@ -45,16 +44,16 @@
       </div>
       <div class="trip-details">
         <div class="trip-summary-grid">
-          <div class="trip-summary"><p class="trip-kicker">CLICK&amp;VIAGGIA · VIAGGIO DI GRUPPO</p><h1 id="trip-title">Fátima</h1><p class="trip-tagline">Un cammino da condividere.</p><p class="trip-short-copy">Spiritualità, raccoglimento e il piacere di vivere un’esperienza insieme.</p></div>
-          <aside class="trip-inclusions" aria-labelledby="inclusions-title"><h2 id="inclusions-title">Inclusioni</h2><div id="trip-inclusions-empty"><span class="trip-pending">In definizione</span><p>Il dettaglio dei servizi sarà comunicato dal team.</p></div><ul id="trip-inclusions-list" hidden></ul></aside>
+          <div class="trip-summary"><p class="trip-kicker">Portogallo · Viaggio di gruppo</p><h1 id="trip-title">Fátima</h1><p class="trip-tagline">Un cammino da condividere.</p></div>
+          <aside class="trip-inclusions" aria-labelledby="inclusions-title"><h2 id="inclusions-title">Inclusioni</h2><p id="trip-inclusions-empty" class="trip-pending">In definizione</p><ul id="trip-inclusions-list" hidden></ul></aside>
         </div>
-        <dl class="trip-meta"><div><dt>Partenza</dt><dd id="trip-date">Da definire</dd></div><div><dt>Durata</dt><dd id="trip-duration">Da definire</dd></div></dl>
-        <section class="trip-programme" aria-labelledby="programme-title"><div class="trip-programme-heading"><h2 id="programme-title">Programma giorno per giorno</h2><span id="trip-programme-status">In preparazione</span></div><ol id="trip-programme-list" hidden></ol><div id="trip-programme-empty" class="trip-programme-empty"><span aria-hidden="true">01 — …</span><div><h3>Il prossimo viaggio prende forma.</h3><p>Le attività giorno per giorno saranno pubblicate appena definite. Scrivici per conoscere gli aggiornamenti.</p></div></div></section>
-        <div class="trip-contact"><a id="appointment-button" class="button primary" href="https://wa.me/393892962059?text=Ciao%20team%20Click%26Viaggia%2C%20vorrei%20prendere%20un%20appuntamento%20per%20informazioni%20sul%20VIAGGIO%20%E2%80%9CF%C3%81TIMA%E2%80%9D.%20Mi%20interessa%20partecipare%20senza%20impegno.%20Quando%20possiamo%20sentirci%3F" target="_blank" rel="noopener noreferrer">Prenota il tuo posto senza impegno <span aria-hidden="true">↗</span></a><p>Si apre WhatsApp con un messaggio pronto per Fátima.<br>La richiesta non conferma una prenotazione e non prevede pagamenti.</p><a id="trip-group" class="trip-group-link" target="_blank" rel="noopener noreferrer" hidden>Entra nel gruppo del viaggio ↗</a></div>
+        <dl class="trip-meta" hidden><div hidden><dt>Partenza</dt><dd id="trip-date"></dd></div><div hidden><dt>Durata</dt><dd id="trip-duration"></dd></div></dl>
+        <section class="trip-programme" aria-labelledby="programme-title"><div class="trip-programme-heading"><h2 id="programme-title">Programma giorno per giorno</h2></div><ol id="trip-programme-list" hidden></ol><p id="trip-programme-empty" class="trip-programme-empty">Programma in preparazione.</p></section>
+        <div class="trip-contact"><a id="appointment-button" class="button primary" href="https://wa.me/393892962059?text=Ciao%20team%20Click%26Viaggia%2C%20vorrei%20prendere%20un%20appuntamento%20per%20informazioni%20sul%20VIAGGIO%20%E2%80%9CF%C3%81TIMA%E2%80%9D.%20Mi%20interessa%20partecipare%20senza%20impegno.%20Quando%20possiamo%20sentirci%3F" target="_blank" rel="noopener noreferrer">Prenota il tuo posto senza impegno <span aria-hidden="true">↗</span></a><p>La richiesta non conferma una prenotazione.</p><a id="trip-group" class="trip-group-link" target="_blank" rel="noopener noreferrer" hidden>Entra nel gruppo del viaggio ↗</a></div>
         <div class="trip-sheet-tools"><button id="share-trip" type="button">Condividi la scheda ↗</button><a href="assets/grafica-fatima.png" download="Click-e-Viaggia-fatima.png">Scarica la grafica ↓</a><p id="share-status" role="status"></p><input id="share-link" aria-label="Link da condividere" readonly hidden></div>
       </div>
     </section>
-    <details class="trip-credits"><summary>Crediti delle immagini e dettagli della proposta</summary><p>Proposta in preparazione. Date, durata, programma, servizi, organizzatore e condizioni saranno comunicati prima di qualsiasi conferma. Le fotografie sono illustrative.</p><p>Foto della copertina: <a href="https://commons.wikimedia.org/wiki/File:Santuario_de_F%C3%A1tima._Recinto.jpg" target="_blank" rel="noopener noreferrer">José Luis Filpo Cabana · Wikimedia Commons</a>. Foto della Basilica: <a href="https://commons.wikimedia.org/wiki/File:Sanctuary_of_F%C3%A1tima,_Fatima_Sanktuarium.jpg" target="_blank" rel="noopener noreferrer">LLEW · Wikimedia Commons</a>. Foto della Cappellina: <a href="https://commons.wikimedia.org/wiki/File:F%C3%A1tima,_Santu%C3%A1rio_de_F%C3%A1tima.jpg" target="_blank" rel="noopener noreferrer">Palickap · Wikimedia Commons</a>. Tutte con licenza <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>. Le immagini sono ridimensionate; la copertina è ritagliata. La grafica scaricabile aggiunge testi e sovrapposizioni ed è disponibile con la stessa licenza. Le fotografie illustrano la destinazione e non definiscono il programma del viaggio.</p></details>
+    <details class="trip-credits"><summary>Informazioni sulla proposta e crediti fotografici</summary><p>Proposta in preparazione. Date, durata, programma, servizi, organizzatore e condizioni saranno comunicati prima di qualsiasi conferma. Le fotografie sono illustrative.</p><p>Foto della copertina: <a href="https://commons.wikimedia.org/wiki/File:Santuario_de_F%C3%A1tima._Recinto.jpg" target="_blank" rel="noopener noreferrer">José Luis Filpo Cabana · Wikimedia Commons</a>. Foto della Basilica: <a href="https://commons.wikimedia.org/wiki/File:Sanctuary_of_F%C3%A1tima,_Fatima_Sanktuarium.jpg" target="_blank" rel="noopener noreferrer">LLEW · Wikimedia Commons</a>. Foto della Cappellina: <a href="https://commons.wikimedia.org/wiki/File:F%C3%A1tima,_Santu%C3%A1rio_de_F%C3%A1tima.jpg" target="_blank" rel="noopener noreferrer">Palickap · Wikimedia Commons</a>. Tutte con licenza <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>. Le immagini sono ridimensionate; la copertina è ritagliata. La grafica scaricabile aggiunge testi e sovrapposizioni ed è disponibile con la stessa licenza. Le fotografie illustrano la destinazione e non definiscono il programma del viaggio.</p></details>
   </main>
   <footer class="trip-footer"><span>CLICK&amp;VIAGGIA · Partiamo dalle persone.</span><a href="legal.html">Privacy e informazioni legali</a></footer>
 </body>
