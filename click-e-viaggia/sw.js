@@ -1,6 +1,7 @@
 'use strict';
-const CACHE = 'click-viaggia-v27';
+const CACHE = 'click-viaggia-v28';
 const ASSETS = [
+  './analytics.css?v=1', './analytics.js?v=1',
   './home-sections.css?v=5', './home-blog-strip.js?v=5',
   './travel-deck.css?v=1', './travel-deck.js?v=2',
   './trip-compact.css?v=3', './data/group-trips.json', './site-account.css?v=1', './site-account.js?v=1', './account-core.js?v=1',
@@ -28,7 +29,7 @@ self.addEventListener('activate', event => {
 });
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET' || new URL(event.request.url).origin !== self.location.origin) return;
-  if (new URL(event.request.url).pathname.endsWith('/data/auth-config.json')) return;
+  if (new URL(event.request.url).pathname.endsWith('/data/auth-config.json') || new URL(event.request.url).pathname.endsWith('/data/analytics-config.json')) return;
   if (new URL(event.request.url).pathname.endsWith('/admin.html') || new URL(event.request.url).pathname.endsWith('/admin.js')) return;
   event.respondWith(fetch(event.request).then(response => {
     if (response.ok) {

@@ -38,7 +38,7 @@ Il file può essere modificato su https://github.com/DaniPepi/DaniPepi.github.io
 
 ## Completamento delle informazioni legali
 
-`legal.html` descrive il funzionamento tecnico attuale; non è un’informativa GDPR definitiva. Mancano identità e recapiti del titolare, dati dell’attività e dettagli verificati del rapporto con Travel Advantage. Nessun cookie, analytics o font esterno è introdotto dal codice. Gli IP possono essere registrati dal fornitore dell’hosting.
+`legal.html` descrive il funzionamento tecnico attuale; non è un’informativa GDPR definitiva. Mancano identità e recapiti del titolare, dati dell’attività e dettagli verificati del rapporto con Travel Advantage. Google Analytics è predisposto ma disattivato finché la configurazione e l’informativa non sono completate. Nessuna richiesta Google o cookie Analytics viene introdotto senza consenso; i font restano locali. Gli IP possono essere registrati dal fornitore dell’hosting.
 
 GitHub Pages non è destinato a ospitare attività principalmente orientate a transazioni commerciali. Prima di pubblicare una versione commerciale con link affiliati o vendita di viaggi valutare un hosting conforme, mantenendo il codice su GitHub. https://docs.github.com/en/site-policy/github-terms/github-terms-for-additional-products-and-features
 
@@ -144,3 +144,19 @@ La rotazione si sospende durante lettura con mouse o tastiera, quando il riquadr
 Le schede dettagliate dei viaggi hanno una galleria a sinistra e un riepilogo compatto a destra. Date e durata appaiono solo quando configurate; inclusioni e programma in preparazione hanno una sola riga di attesa. Il pulsante WhatsApp apre la richiesta senza confermare prenotazioni. Condizioni e crediti restano nel riquadro richiudibile.
 
 Il testo degli articoli usa Times New Roman a 17 px su desktop e 16 px su mobile, con colonna di lettura da 680 px, domande a 22/20 px e introduzioni a 20/18 px. Le anteprime del giornale hanno descrizioni da 17/16 px.
+
+
+## Statistiche Google Analytics 4 (predisposte, non attive)
+
+`analytics.js?v=1` e `analytics.css?v=1` sono inclusi nelle dieci pagine pubbliche; il pannello di amministrazione e i vecchi reindirizzamenti sono esclusi. `data/analytics-config.json` contiene solo impostazioni pubbliche: ID reale `G-6LYQJCJEZY`, con `enabled: false` finché l’informativa del titolare non viene completata. Non inserire password, chiavi private o token. Configurazione assente, non valida o non disponibile: nessun caricamento Google e nessun banner di consenso inutile. Il service worker v28 non conserva la configurazione Analytics nella cache.
+
+Account Click&Viaggia creato l’8 ottobre 2026. Termini Analytics e termini per il trattamento dei dati accettati con autorizzazione esplicita dell’utente. Proprietà 558115953, account 411313081, flusso Web 16067899557 per https://danipepi.github.io/click-e-viaggia/, ID G-6LYQJCJEZY, fuso Italia e valuta EUR. Misurazione avanzata automatica del flusso disattivata. Conservazione dei dati utente ed evento impostata a 2 mesi, senza rinnovo a ogni nuova attività; i report aggregati standard seguono le regole di conservazione di Google. Google Signals e raccolta granulare di posizione/dispositivo disattivati; personalizzazione degli annunci non consentita in tutte le 307 regioni. Condivisioni facoltative dell’account e messaggi promozionali deselezionati. Prima dell’attivazione: completare titolare, recapiti, basi giuridiche, destinatari e trasferimenti nell’informativa. Poi portare enabled a true e aggiornare lo stato in legal.html.
+
+Il consenso è facoltativo: accettazione e rifiuto equivalenti, X come rifiuto, scelta ricordata per 180 giorni e riapertura dal footer. La modalità base blocca il tag e qualsiasi richiesta Google fino al consenso. Page view ed eventi usano percorsi e titoli predefiniti; non vengono inviati messaggi WhatsApp, numeri di telefono, ricerche della mappa o credenziali. Gli eventi predisposti sono `page_view`, `whatsapp_contact` e `trip_details`. La revoca blocca nuovi eventi e rimuove i cookie GA accessibili al sito; non elimina i dati precedenti dalla proprietà.
+
+Link per la bio Instagram, utilizzabile anche con Analytics disattivato:
+https://danipepi.github.io/click-e-viaggia/?utm_source=instagram&utm_medium=social&utm_campaign=bio#home
+
+La campagna usa solo i valori fissi instagram/social/bio. Gli altri parametri e frammenti arbitrari sono esclusi dalle misurazioni. I visitatori che rifiutano, usano blocchi o navigano offline possono non comparire nelle statistiche; non si tratta di un censimento esatto delle persone.
+
+Riferimenti: https://developers.google.com/tag-platform/security/concepts/consent-mode e https://www.garanteprivacy.it/home/docweb/-/docweb-display/docweb/9677876 .

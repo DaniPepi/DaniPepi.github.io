@@ -1,0 +1,20 @@
+/* Statistics stay optional, compact and separate from the account panel. */
+.cva-analytics-banner,.cva-analytics-banner *{box-sizing:border-box}
+.cva-analytics-banner{position:fixed;z-index:25;left:24px;bottom:24px;width:min(620px,calc(100vw - 48px));max-height:calc(100dvh - 48px);overflow:auto;padding:22px 24px 18px;border:1px solid #566e69;border-radius:16px;background:#102b2f;color:#f1f4ed;box-shadow:0 12px 50px #0006;font-family:Arial,Helvetica,sans-serif;text-align:left;color-scheme:dark}
+.cva-analytics-banner[hidden]{display:none!important}
+.cva-analytics-banner .cva-analytics-copy{padding-right:28px}
+.cva-analytics-banner h2{margin:0 0 8px;padding:0;font:700 19px/1.25 Arial,Helvetica,sans-serif;letter-spacing:0;text-transform:none}
+.cva-analytics-banner p{margin:0;font:400 13px/1.55 Arial,Helvetica,sans-serif;letter-spacing:0;color:#d7e4e0;overflow-wrap:anywhere}
+.cva-analytics-banner a{color:#e4eecf;text-decoration:underline;text-underline-offset:3px}
+.cva-analytics-banner .cva-analytics-close{position:absolute;top:8px;right:8px;display:grid;place-items:center;width:44px;min-height:44px;padding:0;border:0;border-radius:50%;background:transparent;color:#edf3e8;font:400 27px/1 Arial,Helvetica,sans-serif;cursor:pointer}
+.cva-analytics-banner .cva-analytics-close:hover{background:#ffffff12}
+.cva-analytics-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:16px 0 10px}
+.cva-analytics-actions button{display:flex;justify-content:center;align-items:center;min-height:44px;margin:0;padding:11px 12px;border:1px solid #adbea3;border-radius:8px;background:#dfebc6;color:#123132;font:700 13px/1.3 Arial,Helvetica,sans-serif;text-align:center;white-space:normal;cursor:pointer}
+.cva-analytics-actions button:hover{background:#f0f6e1;border-color:#f0f6e1}
+.cva-analytics-banner .cva-analytics-status{font-size:11px;line-height:1.45;color:#b9cac4}
+.cva-analytics-banner button:focus-visible,.cva-analytics-banner a:focus-visible,.cva-analytics-reopen:focus-visible{outline:3px solid #eff7df;outline-offset:3px}
+footer .cva-analytics-reopen{display:inline-block;min-height:44px;max-width:100%;margin:0;padding:10px 0;border:0;border-radius:2px;background:transparent;color:inherit;font:inherit;font-size:12px;text-align:left;text-decoration:underline;text-underline-offset:3px;white-space:normal;cursor:pointer}
+footer .cva-analytics-reopen:hover{text-decoration-thickness:2px}
+.cva-analytics-footer{padding:12px 6vw;border-top:1px solid #ffffff26;background:#081c20;color:#d7e4e0}
+@media(max-width:640px){.cva-analytics-banner{left:12px;bottom:12px;width:calc(100vw - 24px);max-height:calc(100dvh - 24px);padding:18px 16px 15px;border-radius:12px}.cva-analytics-banner h2{font-size:18px}.cva-analytics-banner p{font-size:12px}.cva-analytics-actions{gap:8px}.cva-analytics-actions button{padding:11px 8px;font-size:12px}}
+@media(forced-colors:active){.cva-analytics-banner,.cva-analytics-actions button{border:1px solid CanvasText}.cva-analytics-banner button:focus-visible,.cva-analytics-banner a:focus-visible,.cva-analytics-reopen:focus-visible{outline-color:Highlight}}
