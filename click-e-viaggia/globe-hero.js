@@ -11,6 +11,11 @@
   let raf = 0, previous = 0, phase = 0, frames = 0;
   let ready = false, contextLost = false, inView = true, leaving = false, disposed = false;
   let targetX = 0, targetY = 0, easedX = 0, easedY = 0, dpr = 1, textureWidth = 2048;
+  let yaw = -.28, pitch = .21, velocityYaw = 0, velocityPitch = 0, drag = null, userTurned = false;
+  const initialView = { yaw: -.28, pitch: .21 };
+  const pitchLimit = Math.PI / 2 - .025;
+  const controls = hero.querySelector('.globe-controls');
+  const turnButtons = [...hero.querySelectorAll('[data-globe-turn]')];
   const routes = [];
   const listeners = [];
   const vector = ([lat, lon]) => {
@@ -25,12 +30,16 @@
     listeners.push(() => target.removeEventListener(event, callback, options));
   }
   function fallback() {
+    stopDrag(false);
     ready = false;
     cancelAnimationFrame(raf); raf = 0;
     stage.classList.remove('is-ready');
     stage.classList.add('is-fallback');
     canvas.dataset.renderer = 'fallback';
     canvas.dataset.motion = 'static';
+    canvas.tabIndex = -1;
+    canvas.setAttribute('aria-label', 'Globo metallico decorativo del mondo');
+    if (controls) controls.hidden = true;
   }
   function shader(type, source) {
     const item = gl.createShader(type);
@@ -142,11 +151,7 @@
       vec2 p=uv/.84;
       float rr=dot(p,p);
       float radius=sqrt(rr);
-      if(radius>1.045)discard;
-      if(rr>1.){
-        float glow=exp(-(radius-1.)*185.)*.13;
-        gl_FragColor=vec4(vec3(.56,.66,.75),glow);return;
-      }
+      if(rr>1.)discard;
       vec3 n=vec3(p,sqrt(max(0.,1.-rr)));
       vec3 world=vec3(dot(orientation[0],n),dot(orientation[1],n),dot(orientation[2],n));
       vec2 st=vec2(atan(world.x,world.z)/(2.*PI)+.5,.5-asin(clamp(world.y,-1.,1.))/PI);
@@ -254,6 +259,9 @@
       contextLost = false; ready = true;
       stage.classList.remove('is-fallback'); stage.classList.add('is-ready');
       canvas.dataset.renderer = 'webgl';
+      canvas.tabIndex = 0;
+      canvas.setAttribute('aria-label', 'Globo del mondo: trascina per ruotarlo. Usa le frecce per girare e Home per ripristinare.');
+      if (controls) controls.hidden = false;
       resize(); refresh();
     } catch { fallback(); }
   }
@@ -271,9 +279,9 @@
   }
   function render() {
     if (!ready || contextLost) return;
-    const yaw = -.28 + (reduced.matches ? 0 : Math.sin(phase * .027) * .10 + easedX * .32);
-    const pitch = .21 + (reduced.matches ? 0 : Math.sin(phase * .038) * .025 + easedY * .13);
-    const orientation = matrix(yaw, pitch);
+    const viewYaw = yaw + (reduced.matches || userTurned ? 0 : Math.sin(phase * .027) * .10 + easedX * .32);
+    const viewPitch = pitch + (reduced.matches || userTurned ? 0 : Math.sin(phase * .038) * .025 + easedY * .13);
+    const orientation = matrix(viewYaw, viewPitch);
     gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT);
     gl.useProgram(sphereProgram);
     gl.bindBuffer(gl.ARRAY_BUFFER, quadBuffer); gl.enableVertexAttribArray(spherePosition);
@@ -299,15 +307,92 @@
     gl.vertexAttribPointer(routePosition, 4, gl.FLOAT, false, 0, 0); gl.drawArrays(gl.POINTS, 0, markers.length / 4);
     frames++;
     canvas.dataset.frame = String(frames);
-    canvas.dataset.yaw = yaw.toFixed(3); canvas.dataset.pitch = pitch.toFixed(3);
+    canvas.dataset.yaw = viewYaw.toFixed(3); canvas.dataset.pitch = viewPitch.toFixed(3);
   }
   function blocked() { return leaving || document.hidden || !inView || Boolean(document.querySelector('dialog[open]')); }
+  function stopDrag(keepMomentum) {
+    const active = drag;
+    drag = null;
+    stage.classList.remove('is-rotating');
+    canvas.dataset.interaction = userTurned ? 'manual' : 'ambient';
+    if (!keepMomentum || reduced.matches) velocityYaw = velocityPitch = 0;
+    if (active && canvas.hasPointerCapture(active.id)) canvas.releasePointerCapture(active.id);
+  }
+  function manualView() {
+    userTurned = true;
+    targetX = targetY = easedX = easedY = 0;
+    canvas.dataset.interaction = drag ? 'dragging' : 'manual';
+    if (reduced.matches) render();
+    else if (!raf) refresh();
+  }
+  function turn(direction) {
+    if (!ready || contextLost || blocked()) return;
+    stopDrag(false);
+    if (direction === 'reset') {
+      yaw = initialView.yaw; pitch = initialView.pitch;
+      userTurned = false; targetX = targetY = easedX = easedY = 0;
+      canvas.dataset.interaction = 'ambient'; render(); return;
+    }
+    if (direction === 'left') yaw -= Math.PI / 6;
+    else if (direction === 'right') yaw += Math.PI / 6;
+    else if (direction === 'up') pitch -= Math.PI / 12;
+    else if (direction === 'down') pitch += Math.PI / 12;
+    pitch = Math.max(-pitchLimit, Math.min(pitchLimit, pitch));
+    manualView(); render();
+  }
+  turnButtons.forEach(button => listen(button, 'click', () => turn(button.dataset.globeTurn)));
+  listen(canvas, 'keydown', event => {
+    const direction = { ArrowLeft: 'left', ArrowRight: 'right', ArrowUp: 'up', ArrowDown: 'down', Home: 'reset' }[event.key];
+    if (!direction || !ready || blocked()) return;
+    event.preventDefault(); turn(direction);
+  });
+  listen(canvas, 'pointerdown', event => {
+    if (!ready || blocked() || event.button !== 0 || event.isPrimary === false || drag) return;
+    const bounds = canvas.getBoundingClientRect();
+    const x = (event.clientX - bounds.left - bounds.width / 2) / (bounds.width * .42);
+    const y = (event.clientY - bounds.top - bounds.height / 2) / (bounds.height * .42);
+    if (x * x + y * y > 1) return;
+    velocityYaw = velocityPitch = 0;
+    drag = { id: event.pointerId, touch: event.pointerType === 'touch', x: event.clientX, y: event.clientY, startX: event.clientX, startY: event.clientY, time: event.timeStamp, moved: false, scale: Math.PI * 2 / bounds.width };
+    canvas.setPointerCapture(event.pointerId);
+    if (event.pointerType !== 'touch') { event.preventDefault(); canvas.focus({ preventScroll: true }); }
+  });
+  listen(canvas, 'pointermove', event => {
+    if (!drag || event.pointerId !== drag.id || blocked()) return;
+    if (drag.touch && !drag.moved) {
+      const dx = Math.abs(event.clientX - drag.startX), dy = Math.abs(event.clientY - drag.startY);
+      if (dy > 8 && dy > dx) { stopDrag(false); return; }
+      if (dx < 8) return;
+    }
+    const dx = event.clientX - drag.x, dy = event.clientY - drag.y;
+    if (!dx && !dy) return;
+    const dt = Math.max(.008, Math.min(.1, (event.timeStamp - drag.time) / 1000));
+    const deltaYaw = dx * drag.scale, deltaPitch = dy * drag.scale * .75;
+    yaw += deltaYaw;
+    const nextPitch = Math.max(-pitchLimit, Math.min(pitchLimit, pitch + deltaPitch));
+    velocityYaw = Math.max(-4, Math.min(4, deltaYaw / dt));
+    velocityPitch = Math.max(-3, Math.min(3, (nextPitch - pitch) / dt));
+    pitch = nextPitch;
+    drag.x = event.clientX; drag.y = event.clientY; drag.time = event.timeStamp; drag.moved = true;
+    stage.classList.add('is-rotating'); manualView();
+  }, { passive: true });
+  listen(canvas, 'pointerup', event => { if (drag?.id === event.pointerId) { const moved = drag.moved; stopDrag(moved); if (reduced.matches) render(); } });
+  listen(canvas, 'pointercancel', () => stopDrag(false));
+  listen(canvas, 'lostpointercapture', () => { if (drag) stopDrag(false); });
+  listen(window, 'blur', () => { stopDrag(false); targetX = targetY = 0; });
   function loop(now) {
     raf = 0;
     if (!ready || contextLost || reduced.matches || blocked()) return refresh();
     if (now - previous >= 1000 / 30) {
       const dt = previous ? Math.min((now - previous) / 1000, .1) : 1 / 30;
       previous = now; phase += dt;
+      if (!drag) {
+        yaw += velocityYaw * dt;
+        pitch = Math.max(-pitchLimit, Math.min(pitchLimit, pitch + velocityPitch * dt));
+        velocityYaw *= Math.exp(-dt * 5); velocityPitch *= Math.exp(-dt * 5);
+        if (Math.abs(velocityYaw) < .002) velocityYaw = 0;
+        if (Math.abs(velocityPitch) < .002) velocityPitch = 0;
+      }
       const amount = 1 - Math.exp(-dt * 3.7);
       easedX += (targetX - easedX) * amount; easedY += (targetY - easedY) * amount;
       render();
@@ -317,15 +402,16 @@
   function refresh() {
     if (!ready || contextLost) return;
     cancelAnimationFrame(raf); raf = 0; previous = 0;
-    if (blocked()) { canvas.dataset.motion = 'paused'; return; }
+    if (blocked()) { stopDrag(false); canvas.dataset.motion = 'paused'; return; }
     if (reduced.matches) {
+      velocityYaw = velocityPitch = 0;
       targetX = targetY = easedX = easedY = 0;
       canvas.dataset.motion = 'reduced'; render(); return;
     }
     canvas.dataset.motion = 'active'; raf = requestAnimationFrame(loop);
   }
   listen(hero, 'pointermove', event => {
-    if (!finePointer.matches || reduced.matches || event.pointerType === 'touch' || blocked()) return;
+    if (!finePointer.matches || reduced.matches || userTurned || drag || event.pointerType === 'touch' || blocked()) return;
     const rect = hero.getBoundingClientRect();
     targetX = Math.max(-1, Math.min(1, (event.clientX - rect.left) / rect.width * 2 - 1));
     targetY = Math.max(-1, Math.min(1, 1 - (event.clientY - rect.top) / rect.height * 2));

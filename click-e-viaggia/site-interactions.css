@@ -1,0 +1,206 @@
+/* Progressive interactions for the public metallic site. Existing carousels,
+   article typography and the personal atlas retain their own presentation. */
+body.metallic-site .site-photo-open {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: #f3f6fa;
+  cursor: zoom-in;
+  line-height: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+body.metallic-site .site-photo-open > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid #c9d6df6e;
+  border-radius: 7px;
+  box-shadow: 0 16px 26px #00000035;
+}
+body.metallic-site .article-cover > .site-photo-open > img {
+  aspect-ratio: 2 / 1;
+  object-fit: cover;
+}
+body.metallic-site .article-photo > .site-photo-open > img {
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+body.metallic-site .article-photo--portrait > .site-photo-open > img {
+  aspect-ratio: 1;
+  object-fit: contain;
+}
+body.metallic-site .site-photo-open:focus-visible {
+  outline: 2px solid #e1eacb;
+  outline-offset: 5px;
+}
+body.metallic-site .site-photo-magnifier {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid #edf3f675;
+  border-radius: 50%;
+  background: #111b26dc;
+  color: #f0f4f7;
+  font: 23px/1 var(--sans, sans-serif);
+  box-shadow: inset 0 1px 0 #ffffff24, 0 4px 12px #00000030;
+  pointer-events: none;
+}
+
+/* The transform lives on the picture, independent of section entrance motion. */
+body.metallic-site .site-depth-picture {
+  transform: perspective(1000px) rotateX(var(--site-depth-x, 0deg)) rotateY(var(--site-depth-y, 0deg));
+  transform-origin: 50% 50%;
+  transition: transform 480ms cubic-bezier(.2, .72, .2, 1);
+  backface-visibility: hidden;
+}
+body.metallic-site .site-depth-active .site-depth-picture,
+body.metallic-site .site-depth-active.site-depth-picture {
+  transition-duration: 130ms;
+}
+body.metallic-site :is(.team-intro, .contact)[data-site-orbit]::before {
+  transform: translate(var(--site-orbit-x, 0px), calc(-50% + var(--site-orbit-y, 0px))) rotate(calc(-24deg + var(--site-orbit-turn, 0deg)));
+  transition: transform 600ms cubic-bezier(.2, .72, .2, 1);
+}
+body.metallic-site :is(#navigation, .team-nav) > a.site-current-section {
+  color: #e3eccf;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 7px;
+}
+
+body.metallic-site #site-reading-progress {
+  position: fixed;
+  z-index: 90;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 2px;
+  margin: 0;
+  border: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  color: #cbd8b8;
+  pointer-events: none;
+}
+body.metallic-site #site-reading-progress::-webkit-progress-bar { background: transparent; }
+body.metallic-site #site-reading-progress::-webkit-progress-value { background: linear-gradient(90deg, #7e8e9b, #e1e9d1); }
+body.metallic-site #site-reading-progress::-moz-progress-bar { background: linear-gradient(90deg, #7e8e9b, #e1e9d1); }
+body.metallic-site #site-back-top {
+  position: fixed;
+  z-index: 80;
+  right: max(20px, env(safe-area-inset-right));
+  bottom: max(22px, env(safe-area-inset-bottom));
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #cbd9e47a;
+  border-radius: 12px;
+  background: linear-gradient(155deg, #495461, #182430);
+  color: #f0f4f8;
+  box-shadow: inset 0 1px 0 #ffffff39, 0 8px 20px #00000042;
+  cursor: pointer;
+  font: 23px/1 var(--sans, sans-serif);
+  transition: transform 180ms ease, border-color 180ms ease;
+}
+body.metallic-site #site-back-top:hover { transform: translateY(-3px); border-color: #e3eacd; }
+body.metallic-site #site-back-top:active { transform: translateY(1px); }
+body.metallic-site #site-back-top:focus-visible { outline: 2px solid #e3eacd; outline-offset: 4px; }
+body.metallic-site :is(#site-back-top, #site-reading-progress)[hidden] { display: none; }
+
+/* A native modal supplies focus containment and Escape. Credits remain links. */
+body.metallic-site.site-photo-viewing { overflow: hidden; }
+body.metallic-site #site-photo-viewer {
+  width: min(1080px, calc(100vw - 48px));
+  max-width: none;
+  max-height: calc(100dvh - 48px);
+  margin: auto;
+  padding: 18px;
+  overflow: auto;
+  border: 1px solid #d1dee66e;
+  border-top-color: #e4edf5a3;
+  border-radius: 16px;
+  background: linear-gradient(145deg, #303b46, #15212d 80%);
+  color: #edf2f6;
+  box-shadow: inset 0 1px 0 #ffffff28, 0 32px 100px #00000090;
+  font-family: var(--sans, sans-serif);
+  color-scheme: dark;
+}
+body.metallic-site #site-photo-viewer::backdrop { background: #070d16e6; }
+body.metallic-site #site-photo-viewer[open] { animation: site-viewer-arrive 240ms ease-out; }
+body.metallic-site .site-photo-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+body.metallic-site #site-photo-title { margin: 0; font: 600 14px/1.4 var(--sans, sans-serif); letter-spacing: .03em; }
+body.metallic-site .site-photo-tools { display: flex; align-items: center; gap: 10px; flex: none; }
+body.metallic-site #site-photo-count { min-width: 42px; color: #cad8e3; font: 12px/1 var(--sans, sans-serif); text-align: center; font-variant-numeric: tabular-nums; }
+body.metallic-site #site-photo-viewer button {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid #bdcfdf55;
+  border-radius: 10px;
+  background: linear-gradient(155deg, #3c4e5f, #1b2a38);
+  color: #eef3f7;
+  box-shadow: inset 0 1px 0 #ffffff2a;
+  cursor: pointer;
+  font: 24px/1 var(--sans, sans-serif);
+  transition: background-color 160ms ease, transform 160ms ease;
+}
+body.metallic-site #site-photo-viewer button:hover { border-color: #e2eccb; }
+body.metallic-site #site-photo-viewer button:active { transform: translateY(1px); }
+body.metallic-site #site-photo-viewer :is(button, a):focus-visible { outline: 2px solid #e2eccb; outline-offset: 3px; }
+body.metallic-site #site-photo-viewer button[hidden] { display: none; }
+body.metallic-site .site-photo-viewer-figure { margin: 0; min-width: 0; }
+body.metallic-site #site-photo-full {
+  display: block;
+  width: 100%;
+  height: min(65dvh, 720px);
+  object-fit: contain;
+  border: 1px solid #d0deeb25;
+  border-radius: 9px;
+  background: #0b131c;
+}
+body.metallic-site #site-photo-full.site-photo-change { animation: site-photo-change 300ms ease-out; }
+body.metallic-site #site-photo-caption { color: #cad7e1; font: 12px/1.6 var(--sans, sans-serif); margin: 12px 0 0; }
+body.metallic-site .site-photo-description { color: #edf2f6; font: 14px/1.5 var(--sans, sans-serif); margin: 0 0 6px; }
+body.metallic-site #site-photo-caption .article-image-credit { display: block; color: inherit; font: 11px/1.6 var(--sans, sans-serif); margin-top: 4px; }
+body.metallic-site #site-photo-caption a { color: #e0eacf; text-decoration: underline; text-underline-offset: 3px; }
+body.metallic-site .site-photo-navigation { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 14px; }
+@keyframes site-viewer-arrive { from { opacity: 0; transform: translateY(12px) scale(.985); } to { opacity: 1; transform: none; } }
+@keyframes site-photo-change { from { opacity: .55; } to { opacity: 1; } }
+@media (max-width: 640px) {
+  body.metallic-site .article-cover > .site-photo-open > img { aspect-ratio: 4 / 3; }
+  body.metallic-site #site-photo-viewer { width: calc(100vw - 20px); max-height: calc(100dvh - 20px); padding: 12px; border-radius: 12px; }
+  body.metallic-site #site-photo-title { max-width: 190px; font-size: 12px; }
+  body.metallic-site .site-photo-toolbar { gap: 8px; }
+  body.metallic-site .site-photo-tools { gap: 4px; }
+  body.metallic-site #site-photo-full { height: min(58dvh, 560px); }
+  body.metallic-site #site-back-top { right: max(14px, env(safe-area-inset-right)); bottom: max(16px, env(safe-area-inset-bottom)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.metallic-site .site-depth-picture { transform: none; transition: none; }
+  body.metallic-site :is(.team-intro, .contact)[data-site-orbit]::before { transform: translateY(-50%) rotate(-24deg); transition: none; }
+  body.metallic-site #site-back-top, body.metallic-site #site-photo-viewer button { transition: none; }
+  body.metallic-site #site-back-top:hover { transform: none; }
+  body.metallic-site #site-photo-viewer[open], body.metallic-site #site-photo-full.site-photo-change { animation: none; }
+}
