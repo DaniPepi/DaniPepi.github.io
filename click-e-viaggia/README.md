@@ -83,7 +83,7 @@ Per una verifica locale opzionale aprire con un server di VS Code (es. Live Serv
 
 ## Immagine
 
-La fotografia precedente, conservata in assets/ocean.jpg, è di xandro Vandewalle: https://unsplash.com/photos/aerial-photography-of-body-of-water-S2wLuk_Ac2I . Fonte Unsplash. La home attuale usa una grafica procedurale in carbonio. Font di sistema: nessuna richiesta a Google Fonts.
+La fotografia precedente, conservata in assets/ocean.jpg, è di xandro Vandewalle: https://unsplash.com/photos/aerial-photography-of-body-of-water-S2wLuk_Ac2I . Fonte Unsplash. La home attuale usa un globo metallico procedurale. Font di sistema: nessuna richiesta a Google Fonts.
 
 ## Diario personale
 La home usa il globo metallico interattivo descritto sotto. La sezione I miei viaggi si apre in una nuova scheda: mappa con bandiere, descrizioni e salvataggio personale sul browser. Per Google, Apple e sincronizzazione account seguire AUTH-SETUP.md. I provider sono disattivati finché non si configura il progetto reale e si pubblicano le regole Firestore.
@@ -177,10 +177,18 @@ Il pannello account `site-account.css/js?v=2` è scuro, centrale, largo al massi
 
 ## Home con globo metallico
 
-`globe-hero.css/js?v=1` e la classe `globe-home` sulla sola homepage mostrano un globo WebGL locale: oceani grafite, continenti in argento satinato e rotte illustrative. Su computer la rotazione segue il mouse con inerzia; su telefono resta un movimento lento. Il titolo e i contatti restano elementi HTML leggibili e utilizzabili. Nessun dato del puntatore è registrato o trasmesso e non vengono caricate librerie da servizi esterni. Le animazioni si fermano fuori vista, nelle schede nascoste e durante i dialoghi. La preferenza movimento ridotto mostra una scena statica; senza WebGL o JavaScript rimane un globo decorativo CSS.
+`globe-hero.css/js?v=2` e la classe `globe-home` sulla sola homepage mostrano un globo WebGL locale: oceani grafite, continenti in argento satinato e rotte illustrative. Su computer la rotazione segue il mouse con inerzia; su telefono resta un movimento lento. Il titolo e i contatti restano elementi HTML leggibili e utilizzabili. Nessun dato del puntatore è registrato o trasmesso e non vengono caricate librerie da servizi esterni. Le animazioni si fermano fuori vista, nelle schede nascoste e durante i dialoghi. La preferenza movimento ridotto mostra una scena statica; senza WebGL o JavaScript rimane un globo decorativo CSS.
 
 La geometria `data/globe-land.json` è derivata dalla copia Natural Earth già disponibile nel progetto (`work/map-source/world.json`). Fonte e condizioni: https://www.naturalearthdata.com/about/terms-of-use/ . Il builder `work/build-globe-land.cjs` semplifica i contorni per la visualizzazione; questa grafica non è la mappa personale del diario e le rotte non descrivono servizi inclusi nei viaggi.
 
-`home-motion.css/js?v=1` aggiunge inclinazione al mouse alla sola carta viaggio selezionata, movimenti più morbidi alle anteprime del blog e un ingresso leggero delle sezioni. Scala, selezione, gesto, tastiera, link e dettagli dei caroselli restano gestiti dai file esistenti. Gli articoli mantengono Times New Roman; I miei viaggi e le schede dei viaggi restano invariati. Cache offline v32.
+La versione 2 conserva coste più dettagliate e genera localmente una texture da 4096 px sui computer compatibili, 2048 px su telefoni o dispositivi con memoria limitata. Mipmap e filtri smussano i contorni; un lieve rilievo del bordo simula continenti in metallo inciso, senza rappresentare altitudini reali. Luce e riflessi sono più morbidi, con oceani grafite e rotte sottili. La risoluzione del canvas è limitata a 1600 px sui computer e 960 px sui dispositivi piccoli o con memoria limitata; il rendering si aggiorna al massimo 30 volte al secondo. Se il contesto grafico viene perso appare il globo CSS e, quando disponibile, il renderer viene ricostruito.
+
+`home-motion.css/js?v=1` aggiunge inclinazione al mouse alla sola carta viaggio selezionata, movimenti più morbidi alle anteprime del blog e un ingresso leggero delle sezioni. Scala, selezione, gesto, tastiera, link e dettagli dei caroselli restano gestiti dai file esistenti. Gli articoli mantengono Times New Roman; la pagina I miei viaggi conserva il proprio stile. Cache offline v33.
 
 Ripristino: il modello precedente è nel commit `6cbd3d663071d1977054375c669ab0a4be44ab3f`. È stata conservata anche una copia completa fuori dalla cartella pubblica, in `work/rollback-home-before-globe-20261009`, con istruzioni per un ripristino mirato tramite nuovo commit, senza force push.
+
+## Finiture metalliche delle pagine pubbliche
+
+`metal-finish.css/js?v=1` rifinisce le nove pagine con la classe `metallic-site`: testate satinate, bordi incisi, superfici grafite, cornici fotografiche e pulsanti con risposta al passaggio e alla pressione. Le sezioni del team e dei contatti hanno un motivo decorativo a orbite. Gli ingressi animati sono leggeri, eseguiti una sola volta e disattivati con la preferenza movimento ridotto. I contenuti sono leggibili anche senza JavaScript. Le animazioni e i controlli dei caroselli mantengono il loro funzionamento.
+
+La prima versione del globo rimane recuperabile dal commit `317af9cfb21069dbde203583eacdeb65434f44b9` e dalla copia completa in `work/rollback-before-metal-refine-20261009`. Il ripristino avviene con un nuovo commit e una nuova versione della cache; non richiede riscrivere la cronologia Git. Le modifiche grafiche non attivano Firebase o Analytics.

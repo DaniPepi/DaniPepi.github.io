@@ -1,4 +1,4 @@
-/* Local WebGL globe. Natural Earth silhouettes, satin metal and quiet travel arcs. */
+/* Local WebGL globe. Natural Earth coasts, softly beveled satin metal and travel arcs. */
 (() => {
   'use strict';
   const canvas = document.getElementById('metal-globe');
@@ -10,7 +10,7 @@
   let gl, sphereProgram, routeProgram, quadBuffer, routeBuffer, markerBuffer, texture;
   let raf = 0, previous = 0, phase = 0, frames = 0;
   let ready = false, contextLost = false, inView = true, leaving = false, disposed = false;
-  let targetX = 0, targetY = 0, easedX = 0, easedY = 0, dpr = 1;
+  let targetX = 0, targetY = 0, easedX = 0, easedY = 0, dpr = 1, textureWidth = 2048;
   const routes = [];
   const listeners = [];
   const vector = ([lat, lon]) => {
@@ -18,7 +18,7 @@
     return [Math.cos(p) * Math.sin(l), Math.sin(p), Math.cos(p) * Math.cos(l)];
   };
   const origin = vector([41.9, 12.5]);
-  const destinations = [[39.6, -8.66], [48.85, 2.35], [-13.3, 48.2], [25.1, 34.8]].map(vector);
+  const destinations = [[39.627, -8.665], [48.872, 2.779], [-13.3, 48.2], [25.067, 34.898]].map(vector);
   const endpoints = [origin, ...destinations];
   function listen(target, event, callback, options) {
     target.addEventListener(event, callback, options);
@@ -58,7 +58,11 @@
     return origin.map((n, i) => (n * a + destination[i] * b) * radius);
   }
   function landTexture(data) {
-    const map = document.createElement('canvas'); map.width = 2048; map.height = 1024;
+    const lowMemory = typeof navigator.deviceMemory === 'number' && navigator.deviceMemory <= 4;
+    const maximum = gl.getParameter(gl.MAX_TEXTURE_SIZE);
+    const preferred = !lowMemory && stage.getBoundingClientRect().width >= 600 && maximum >= 4096 ? 4096 : 2048;
+    textureWidth = Math.min(preferred, 2 ** Math.floor(Math.log2(maximum)));
+    const map = document.createElement('canvas'); map.width = textureWidth; map.height = textureWidth / 2;
     const ctx = map.getContext('2d');
     if (!ctx || !Array.isArray(data.polygons)) throw new Error('Globe geography unavailable');
     ctx.fillStyle = '#000'; ctx.fillRect(0, 0, map.width, map.height);
@@ -83,14 +87,46 @@
         ctx.fill('evenodd');
       });
     });
+    // Pack the real coastline, a softened height field and its two gradients.
+    // The relief describes an engraved metal model, rather than invented terrain.
+    const softened = document.createElement('canvas'); softened.width = map.width; softened.height = map.height;
+    const soft = softened.getContext('2d');
+    if (!soft) throw new Error('Globe surface unavailable');
+    soft.fillStyle = '#000'; soft.fillRect(0, 0, map.width, map.height);
+    soft.filter = `blur(${textureWidth / 1024}px)`;
+    soft.drawImage(map, 0, 0);
+    const coast = ctx.getImageData(0, 0, map.width, map.height).data;
+    const height = soft.getImageData(0, 0, map.width, map.height).data;
+    const packed = new Uint8Array(coast.length);
+    const step = Math.max(1, textureWidth / 2048), stride = map.width * 4;
+    for (let y = 0; y < map.height; y++) {
+      const above = Math.max(0, y - step) * stride, below = Math.min(map.height - 1, y + step) * stride;
+      const row = y * stride;
+      for (let x = 0; x < map.width; x++) {
+        const i = row + x * 4;
+        const left = row + ((x - step + map.width) % map.width) * 4;
+        const right = row + ((x + step) % map.width) * 4;
+        packed[i] = coast[i];
+        packed[i + 1] = 128 + (height[right] - height[left]) / step;
+        packed[i + 2] = 128 + (height[below + x * 4] - height[above + x * 4]) / step;
+        packed[i + 3] = height[i];
+      }
+    }
     const item = gl.createTexture();
     gl.bindTexture(gl.TEXTURE_2D, item);
     gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, false);
-    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, map);
+    gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, false);
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, map.width, map.height, 0, gl.RGBA, gl.UNSIGNED_BYTE, packed);
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.REPEAT);
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_LINEAR);
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+    gl.generateMipmap(gl.TEXTURE_2D);
+    if (gl.getError() !== gl.NO_ERROR) { gl.deleteTexture(item); throw new Error('Globe surface unavailable'); }
+    const anisotropy = gl.getExtension('EXT_texture_filter_anisotropic');
+    if (anisotropy) gl.texParameterf(gl.TEXTURE_2D, anisotropy.TEXTURE_MAX_ANISOTROPY_EXT, Math.min(4, gl.getParameter(anisotropy.MAX_TEXTURE_MAX_ANISOTROPY_EXT)));
+    canvas.dataset.texture = String(textureWidth);
+    map.width = map.height = softened.width = softened.height = 1;
     return item;
   }
   const sphereVertex = `attribute vec2 position; varying vec2 uv; void main(){uv=position;gl_Position=vec4(position,0.,1.);}`;
@@ -100,6 +136,7 @@
     uniform sampler2D land;
     uniform mat3 orientation;
     uniform float pixel;
+    uniform float reliefScale;
     const float PI=3.14159265359;
     void main(){
       vec2 p=uv/.84;
@@ -107,60 +144,81 @@
       float radius=sqrt(rr);
       if(radius>1.045)discard;
       if(rr>1.){
-        float glow=exp(-(radius-1.)*170.)*.16;
-        gl_FragColor=vec4(vec3(.71,.77,.62),glow);return;
+        float glow=exp(-(radius-1.)*185.)*.13;
+        gl_FragColor=vec4(vec3(.56,.66,.75),glow);return;
       }
       vec3 n=vec3(p,sqrt(max(0.,1.-rr)));
       vec3 world=vec3(dot(orientation[0],n),dot(orientation[1],n),dot(orientation[2],n));
       vec2 st=vec2(atan(world.x,world.z)/(2.*PI)+.5,.5-asin(clamp(world.y,-1.,1.))/PI);
-      float mask=smoothstep(.19,.85,texture2D(land,st).r);
-      vec3 light=normalize(vec3(-.55,.72,.9));
-      float diffuse=max(dot(n,light),0.);
-      float broad=pow(max(dot(n,normalize(light+vec3(0.,0.,1.))),0.),28.);
-      float sharp=pow(max(dot(n,normalize(vec3(-.9,.4,1.8))),0.),95.);
-      float fresnel=pow(1.-n.z,3.2);
-      float stripe=exp(-pow((n.x+n.y*.25+.31)*4.7,2.));
-      float grain=(sin(st.y*8100.+sin(st.x*800.)*.2)+sin(st.y*29000.))*.004;
-      vec3 sea=vec3(.057,.077,.095)*(.35+diffuse*.86)+vec3(.19,.23,.26)*broad*.26;
-      vec3 steel=vec3(.56,.62,.67)*(.2+diffuse*.78)+vec3(.86,.9,.95)*(broad*.4+sharp*.25)+vec3(.18,.2,.21)*stripe+grain;
+      vec4 surface=texture2D(land,st);
+      float mask=smoothstep(.18,.82,surface.r);
+      float longitude=atan(world.x,world.z);
+      float latitude=asin(clamp(world.y,-1.,1.));
+      vec3 east=vec3(cos(longitude),0.,-sin(longitude));
+      vec3 north=vec3(-sin(latitude)*sin(longitude),cos(latitude),-sin(latitude)*cos(longitude));
+      vec2 gradient=(surface.gb-vec2(128./255.))*2.;
+      // Transform the coastline bevel with the same orientation as the geography.
+      vec3 tangent=east*gradient.x/max(.32,cos(latitude))-north*gradient.y;
+      vec3 normal=normalize(n-orientation*tangent*reliefScale);
+      vec3 light=normalize(vec3(-.65,.86,1.15));
+      float diffuse=max(dot(normal,light),0.);
+      float fill=max(dot(normal,normalize(vec3(.9,.15,1.))),0.);
+      float broad=pow(max(dot(normal,normalize(light+vec3(0.,0.,1.))),0.),16.);
+      float reflection=exp(-pow((normal.x+normal.y*.32+.31)*5.5,2.));
+      float overhead=exp(-pow((normal.y-.76)*8.,2.));
+      float fresnel=pow(1.-n.z,3.);
+      float grain=(sin(st.y*420.+sin(st.x*83.)*.18)+sin(st.y*230.+st.x*34.))*.0012;
+      float occlusion=(1.-mask)*surface.a*.18;
+      vec3 sea=vec3(.044,.060,.077)*(.62+diffuse*.75)+vec3(.15,.19,.23)*reflection*.16+vec3(.14,.18,.22)*broad*.15;
+      sea*=1.-occlusion;
+      vec3 steel=vec3(.53,.59,.65)*(.27+diffuse*.53+fill*.12)+vec3(.74,.80,.86)*broad*.17+vec3(.20,.22,.24)*reflection+vec3(.62,.68,.74)*overhead*.10+grain;
       vec3 color=mix(sea,steel,mask);
       vec2 grid=abs(sin(vec2(st.x*36.,st.y*18.)*PI));
-      float lines=1.-smoothstep(.008,.025,min(grid.x,grid.y));
-      color+=vec3(.16,.21,.24)*lines*(1.-mask)*.23;
-      color+=vec3(.38,.45,.37)*fresnel*.33;
+      float lines=1.-smoothstep(.01,.026,min(grid.x,grid.y));
+      color+=vec3(.13,.17,.21)*lines*(1.-mask)*.14;
+      color+=vec3(.36,.44,.53)*fresnel*.28;
       float vignette=smoothstep(.0,.25,n.z);
-      color*=.65+vignette*.35;
+      color*=.72+vignette*.28;
       float edge=1.-smoothstep(1.-pixel*1.7,1.,radius);
       gl_FragColor=vec4(color,edge);
     }`;
   const routeVertex = `
+    precision mediump float;
     attribute vec4 position;
+    attribute vec4 direction;
     uniform mat3 orientation;
     uniform float pointSize;
-    varying float depth; varying float progress;
-    void main(){vec3 p=orientation*position.xyz;depth=p.z;progress=position.w;gl_Position=vec4(p.xy*.84,0.,1.);gl_PointSize=pointSize;}`;
+    uniform float lineWidth;
+    uniform float mode;
+    varying float depth; varying float progress; varying float side;
+    void main(){
+      vec3 p=orientation*position.xyz;depth=p.z;progress=position.w;side=direction.w;
+      vec2 screen=p.xy*.84;
+      if(mode<.5){vec3 tangent=orientation*direction.xyz;vec2 edge=normalize(vec2(-tangent.y,tangent.x)+vec2(.00001));screen+=edge*direction.w*lineWidth;}
+      gl_Position=vec4(screen,0.,1.);gl_PointSize=pointSize;
+    }`;
   const routeFragment = `
     precision mediump float;
-    varying float depth; varying float progress;
+    varying float depth; varying float progress; varying float side;
     uniform float mode;
     uniform float time;
     void main(){
       if(depth<.025)discard;
       float alpha=smoothstep(.025,.16,depth);
-      vec3 color=vec3(.77,.86,.60);
+      vec3 color=vec3(.68,.78,.66);
       if(mode>.5){
         float d=length(gl_PointCoord-vec2(.5));
         if(d>.5)discard;
         float core=1.-smoothstep(.1,.27,d);
         alpha*=mix(.13,1.,core)*(1.-smoothstep(.35,.5,d));
-        color=mix(color,vec3(.94,.97,.84),core);
+        color=mix(color,vec3(.90,.95,.91),core);
       }else{
         float pulse=exp(-pow((progress-fract(time*.11))*8.,2.));
-        alpha*=.28+pulse*.55;
+        alpha*=(.32+pulse*.46)*(1.-smoothstep(.35,1.,abs(side)));
       }
       gl_FragColor=vec4(color,alpha);
     }`;
-  let sphereUniforms, routeUniforms, spherePosition, routePosition;
+  let sphereUniforms, routeUniforms, spherePosition, routePosition, routeDirection;
   function initialise(data) {
     if (disposed) return;
     try {
@@ -168,19 +226,29 @@
       if (!gl) return fallback();
       sphereProgram = program(sphereVertex, sphereFragment);
       routeProgram = program(routeVertex, routeFragment);
-      sphereUniforms = uniforms(sphereProgram, ['land', 'orientation', 'pixel']);
-      routeUniforms = uniforms(routeProgram, ['orientation', 'pointSize', 'mode', 'time']);
+      sphereUniforms = uniforms(sphereProgram, ['land', 'orientation', 'pixel', 'reliefScale']);
+      routeUniforms = uniforms(routeProgram, ['orientation', 'pointSize', 'lineWidth', 'mode', 'time']);
       spherePosition = gl.getAttribLocation(sphereProgram, 'position');
       routePosition = gl.getAttribLocation(routeProgram, 'position');
+      routeDirection = gl.getAttribLocation(routeProgram, 'direction');
       quadBuffer = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, quadBuffer);
       gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]), gl.STATIC_DRAW);
       routes.length = 0;
+      const ribbons = [];
       destinations.forEach(destination => {
-        const points = [];
-        for (let i = 0; i <= 48; i++) points.push(...interpolate(destination, i / 48), i / 48);
-        routes.push(new Float32Array(points));
+        const offset = ribbons.length / 8;
+        for (let i = 0; i <= 96; i++) {
+          const point = interpolate(destination, i / 96);
+          const before = interpolate(destination, Math.max(0, i - 1) / 96);
+          const after = interpolate(destination, Math.min(96, i + 1) / 96);
+          const tangent = after.map((n, index) => n - before[index]);
+          [-1, 1].forEach(side => ribbons.push(...point, i / 96, ...tangent, side));
+        }
+        routes.push({ offset, count: ribbons.length / 8 - offset });
       });
       routeBuffer = gl.createBuffer(); markerBuffer = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, routeBuffer);
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(ribbons), gl.STATIC_DRAW);
       texture = landTexture(data);
       gl.enable(gl.BLEND); gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
       contextLost = false; ready = true;
@@ -192,8 +260,11 @@
   function resize() {
     if (!ready || contextLost) return;
     const size = stage.getBoundingClientRect().width;
-    dpr = Math.min(devicePixelRatio || 1, size < 600 ? 1.5 : 1.35);
-    const pixels = Math.max(1, Math.min(1280, Math.round(size * dpr)));
+    dpr = Math.min(devicePixelRatio || 1, 2);
+    const lowMemory = typeof navigator.deviceMemory === 'number' && navigator.deviceMemory <= 4;
+    const limit = size < 600 || lowMemory ? 960 : 1600;
+    const pixels = Math.max(1, Math.min(limit, Math.round(size * dpr)));
+    dpr = pixels / Math.max(1, size);
     if (canvas.width !== pixels || canvas.height !== pixels) { canvas.width = pixels; canvas.height = pixels; }
     gl.viewport(0, 0, pixels, pixels);
     render();
@@ -209,18 +280,22 @@
     gl.vertexAttribPointer(spherePosition, 2, gl.FLOAT, false, 0, 0);
     gl.uniformMatrix3fv(sphereUniforms.orientation, false, orientation);
     gl.uniform1f(sphereUniforms.pixel, 2 / canvas.width);
+    gl.uniform1f(sphereUniforms.reliefScale, textureWidth * .006 / (8 * Math.PI));
     gl.activeTexture(gl.TEXTURE0); gl.bindTexture(gl.TEXTURE_2D, texture); gl.uniform1i(sphereUniforms.land, 0);
     gl.drawArrays(gl.TRIANGLES, 0, 6);
     gl.useProgram(routeProgram); gl.uniformMatrix3fv(routeUniforms.orientation, false, orientation);
     gl.uniform1f(routeUniforms.time, phase); gl.uniform1f(routeUniforms.mode, 0); gl.uniform1f(routeUniforms.pointSize, 1);
+    gl.uniform1f(routeUniforms.lineWidth, 2 * dpr / canvas.width);
     gl.bindBuffer(gl.ARRAY_BUFFER, routeBuffer); gl.enableVertexAttribArray(routePosition);
-    gl.vertexAttribPointer(routePosition, 4, gl.FLOAT, false, 0, 0);
-    routes.forEach(points => { gl.bufferData(gl.ARRAY_BUFFER, points, gl.DYNAMIC_DRAW); gl.drawArrays(gl.LINE_STRIP, 0, points.length / 4); });
+    gl.vertexAttribPointer(routePosition, 4, gl.FLOAT, false, 32, 0);
+    gl.enableVertexAttribArray(routeDirection); gl.vertexAttribPointer(routeDirection, 4, gl.FLOAT, false, 32, 16);
+    routes.forEach(route => gl.drawArrays(gl.TRIANGLE_STRIP, route.offset, route.count));
     const markers = [];
     endpoints.forEach(point => markers.push(...point.map(n => n * 1.014), 0));
     if (!reduced.matches) destinations.forEach((point, i) => markers.push(...interpolate(point, (phase * .052 + i * .23) % 1), 0));
     gl.uniform1f(routeUniforms.mode, 1); gl.uniform1f(routeUniforms.pointSize, 8 * dpr);
     gl.bindBuffer(gl.ARRAY_BUFFER, markerBuffer); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(markers), gl.DYNAMIC_DRAW);
+    gl.disableVertexAttribArray(routeDirection); gl.vertexAttrib4f(routeDirection, 0, 0, 0, 0);
     gl.vertexAttribPointer(routePosition, 4, gl.FLOAT, false, 0, 0); gl.drawArrays(gl.POINTS, 0, markers.length / 4);
     frames++;
     canvas.dataset.frame = String(frames);

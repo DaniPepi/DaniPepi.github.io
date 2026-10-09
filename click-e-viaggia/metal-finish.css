@@ -1,0 +1,309 @@
+/* Satin steel details shared by the public site. The personal atlas and admin
+   do not opt in; reading typography and existing carousel transforms stay owned
+   by their original stylesheets. No pointer-following lights or extra textures. */
+body.metallic-site {
+  --metal-edge: #ced9e436;
+  --metal-shadow: 0 24px 54px #00000045, 0 3px 9px #00000030, inset 0 1px 0 #ffffff12;
+  --metal-surface: linear-gradient(145deg, #2b3036 0%, #1c2228 42%, #14191e 100%);
+  --finish-rule: linear-gradient(90deg, transparent, #b8c4ce70 32%, #dce8bd 49%, #b8c4ce70 66%, transparent);
+  background-color: #0c1015;
+  background-image: linear-gradient(145deg, #1a2027, #0c1015 48%, #171d24);
+}
+
+body.metallic-site > :is(header, .team-header, .journal-header) {
+  border-bottom-color: #a8b7c52b;
+  background: linear-gradient(180deg, #292f37f5, #151a21f5 78%);
+  box-shadow: 0 8px 26px #00000018, inset 0 1px 0 #f1f6fb14;
+}
+body.metallic-site.site-home > header {
+  background: linear-gradient(180deg, #131923db, #0b101854);
+  box-shadow: inset 0 1px 0 #f1f6fb0b;
+}
+body.metallic-site :is(.team-nav, #navigation) > a {
+  text-underline-offset: 6px;
+  transition: color .2s ease, border-color .2s ease;
+}
+body.metallic-site :is(.button, .journal-button, .deck-flip-button, .deck-details-link) {
+  border-radius: 10px;
+  border-top-color: #f4f7faab;
+  box-shadow: inset 0 1px 0 #ffffffa3, inset 0 -1px 0 #34424f40, 0 7px 18px #00000038;
+}
+body.metallic-site :is(.button.primary, .journal-button, .deck-flip-button, .deck-details-link) {
+  background: linear-gradient(168deg, #fbfdff, #d8e0e7 48%, #b6c1cb 100%);
+  color: #101923;
+}
+body.metallic-site :is(.button.secondary, .menu-toggle) {
+  background: linear-gradient(168deg, #3d4650, #222c36 72%, #1b232c);
+  border-color: #99adbf4f;
+  box-shadow: inset 0 1px 0 #ffffff25, inset 0 -1px 0 #00000028, 0 5px 12px #0000002b;
+}
+body.metallic-site :is(.button, .journal-button, .deck-flip-button, .deck-details-link):active {
+  transform: translateY(1px);
+  box-shadow: inset 0 2px 6px #15212f30, 0 2px 4px #0000002b;
+}
+body.metallic-site :is(.deck-controls button, .blog-strip-control, .photo-stack-prev, .photo-stack-next) {
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 10px;
+  border-color: #adbdca52;
+  background: linear-gradient(165deg, #39444f, #1e2934);
+  box-shadow: inset 0 1px 0 #ffffff27, 0 4px 10px #00000033;
+  color: #f0f5f9;
+}
+body.metallic-site :is(.button, .journal-button, .deck-flip-button, .deck-details-link):disabled {
+  transform: none;
+}
+
+/* Clear, spacious frames let photography supply the colour. */
+body.metallic-site.site-home .home-bands {
+  background: linear-gradient(160deg, #151b22, #0c1117 54%, #171e26);
+  border-top: 1px solid #c5d1dc2b;
+}
+body.metallic-site :is(.home-trip-band .glass-panel, .home-blog-strip, .trip-sheet) {
+  border-color: #acbcc745;
+  border-top-color: #d2dee36e;
+  border-bottom-color: #74879838;
+  box-shadow: var(--metal-shadow);
+}
+body.metallic-site .home-band-heading::after {
+  content: "";
+  display: block;
+  width: 132px;
+  height: 1px;
+  margin: 16px auto 0;
+  background: var(--finish-rule);
+  pointer-events: none;
+}
+body.metallic-site .deck-card[data-selected="true"] {
+  border-color: #dce5ebbb;
+}
+body.metallic-site .blog-ready .blog-strip-item {
+  border-color: #cedce15e;
+  background: linear-gradient(145deg, #28323b, #19212a 74%);
+}
+body.metallic-site .process {
+  background: linear-gradient(155deg, #1c242d, #121920 80%);
+  border-block-color: #b8c6d131;
+}
+body.metallic-site .process-steps li {
+  border-top-color: #a8bac84d;
+}
+body.metallic-site .process-steps li::before {
+  display: inline-grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid #c9d5de54;
+  border-radius: 50%;
+  color: #e1e9d2;
+  background: linear-gradient(145deg, #33414d, #1c2731);
+  box-shadow: inset 0 1px 0 #ffffff1e;
+  font-variant-numeric: tabular-nums;
+}
+body.metallic-site .about {
+  background: linear-gradient(145deg, #141d26, #0e141b 75%);
+  border-bottom: 1px solid #b2c0cf24;
+}
+
+/* Orbital lines are engraved decoration, independent from the hero renderer. */
+body.metallic-site :is(.team-intro, .contact) {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  background: linear-gradient(135deg, #29343f, #141e29 54%, #101821);
+  border-bottom: 1px solid #cad6df2b;
+}
+body.metallic-site :is(.team-intro, .contact)::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: min(70vw, 660px);
+  aspect-ratio: 1;
+  right: -130px;
+  top: 50%;
+  transform: translateY(-50%) rotate(-24deg);
+  border: 1px solid #d3dfeb1b;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, transparent 24.4%, #c1d0dc25 24.6% 24.8%, transparent 25% 39.4%, #c1d0dc20 39.6% 39.8%, transparent 40% 54.4%, #c1d0dc20 54.6% 54.8%, transparent 55% 67.4%, #c1d0dc18 67.6% 67.8%, transparent 68%),
+    linear-gradient(0deg, transparent 49.85%, #c1d0dc1c 49.95% 50.05%, transparent 50.15%),
+    linear-gradient(90deg, transparent 49.85%, #c1d0dc1c 49.95% 50.05%, transparent 50.15%);
+  pointer-events: none;
+}
+body.metallic-site .contact::before {
+  width: min(92vw, 680px);
+  right: -210px;
+  opacity: .72;
+}
+body.metallic-site .team-intro h1 { max-width: 990px; }
+body.metallic-site .team-story {
+  background: linear-gradient(145deg, #141b22, #0e141b 82%);
+  border-bottom-color: #b2c0cf30;
+}
+body.metallic-site .member-card img {
+  border: 1px solid #b5c5d76b;
+  box-shadow: 0 14px 25px #00000040, inset 0 1px 0 #ffffff20;
+}
+body.metallic-site .app-callout {
+  background: linear-gradient(170deg, #19222c, #121920);
+  border-top-color: #b4c4d336;
+}
+
+/* Dark newspaper: a restrained metal frame, with original Times text intact. */
+body.metallic-site.journal-page {
+  --journal-line: #a5b4c53d;
+  background-image: linear-gradient(155deg, #1d252e, #111820 58%, #171f28);
+}
+body.metallic-site.article-page {
+  --news-rule: #a5b4c53d;
+  background: #141b23;
+}
+body.metallic-site .journal-intro {
+  border-bottom-color: #c7d2db8a;
+}
+body.metallic-site .journal-intro h1,
+body.metallic-site .article-hero h1 { color: #f0f4f7; }
+body.metallic-site .journal-story-image-link {
+  border: 1px solid #d2dde479;
+  border-radius: 9px;
+  padding: 5px;
+  background: linear-gradient(145deg, #94a3b0, #2b3947 38%, #728292);
+  box-shadow: 0 15px 24px #00000033, inset 0 1px 0 #ffffff3b;
+}
+body.metallic-site .journal-story-image-link img { border-radius: 5px; }
+body.metallic-site .journal-story-featured {
+  padding: 20px;
+  border: 1px solid #a7bac641;
+  border-top-color: #d4e0e965;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #2b3540, #19232e 78%);
+  box-shadow: 0 18px 38px #00000024, inset 0 1px 0 #ffffff12;
+}
+body.metallic-site .journal-read {
+  min-height: 44px;
+  border-top-color: #c6d4de5c;
+}
+body.metallic-site .journal-filters a { min-height: 44px; }
+body.metallic-site .journal-contact {
+  border-top-color: #c4d2dc8c;
+  border-bottom-color: #a5b4c538;
+}
+body.metallic-site :is(.article-cover > img, .article-photo > img) {
+  border: 1px solid #c9d6df6e;
+  border-radius: 7px;
+  box-shadow: 0 16px 26px #00000035;
+}
+body.metallic-site .article-breadcrumb {
+  border-bottom-color: #c7d3dc99;
+}
+body.metallic-site .article-toc {
+  border-top-color: #cbd5dfb5;
+}
+body.metallic-site .article-related {
+  border-top-color: #bdcbd58f;
+  background: linear-gradient(145deg, #242f3b, #17222c 82%);
+}
+body.metallic-site .article-related-card img {
+  border: 1px solid #bdcdd975;
+  border-radius: 6px;
+  box-shadow: 0 7px 14px #00000035;
+}
+
+/* The destination sheet stays compact; the gallery owns its own transitions. */
+body.metallic-site .trip-sheet {
+  background: linear-gradient(145deg, #26313c, #161f29 76%);
+}
+body.metallic-site .trip-visual {
+  background: linear-gradient(160deg, #202a35, #131c25);
+}
+body.metallic-site .trip-main-photo > img {
+  border: 1px solid #c6d4df6b;
+  box-shadow: 0 12px 24px #00000035;
+}
+body.metallic-site .photo-stack-card {
+  border-color: #cddbe48a;
+  background: linear-gradient(145deg, #93a3af, #2b3a47 38%, #576b7b 82%, #bcc8d1);
+  box-shadow: 0 12px 22px #00000055, inset 0 1px 0 #ffffff70;
+}
+body.metallic-site .trip-inclusions {
+  background: linear-gradient(145deg, #3b4856, #293644);
+  border-color: #c1d0dd5b;
+  box-shadow: inset 0 1px 0 #ffffff21, 0 6px 14px #0000001a;
+}
+body.metallic-site .trip-programme-empty {
+  background: #17232f;
+  border-color: #758b9d;
+}
+body.metallic-site .trip-sheet-tools { border-top-color: #b1c1d23d; }
+body.metallic-site .legal-notice {
+  border-color: #a6bac755;
+  border-top-color: #d0dce276;
+  background: linear-gradient(145deg, #2a3743, #1a2632);
+  box-shadow: inset 0 1px 0 #ffffff12;
+}
+body.metallic-site .legal-page h2 {
+  padding-top: 18px;
+  border-top: 1px solid #a7b8c42d;
+}
+body.metallic-site :is(footer, .journal-footer, .trip-footer) {
+  border-top-color: #a9bdcd3d;
+  background: linear-gradient(180deg, #1c2630, #101820 90%);
+  box-shadow: inset 0 1px 0 #ffffff0c;
+}
+
+body.metallic-site .metal-finish-enter {
+  animation: metal-finish-arrive .68s cubic-bezier(.2, .75, .2, 1) both;
+}
+@keyframes metal-finish-arrive {
+  from { opacity: .72; transform: translate3d(0, 10px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+@media (max-width: 700px) {
+  body.metallic-site .home-band-heading::after { width: 104px; margin-top: 12px; }
+  body.metallic-site .journal-story-featured { padding: 14px; }
+  body.metallic-site :is(.team-intro, .contact)::before {
+    width: 380px;
+    right: -225px;
+    opacity: .6;
+  }
+  body.metallic-site :is(.deck-controls button, .blog-strip-control, .photo-stack-prev, .photo-stack-next) { min-width: 44px; }
+}
+@media (hover: hover) and (pointer: fine) {
+  body.metallic-site :is(.button.primary, .journal-button, .deck-flip-button, .deck-details-link):hover {
+    background: linear-gradient(165deg, #ffffff, #e1e9ef 60%, #c5d2dc);
+    border-color: #ffffff;
+    box-shadow: inset 0 1px 0 #ffffff, 0 10px 23px #00000047;
+  }
+  body.metallic-site :is(.deck-controls button, .blog-strip-control, .photo-stack-prev, .photo-stack-next):hover {
+    border-color: #d0dce3a6;
+    background: linear-gradient(165deg, #4c5c69, #293c4b);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.metallic-site .metal-finish-enter { animation: none; }
+  body.metallic-site :is(.button, .journal-button, .deck-flip-button, .deck-details-link):active { transform: none; }
+  body.metallic-site :is(.team-nav, #navigation) > a { transition: none; }
+}
+@media (forced-colors: active) {
+  body.metallic-site,
+  body.metallic-site :is(header, .team-header, .journal-header, .home-bands, .process, .about, .team-intro, .contact, .team-story, .app-callout, .article-related, .trip-visual, footer, .journal-footer, .trip-footer) {
+    background: Canvas;
+    color: CanvasText;
+    box-shadow: none;
+  }
+  body.metallic-site :is(.team-intro, .contact)::before,
+  body.metallic-site .home-band-heading::after { display: none; }
+  body.metallic-site .metal-finish-enter { animation: none; }
+  body.metallic-site :is(.journal-story-featured, .trip-sheet, .trip-inclusions, .legal-notice, .photo-stack-card) {
+    border-color: CanvasText;
+    background: Canvas;
+    color: CanvasText;
+    box-shadow: none;
+  }
+  body.metallic-site :is(.button, .journal-button, .deck-flip-button, .deck-details-link, .menu-toggle, .deck-controls button, .blog-strip-control, .photo-stack-prev, .photo-stack-next) {
+    color: ButtonText;
+    background: ButtonFace;
+    border-color: ButtonText;
+    box-shadow: none;
+  }
+}

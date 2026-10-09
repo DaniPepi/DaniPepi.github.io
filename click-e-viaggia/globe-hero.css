@@ -33,7 +33,7 @@ body.globe-home .globe-stage::before {
   position: absolute;
   inset: 8%;
   border-radius: 50%;
-  box-shadow: 0 0 100px #b9c9de09, 0 0 220px #c4d8a50a;
+  box-shadow: 0 0 100px #b9c9de0a, 0 0 220px #bdccdc06;
 }
 body.globe-home #metal-globe {
   position: absolute;
@@ -49,7 +49,7 @@ body.globe-home .globe-fallback {
   inset: 8%;
   border-radius: 50%;
   background: radial-gradient(ellipse at 29% 24%, #c1cbd1 0%, #73808b 17%, #36434d 39%, #172129 65%, #0a0e13 89%);
-  box-shadow: inset -28px -18px 60px #020407a0, inset 2px 1px 5px #dce8bd85, 0 30px 85px #00000070;
+  box-shadow: inset -28px -18px 60px #020407a0, inset 2px 1px 5px #cbd6e385, 0 30px 85px #00000070;
   transition: opacity .8s ease;
   overflow: hidden;
 }
@@ -68,7 +68,7 @@ body.globe-home .globe-orbit {
   right: 3%;
   top: 35%;
   height: 30%;
-  border: 1px solid #dce8bd21;
+  border: 1px solid #c0cddb21;
   border-radius: 50%;
   transform: rotate(-27deg);
   z-index: -1;
