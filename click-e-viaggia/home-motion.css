@@ -1,0 +1,96 @@
+/* Optional satin depth for the globe homepage. Existing carousels own selection,
+   timing, keyboard focus and gestures; these rules only polish their movement. */
+body.globe-home .home-trip-band .deck-track { perspective: 1100px; }
+body.globe-home .home-trip-band .deck-card {
+  --card-scale: .83;
+  --card-tilt-x: 0deg;
+  --card-tilt-y: 0deg;
+  transform: perspective(1000px) rotateX(var(--card-tilt-x)) rotateY(var(--card-tilt-y)) scale(var(--card-scale));
+  transform-origin: 50% 50%;
+  transition: transform .45s cubic-bezier(.2,.75,.2,1), opacity .45s ease, filter .45s ease, border-color .3s ease, box-shadow .35s ease;
+}
+body.globe-home .home-trip-band .deck-card[data-selected="true"] {
+  --card-scale: 1;
+  border-color: #d6dde2a6;
+  box-shadow: 0 14px 27px #00000070, 0 3px 7px #0000004d, inset 0 1px 0 #ffffff38;
+}
+body.globe-home .home-trip-band .deck-card.has-pointer-depth {
+  transition: transform .18s cubic-bezier(.2,.7,.2,1), opacity .45s ease, filter .45s ease, border-color .3s ease, box-shadow .35s ease;
+}
+body.globe-home .home-trip-band .deck-card::after {
+  background: linear-gradient(155deg, #ffffff13 0%, transparent 36%), linear-gradient(180deg, #080b1112 12%, transparent 30%, #080b10c4 72%, #080b10f5);
+}
+body.globe-home .home-trip-band .deck-country {
+  background: linear-gradient(140deg, #343a42e6, #151a22e6);
+  border-color: #d6dce644;
+  box-shadow: inset 0 1px 0 #ffffff19;
+}
+body.globe-home .home-blog-strip::before {
+  animation: none;
+  inset: 0;
+  background: linear-gradient(130deg, #ffffff05, transparent 50%, #ffffff02);
+}
+body.globe-home .blog-ready .blog-strip-track { perspective: 1450px; }
+body.globe-home .blog-ready .blog-strip-item {
+  border-color: #d7dfe52b;
+  transform-origin: 50% 82%;
+  transition: transform .9s cubic-bezier(.22,.75,.2,1), filter .9s ease, box-shadow .9s ease;
+  box-shadow: 0 12px 28px #00000052, inset 0 1px 0 #ffffff15;
+}
+body.globe-home .blog-ready .blog-strip-item.is-active {
+  box-shadow: 0 19px 35px #00000063, 0 4px 12px #00000030, inset 0 1px 0 #ffffff22;
+}
+body.globe-home .blog-ready .blog-strip-item.is-leaving {
+  animation: globe-blog-card-send .9s cubic-bezier(.32,0,.18,1) both;
+}
+body.globe-home .blog-strip-visual { position: relative; }
+body.globe-home .blog-strip-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(140deg, #ffffff0a, transparent 50%), linear-gradient(0deg, #05080c24, transparent 35%);
+}
+body.globe-home .blog-ready .blog-strip-item.is-active img {
+  animation: globe-blog-photo-drift var(--blog-interval,8000ms) cubic-bezier(.2,.45,.3,1) both;
+}
+body.globe-home .home-blog-strip[data-paused="true"] .is-active img { animation-play-state: paused; }
+body.globe-home .deck-preview[open] .deck-focus { animation: globe-deck-arrive .38s cubic-bezier(.2,.8,.2,1) both; }
+body.globe-home .home-motion-enter { animation: globe-section-arrive .7s cubic-bezier(.22,.75,.2,1) both; }
+
+@keyframes globe-blog-card-send {
+  0% { transform: translate3d(0,0,0) rotate(0deg) scale(1); }
+  40% { transform: translate3d(calc(var(--blog-direction,1)*15%),-12px,32px) rotate(calc(var(--blog-direction,1)*3deg)) scale(1.012); }
+  100% { transform: translate3d(calc(var(--blog-direction,1)*108%),-18px,0) rotate(calc(var(--blog-direction,1)*8deg)) scale(.97); }
+}
+@keyframes globe-blog-photo-drift {
+  from { transform: scale(1.065) translate3d(-.5%,0,0); }
+  to { transform: scale(1.018) translate3d(.35%,0,0); }
+}
+@keyframes globe-deck-arrive {
+  from { opacity: .55; transform: translate3d(0,16px,0) scale(.955); }
+  to { opacity: 1; transform: translate3d(0,0,0) scale(1); }
+}
+@keyframes globe-section-arrive {
+  from { opacity: .72; transform: translate3d(0,16px,0); }
+  to { opacity: 1; transform: translate3d(0,0,0); }
+}
+@media (max-width: 700px) {
+  body.globe-home .blog-ready .blog-strip-item.is-leaving { animation-name: globe-blog-card-send-mobile; }
+}
+@keyframes globe-blog-card-send-mobile {
+  0% { transform: translate3d(0,0,0) rotate(0deg) scale(1); }
+  40% { transform: translate3d(calc(var(--blog-direction,1)*14%),-8px,20px) rotate(calc(var(--blog-direction,1)*3deg)) scale(1.006); }
+  100% { transform: translate3d(calc(var(--blog-direction,1)*110%),-14px,0) rotate(calc(var(--blog-direction,1)*7deg)) scale(.97); }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.globe-home .home-trip-band .deck-card {
+    transform: scale(var(--card-scale));
+    transition: none;
+  }
+  body.globe-home .blog-ready .blog-strip-item { transition: none; }
+  body.globe-home .blog-ready .blog-strip-item.is-leaving,
+  body.globe-home .blog-ready .blog-strip-item.is-active img,
+  body.globe-home .deck-preview[open] .deck-focus,
+  body.globe-home .home-motion-enter { animation: none; }
+}
