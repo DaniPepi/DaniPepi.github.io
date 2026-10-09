@@ -1,7 +1,7 @@
 'use strict';
 (() => {
   const INTERVAL = 6000;
-  const DURATION = 760;
+  const DURATION = 1150;
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const localPhoto = /^assets\/[a-zA-Z0-9._-]+\.(?:jpe?g|png|webp)$/i;
 
@@ -20,6 +20,7 @@
 
     const stage = document.createElement('div');
     stage.className = 'photo-stack-stage';
+    stage.style.setProperty('--photo-stack-duration', `${DURATION}ms`);
     stage.id = `trip-photo-stack-${instance + 1}`;
     stage.tabIndex = 0;
     stage.setAttribute('role', 'group');
@@ -54,7 +55,7 @@
       image.alt = '';
       image.width = 1200;
       image.height = 900;
-      if (index !== 0) image.loading = 'lazy';
+      image.loading = 'eager';
       image.addEventListener('error', () => {
         card.classList.add('is-unavailable');
         if (index === active) image.alt = 'Fotografia non disponibile';
@@ -101,13 +102,6 @@
       caption.textContent = photos[active].caption;
       counter.textContent = `${String(active + 1).padStart(2, '0')} / ${String(photos.length).padStart(2, '0')}`;
       counter.setAttribute('aria-label', `Foto ${active + 1} di ${photos.length}`);
-      const strip = visual.querySelector('.trip-thumbnails');
-      if (strip && visual.classList.contains('photo-stack-ready') && strip.scrollWidth > strip.clientWidth) {
-        const selectedBounds = photos[active].button.getBoundingClientRect();
-        const stripBounds = strip.getBoundingClientRect();
-        const correction = selectedBounds.left < stripBounds.left + 2 ? selectedBounds.left - stripBounds.left - 2 : selectedBounds.right > stripBounds.right - 2 ? selectedBounds.right - stripBounds.right + 2 : 0;
-        if (correction) strip.scrollTo({ left: strip.scrollLeft + correction, behavior: reducedMotion.matches ? 'auto' : 'smooth' });
-      }
     }
 
     function hasModal() {
@@ -138,16 +132,24 @@
       if (reducedMotion.matches) { render(); schedule(); return; }
       isAnimating = true;
       stage.classList.add('is-animating');
-      outgoing.classList.add('is-leaving');
       render();
+      // A returning card enters above the stack; a retiring front card settles
+      // into its exact parked transform before the animation class is removed.
+      if (direction < 0 || outgoing.dataset.depth !== 'parked') cards[active].classList.add('is-entering');
+      else outgoing.classList.add('is-leaving');
       // A fixed fallback also completes when the page hides mid-animation.
       finishTimer = window.setTimeout(finish, DURATION + 35);
+    }
+
+    function step(direction) {
+      // Repeated clicks accumulate a destination while the current move finishes.
+      move((pending?.target ?? active) + direction, direction);
     }
 
     function finish() {
       if (!isAnimating) return;
       window.clearTimeout(finishTimer);
-      cards.forEach(card => card.classList.remove('is-leaving'));
+      cards.forEach(card => card.classList.remove('is-leaving', 'is-entering'));
       stage.classList.remove('is-animating');
       isAnimating = false;
       const queued = pending;
@@ -158,18 +160,20 @@
 
     figure.prepend(stage);
     figure.append(toolbar);
-    visual.querySelector('.trip-thumbnails')?.style.setProperty('--photo-stack-count', String(photos.length));
+    // Warm the small local deck before manual navigation, including backwards.
+    photos.forEach((photo, index) => loadPhoto(index));
     render();
     visual.classList.add('photo-stack-ready');
-    previous.addEventListener('click', () => move(active - 1, -1));
-    next.addEventListener('click', () => move(active + 1, 1));
-    photos.forEach((photo, index) => photo.button.addEventListener('click', () => move(index, index < active ? -1 : 1)));
+    const strip = visual.querySelector('.trip-thumbnails');
+    if (strip) strip.hidden = true;
+    previous.addEventListener('click', () => step(-1));
+    next.addEventListener('click', () => step(1));
     stage.addEventListener('keydown', event => {
       if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight' && event.key !== 'Home' && event.key !== 'End') return;
       event.preventDefault();
       if (event.key === 'Home') move(0, -1);
       else if (event.key === 'End') move(photos.length - 1, 1);
-      else move(active + (event.key === 'ArrowLeft' ? -1 : 1), event.key === 'ArrowLeft' ? -1 : 1);
+      else step(event.key === 'ArrowLeft' ? -1 : 1);
     });
     stage.addEventListener('pointerdown', event => {
       if (event.pointerType === 'mouse' || !event.isPrimary) return;
@@ -181,7 +185,7 @@
       const dy = event.clientY - pointer.y;
       pointer = null;
       if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy) * 1.4) return;
-      move(active + (dx < 0 ? 1 : -1), dx < 0 ? 1 : -1);
+      step(dx < 0 ? 1 : -1);
     });
     stage.addEventListener('pointercancel', () => { pointer = null; });
     visual.addEventListener('pointerenter', schedule);
