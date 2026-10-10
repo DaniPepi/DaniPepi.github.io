@@ -7,7 +7,7 @@
   if (!canvas || !hero || !stage || !document.body.classList.contains('globe-home')) return;
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const finePointer = matchMedia('(hover: hover) and (pointer: fine)');
-  let gl, sphereProgram, routeProgram, quadBuffer, routeBuffer, markerBuffer, texture;
+  let gl, sphereProgram, routeProgram, quadBuffer, routeBuffer, markerBuffer, texture, visitedTexture;
   let raf = 0, previous = 0, phase = 0, frames = 0;
   let ready = false, contextLost = false, inView = true, leaving = false, disposed = false;
   let targetX = 0, targetY = 0, easedX = 0, easedY = 0, dpr = 1, textureWidth = 2048;
@@ -18,6 +18,66 @@
   const pitchLimit = Math.PI / 2 - .025;
   const routes = [];
   const listeners = [];
+  const diaryKey = 'click-viaggia-visited-v1';
+  const globeLabel = 'Globo del mondo: trascina per ruotarlo. Usa le frecce per girare e Home per ripristinare.';
+  let countryShapes = null, countryRequest = null, countryController = null, visitedSignature = null;
+  function readVisited() {
+    try {
+      const values = JSON.parse(localStorage.getItem(diaryKey) || '[]');
+      return Array.isArray(values) ? [...new Set(values.filter(code => typeof code === 'string' && /^[a-z]{2}$/.test(code)))].sort() : [];
+    } catch { return []; }
+  }
+  // Shares only the local guest diary. No account identifiers or visited choices are sent.
+  function loadCountryShapes() {
+    if (countryRequest || countryShapes || disposed) return;
+    countryController = new AbortController();
+    const timeout = setTimeout(() => countryController?.abort(), 10000);
+    countryRequest = fetch('./data/globe-countries.json', { signal: countryController.signal }).then(response => {
+      if (!response.ok) throw new Error('Country shapes unavailable');
+      return response.json();
+    }).then(data => {
+      if (!Array.isArray(data.countries)) throw new Error('Country shapes unavailable');
+      countryShapes = new Map(data.countries.filter(country => /^[a-z]{2}$/.test(country.code) && Array.isArray(country.polygons)).map(country => [country.code, country]));
+      updateVisited();
+    }).catch(() => { canvas.dataset.diary = 'unavailable'; }).finally(() => {
+      clearTimeout(timeout); countryRequest = null; countryController = null;
+    });
+  }
+  function emptyVisitedTexture() {
+    const item = gl.createTexture();
+    gl.bindTexture(gl.TEXTURE_2D, item);
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.LUMINANCE, 1, 1, 0, gl.LUMINANCE, gl.UNSIGNED_BYTE, new Uint8Array([0]));
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.REPEAT);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+    return item;
+  }
+  function updateVisited() {
+    if (!ready || contextLost || disposed) return;
+    const saved = readVisited();
+    const codes = countryShapes ? saved.filter(code => countryShapes.get(code)?.polygons.length) : [];
+    const signature = codes.join(',');
+    if (signature !== visitedSignature) {
+      const width = codes.length ? Math.min(textureWidth, 2048) : 2;
+      const map = document.createElement('canvas'); map.width = width; map.height = width / 2;
+      const ctx = map.getContext('2d');
+      if (!ctx) return;
+      ctx.fillStyle = '#000'; ctx.fillRect(0, 0, map.width, map.height);
+      ctx.fillStyle = '#fff';
+      codes.forEach(code => countryShapes.get(code).polygons.forEach(polygon => paintPolygon(ctx, polygon, map.width, map.height)));
+      gl.activeTexture(gl.TEXTURE1); gl.bindTexture(gl.TEXTURE_2D, visitedTexture);
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.LUMINANCE, gl.LUMINANCE, gl.UNSIGNED_BYTE, map);
+      gl.activeTexture(gl.TEXTURE0);
+      map.width = map.height = 1;
+      visitedSignature = signature;
+      canvas.dataset.visitedCodes = signature; canvas.dataset.visitedCount = String(codes.length);
+      canvas.setAttribute('aria-label', globeLabel + (codes.length ? ` ${codes.length} paesi del tuo diario sono illuminati.` : ''));
+      if (!blocked()) render();
+    }
+    canvas.dataset.diary = saved.length && !countryShapes ? 'loading' : 'local';
+    if (saved.length && !countryShapes) loadCountryShapes();
+  }
   const vector = ([lat, lon]) => {
     const p = lat * Math.PI / 180, l = lon * Math.PI / 180;
     return [Math.cos(p) * Math.sin(l), Math.sin(p), Math.cos(p) * Math.cos(l)];
@@ -75,6 +135,25 @@
     const radius = 1.012 + (lift ? Math.sin(t * Math.PI) * .07 : 0);
     return origin.map((n, i) => (n * a + destination[i] * b) * radius);
   }
+  function paintPolygon(ctx, polygon, width, height) {
+    const rings = polygon.map(ring => {
+      let last = null;
+      return ring.map(([lon, lat]) => {
+        let x = (lon + 180) / 360 * width;
+        if (last !== null) {
+          while (x - last > width / 2) x -= width;
+          while (x - last < -width / 2) x += width;
+        }
+        last = x;
+        return [x, (90 - lat) / 180 * height];
+      });
+    });
+    [-width, 0, width].forEach(offset => {
+      ctx.beginPath();
+      rings.forEach(ring => { ring.forEach(([x, y], i) => i ? ctx.lineTo(x + offset, y) : ctx.moveTo(x + offset, y)); ctx.closePath(); });
+      ctx.fill('evenodd');
+    });
+  }
   function landTexture(data) {
     const lowMemory = typeof navigator.deviceMemory === 'number' && navigator.deviceMemory <= 4;
     const maximum = gl.getParameter(gl.MAX_TEXTURE_SIZE);
@@ -87,23 +166,7 @@
     ctx.fillStyle = '#fff';
     data.polygons.forEach(polygon => {
       if (!Array.isArray(polygon)) return;
-      const rings = polygon.map(ring => {
-        let last = null;
-        return ring.map(([lon, lat]) => {
-          let x = (lon + 180) / 360 * map.width;
-          if (last !== null) {
-            while (x - last > map.width / 2) x -= map.width;
-            while (x - last < -map.width / 2) x += map.width;
-          }
-          last = x;
-          return [x, (90 - lat) / 180 * map.height];
-        });
-      });
-      [-map.width, 0, map.width].forEach(offset => {
-        ctx.beginPath();
-        rings.forEach(ring => { ring.forEach(([x, y], i) => i ? ctx.lineTo(x + offset, y) : ctx.moveTo(x + offset, y)); ctx.closePath(); });
-        ctx.fill('evenodd');
-      });
+      paintPolygon(ctx, polygon, map.width, map.height);
     });
     // Pack the real coastline, a softened height field and its two gradients.
     // The relief describes an engraved metal model, rather than invented terrain.
@@ -152,6 +215,7 @@
     precision highp float;
     varying vec2 uv;
     uniform sampler2D land;
+    uniform sampler2D visited;
     uniform mat3 orientation;
     uniform float pixel;
     uniform float reliefScale;
@@ -187,6 +251,9 @@
       sea*=1.-occlusion;
       vec3 steel=vec3(.53,.59,.65)*(.27+diffuse*.53+fill*.12)+vec3(.74,.80,.86)*broad*.17+vec3(.20,.22,.24)*reflection+vec3(.62,.68,.74)*overhead*.10+grain;
       vec3 color=mix(sea,steel,mask);
+      float memory=mask*smoothstep(.15,.85,texture2D(visited,st).r);
+      vec3 illuminated=steel*vec3(1.12,1.12,.93)+vec3(.18,.21,.11);
+      color=mix(color,illuminated,memory);
       vec2 grid=abs(sin(vec2(st.x*36.,st.y*18.)*PI));
       float lines=1.-smoothstep(.01,.026,min(grid.x,grid.y));
       color+=vec3(.13,.17,.21)*lines*(1.-mask)*.14;
@@ -240,7 +307,7 @@
       if (!gl) return fallback();
       sphereProgram = program(sphereVertex, sphereFragment);
       routeProgram = program(routeVertex, routeFragment);
-      sphereUniforms = uniforms(sphereProgram, ['land', 'orientation', 'pixel', 'reliefScale']);
+      sphereUniforms = uniforms(sphereProgram, ['land', 'visited', 'orientation', 'pixel', 'reliefScale']);
       routeUniforms = uniforms(routeProgram, ['orientation', 'pointSize', 'lineWidth', 'mode', 'time']);
       spherePosition = gl.getAttribLocation(sphereProgram, 'position');
       routePosition = gl.getAttribLocation(routeProgram, 'position');
@@ -266,13 +333,14 @@
       gl.bindBuffer(gl.ARRAY_BUFFER, markerBuffer);
       gl.bufferData(gl.ARRAY_BUFFER, markerData, gl.DYNAMIC_DRAW);
       texture = landTexture(data);
+      visitedTexture = emptyVisitedTexture(); visitedSignature = null;
       gl.enable(gl.BLEND); gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
       contextLost = false; ready = true;
       stage.classList.remove('is-fallback'); stage.classList.add('is-ready');
       canvas.dataset.renderer = 'webgl';
       canvas.tabIndex = 0;
-      canvas.setAttribute('aria-label', 'Globo del mondo: trascina per ruotarlo. Usa le frecce per girare e Home per ripristinare.');
-      resize(); refresh();
+      canvas.setAttribute('aria-label', globeLabel);
+      resize(); updateVisited(); refresh();
     } catch { fallback(); }
   }
   function resize() {
@@ -318,6 +386,7 @@
     gl.uniform1f(sphereUniforms.pixel, 2 / canvas.width);
     gl.uniform1f(sphereUniforms.reliefScale, textureWidth * .006 / (8 * Math.PI));
     gl.activeTexture(gl.TEXTURE0); gl.bindTexture(gl.TEXTURE_2D, texture); gl.uniform1i(sphereUniforms.land, 0);
+    gl.activeTexture(gl.TEXTURE1); gl.bindTexture(gl.TEXTURE_2D, visitedTexture); gl.uniform1i(sphereUniforms.visited, 1);
     gl.drawArrays(gl.TRIANGLES, 0, 6);
     gl.useProgram(routeProgram); gl.uniformMatrix3fv(routeUniforms.orientation, false, orientation);
     gl.uniform1f(routeUniforms.time, phase); gl.uniform1f(routeUniforms.mode, 0); gl.uniform1f(routeUniforms.pointSize, 1);
@@ -506,6 +575,8 @@
   }, { passive: true });
   listen(hero, 'pointerleave', () => { targetX = targetY = 0; }, { passive: true });
   listen(document, 'visibilitychange', refresh);
+  listen(window, 'storage', event => { if (event.key === diaryKey || event.key === null) updateVisited(); });
+  listen(window, 'focus', updateVisited);
   listen(reduced, 'change', refresh);
   listen(window, 'pagehide', event => {
     leaving = true; refresh();
@@ -514,14 +585,16 @@
     observer?.disconnect(); resizeObserver?.disconnect(); modalObserver.disconnect();
     listeners.forEach(remove => remove());
     clearTimeout(timer); controller.abort();
+    countryController?.abort();
     if (gl && !contextLost) {
       [quadBuffer, routeBuffer, markerBuffer].forEach(item => { if (item) gl.deleteBuffer(item); });
       [sphereProgram, routeProgram].forEach(item => { if (item) gl.deleteProgram(item); });
       if (texture) gl.deleteTexture(texture);
+      if (visitedTexture) gl.deleteTexture(visitedTexture);
     }
     ready = false;
   });
-  listen(window, 'pageshow', () => { leaving = false; refresh(); });
+  listen(window, 'pageshow', () => { leaving = false; updateVisited(); refresh(); });
   const observer = 'IntersectionObserver' in window ? new IntersectionObserver(entries => {
     inView = entries[0].isIntersecting && entries[0].intersectionRatio > .1;
     refresh();
