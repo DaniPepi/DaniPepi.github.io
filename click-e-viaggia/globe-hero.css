@@ -44,34 +44,26 @@ body.globe-home #metal-globe {
 }
 body.globe-home .globe-stage.is-ready #metal-globe { opacity: 1; pointer-events: auto; cursor: grab; }
 body.globe-home .globe-stage.is-rotating #metal-globe { cursor: grabbing; }
-body.globe-home #metal-globe:focus-visible { outline: 2px solid #dce8bd; outline-offset: -8px; border-radius: 8px; }
-@supports selector(:has(*)) {
-  body.globe-home #metal-globe:focus-visible { outline: none; }
-  body.globe-home .globe-stage:has(#metal-globe:focus-visible) + .globe-controls .globe-turn-buttons { outline: 2px solid #dce8bd; outline-offset: 5px; border-radius: 10px; }
-}
-body.globe-home .globe-controls {
+body.globe-home #metal-globe:focus-visible { outline: none; }
+body.globe-home .globe-instructions {
   position: absolute;
-  z-index: 4;
-  right: 12vw;
-  bottom: 90px;
-  display: grid;
-  justify-items: center;
-  gap: 8px;
-  color: #aebbc6;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  pointer-events: none;
 }
-body.globe-home .globe-controls[hidden] { display: none; }
-body.globe-home .globe-controls > p { font: 11px/1.4 var(--sans); margin: 0; letter-spacing: .04em; }
-body.globe-home .globe-turn-buttons { display: flex; gap: 5px; }
-body.globe-home .globe-turn-buttons button {
-  width: 44px; min-height: 44px;
-  border: 1px solid #a4b4c546; border-radius: 9px;
-  background: linear-gradient(155deg, #303c47, #17232f);
-  color: #e4edf2; font: 18px var(--sans);
-  cursor: pointer; transition: transform .18s ease, background .18s ease;
+body.globe-home #metal-globe:focus-visible + .globe-instructions {
+  z-index: 2;
+  left: 50%; bottom: 9%; transform: translateX(-50%);
+  width: auto; height: auto;
+  margin: 0; padding: 7px 10px;
+  clip-path: none; overflow: visible;
+  border: 1px solid #dce8bd; border-radius: 6px;
+  color: #e3e9ee; background: #15202ded;
+  font: 11px/1.4 var(--sans);
 }
-body.globe-home .globe-turn-buttons button:hover { background: #3a4856; }
-body.globe-home .globe-turn-buttons button:active { transform: scale(.94); }
-body.globe-home .globe-turn-buttons button[data-globe-turn="reset"] { font-size: 21px; }
 body.globe-home .globe-fallback {
   position: absolute;
   inset: 8%;
@@ -169,10 +161,8 @@ body.globe-home .hero-bottom .scroll-line { background: linear-gradient(#c5d4ab,
 @media (max-width: 720px) {
   body.globe-home .hero { height: 100svh; min-height: 790px; align-items: end; }
   body.globe-home .globe-stage { width: min(110vw, 550px); right: 50%; top: 68px; transform: translateX(50%); }
-  body.globe-home .hero-content { width: auto; margin: 0; padding: calc(165px + min(101.2vw, 506px)) 24px 92px; text-align: center; }
+  body.globe-home .hero-content { width: auto; margin: 0; padding: calc(105px + min(101.2vw, 506px)) 24px 92px; text-align: center; }
   body.globe-home .hero { height: auto; min-height: max(100svh, 835px); }
-  body.globe-home .globe-controls { right: 50%; transform: translateX(50%); top: calc(68px + min(101.2vw, 506px)); bottom: auto; }
-  body.globe-home .globe-controls > p { font-size: 10px; white-space: nowrap; }
   body.globe-home .hero .eyebrow { font-size: 9px; letter-spacing: .16em; margin: 0 auto 20px; max-width: none; }
   body.globe-home .hero h1 { font-size: clamp(29px, 7.3vw, 50px); margin: 0 auto 21px; }
   body.globe-home .hero .flow-title { justify-content: center; }
@@ -184,15 +174,14 @@ body.globe-home .hero-bottom .scroll-line { background: linear-gradient(#c5d4ab,
 }
 @media (max-width: 380px) {
   body.globe-home .hero { min-height: max(100svh, 790px); }
-  body.globe-home .hero-content { padding-top: calc(175px + 101.2vw); }
-  body.globe-home .globe-controls { top: calc(77px + 101.2vw); }
+  body.globe-home .hero-content { padding-top: calc(115px + 101.2vw); }
   body.globe-home .globe-stage { top: 77px; }
   body.globe-home .hero-copy { font-size: 14px; }
   body.globe-home .hero .button { padding-inline: 14px; font-size: 12px; }
 }
-@media (prefers-reduced-motion: reduce) { body.globe-home #metal-globe, body.globe-home .globe-fallback, body.globe-home .globe-turn-buttons button { transition: none; } }
+@media (prefers-reduced-motion: reduce) { body.globe-home #metal-globe, body.globe-home .globe-fallback { transition: none; } }
 @media (forced-colors: active) {
-  body.globe-home .globe-stage, body.globe-home .hero-shade, body.globe-home .globe-controls { display: none; }
+  body.globe-home .globe-stage, body.globe-home .hero-shade { display: none; }
   body.globe-home .hero { background: Canvas; }
   body.globe-home .hero .magnetic-letter, body.globe-home .hero .amp .magnetic-letter { background: none; color: CanvasText; -webkit-text-fill-color: CanvasText; }
 }

@@ -12,10 +12,10 @@
   let ready = false, contextLost = false, inView = true, leaving = false, disposed = false;
   let targetX = 0, targetY = 0, easedX = 0, easedY = 0, dpr = 1, textureWidth = 2048;
   let yaw = -.28, pitch = .21, velocityYaw = 0, velocityPitch = 0, drag = null, userTurned = false;
+  let goalYaw = yaw, goalPitch = pitch, lastTap = null;
+  let stageSize = 1, nativePixels = 1, resolutionScale = 1, framePeriod = 16.67, qualityCheck = 0, qualityRecovery = 0, slowFrames = 0, bufferMoving = false;
   const initialView = { yaw: -.28, pitch: .21 };
   const pitchLimit = Math.PI / 2 - .025;
-  const controls = hero.querySelector('.globe-controls');
-  const turnButtons = [...hero.querySelectorAll('[data-globe-turn]')];
   const routes = [];
   const listeners = [];
   const vector = ([lat, lon]) => {
@@ -25,6 +25,13 @@
   const origin = vector([41.9, 12.5]);
   const destinations = [[39.627, -8.665], [48.872, 2.779], [-13.3, 48.2], [25.067, 34.898]].map(vector);
   const endpoints = [origin, ...destinations];
+  const markerData = new Float32Array((endpoints.length + destinations.length) * 4);
+  const orientation = new Float32Array(9);
+  endpoints.forEach((point, i) => { for (let axis = 0; axis < 3; axis++) markerData[i * 4 + axis] = point[axis] * 1.014; });
+  const routeTracks = destinations.map(point => {
+    const angle = Math.acos(Math.max(-1, Math.min(1, origin.reduce((sum, n, i) => sum + n * point[i], 0))));
+    return { point, angle, inverseSine: 1 / (Math.sin(angle) || 1) };
+  });
   function listen(target, event, callback, options) {
     target.addEventListener(event, callback, options);
     listeners.push(() => target.removeEventListener(event, callback, options));
@@ -39,7 +46,6 @@
     canvas.dataset.motion = 'static';
     canvas.tabIndex = -1;
     canvas.setAttribute('aria-label', 'Globo metallico decorativo del mondo');
-    if (controls) controls.hidden = true;
   }
   function shader(type, source) {
     const item = gl.createShader(type);
@@ -57,7 +63,10 @@
   function uniforms(item, names) { return Object.fromEntries(names.map(name => [name, gl.getUniformLocation(item, name)])); }
   function matrix(yaw, pitch) {
     const a = Math.cos(yaw), b = Math.sin(yaw), c = Math.cos(pitch), d = Math.sin(pitch);
-    return new Float32Array([a, d * b, -c * b, 0, c, d, b, -d * a, c * a]);
+    orientation[0] = a; orientation[1] = d * b; orientation[2] = -c * b;
+    orientation[3] = 0; orientation[4] = c; orientation[5] = d;
+    orientation[6] = b; orientation[7] = -d * a; orientation[8] = c * a;
+    return orientation;
   }
   function interpolate(destination, t, lift = true) {
     const angle = Math.acos(Math.max(-1, Math.min(1, origin.reduce((s, n, i) => s + n * destination[i], 0))));
@@ -227,7 +236,7 @@
   function initialise(data) {
     if (disposed) return;
     try {
-      gl = canvas.getContext('webgl', { alpha: true, antialias: true, depth: false, stencil: false, powerPreference: 'low-power', preserveDrawingBuffer: false });
+      gl = canvas.getContext('webgl', { alpha: true, antialias: false, depth: false, stencil: false, powerPreference: 'default', preserveDrawingBuffer: false });
       if (!gl) return fallback();
       sphereProgram = program(sphereVertex, sphereFragment);
       routeProgram = program(routeVertex, routeFragment);
@@ -254,6 +263,8 @@
       routeBuffer = gl.createBuffer(); markerBuffer = gl.createBuffer();
       gl.bindBuffer(gl.ARRAY_BUFFER, routeBuffer);
       gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(ribbons), gl.STATIC_DRAW);
+      gl.bindBuffer(gl.ARRAY_BUFFER, markerBuffer);
+      gl.bufferData(gl.ARRAY_BUFFER, markerData, gl.DYNAMIC_DRAW);
       texture = landTexture(data);
       gl.enable(gl.BLEND); gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
       contextLost = false; ready = true;
@@ -261,21 +272,38 @@
       canvas.dataset.renderer = 'webgl';
       canvas.tabIndex = 0;
       canvas.setAttribute('aria-label', 'Globo del mondo: trascina per ruotarlo. Usa le frecce per girare e Home per ripristinare.');
-      if (controls) controls.hidden = false;
       resize(); refresh();
     } catch { fallback(); }
   }
   function resize() {
     if (!ready || contextLost) return;
-    const size = stage.getBoundingClientRect().width;
-    dpr = Math.min(devicePixelRatio || 1, 2);
+    stageSize = Math.max(1, stage.getBoundingClientRect().width);
+    nativePixels = Math.round(stageSize * Math.min(devicePixelRatio || 1, 2));
+    updateResolution();
+    render();
+  }
+  function isMoving() {
+    return Boolean(drag) || Math.abs(velocityYaw) + Math.abs(velocityPitch) > .05 || Math.abs(goalYaw - yaw) + Math.abs(goalPitch - pitch) > .01;
+  }
+  function updateResolution() {
+    if (!ready || contextLost) return;
     const lowMemory = typeof navigator.deviceMemory === 'number' && navigator.deviceMemory <= 4;
-    const limit = size < 600 || lowMemory ? 960 : 1600;
-    const pixels = Math.max(1, Math.min(limit, Math.round(size * dpr)));
-    dpr = pixels / Math.max(1, size);
+    const small = stageSize < 600 || lowMemory;
+    const moving = isMoving();
+    bufferMoving = moving;
+    // A sharp geography texture is retained while the raycast buffer follows the frame budget.
+    const limit = moving ? (small ? 720 : 960) : (small ? 960 : 1280);
+    const pixels = Math.max(1, Math.round(Math.min(nativePixels, limit) * resolutionScale));
+    dpr = pixels / stageSize;
     if (canvas.width !== pixels || canvas.height !== pixels) { canvas.width = pixels; canvas.height = pixels; }
     gl.viewport(0, 0, pixels, pixels);
-    render();
+    canvas.dataset.resolution = String(pixels);
+  }
+  function viewAngles() {
+    return {
+      yaw: yaw + (reduced.matches || userTurned ? 0 : Math.sin(phase * .027) * .10 + easedX * .32),
+      pitch: pitch + (reduced.matches || userTurned ? 0 : Math.sin(phase * .038) * .025 + easedY * .13)
+    };
   }
   function render() {
     if (!ready || contextLost) return;
@@ -298,13 +326,19 @@
     gl.vertexAttribPointer(routePosition, 4, gl.FLOAT, false, 32, 0);
     gl.enableVertexAttribArray(routeDirection); gl.vertexAttribPointer(routeDirection, 4, gl.FLOAT, false, 32, 16);
     routes.forEach(route => gl.drawArrays(gl.TRIANGLE_STRIP, route.offset, route.count));
-    const markers = [];
-    endpoints.forEach(point => markers.push(...point.map(n => n * 1.014), 0));
-    if (!reduced.matches) destinations.forEach((point, i) => markers.push(...interpolate(point, (phase * .052 + i * .23) % 1), 0));
+    if (!reduced.matches) {
+      for (let i = 0; i < routeTracks.length; i++) {
+        const track = routeTracks[i], t = (phase * .052 + i * .23) % 1;
+        const a = Math.sin((1 - t) * track.angle) * track.inverseSine;
+        const b = Math.sin(t * track.angle) * track.inverseSine;
+        const radius = 1.012 + Math.sin(t * Math.PI) * .07, offset = (endpoints.length + i) * 4;
+        for (let axis = 0; axis < 3; axis++) markerData[offset + axis] = (origin[axis] * a + track.point[axis] * b) * radius;
+      }
+    }
     gl.uniform1f(routeUniforms.mode, 1); gl.uniform1f(routeUniforms.pointSize, 8 * dpr);
-    gl.bindBuffer(gl.ARRAY_BUFFER, markerBuffer); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(markers), gl.DYNAMIC_DRAW);
+    gl.bindBuffer(gl.ARRAY_BUFFER, markerBuffer); gl.bufferSubData(gl.ARRAY_BUFFER, 0, markerData);
     gl.disableVertexAttribArray(routeDirection); gl.vertexAttrib4f(routeDirection, 0, 0, 0, 0);
-    gl.vertexAttribPointer(routePosition, 4, gl.FLOAT, false, 0, 0); gl.drawArrays(gl.POINTS, 0, markers.length / 4);
+    gl.vertexAttribPointer(routePosition, 4, gl.FLOAT, false, 0, 0); gl.drawArrays(gl.POINTS, 0, reduced.matches ? endpoints.length : endpoints.length + destinations.length);
     frames++;
     canvas.dataset.frame = String(frames);
     canvas.dataset.yaw = viewYaw.toFixed(3); canvas.dataset.pitch = viewPitch.toFixed(3);
@@ -315,32 +349,44 @@
     drag = null;
     stage.classList.remove('is-rotating');
     canvas.dataset.interaction = userTurned ? 'manual' : 'ambient';
-    if (!keepMomentum || reduced.matches) velocityYaw = velocityPitch = 0;
+    // A held finger, cancellation or interrupted page must not restart an old flick.
+    if (!keepMomentum || reduced.matches || !active || performance.now() - active.lastMotion > 85) velocityYaw = velocityPitch = 0;
+    if (!keepMomentum) { goalYaw = yaw; goalPitch = pitch; }
     if (active && canvas.hasPointerCapture(active.id)) canvas.releasePointerCapture(active.id);
   }
-  function manualView() {
+  function captureView() {
+    if (userTurned) return;
+    const view = viewAngles();
+    yaw = goalYaw = view.yaw;
+    pitch = goalPitch = Math.max(-pitchLimit, Math.min(pitchLimit, view.pitch));
     userTurned = true;
     targetX = targetY = easedX = easedY = 0;
+  }
+  function manualView() {
     canvas.dataset.interaction = drag ? 'dragging' : 'manual';
-    if (reduced.matches) render();
+    if (reduced.matches) { yaw = goalYaw; pitch = goalPitch; render(); }
     else if (!raf) refresh();
   }
   function turn(direction) {
     if (!ready || contextLost || blocked()) return;
+    captureView();
     stopDrag(false);
     if (direction === 'reset') {
-      yaw = initialView.yaw; pitch = initialView.pitch;
+      goalYaw = initialView.yaw; goalPitch = initialView.pitch;
+      phase = 0;
       userTurned = false; targetX = targetY = easedX = easedY = 0;
-      canvas.dataset.interaction = 'ambient'; render(); return;
+      canvas.dataset.interaction = 'ambient';
+      if (reduced.matches) { yaw = goalYaw; pitch = goalPitch; render(); }
+      else if (!raf) refresh();
+      return;
     }
-    if (direction === 'left') yaw -= Math.PI / 6;
-    else if (direction === 'right') yaw += Math.PI / 6;
-    else if (direction === 'up') pitch -= Math.PI / 12;
-    else if (direction === 'down') pitch += Math.PI / 12;
-    pitch = Math.max(-pitchLimit, Math.min(pitchLimit, pitch));
-    manualView(); render();
+    if (direction === 'left') goalYaw -= Math.PI / 6;
+    else if (direction === 'right') goalYaw += Math.PI / 6;
+    else if (direction === 'up') goalPitch -= Math.PI / 12;
+    else if (direction === 'down') goalPitch += Math.PI / 12;
+    goalPitch = Math.max(-pitchLimit, Math.min(pitchLimit, goalPitch));
+    manualView();
   }
-  turnButtons.forEach(button => listen(button, 'click', () => turn(button.dataset.globeTurn)));
   listen(canvas, 'keydown', event => {
     const direction = { ArrowLeft: 'left', ArrowRight: 'right', ArrowUp: 'up', ArrowDown: 'down', Home: 'reset' }[event.key];
     if (!direction || !ready || blocked()) return;
@@ -352,10 +398,13 @@
     const x = (event.clientX - bounds.left - bounds.width / 2) / (bounds.width * .42);
     const y = (event.clientY - bounds.top - bounds.height / 2) / (bounds.height * .42);
     if (x * x + y * y > 1) return;
+    captureView();
     velocityYaw = velocityPitch = 0;
-    drag = { id: event.pointerId, touch: event.pointerType === 'touch', x: event.clientX, y: event.clientY, startX: event.clientX, startY: event.clientY, time: event.timeStamp, moved: false, scale: Math.PI * 2 / bounds.width };
+    goalYaw = yaw; goalPitch = pitch;
+    drag = { id: event.pointerId, touch: event.pointerType === 'touch', x: event.clientX, y: event.clientY, startX: event.clientX, startY: event.clientY, time: event.timeStamp, lastMotion: performance.now(), moved: false, scale: Math.PI * 2 / bounds.width };
     canvas.setPointerCapture(event.pointerId);
-    if (event.pointerType !== 'touch') { event.preventDefault(); canvas.focus({ preventScroll: true }); }
+    updateResolution();
+    if (event.pointerType !== 'touch') event.preventDefault();
   });
   listen(canvas, 'pointermove', event => {
     if (!drag || event.pointerId !== drag.id || blocked()) return;
@@ -366,46 +415,85 @@
     }
     const dx = event.clientX - drag.x, dy = event.clientY - drag.y;
     if (!dx && !dy) return;
-    const dt = Math.max(.008, Math.min(.1, (event.timeStamp - drag.time) / 1000));
+    const dt = Math.max(.001, Math.min(.1, (event.timeStamp - drag.time) / 1000));
     const deltaYaw = dx * drag.scale, deltaPitch = dy * drag.scale * .75;
-    yaw += deltaYaw;
-    const nextPitch = Math.max(-pitchLimit, Math.min(pitchLimit, pitch + deltaPitch));
-    velocityYaw = Math.max(-4, Math.min(4, deltaYaw / dt));
-    velocityPitch = Math.max(-3, Math.min(3, (nextPitch - pitch) / dt));
-    pitch = nextPitch;
-    drag.x = event.clientX; drag.y = event.clientY; drag.time = event.timeStamp; drag.moved = true;
+    goalYaw += deltaYaw;
+    const nextPitch = Math.max(-pitchLimit, Math.min(pitchLimit, goalPitch + deltaPitch));
+    const velocityBlend = 1 - Math.exp(-dt * 22);
+    velocityYaw += (Math.max(-6, Math.min(6, deltaYaw / dt)) - velocityYaw) * velocityBlend;
+    velocityPitch += (Math.max(-4, Math.min(4, (nextPitch - goalPitch) / dt)) - velocityPitch) * velocityBlend;
+    goalPitch = nextPitch;
+    drag.x = event.clientX; drag.y = event.clientY; drag.time = event.timeStamp; drag.lastMotion = performance.now(); drag.moved = true;
     stage.classList.add('is-rotating'); manualView();
   }, { passive: true });
-  listen(canvas, 'pointerup', event => { if (drag?.id === event.pointerId) { const moved = drag.moved; stopDrag(moved); if (reduced.matches) render(); } });
+  listen(canvas, 'pointerup', event => {
+    if (drag?.id !== event.pointerId) return;
+    const moved = drag.moved, touch = drag.touch;
+    stopDrag(moved);
+    if (touch && !moved) {
+      const now = performance.now();
+      if (lastTap && now - lastTap.time < 320 && Math.hypot(event.clientX - lastTap.x, event.clientY - lastTap.y) < 24) { lastTap = null; turn('reset'); }
+      else lastTap = { time: now, x: event.clientX, y: event.clientY };
+    } else lastTap = null;
+    if (reduced.matches) render();
+  });
+  listen(canvas, 'dblclick', event => { if (ready && !blocked()) { event.preventDefault(); turn('reset'); } });
   listen(canvas, 'pointercancel', () => stopDrag(false));
   listen(canvas, 'lostpointercapture', () => { if (drag) stopDrag(false); });
   listen(window, 'blur', () => { stopDrag(false); targetX = targetY = 0; });
   function loop(now) {
     raf = 0;
     if (!ready || contextLost || reduced.matches || blocked()) return refresh();
-    if (now - previous >= 1000 / 30) {
-      const dt = previous ? Math.min((now - previous) / 1000, .1) : 1 / 30;
-      previous = now; phase += dt;
-      if (!drag) {
-        yaw += velocityYaw * dt;
-        pitch = Math.max(-pitchLimit, Math.min(pitchLimit, pitch + velocityPitch * dt));
-        velocityYaw *= Math.exp(-dt * 5); velocityPitch *= Math.exp(-dt * 5);
-        if (Math.abs(velocityYaw) < .002) velocityYaw = 0;
-        if (Math.abs(velocityPitch) < .002) velocityPitch = 0;
-      }
-      const amount = 1 - Math.exp(-dt * 3.7);
-      easedX += (targetX - easedX) * amount; easedY += (targetY - easedY) * amount;
-      render();
+    const elapsed = previous ? (now - previous) / 1000 : 1 / 60;
+    const dt = Math.max(0, Math.min(elapsed, .05));
+    previous = now; phase += dt;
+    if (!drag) {
+      // Integrate the exponential decay exactly so release feels the same at any refresh rate.
+      const decay = Math.exp(-dt * 6.5), travel = (1 - decay) / 6.5;
+      goalYaw += velocityYaw * travel;
+      goalPitch = Math.max(-pitchLimit, Math.min(pitchLimit, goalPitch + velocityPitch * travel));
+      velocityYaw *= decay; velocityPitch *= decay;
+      if (Math.abs(velocityYaw) < .002) velocityYaw = 0;
+      if (Math.abs(velocityPitch) < .002 || Math.abs(goalPitch) >= pitchLimit) velocityPitch = 0;
     }
+    const follow = 1 - Math.exp(-dt * (drag ? 38 : 26));
+    yaw += (goalYaw - yaw) * follow; pitch += (goalPitch - pitch) * follow;
+    const amount = 1 - Math.exp(-dt * 3.7);
+    easedX += (targetX - easedX) * amount; easedY += (targetY - easedY) * amount;
+    // Track sustained missed frames, not a single long task or a resize.
+    if (elapsed >= .08) {
+      slowFrames++;
+      if (slowFrames >= 3) framePeriod += (80 - framePeriod) * .12;
+    } else if (elapsed > 0) {
+      slowFrames = 0;
+      framePeriod += (elapsed * 1000 - framePeriod) * .08;
+    }
+    if (now - qualityCheck > 900) {
+      if (framePeriod > 24) {
+        resolutionScale = Math.max(.625, resolutionScale * .84);
+        qualityRecovery = 0;
+      } else if (framePeriod < 18 && !drag) {
+        if (!qualityRecovery) qualityRecovery = now;
+        if (now - qualityRecovery > 6000) {
+          resolutionScale = Math.min(1, resolutionScale + .06);
+          qualityRecovery = now;
+        }
+      } else qualityRecovery = 0;
+      qualityCheck = now;
+      updateResolution();
+    } else if (isMoving() !== bufferMoving) updateResolution();
+    render();
     raf = requestAnimationFrame(loop);
   }
   function refresh() {
     if (!ready || contextLost) return;
     cancelAnimationFrame(raf); raf = 0; previous = 0;
+    qualityRecovery = 0; slowFrames = 0;
     if (blocked()) { stopDrag(false); canvas.dataset.motion = 'paused'; return; }
     if (reduced.matches) {
       velocityYaw = velocityPitch = 0;
       targetX = targetY = easedX = easedY = 0;
+      yaw = goalYaw; pitch = goalPitch;
       canvas.dataset.motion = 'reduced'; render(); return;
     }
     canvas.dataset.motion = 'active'; raf = requestAnimationFrame(loop);

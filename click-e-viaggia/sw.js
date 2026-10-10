@@ -1,9 +1,9 @@
 'use strict';
-const CACHE = 'click-viaggia-v34';
+const CACHE = 'click-viaggia-v35';
 const ASSETS = [
   './site-interactions.css?v=1', './site-interactions.js?v=1',
   './metal-finish.css?v=1', './metal-finish.js?v=1',
-  './globe-hero.css?v=3', './globe-hero.js?v=3', './data/globe-land.json',
+  './globe-hero.css?v=4', './globe-hero.js?v=4', './data/globe-land.json',
   './home-motion.css?v=1', './home-motion.js?v=1',
   './trip-photo-stack.css?v=2', './trip-photo-stack.js?v=2', './trip.js?v=4',
   './assets/fatima-rosary-interior.jpg', './assets/fatima-trinity-interior.jpg',
