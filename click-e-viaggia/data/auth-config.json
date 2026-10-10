@@ -1,2 +1,8 @@
-{"enabled":false,"apiKey":"","authDomain":"","projectId":"","appId":"","providers":{"google":false,"apple":false}}
-
+{
+  "enabled": true,
+  "apiKey": "AIzaSyD2ejmJYt5DAjs9Eeomy2P9UaLmIxUqQ6o",
+  "authDomain": "click-e-viaggia.firebaseapp.com",
+  "projectId": "click-e-viaggia",
+  "appId": "1:507209337210:web:9f93925d29e9253e49aec3",
+  "providers": {"google": true, "apple": false}
+}

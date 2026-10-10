@@ -1,4 +1,4 @@
-const SDK_BASE = 'https://www.gstatic.com/firebasejs/10.14.1/';
+export const SDK_BASE = 'https://www.gstatic.com/firebasejs/10.14.1/';
 let configurationPromise;
 let accountPromise;
 
@@ -16,7 +16,7 @@ export function loadAccountConfig() {
       const enabled = source.enabled === true && fields.every(key => firebase[key]) && Object.values(providers).some(Boolean);
       return {enabled, firebase, providers: enabled ? providers : {google: false, apple: false}};
     } finally { clearTimeout(timeout); }
-  })();
+  })().catch(error => { configurationPromise = null; throw error; });
   return configurationPromise;
 }
 
@@ -44,6 +44,7 @@ export function getAccountService() {
     if (existing && existing.options.projectId !== config.firebase.projectId) throw Error('Il progetto account non corrisponde alla configurazione del sito.');
     const app = existing ? appSDK.getApp() : appSDK.initializeApp(config.firebase);
     const auth = authSDK.getAuth(app);
+    let operationPending = false;
     await new Promise((resolve, reject) => {
       let stop = () => {};
       stop = authSDK.onAuthStateChanged(auth, () => { queueMicrotask(() => stop()); resolve(); }, error => { queueMicrotask(() => stop()); reject(error); });
@@ -54,13 +55,22 @@ export function getAccountService() {
       observe(callback, errorCallback) { return authSDK.onAuthStateChanged(auth, callback, errorCallback); },
       async login(provider, remember = false) {
         if (!['google', 'apple'].includes(provider) || !config.providers[provider]) throw Object.assign(Error('Metodo di accesso non disponibile.'), {code: 'auth/operation-not-allowed'});
-        await authSDK.setPersistence(auth, remember ? authSDK.browserLocalPersistence : authSDK.browserSessionPersistence);
-        const identity = provider === 'google' ? new authSDK.GoogleAuthProvider() : new authSDK.OAuthProvider('apple.com');
-        if (provider === 'apple') { identity.addScope('email'); identity.addScope('name'); identity.setCustomParameters({locale: 'it'}); }
-        return authSDK.signInWithPopup(auth, identity);
+        if (operationPending) throw Object.assign(Error('Accesso già in corso.'), {code: 'auth/cancelled-popup-request'});
+        operationPending = true;
+        try {
+          await authSDK.setPersistence(auth, remember ? authSDK.browserLocalPersistence : authSDK.browserSessionPersistence);
+          const identity = provider === 'google' ? new authSDK.GoogleAuthProvider() : new authSDK.OAuthProvider('apple.com');
+          if (provider === 'apple') { identity.addScope('email'); identity.addScope('name'); identity.setCustomParameters({locale: 'it'}); }
+          return await authSDK.signInWithPopup(auth, identity);
+        } finally { operationPending = false; }
       },
-      logout() { return authSDK.signOut(auth); }
+      async logout() {
+        if (operationPending) throw Object.assign(Error('Accesso già in corso.'), {code: 'auth/cancelled-popup-request'});
+        operationPending = true;
+        try { await authSDK.signOut(auth); }
+        finally { operationPending = false; }
+      }
     };
-  })();
+  })().catch(error => { accountPromise = null; throw error; });
   return accountPromise;
 }

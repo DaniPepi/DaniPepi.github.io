@@ -1,4 +1,4 @@
-import {getAccountService, accountErrorMessage} from './account-core.js?v=1';
+import {getAccountService, accountErrorMessage} from './account-core.js?v=2';
 
 const dismissedKey = 'click-viaggia-account-dismissed-v1';
 const unavailable = 'Accessi in preparazione. Per ora il diario resta salvato su questo browser.';
@@ -26,7 +26,7 @@ function initializeAccountPanel() {
       <button type="button" class="cva-account-provider cva-account-provider-apple" data-provider="apple" disabled>Continua con Apple</button>
     </div>
     <div class="cva-account-signed-in" hidden>
-      <a class="cva-account-diary" href="i-miei-viaggi.html">Apri il mio diario ↗</a>
+      <a class="cva-account-diary" href="i-miei-viaggi.html">Apri il mio diario</a>
       <button type="button" class="cva-account-logout">Esci dall’account</button>
     </div>
     <button type="button" class="cva-account-continue">Continua senza account</button>
@@ -36,6 +36,13 @@ function initializeAccountPanel() {
   const close = find('.cva-account-close'), continueButton = find('.cva-account-continue'), status = find('.cva-account-status');
   const providerButtons = [...panel.querySelectorAll('[data-provider]')], remember = find('.cva-account-remember'), logout = find('.cva-account-logout');
   const navigation = document.querySelector('#navigation, .team-nav');
+  const diaryLinks = [...document.querySelectorAll('a[href="i-miei-viaggi.html"]')].map(link => ({
+    link, target: link.getAttribute('target'), rel: link.getAttribute('rel'), text: link.textContent
+  }));
+  const diaryCaption = document.querySelector('.personal-map-teaser .panel-caption');
+  const originalCaption = diaryCaption?.textContent;
+  const diaryDescription = document.querySelector('.personal-map-teaser .glass-panel > p:not(.eyebrow)');
+  const originalDescription = diaryDescription?.textContent;
   let account = null, currentUser = null, busy = false, previousFocus = null, backdropPressed = false;
   const opener = document.createElement('button');
   opener.type = 'button'; opener.className = 'cva-account-nav'; opener.textContent = 'Accedi';
@@ -69,6 +76,19 @@ function initializeAccountPanel() {
     find('.cva-account-sync').textContent = account ? 'Ritrova il diario sui tuoi dispositivi.' : 'Con gli accessi attivi, sincronizzi il diario.';
     providerButtons.forEach(button => { button.disabled = busy || !account?.providers[button.dataset.provider]; });
     logout.disabled = busy; panel.setAttribute('aria-busy', String(busy));
+    diaryLinks.forEach(({link, target, rel, text}) => {
+      if (currentUser) {
+        link.removeAttribute('target'); link.removeAttribute('rel'); link.textContent = text.replace(/\s*↗$/, '');
+      } else {
+        if (target === null) link.removeAttribute('target'); else link.setAttribute('target', target);
+        if (rel === null) link.removeAttribute('rel'); else link.setAttribute('rel', rel);
+        link.textContent = text;
+      }
+    });
+    if (diaryCaption) diaryCaption.textContent = currentUser ? 'IL TUO DIARIO PERSONALE' : originalCaption;
+    if (diaryDescription) diaryDescription.textContent = currentUser
+      ? 'Segna sulla mappa i paesi che hai visitato: li ritroverai illuminati nel globo della home e nel tuo account, sui dispositivi da cui accedi.'
+      : originalDescription;
   }
   opener.addEventListener('click', () => open(true));
   close.addEventListener('click', dismiss); continueButton.addEventListener('click', dismiss);
@@ -110,7 +130,7 @@ function initializeAccountPanel() {
   (async () => {
     try {
       account = await getAccountService(); currentUser = account?.currentUser || null;
-      status.textContent = account ? (currentUser ? 'Il tuo account è connesso.' : 'Scegli Google o Apple per continuare.') : unavailable;
+      status.textContent = account ? (currentUser ? 'Il tuo account è connesso.' : account.providers.apple ? 'Scegli Google o Apple per continuare.' : 'Accedi con Google. Apple non è ancora disponibile.') : unavailable;
       if (account) {
         const unsubscribe = account.observe(user => { currentUser = user; refresh(); }, () => { status.textContent = 'Non è possibile verificare l’account ora. Puoi continuare senza accedere.'; });
         window.addEventListener('pagehide', event => { if (!event.persisted) unsubscribe(); });

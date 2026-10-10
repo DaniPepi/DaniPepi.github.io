@@ -19,15 +19,19 @@
   const routes = [];
   const listeners = [];
   const diaryKey = 'click-viaggia-visited-v1';
+  const diaryEvent = 'click-viaggia:globe-diary';
+  let diarySource = document.querySelector('script[src^="globe-account.js"]') ? 'loading' : 'guest';
+  let accountVisited = [];
   const globeLabel = 'Globo del mondo: trascina per ruotarlo. Usa le frecce per girare e Home per ripristinare.';
   let countryShapes = null, countryRequest = null, countryController = null, visitedSignature = null;
   function readVisited() {
+    if (diarySource !== 'guest') return diarySource === 'account' ? accountVisited : [];
     try {
       const values = JSON.parse(localStorage.getItem(diaryKey) || '[]');
       return Array.isArray(values) ? [...new Set(values.filter(code => typeof code === 'string' && /^[a-z]{2}$/.test(code)))].sort() : [];
     } catch { return []; }
   }
-  // Shares only the local guest diary. No account identifiers or visited choices are sent.
+  // Geometry stays local. The account bridge supplies only ISO country codes.
   function loadCountryShapes() {
     if (countryRequest || countryShapes || disposed) return;
     countryController = new AbortController();
@@ -75,7 +79,7 @@
       canvas.setAttribute('aria-label', globeLabel + (codes.length ? ` ${codes.length} paesi del tuo diario sono illuminati.` : ''));
       if (!blocked()) render();
     }
-    canvas.dataset.diary = saved.length && !countryShapes ? 'loading' : 'local';
+    canvas.dataset.diary = saved.length && !countryShapes ? 'loading' : diarySource === 'guest' ? 'local' : diarySource;
     if (saved.length && !countryShapes) loadCountryShapes();
   }
   const vector = ([lat, lon]) => {
@@ -575,6 +579,17 @@
   }, { passive: true });
   listen(hero, 'pointerleave', () => { targetX = targetY = 0; }, { passive: true });
   listen(document, 'visibilitychange', refresh);
+  listen(window, diaryEvent, event => {
+    const detail = event.detail;
+    if (!detail || !['guest', 'account', 'loading', 'unavailable'].includes(detail.source)) return;
+    diarySource = detail.source;
+    accountVisited = diarySource === 'account' && Array.isArray(detail.visited)
+      ? [...new Set(detail.visited.filter(code => typeof code === 'string' && /^[a-z]{2}$/.test(code)))].sort()
+      : [];
+    updateVisited();
+  });
+  // The bridge answers even if its initial snapshot arrived before this listener.
+  window.dispatchEvent(new CustomEvent('click-viaggia:globe-diary-request'));
   listen(window, 'storage', event => { if (event.key === diaryKey || event.key === null) updateVisited(); });
   listen(window, 'focus', updateVisited);
   listen(reduced, 'change', refresh);
