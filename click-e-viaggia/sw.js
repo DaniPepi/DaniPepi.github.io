@@ -1,5 +1,5 @@
 'use strict';
-const CACHE = 'click-viaggia-v37';
+const CACHE = 'click-viaggia-v38';
 const ASSETS = [
   './site-interactions.css?v=1', './site-interactions.js?v=1',
   './metal-finish.css?v=1', './metal-finish.js?v=1',
