@@ -211,3 +211,7 @@ Dieci nuovi articoli giornalistici con fonti primarie, immagini illustrative loc
 
 ## Capitoli del blog
 Home e giornale: Luoghi dal mondo (3 racconti) e Curiosità dal mondo (10 approfondimenti). Link capitolo=luoghi/curiosita, compatibilità paese, copertine interattive con movimento ridotto, cache v42.
+
+
+## Sette capitoli
+18 articoli, cinque nuovi approfondimenti con fonti primarie e illustrazioni originali. Carte sovrapposte, ciclo automatico continuo al mouse, trascinamento, frecce, accesso da tastiera, touch, movimento ridotto. Articoli nascosti nel markup fino alla selezione di un capitolo; ritorno ai capitoli e collegamenti condivisibili. Cache v43.

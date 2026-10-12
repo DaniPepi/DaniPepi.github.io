@@ -1,0 +1,297 @@
+{
+  "chapters": [
+    {
+      "key": "luoghi",
+      "title": "LUOGHI DAL MONDO",
+      "text": "Viaggi vissuti, paesaggi e persone.",
+      "image": "assets/blog-nosy-iranja.jpg",
+      "alt": "La spiaggia di Nosy Iranja",
+      "count": "3 racconti"
+    },
+    {
+      "key": "curiosita",
+      "title": "CURIOSITÀ DAL MONDO",
+      "text": "Dieci prospettive per guardare il mondo con occhi nuovi.",
+      "image": "assets/curiosita-ge.jpg",
+      "alt": "Ushguli in Georgia",
+      "count": "10 articoli"
+    },
+    {
+      "key": "citta",
+      "title": "CITTÀ SEGRETE",
+      "text": "Dietro il panorama dei Sassi, cisterne e canali raccontano l’ingegno quotidiano di una città costruita insieme alla roccia.",
+      "image": "assets/capitolo-citta.svg",
+      "alt": "Illustrazione editoriale originale · CITTÀ SEGRETE",
+      "count": "1 articolo"
+    },
+    {
+      "key": "sapori",
+      "title": "SAPORI E TRADIZIONI",
+      "text": "In Corea del Sud, il patrimonio del kimchi comprende un gesto collettivo: preparare, condividere e trasmettere un sapere.",
+      "image": "assets/capitolo-sapori.svg",
+      "alt": "Illustrazione editoriale originale · SAPORI E TRADIZIONI",
+      "count": "1 articolo"
+    },
+    {
+      "key": "natura",
+      "title": "NATURA STRAORDINARIA",
+      "text": "Forme vulcaniche e colori della roccia raccontano un’isola attraverso i processi che l’hanno modellata.",
+      "image": "assets/capitolo-natura.svg",
+      "alt": "Illustrazione editoriale originale · NATURA STRAORDINARIA",
+      "count": "1 articolo"
+    },
+    {
+      "key": "rotte",
+      "title": "ROTTE ICONICHE",
+      "text": "Un ponte ferroviario diventa una pagina di storia: il viaggio incontra l’ingegneria prima ancora di arrivare a destinazione.",
+      "image": "assets/capitolo-rotte.svg",
+      "alt": "Illustrazione editoriale originale · ROTTE ICONICHE",
+      "count": "1 articolo"
+    },
+    {
+      "key": "rituali",
+      "title": "RITUALI DEL MONDO",
+      "text": "Una pratica quotidiana racconta appartenenza e trasmissione culturale, molto più di un servizio da prenotare.",
+      "image": "assets/capitolo-rituali.svg",
+      "alt": "Illustrazione editoriale originale · RITUALI DEL MONDO",
+      "count": "1 articolo"
+    }
+  ],
+  "articles": [
+    {
+      "code": "citta",
+      "country": "Italia",
+      "category": "citta",
+      "slug": "matera-acqua",
+      "title": "Matera, la città che custodisce una seconda storia sotto i piedi",
+      "subtitle": "Dietro il panorama dei Sassi, cisterne e canali raccontano l’ingegno quotidiano di una città costruita insieme alla roccia.",
+      "lead": "Matera invita a guardare verso l’alto: facciate, campanili, case sovrapposte. Ma una parte della sua storia chiede il movimento opposto. Sotto la scena più fotografata si apre il racconto dell’acqua, raccolta e conservata in un ambiente che imponeva di usare con attenzione le risorse. È una chiave di lettura capace di trasformare una passeggiata in un’indagine.",
+      "sections": [
+        {
+          "heading": "La roccia come progetto",
+          "text": "L’UNESCO descrive i Sassi e il Parco delle Chiese Rupestri come un insediamento adattato al terreno e al suo ecosistema. Case, luoghi di culto e spazi di lavoro si intrecciano alle cavità naturali e alle forme della Murgia. Il paesaggio urbano non deriva soltanto da ciò che è stato costruito: comprende ciò che è stato scavato. Leggere Matera attraverso questa relazione permette di riconoscere nella pietra una risorsa abitata, oltre che un materiale da osservare.",
+          "source": 0
+        },
+        {
+          "heading": "Il patrimonio che non sta in facciata",
+          "text": "Uno studio pubblicato dall’Università di Macerata dedica l’attenzione ai palombari, alle cisterne e ai pozzi dei Sassi. La ricerca pone la tecnologia idraulica al centro della conoscenza della città, ricordando il ruolo di cisterne, pozzi e canali nel suo patrimonio. Il dettaglio interessante è il cambio di prospettiva: l’acqua porta la storia fuori dai soli monumenti e dentro le necessità di ogni giorno. Anche gli spazi meno appariscenti diventano documenti da leggere.",
+          "source": 1
+        },
+        {
+          "heading": "Una città da ascoltare in profondità",
+          "text": "Per chi visita, la domanda può essere semplice: come funzionava la vita qui, prima dei servizi che oggi diamo per scontati? Cercare una risposta rende più significativo il panorama. Una scala non è soltanto un punto per una fotografia; una cavità può rimandare a un uso preciso, un cortile a una relazione tra abitazioni. Matera insegna così a rallentare davanti alle città storiche. La bellezza visibile rimane, ma acquista una seconda dimensione: quella del lavoro necessario per renderla abitabile. È questa storia quotidiana a fare dei Sassi un luogo da capire, oltre che da ammirare."
+        }
+      ],
+      "sources": [
+        {
+          "title": "UNESCO · Sassi e Parco delle Chiese Rupestri di Matera",
+          "url": "https://whc.unesco.org/en/list/670/"
+        },
+        {
+          "title": "Università di Macerata · Cisterne e pozzi di Matera",
+          "url": "https://rivisteopen.unimc.it/index.php/cap-cult/article/view/2076"
+        }
+      ],
+      "photo": {
+        "code": "citta",
+        "path": "assets/capitolo-citta.svg",
+        "width": 1000,
+        "height": 700,
+        "caption": "Illustrazione editoriale originale · CITTÀ SEGRETE",
+        "author": "Click&Viaggia",
+        "sourceUrl": "https://danipepi.github.io/click-e-viaggia/blog.html",
+        "license": "Illustrazione originale",
+        "licenseUrl": "https://danipepi.github.io/click-e-viaggia/legal.html"
+      },
+      "file": "blog-matera-acqua.html"
+    },
+    {
+      "code": "sapori",
+      "country": "Corea del Sud",
+      "category": "sapori",
+      "slug": "corea-kimjang",
+      "title": "Kimjang, quando preparare il cibo significa fare comunità",
+      "subtitle": "In Corea del Sud, il patrimonio del kimchi comprende un gesto collettivo: preparare, condividere e trasmettere un sapere.",
+      "lead": "Il primo incontro con una cucina passa spesso dal piatto. Colore, profumo, consistenza: tutto invita all’assaggio. Il kimjang coreano suggerisce però di spostare lo sguardo qualche ora prima del pasto, verso le persone che preparano insieme. La curiosità non riguarda un ingrediente segreto. Riguarda una relazione sociale che il cibo rende concreta.",
+      "sections": [
+        {
+          "heading": "La tradizione è anche un verbo",
+          "text": "L’UNESCO riconosce il kimjang come pratica di preparazione e condivisione del kimchi nella Repubblica di Corea. Il patrimonio non coincide quindi soltanto con il prodotto finito. Comprende il lavoro collettivo e la trasmissione delle conoscenze. Nei materiali della Korea Heritage Agency, la preparazione condivisa è presentata come un’occasione per rafforzare la cooperazione familiare. Il sapore acquista così una dimensione che un menu, da solo, difficilmente può raccontare.",
+          "source": 0
+        },
+        {
+          "heading": "Un calendario dentro la cucina",
+          "text": "La documentazione della Korea Heritage Agency descrive preparativi distribuiti nelle stagioni e una fase collettiva nel tardo autunno, quando vengono preparate e condivise quantità di kimchi destinate all’inverno. È un calendario alimentare, ma anche un’organizzazione delle relazioni. La stagione entra nella casa attraverso scorte, ingredienti e lavoro. Questa prospettiva aiuta a capire perché una tradizione gastronomica possa essere tutelata come patrimonio immateriale: il suo valore vive nei gesti ripetuti dalle persone.",
+          "source": 1
+        },
+        {
+          "heading": "Assaggiare con una domanda in più",
+          "text": "Quando viaggiamo, cerchiamo spesso il ristorante giusto. Possiamo aggiungere un’altra ricerca: la storia di chi conserva e insegna una preparazione. Non serve trasformare ogni pasto in una lezione, né immaginare che una comunità abbia un’unica ricetta. Basta lasciare spazio alla curiosità. Il kimjang invita a distinguere il consumo dalla condivisione e a considerare la cucina come una parte della vita sociale. Il ricordo di un sapore può allora portare con sé una domanda nuova: quali legami rendono possibile quel piatto? È lì che un viaggio gastronomico comincia ad avere profondità."
+        }
+      ],
+      "sources": [
+        {
+          "title": "UNESCO · Kimjang",
+          "url": "https://ich.unesco.org/en/RL/kimjang-making-and-sharing-kimchi-in-the-republic-of-korea-00881"
+        },
+        {
+          "title": "Korea Heritage Agency · Preparare e condividere il kimchi",
+          "url": "https://www.youtube.com/watch?v=m5ACwBXA-ZM"
+        }
+      ],
+      "photo": {
+        "code": "sapori",
+        "path": "assets/capitolo-sapori.svg",
+        "width": 1000,
+        "height": 700,
+        "caption": "Illustrazione editoriale originale · SAPORI E TRADIZIONI",
+        "author": "Click&Viaggia",
+        "sourceUrl": "https://danipepi.github.io/click-e-viaggia/blog.html",
+        "license": "Illustrazione originale",
+        "licenseUrl": "https://danipepi.github.io/click-e-viaggia/legal.html"
+      },
+      "file": "blog-corea-kimjang.html"
+    },
+    {
+      "code": "natura",
+      "country": "Spagna",
+      "category": "natura",
+      "slug": "tenerife-teide",
+      "title": "Teide, il paesaggio di Tenerife che si legge come un archivio",
+      "subtitle": "Forme vulcaniche e colori della roccia raccontano un’isola attraverso i processi che l’hanno modellata.",
+      "lead": "Tenerife viene spesso immaginata attraverso la costa. Il Teide cambia la scala del racconto: la spiaggia lascia spazio a un paesaggio nel quale la roccia sembra assumere il ruolo principale. Guardarlo come una semplice scenografia sarebbe riduttivo. Ogni forma invita a cercare una storia di trasformazioni, tempi e materiali.",
+      "sections": [
+        {
+          "heading": "Un territorio fatto di differenze",
+          "text": "L’UNESCO descrive il Parco nazionale del Teide come un insieme ricco e diversificato di forme e paesaggi vulcanici, dominato dal complesso Teide–Pico Viejo. Il valore del luogo non risiede soltanto nel profilo della montagna. Comprende la varietà delle strutture presenti e il modo in cui permettono di leggere l’attività vulcanica. Il paesaggio diventa così un archivio aperto, dove l’osservazione può passare dall’insieme a un dettaglio della superficie.",
+          "source": 0
+        },
+        {
+          "heading": "La montagna non finisce al mare",
+          "text": "Il filmato istituzionale UNESCO e NHK richiama lo sviluppo della struttura vulcanica rispetto al fondo oceanico. È un’immagine utile per cambiare punto di vista: l’isola che vediamo è una parte di un sistema molto più ampio. Il mare non chiude il racconto geologico al bordo della costa. Per il visitatore, questa prospettiva aggiunge profondità anche alle vedute più familiari e rende meno separati il paesaggio marino e quello della montagna.",
+          "source": 1
+        },
+        {
+          "heading": "Il dettaglio che vale una sosta",
+          "text": "Davanti a un panorama spettacolare, fotografare è un gesto immediato. Fermarsi a osservare una differenza di colore o una forma della roccia può esserlo altrettanto. Il Teide invita a esercitare questa attenzione senza cercare risposte fantasiose: ciò che sembra insolito non ha bisogno di diventare misterioso. Un luogo può incuriosire proprio perché consente di seguire un processo reale. Anche l’immagine più suggestiva acquista forza quando troviamo le parole per descriverla. Tenerife conserva così due racconti vicini, la costa e il territorio vulcanico, che possono arricchirsi a vicenda invece di competere per la stessa fotografia."
+        }
+      ],
+      "sources": [
+        {
+          "title": "UNESCO · Parco nazionale del Teide",
+          "url": "https://whc.unesco.org/en/list/1258/"
+        },
+        {
+          "title": "UNESCO / NHK · Il paesaggio vulcanico del Teide",
+          "url": "https://whc.unesco.org/en/documents/122198"
+        }
+      ],
+      "photo": {
+        "code": "natura",
+        "path": "assets/capitolo-natura.svg",
+        "width": 1000,
+        "height": 700,
+        "caption": "Illustrazione editoriale originale · NATURA STRAORDINARIA",
+        "author": "Click&Viaggia",
+        "sourceUrl": "https://danipepi.github.io/click-e-viaggia/blog.html",
+        "license": "Illustrazione originale",
+        "licenseUrl": "https://danipepi.github.io/click-e-viaggia/legal.html"
+      },
+      "file": "blog-tenerife-teide.html"
+    },
+    {
+      "code": "rotte",
+      "country": "Regno Unito",
+      "category": "rotte",
+      "slug": "scozia-forth-bridge",
+      "title": "Forth Bridge, la Scozia che si racconta attraverso un attraversamento",
+      "subtitle": "Un ponte ferroviario diventa una pagina di storia: il viaggio incontra l’ingegneria prima ancora di arrivare a destinazione.",
+      "lead": "Di solito un ponte appartiene al tragitto: lo attraversiamo per raggiungere qualcosa d’altro. Il Forth Bridge, in Scozia, capovolge questa abitudine. La sua struttura è una destinazione dello sguardo, un’opera capace di raccontare il rapporto tra una barriera naturale e il progetto umano che l’ha affrontata.",
+      "sections": [
+        {
+          "heading": "Il tragitto prende forma",
+          "text": "L’UNESCO presenta il Forth Bridge come un ponte ferroviario sull’estuario del Forth, che collega Fife a Edimburgo. La costruzione a sbalzo, riconoscibile nella sua struttura, è centrale nel valore dell’opera. Qui il movimento non è invisibile: trova una forma architettonica evidente. Guardare il ponte significa quindi leggere il viaggio attraverso ciò che lo rende possibile, oltre che attraverso le mete collegate dalla linea ferroviaria.",
+          "source": 0
+        },
+        {
+          "heading": "Una geometria che racconta un’epoca",
+          "text": "UNESCO in the UK ricorda l’apertura del ponte nel 1890 e descrive tre torri a sbalzo bilanciate, unite da campate sospese. La geometria non è un ornamento aggiunto alla funzione: rende percepibile un principio costruttivo. Per chi osserva, il dettaglio interessante è proprio questa coincidenza tra l’utilità dell’opera e la sua forza visiva. Una linea ferroviaria diventa così anche una testimonianza delle capacità tecniche di un periodo storico.",
+          "source": 1
+        },
+        {
+          "heading": "Il viaggio prima dell’arrivo",
+          "text": "Raccontare una rotta significa spesso elencare le tappe. Possiamo invece chiederci quali passaggi ne abbiano cambiato le possibilità: un ponte, una stazione, un collegamento tra rive. Il Forth Bridge propone questa lettura senza bisogno di trasformare ogni spostamento in un’impresa. Basta riconoscere che il tragitto ha una storia propria. La fotografia dell’opera acquista allora un significato diverso: documenta una relazione fra luoghi, oltre a una struttura. È un modo per scoprire la Scozia attraverso le connessioni, lasciando che il viaggio cominci già nel paesaggio dell’attraversamento, prima della destinazione che avevamo segnato sulla mappa."
+        }
+      ],
+      "sources": [
+        {
+          "title": "UNESCO · Forth Bridge",
+          "url": "https://whc.unesco.org/en/list/1485/"
+        },
+        {
+          "title": "UNESCO in the UK · Storia e struttura del ponte",
+          "url": "https://unesco.org.uk/our-network/world-heritage-sites/the-forth-bridge"
+        }
+      ],
+      "photo": {
+        "code": "rotte",
+        "path": "assets/capitolo-rotte.svg",
+        "width": 1000,
+        "height": 700,
+        "caption": "Illustrazione editoriale originale · ROTTE ICONICHE",
+        "author": "Click&Viaggia",
+        "sourceUrl": "https://danipepi.github.io/click-e-viaggia/blog.html",
+        "license": "Illustrazione originale",
+        "licenseUrl": "https://danipepi.github.io/click-e-viaggia/legal.html"
+      },
+      "file": "blog-scozia-forth-bridge.html"
+    },
+    {
+      "code": "rituali",
+      "country": "Finlandia",
+      "category": "rituali",
+      "slug": "finlandia-sauna",
+      "title": "Finlandia, la sauna oltre l’immagine del benessere",
+      "subtitle": "Una pratica quotidiana racconta appartenenza e trasmissione culturale, molto più di un servizio da prenotare.",
+      "lead": "Nel linguaggio del turismo, la sauna compare spesso accanto a una piscina o a un trattamento. In Finlandia, limitarla a questa cornice significa perdere una parte importante del racconto. La cultura della sauna riguarda anche persone, abitudini e memoria: un’esperienza comune che può diventare una chiave per capire un paese.",
+      "sections": [
+        {
+          "heading": "Il patrimonio entra nella vita quotidiana",
+          "text": "L’UNESCO presenta la cultura della sauna come una parte della vita della maggioranza della popolazione finlandese. La pratica può svolgersi in luoghi domestici o pubblici e comprende molto più del lavarsi. Il riconoscimento come patrimonio immateriale invita a spostare l’attenzione dall’ambiente materiale al significato attribuito all’esperienza. È un passaggio utile per il viaggiatore: ciò che appare familiare può avere, in un altro contesto, un valore culturale diverso.",
+          "source": 0
+        },
+        {
+          "heading": "Una tradizione trasmessa dalle persone",
+          "text": "La Finnish Heritage Agency documenta l’inserimento della cultura della sauna nella lista UNESCO. La tutela riguarda una pratica viva, che continua attraverso le persone che la conoscono e la condividono. Il patrimonio non si esaurisce quindi nella conservazione di un edificio o di un’attrezzatura. È anche il modo in cui un’esperienza trova spazio nella vita comune e rimane riconoscibile tra generazioni. Una tradizione può essere quotidiana e, proprio per questo, culturalmente significativa.",
+          "source": 1
+        },
+        {
+          "heading": "Entrare in un’esperienza con attenzione",
+          "text": "Conoscere una consuetudine locale significa lasciare spazio alle differenze, senza pensare che ogni luogo debba offrire le stesse modalità. La curiosità può cominciare da domande semplici: quale ruolo ha questa pratica qui, come viene vissuta, quali abitudini accompagnano l’esperienza? Cercare queste risposte restituisce profondità a qualcosa che il turismo presenta talvolta come un servizio standard. La Finlandia invita così a guardare la sauna come una parte di un racconto più ampio. Il viaggio non aggiunge soltanto un’attività all’agenda: offre l’occasione di capire perché un gesto comune possa diventare una forma di appartenenza e una memoria condivisa."
+        }
+      ],
+      "sources": [
+        {
+          "title": "UNESCO · Cultura della sauna in Finlandia",
+          "url": "https://ich.unesco.org/en/RL/sauna-culture-in-finland-01596"
+        },
+        {
+          "title": "Finnish Heritage Agency · Patrimonio immateriale della sauna",
+          "url": "https://www.museovirasto.fi/en/articles/sauna-culture-intangible-cultural-heritage"
+        }
+      ],
+      "photo": {
+        "code": "rituali",
+        "path": "assets/capitolo-rituali.svg",
+        "width": 1000,
+        "height": 700,
+        "caption": "Illustrazione editoriale originale · RITUALI DEL MONDO",
+        "author": "Click&Viaggia",
+        "sourceUrl": "https://danipepi.github.io/click-e-viaggia/blog.html",
+        "license": "Illustrazione originale",
+        "licenseUrl": "https://danipepi.github.io/click-e-viaggia/legal.html"
+      },
+      "file": "blog-finlandia-sauna.html"
+    }
+  ]
+}
