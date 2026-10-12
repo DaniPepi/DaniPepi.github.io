@@ -1,6 +1,7 @@
 'use strict';
-const CACHE = 'click-viaggia-v46';
+const CACHE = 'click-viaggia-v47';
 const ASSETS = [
+ './assets/castelli-alsazia-visual.jpg', './assets/grafica-castelli-alsazia.jpg',
  './assets/grafica-castelli-disney.jpg',
 "./assets/copertina-citta.jpg","./assets/copertina-sapori.jpg","./assets/copertina-rituali.jpg",
 "./blog-matera-acqua.html","./assets/capitolo-citta.svg","./blog-corea-kimjang.html","./assets/capitolo-sapori.svg","./blog-tenerife-teide.html","./assets/capitolo-natura.svg","./blog-scozia-forth-bridge.html","./assets/capitolo-rotte.svg","./blog-finlandia-sauna.html","./assets/capitolo-rituali.svg",
