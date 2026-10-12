@@ -7,10 +7,33 @@
     "whatsappGroupUrl": ""
   },
   "disney": {
-    "dates": "",
-    "duration": "",
-    "programme": [],
-    "inclusions": [],
+    "dates": "4–9 gennaio 2027",
+    "duration": "6 giorni · 5 notti",
+    "programme": [
+      {
+        "day": "4–6 GEN",
+        "title": "Alsazia: Colmar, Riquewihr e Haut-Kœnigsbourg",
+        "description": "Volo Milano–Strasburgo. Soggiorno presso Hotel & Spa Ribeauvillé dal 4 al 6 gennaio, in zona Ribeauvillé. Tour di Colmar, visita del villaggio di Riquewihr e del castello di Haut-Kœnigsbourg con trasporto. Ordine delle escursioni da definire."
+      },
+      {
+        "day": "6 GEN",
+        "title": "Da Colmar a Parigi",
+        "description": "Trasferimento in treno Colmar–Parigi. Sistemazione all’ibis Paris Porte d’Italie dal 6 al 9 gennaio."
+      },
+      {
+        "day": "6–9 GEN",
+        "title": "Parigi: Île de la Cité e il cuore storico",
+        "description": "Tour guidato dell’Île de la Cité, visita all’interno della cattedrale di Notre-Dame, Sainte-Chapelle e Conciergerie. Passeggiata lungo le rive della Senna. Calendario delle visite da definire."
+      },
+      {
+        "day": "ALTRE TAPPE",
+        "title": "Chambord e Disneyland Paris",
+        "description": "Château de Chambord: visita richiesta, con biglietti e trasferimento da confermare; il castello si trova nella Valle della Loira. Giornata e ingresso a Disneyland Paris ancora da definire."
+      }
+    ],
+    "inclusions": [
+      "Tour di Parigi: Île de la Cité, Notre-Dame, Sainte-Chapelle, Conciergerie e rive della Senna"
+    ],
     "whatsappGroupUrl": ""
   }
 }

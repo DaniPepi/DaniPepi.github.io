@@ -219,3 +219,7 @@ Home e giornale: Luoghi dal mondo (3 racconti) e Curiosità dal mondo (10 approf
 
 ## Copertine fotografiche
 I sette capitoli hanno copertine fotografiche illustrative. Crediti di Firenze, Corea del Sud, Jökulsárlón, Raftsundet e Päijänne in legal.html e data/blog-chapters.json. Le illustrazioni restano nelle pagine dei cinque articoli. Cache v44.
+
+
+## Castelli & Disney — 13 ottobre 2026
+Date 4–9 gennaio 2027, 6 giorni/5 notti. Programma per periodi: Alsazia 4–6 gennaio e Parigi 6–9 gennaio; volo Milano–Strasburgo e treno Colmar–Parigi indicati dal team. Hotel in Alsazia, Chambord, servizi inclusi e giornata Disney da confermare. Nessun rientro, ingresso Disney o orario inventato. Cache v45.
