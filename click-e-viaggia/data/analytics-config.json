@@ -1,4 +1,6 @@
 {
   "enabled": true,
-  "measurementId": "G-6LYQJCJEZY"
+  "provider": "cloudflare",
+  "hostname": "danipepi.github.io",
+  "token": "bbdb595cfcb54a0796323a857bbedd96"
 }
