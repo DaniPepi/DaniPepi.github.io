@@ -24,6 +24,38 @@
   let gesture = null;
   let suppressClickUntil = 0;
   let imagesPrimed = false;
+  slides.forEach(slide => {
+    const visual = slide.querySelector('.blog-strip-visual');
+    if (!visual) return;
+    const hint = document.createElement('span');
+    hint.className = 'blog-photo-invitation'; hint.setAttribute('aria-hidden', 'true');
+    hint.innerHTML = 'ENTRA NEL RACCONTO <b>↑</b>';
+    visual.append(hint);
+  });
+  let tiltFrame = 0, tiltPoint = null;
+  function resetTilt() {
+    cancelAnimationFrame(tiltFrame); tiltFrame = 0; tiltPoint = null;
+    slides.forEach(slide => ['--blog-rx','--blog-ry','--photo-x','--photo-y','--copy-x'].forEach(name => slide.style.removeProperty(name)));
+  }
+  track.addEventListener('pointermove', event => {
+    if (motion.matches || event.pointerType !== 'mouse' || !matchMedia('(hover:hover)').matches) return;
+    const card = event.target.closest?.('.blog-strip-item.is-active');
+    if (!card) { resetTilt(); return; }
+    tiltPoint = {card, x:event.clientX, y:event.clientY};
+    if (tiltFrame) return;
+    tiltFrame = requestAnimationFrame(() => {
+      tiltFrame = 0;
+      if (!tiltPoint) return;
+      const {card,x,y} = tiltPoint, rect = card.getBoundingClientRect();
+      const dx = Math.max(-1,Math.min(1,(x-rect.left)/rect.width*2-1));
+      const dy = Math.max(-1,Math.min(1,(y-rect.top)/rect.height*2-1));
+      card.style.setProperty('--blog-rx',(-dy*2.5)+'deg'); card.style.setProperty('--blog-ry',(dx*3.5)+'deg');
+      card.style.setProperty('--photo-x',(dx*5)+'px'); card.style.setProperty('--photo-y',(dy*4)+'px');
+      card.style.setProperty('--copy-x',(-dx*3)+'px');
+    });
+  }, {passive:true});
+  track.addEventListener('pointerleave', resetTilt);
+  track.addEventListener('pointercancel', resetTilt);
 
   function primeImages() {
     if (imagesPrimed) return;
@@ -55,6 +87,7 @@
   }
 
   function show(target) {
+    resetTilt();
     finishTransition();
     const outgoing = slides[index];
     const newIndex = (target + slides.length) % slides.length;
@@ -128,7 +161,7 @@
     if (Date.now() < suppressClickUntil) { event.preventDefault(); event.stopImmediatePropagation(); }
   }, true);
   document.addEventListener('visibilitychange', updateState);
-  motion.addEventListener('change', () => { finishTransition(); updateState(); });
+  motion.addEventListener('change', () => { resetTilt(); finishTransition(); updateState(); });
 
   section.classList.add('blog-ready');
   section.style.setProperty('--blog-interval', interval + 'ms');
