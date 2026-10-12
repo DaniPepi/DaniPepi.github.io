@@ -20,41 +20,91 @@
       "key": "citta",
       "title": "CITTÀ SEGRETE",
       "text": "Dietro il panorama dei Sassi, cisterne e canali raccontano l’ingegno quotidiano di una città costruita insieme alla roccia.",
-      "image": "assets/capitolo-citta.svg",
-      "alt": "Illustrazione editoriale originale · CITTÀ SEGRETE",
-      "count": "1 articolo"
+      "image": "assets/copertina-citta.jpg",
+      "alt": "Firenze e il suo centro storico",
+      "count": "1 articolo",
+      "coverCredit": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/7/7d/Italy_banner_3_Florence.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Italy_banner_3_Florence.jpg",
+        "author": "Francisco Antunes",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "caption": "Firenze e il suo centro storico",
+        "chapter": "citta",
+        "path": "assets/copertina-citta.jpg"
+      }
     },
     {
       "key": "sapori",
       "title": "SAPORI E TRADIZIONI",
       "text": "In Corea del Sud, il patrimonio del kimchi comprende un gesto collettivo: preparare, condividere e trasmettere un sapere.",
-      "image": "assets/capitolo-sapori.svg",
-      "alt": "Illustrazione editoriale originale · SAPORI E TRADIZIONI",
-      "count": "1 articolo"
+      "image": "assets/copertina-sapori.jpg",
+      "alt": "Una veduta della Corea del Sud",
+      "count": "1 articolo",
+      "coverCredit": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/2/21/Korea_Banner_2.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Korea_Banner_2.jpg",
+        "author": "https://www.flickr.com/photos/traveloriented/",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "caption": "Una veduta della Corea del Sud",
+        "chapter": "sapori",
+        "path": "assets/copertina-sapori.jpg"
+      }
     },
     {
       "key": "natura",
       "title": "NATURA STRAORDINARIA",
       "text": "Forme vulcaniche e colori della roccia raccontano un’isola attraverso i processi che l’hanno modellata.",
-      "image": "assets/capitolo-natura.svg",
-      "alt": "Illustrazione editoriale originale · NATURA STRAORDINARIA",
-      "count": "1 articolo"
+      "image": "assets/curiosita-is.jpg",
+      "alt": "La laguna glaciale di Jökulsárlón",
+      "count": "1 articolo",
+      "coverCredit": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/8/88/Iceland_Banner.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Iceland_Banner.jpg",
+        "author": "Hansueli Krapf",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "caption": "La laguna glaciale di Jökulsárlón",
+        "chapter": "natura",
+        "path": "assets/curiosita-is.jpg"
+      }
     },
     {
       "key": "rotte",
       "title": "ROTTE ICONICHE",
       "text": "Un ponte ferroviario diventa una pagina di storia: il viaggio incontra l’ingegneria prima ancora di arrivare a destinazione.",
-      "image": "assets/capitolo-rotte.svg",
-      "alt": "Illustrazione editoriale originale · ROTTE ICONICHE",
-      "count": "1 articolo"
+      "image": "assets/curiosita-no.jpg",
+      "alt": "Il Raftsundet e le montagne delle Lofoten",
+      "count": "1 articolo",
+      "coverCredit": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/d/df/Raftsundet_%28Lofoten%29_banner_Panorama.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Raftsundet_(Lofoten)_banner_Panorama.jpg",
+        "author": "Ximonic , Simo Räsänen",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "caption": "Il Raftsundet e le montagne delle Lofoten",
+        "chapter": "rotte",
+        "path": "assets/curiosita-no.jpg"
+      }
     },
     {
       "key": "rituali",
       "title": "RITUALI DEL MONDO",
       "text": "Una pratica quotidiana racconta appartenenza e trasmissione culturale, molto più di un servizio da prenotare.",
-      "image": "assets/capitolo-rituali.svg",
-      "alt": "Illustrazione editoriale originale · RITUALI DEL MONDO",
-      "count": "1 articolo"
+      "image": "assets/copertina-rituali.jpg",
+      "alt": "Il tramonto sul lago Päijänne",
+      "count": "1 articolo",
+      "coverCredit": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/0/0c/Finland_Wikivoyage_Banner.png",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Finland_Wikivoyage_Banner.png",
+        "author": "Joonas Lyytinen",
+        "license": "CC BY-SA 2.5",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5",
+        "caption": "Il tramonto sul lago Päijänne",
+        "chapter": "rituali",
+        "path": "assets/copertina-rituali.jpg"
+      }
     }
   ],
   "articles": [

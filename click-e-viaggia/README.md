@@ -215,3 +215,7 @@ Home e giornale: Luoghi dal mondo (3 racconti) e Curiosità dal mondo (10 approf
 
 ## Sette capitoli
 18 articoli, cinque nuovi approfondimenti con fonti primarie e illustrazioni originali. Carte sovrapposte, ciclo automatico continuo al mouse, trascinamento, frecce, accesso da tastiera, touch, movimento ridotto. Articoli nascosti nel markup fino alla selezione di un capitolo; ritorno ai capitoli e collegamenti condivisibili. Cache v43.
+
+
+## Copertine fotografiche
+I sette capitoli hanno copertine fotografiche illustrative. Crediti di Firenze, Corea del Sud, Jökulsárlón, Raftsundet e Päijänne in legal.html e data/blog-chapters.json. Le illustrazioni restano nelle pagine dei cinque articoli. Cache v44.

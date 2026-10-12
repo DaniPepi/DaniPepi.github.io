@@ -1,6 +1,7 @@
 'use strict';
-const CACHE = 'click-viaggia-v43';
+const CACHE = 'click-viaggia-v44';
 const ASSETS = [
+"./assets/copertina-citta.jpg","./assets/copertina-sapori.jpg","./assets/copertina-rituali.jpg",
 "./blog-matera-acqua.html","./assets/capitolo-citta.svg","./blog-corea-kimjang.html","./assets/capitolo-sapori.svg","./blog-tenerife-teide.html","./assets/capitolo-natura.svg","./blog-scozia-forth-bridge.html","./assets/capitolo-rotte.svg","./blog-finlandia-sauna.html","./assets/capitolo-rituali.svg",
   './blog-chapters.css?v=2', './blog-chapters.js?v=2',
   "./blog-curiosita-giappone-ise.html", "./assets/curiosita-jp.jpg", "./blog-curiosita-turchia-gobekli-tepe.html", "./assets/curiosita-tr.jpg", "./blog-curiosita-islanda-thingvellir.html", "./assets/curiosita-is.jpg", "./blog-curiosita-oman-aflaj.html", "./assets/curiosita-om.jpg", "./blog-curiosita-peru-qeswachaka.html", "./assets/curiosita-pe.jpg", "./blog-curiosita-messico-chinampas.html", "./assets/curiosita-mx.jpg", "./blog-curiosita-etiopia-lalibela.html", "./assets/curiosita-et.jpg", "./blog-curiosita-norvegia-urnes.html", "./assets/curiosita-no.jpg", "./blog-curiosita-india-rani-ki-vav.html", "./assets/curiosita-in.jpg", "./blog-curiosita-georgia-qvevri.html", "./assets/curiosita-ge.jpg",
