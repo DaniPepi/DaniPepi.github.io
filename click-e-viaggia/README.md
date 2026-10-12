@@ -203,3 +203,7 @@ Senza account, il globo legge il diario locale già usato da I miei viaggi: `loc
 `data/globe-countries.json` deriva dalla topologia Natural Earth già locale. Il builder `work/build-globe-countries.cjs` conserva anelli chiusi, isole, buchi e attraversamenti della linea del cambio di data. Le geometrie identificano 245 dei 250 codici del diario; `bv`, `gi`, `tk`, `tv` e `um` non hanno poligoni alla risoluzione della fonte e non sono illuminati. Nove territori con una voce propria nel diario sono stati separati dalle geometrie dei paesi principali. La costa e la texture del globo originale restano invariate. La maschera delle visite viene aggiornata solo quando cambiano le scelte, senza ricostruire la superficie metallica. Cache offline v37.
 
 Versione precedente: commit `97ed414c24e6ddc7d024d66f03f23a13d65c51bc` e copia completa in `work/rollback-before-visited-globe-20261010/CLICK-e-VIAGGIA-before-visited-globe.zip`.
+
+
+## Curiosità dal mondo — 12 ottobre 2026
+Dieci nuovi articoli giornalistici con fonti primarie, immagini illustrative locali e crediti. Il giornale contiene 13 storie; filtro Curiosità dal mondo, badge Nuovo per 14 giorni, pagine condivisibili e articoli correlati. Impaginazione Times New Roman ereditata dal giornale, senza interviste inventate. Sitemap e cache v41 aggiornate. Le nuove pagine sono incluse nella whitelist Cloudflare, senza banner. Fonti e dati editoriali in data/curiosity-articles.json. Le foto sono illustrative del paese, con caption esatta e licenza; Lalibela documenta il luogo del testo.

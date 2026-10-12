@@ -2,7 +2,7 @@
 (() => {
   'use strict';
   const base = new URL('.', document.currentScript?.src || document.baseURI);
-  const pages = new Set(['', 'index.html', 'blog.html', 'blog-fatima-nazare.html', 'blog-nosy-be.html', 'blog-marsa-alam.html', 'chi-siamo.html', 'i-miei-viaggi.html', 'viaggio-fatima.html', 'viaggio-disney.html', 'legal.html']);
+  const pages = new Set(['', 'index.html', 'blog.html', 'blog-fatima-nazare.html', 'blog-nosy-be.html', 'blog-marsa-alam.html', 'chi-siamo.html', 'i-miei-viaggi.html', 'viaggio-fatima.html', 'viaggio-disney.html', 'legal.html', "blog-curiosita-giappone-ise.html", "blog-curiosita-turchia-gobekli-tepe.html", "blog-curiosita-islanda-thingvellir.html", "blog-curiosita-oman-aflaj.html", "blog-curiosita-peru-qeswachaka.html", "blog-curiosita-messico-chinampas.html", "blog-curiosita-etiopia-lalibela.html", "blog-curiosita-norvegia-urnes.html", "blog-curiosita-india-rani-ki-vav.html", "blog-curiosita-georgia-qvevri.html"]);
   const page = location.pathname.startsWith(base.pathname) ? location.pathname.slice(base.pathname.length) : null;
   if (base.origin !== location.origin || !pages.has(page) || window.__cvaAggregateAnalytics) return;
   window.__cvaAggregateAnalytics = true;

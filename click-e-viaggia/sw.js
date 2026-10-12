@@ -1,6 +1,7 @@
 'use strict';
-const CACHE = 'click-viaggia-v40';
+const CACHE = 'click-viaggia-v41';
 const ASSETS = [
+  "./blog-curiosita-giappone-ise.html", "./assets/curiosita-jp.jpg", "./blog-curiosita-turchia-gobekli-tepe.html", "./assets/curiosita-tr.jpg", "./blog-curiosita-islanda-thingvellir.html", "./assets/curiosita-is.jpg", "./blog-curiosita-oman-aflaj.html", "./assets/curiosita-om.jpg", "./blog-curiosita-peru-qeswachaka.html", "./assets/curiosita-pe.jpg", "./blog-curiosita-messico-chinampas.html", "./assets/curiosita-mx.jpg", "./blog-curiosita-etiopia-lalibela.html", "./assets/curiosita-et.jpg", "./blog-curiosita-norvegia-urnes.html", "./assets/curiosita-no.jpg", "./blog-curiosita-india-rani-ki-vav.html", "./assets/curiosita-in.jpg", "./blog-curiosita-georgia-qvevri.html", "./assets/curiosita-ge.jpg",
   './site-interactions.css?v=1', './site-interactions.js?v=1',
   './metal-finish.css?v=1', './metal-finish.js?v=1',
   './globe-hero.css?v=4', './globe-hero.js?v=6', './globe-account.js?v=1', './data/globe-land.json', './data/globe-countries.json',
@@ -8,11 +9,11 @@ const ASSETS = [
   './trip-photo-stack.css?v=2', './trip-photo-stack.js?v=2', './trip.js?v=4',
   './assets/fatima-rosary-interior.jpg', './assets/fatima-trinity-interior.jpg',
   './metallic.css?v=1', './carbon-hero.css?v=1', './carbon-hero.js?v=1',
-  './analytics.js?v=2',
+  './analytics.js?v=3',
   './home-sections.css?v=5', './home-blog-strip.js?v=6', './blog-invitation.css?v=1',
   './travel-deck.css?v=1', './travel-deck.js?v=2',
   './trip-compact.css?v=3', './data/group-trips.json', './site-account.css?v=2', './site-account.js?v=3', './account-core.js?v=2',
-  './blog.html', './journal.css?v=3', './journal.js?v=1',
+  './blog.html', './journal.css?v=3', './journal.js?v=2',
   "./blog.css?v=5", "./article.js?v=1", "./blog-fatima-nazare.html", "./blog-nosy-be.html", "./blog-marsa-alam.html", "./assets/blog-nazare.jpg", "./assets/blog-nosy-iranja.jpg", "./assets/blog-nosy-sakatia.jpg", "./assets/blog-lokobe.jpg", "./assets/blog-sharm-el-luli.jpg", "./assets/blog-port-ghalib.jpg", "./assets/blog-marsa-desert.jpg", "./assets/blog-camels-red-sea.jpg",
   './viaggio-fatima.html', './viaggio-disney.html',
   './assets/grafica-fatima.svg', './assets/grafica-fatima.png',

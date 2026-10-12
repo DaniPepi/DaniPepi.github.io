@@ -6,7 +6,7 @@
   const grid = document.querySelector('.journal-stories');
   const status = document.getElementById('journal-filter-status');
   const allowed = new Set(filters.map(link => link.dataset.journalFilter));
-  const labels = { tutti: 'Tutte le destinazioni', portogallo: 'Portogallo', madagascar: 'Madagascar', egitto: 'Egitto' };
+  const labels = { tutti: 'Tutte le destinazioni', portogallo: 'Portogallo', madagascar: 'Madagascar', egitto: 'Egitto', curiosita: 'Curiosità dal mondo' };
 
   function selectedCountry() {
     const country = new URL(window.location.href).searchParams.get('paese') || 'tutti';
