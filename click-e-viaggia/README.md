@@ -207,3 +207,7 @@ Versione precedente: commit `97ed414c24e6ddc7d024d66f03f23a13d65c51bc` e copia c
 
 ## Curiosità dal mondo — 12 ottobre 2026
 Dieci nuovi articoli giornalistici con fonti primarie, immagini illustrative locali e crediti. Il giornale contiene 13 storie; filtro Curiosità dal mondo, badge Nuovo per 14 giorni, pagine condivisibili e articoli correlati. Impaginazione Times New Roman ereditata dal giornale, senza interviste inventate. Sitemap e cache v41 aggiornate. Le nuove pagine sono incluse nella whitelist Cloudflare, senza banner. Fonti e dati editoriali in data/curiosity-articles.json. Le foto sono illustrative del paese, con caption esatta e licenza; Lalibela documenta il luogo del testo.
+
+
+## Capitoli del blog
+Home e giornale: Luoghi dal mondo (3 racconti) e Curiosità dal mondo (10 approfondimenti). Link capitolo=luoghi/curiosita, compatibilità paese, copertine interattive con movimento ridotto, cache v42.
