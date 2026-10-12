@@ -223,3 +223,5 @@ I sette capitoli hanno copertine fotografiche illustrative. Crediti di Firenze, 
 
 ## Castelli & Disney — 13 ottobre 2026
 Date 4–9 gennaio 2027, 6 giorni/5 notti. Programma per periodi: Alsazia 4–6 gennaio e Parigi 6–9 gennaio; volo Milano–Strasburgo e treno Colmar–Parigi indicati dal team. Hotel in Alsazia, Chambord, servizi inclusi e giornata Disney da confermare. Nessun rientro, ingresso Disney o orario inventato. Cache v45.
+
+Conferma del team: Boutique Hôtel & Spa Ribeauvillé; volo, treno, tour di Colmar/trasporti e tour di Parigi inclusi. Chambord rimosso. Giorno e ingresso Disney da definire. Cache v46.

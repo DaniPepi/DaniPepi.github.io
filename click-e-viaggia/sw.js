@@ -1,5 +1,5 @@
 'use strict';
-const CACHE = 'click-viaggia-v45';
+const CACHE = 'click-viaggia-v46';
 const ASSETS = [
  './assets/grafica-castelli-disney.jpg',
 "./assets/copertina-citta.jpg","./assets/copertina-sapori.jpg","./assets/copertina-rituali.jpg",
